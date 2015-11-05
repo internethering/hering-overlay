@@ -1,0 +1,32 @@
+diff -Naur hydrogen-0.9.5.1.orig/Sconstruct hydrogen-0.9.5.1/Sconstruct
+--- hydrogen-0.9.5.1.orig/Sconstruct	2013-03-17 21:42:42.655692555 +0100
++++ hydrogen-0.9.5.1/Sconstruct	2013-03-17 23:19:57.663819411 +0100
+@@ -193,7 +193,8 @@
+             env.ParseConfig('pkg-config --modversion jack', get_jack_api_flags)
+         if str(env['lash']) == "1":
+             env.ParseConfig('pkg-config --cflags --libs lash-1.0')
+-
++        if str(env['lrdf']) == "1":
++            env.ParseConfig('pkg-config --cflags --libs lrdf')
+ 
+ 	#env.Decider is not known in older scons version
+ 	try:
+@@ -268,7 +269,8 @@
+ 		env.Append( LIBPATH = 'C:\Program Files\GnuWin32\lib' )
+ 		env.Append( LIBS = [ "pthread" ] )
+ 	
+-        if str(env['lrdf']) == "1": env.Append( LIBS = ["lrdf"] )
++        if str(env['lrdf']) == "1":
++		env.ParseConfig('pkg-config --cflags --libs lrdf')
+ 	if str(env['jack']) == "1": env.Append( LIBS = ["jack"])
+ 	if str(env['alsa']) == "1": env.Append( LIBS = ["asound"])
+ 	if str(env['libarchive']) == "1": env.Append( LIBS = ["archive"])
+@@ -450,7 +452,7 @@
+    Exit(1)
+ 
+ #lrdf: categorizing of ladspa effects
+-if str(env['lrdf']) == "1" and not conf.CheckCHeader('lrdf.h'):
++if str(env['lrdf']) == "1" and not conf.CheckPKG('lrdf >= 0.4.0'):
+     print 'lrdf must be installed!'
+     Exit(1)
+ 

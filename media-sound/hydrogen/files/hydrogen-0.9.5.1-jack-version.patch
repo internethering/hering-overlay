@@ -1,0 +1,12 @@
+diff -Naur hydrogen-0.9.5.1.orig/Sconstruct hydrogen-0.9.5.1/Sconstruct
+--- hydrogen-0.9.5.1.orig/Sconstruct	2013-03-17 21:42:42.655692555 +0100
++++ hydrogen-0.9.5.1/Sconstruct	2013-03-17 21:43:59.258694221 +0100
+@@ -322,7 +322,7 @@
+ 
+ 
+ def get_jack_api_flags(xenv, pkg_ver):
+-    (major, minor, patch) = pkg_ver.rstrip().split('.')
++    (major, minor, patch) = pkg_ver.rstrip().split('.')[0:3]
+     major = int(major)
+     minor = int(minor)
+     patch = int(patch)

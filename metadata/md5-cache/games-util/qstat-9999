@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install preinst prepare unpack
+DEPEND=!sys-cluster/torque || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DESCRIPTION=Server statics collector supporting many FPS games
+EAPI=2
+HOMEPAGE=http://www.qstat.org/
+IUSE=debug
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=Artistic
+RDEPEND=!sys-cluster/torque
+SLOT=0
+_eclasses_=eutils	998e5931fb95b10a6a11ec796ada2759	multilib	3bf24e6abb9b76d9f6c20600f0b716bf	subversion	c12bdf4fcc82f86ad89b14c8f76c4026	toolchain-funcs	0dfbfa13f57c6184f4728d12ac002aac
+_md5_=771ada3dba6af8cba04d4435022a5c60

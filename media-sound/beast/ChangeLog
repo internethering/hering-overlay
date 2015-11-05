@@ -1,0 +1,9 @@
+# ChangeLog for media-sound/beast
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  17 Jun 2012; Dominique Michel <dominique_libre@sourceforge.net>
+  beast-0.7.4-r1: added 400-format-security.patch from Debian
+
+  05 Jun 2011; Dominique Michel <dominique@tuxfamily.org> +beast-0.7.4.ebuild
+  with 4 patches from Debian.

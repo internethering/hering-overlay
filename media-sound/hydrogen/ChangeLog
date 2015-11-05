@@ -1,0 +1,79 @@
+# ChangeLog for media-sound/hydrogen
+# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  23 Mar 2013; Karl Linden (lilrc) <lilrc@users.sourceforge.net>
+  hydrogen-9999.ebuild:
+  Install an icon for the desktop entry.
+
+  17 Mar 2013; Karl Linden (lilrc) <lilrc@users.sourceforge.net>
+  hydrogen-0.9.5.1.ebuild, +files/hydrogen-0.9.5.1-jack-version.patch,
+  files/hydrogen-0.9.5.1-use_lrdf_pkgconfig.patch:
+  Update EAPI.
+  Add portmidi support.
+  Unkeyword for ~ppc (media-libs/portmidi does not support ~ppc).
+  Move to base and scons-utils eclasses.
+  Improve the lrdf patch.
+  Add patch so that the package can compile against 
+  media-sound/jack-audio-connection-kit-1.9.9.5 (closes #0000157). Thanks 
+  to dbautista for reporting the bug.
+
+  17 Mar 2013; Karl Linden (lilrc) <lilrc@users.sourceforge.net>
+  hydrogen-0.9.5.1.ebuild, hydrogen-9999.ebuild:
+  Keyword hydrogen-0.9.5.1 for ~x86 ~amd64 ~ppc to avoid repoman 
+  warnings as virtual/liblash is not yet stable.
+  Move from old subversion repository to new git repo. Thanks to mikkl who 
+  reported this on MantisBT.
+  Change to new homepage in live ebuild.
+  Big cleanup in live ebuild.
+  Remove bad letters in my previous ChangeLog messages.
+
+  08 Mar 2013; Dominique Michel <dominique_libre@sourceforge.net>
+  metadata.xml: removed no-herd, added use flags section
+  
+  07 Mar 2013; Matt Henley (nwmatt) <nwmatt@gmail.com>
+  hyrdogen-0.9.5.1.ebuild, hydrogen-9999.ebuild:
+  modify qt4 deps from x11-libs/qt* to dev-qt/
+
+  13 Dec 2012; Karl Linden (lilrc) <lilrc@users.sourceforge.net>
+  hyrdogen-0.9.5.1.ebuild, hydrogen-9999.ebuild:
+  replaced dependency on media-sound/lash with virtual/liblash
+  minor cleanup
+
+  22 Nov 2012; Karl Linden (lilrc) <spray.sucks@gmail.com>
+  hydrogen-9999.ebuild:
+  Added dependency on "x11-libs/qt-xmlpatterns"
+  Made a cmake fails fatal
+  Thanks to Miroslav Šulc (fordfrog)
+
+  11 Nov 2012; Dominique Michel <dominique_libre@sourceforge.net>
+  hydrogen-9999.ebuild: Added qt4-r2 and cmake-utils eclass;
+  Replaced scons by cmake;
+  Added some missing USE flags: jacksession, lrdf, portmidi, rubberbamd;
+  Removed flac USE flag,flac and ogg are provided by sndfile.
+  May need some cleanup, but it work at least.
+
+*hydrogen-0.9.5.1 (28 Oct 2012)
+
+  28 Oct 2012; Hakan Demiralp <keenblade@tuxfamily.org> -files/0.9.1-OSS.patch,
+  -files/hydrogen-0.9.2-configure.in.patch, -hydrogen-0.9.3-r1.ebuild,
+  -files/hydrogen-0.9.3-flac113.patch, -files/hydrogen-0.9.3-segfault.patch,
+  +hydrogen-0.9.5.1.ebuild, +files/hydrogen-0.9.5.1-use_lrdf_pkgconfig.patch,
+  hydrogen-9999.ebuild, -files/hydrogen-9999-configure.patch:
+  version bump to 0.9.5.1. clean up
+
+  25 Feb 2010; Frieder Buerzele <evermind@tuxfamily.org>
+  hydrogen-0.9.3-r1.ebuild, -hydrogen-0.9.4_beta.ebuild:
+  cleanup
+
+  13 Sep 2008; Frieder Buerzele <evermind@tuxfamily.org>
+  +hydrogen-0.9.4_beta.ebuild:
+  bumped (thx harald)
+
+  27 Aug 2008; Frieder Buerzele <evermind@tuxfamily.org>
+  hydrogen-9999.ebuild:
+  new buildsystem (thx Daniel_J) closes bug #53
+
+  17 Dec 2007; Thomas Kuther <gimpel@sonnenkinder.org> ChangeLog:
+  added a changelog
+
