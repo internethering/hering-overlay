@@ -8,23 +8,21 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit autotools eutils python-single-r1
 
-DESCRIPTION="Python bindings for the Nemo file manager"
+DESCRIPTION="Python binding for Nemo components"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"
-SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/2.4.x.tar.gz"
-S="${WORKDIR}/nemo-extensions-2.4.x/${PN}"
+SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/2.6.x.tar.gz"
+S="${WORKDIR}/nemo-extensions-2.6.x/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	>=gnome-extra/nemo-2.4.0[introspection]
-	${PYTHON_DEPS}
-"
+RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
+   	>=gnome-extra/nemo-2.6.0[introspection]
 	>=dev-util/gtk-doc-am-1.9
 	virtual/pkgconfig
 	doc? (

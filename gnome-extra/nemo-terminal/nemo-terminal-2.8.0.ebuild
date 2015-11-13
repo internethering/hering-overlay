@@ -5,21 +5,21 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r1 gnome2
 
-DESCRIPTION="terminal for the Nemo file manager"
+DESCRIPTION="Nemo extension to enable an embedded terminal"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"
-SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/2.4.x.tar.gz"
-S="${WORKDIR}/nemo-extensions-2.4.x/${PN}"
+SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/2.8.x.tar.gz"
+S="${WORKDIR}/nemo-extensions-2.8.x/${PN}"
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=gnome-extra/nemo-python-2.4.0"
-RDEPEND="${DEPEND} \
-	x11-libs/vte:2.90 \
+DEPEND=""
+RDEPEND=">=gnome-extra/nemo-python-2.8.0
+	x11-libs/vte:2.90
 	dev-python/pyxdg[${PYTHON_USEDEP}]"
 
 src_install() {

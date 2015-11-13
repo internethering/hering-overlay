@@ -8,12 +8,12 @@ inherit autotools eutils gnome2
 
 DESCRIPTION="seahorse plugins and utilities for encryption"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"
-SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/2.6.x.tar.gz"
-S="${WORKDIR}/nemo-extensions-2.6.x/${PN}"
+SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/2.8.x.tar.gz"
+S="${WORKDIR}/nemo-extensions-2.8.x/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""
@@ -26,7 +26,7 @@ DEPEND="app-crypt/seahorse
 	gnome-base/gnome-keyring
 	app-crypt/gpgme
 	<app-crypt/gnupg-2.1
-	>=gnome-extra/nemo-2.6.0[introspection]
+	>=gnome-extra/nemo-2.8.0[introspection]
 	x11-libs/libcryptui"
 
 src_prepare() {
