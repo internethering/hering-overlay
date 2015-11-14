@@ -5,7 +5,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 gnome2
+inherit python-single-r1 gnome2-utils
 
 DESCRIPTION="Nemo extension to enable an embedded terminal"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"
@@ -33,4 +33,19 @@ src_install() {
 
 	insinto usr/share/nemo-terminal
 	doins pixmap/logo_120x120.png
+}
+
+pkg_preinst() {
+	gnome2_icon_savelist
+	gnome2_schemas_savelist
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	gnome2_schemas_update
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	gnome2_schemas_update
 }

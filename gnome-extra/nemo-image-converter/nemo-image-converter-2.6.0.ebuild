@@ -20,7 +20,5 @@ RDEPEND="gnome-base/gnome-common"
 DEPEND=">=gnome-extra/nemo-2.6.0[introspection]"
 
 src_prepare() {
-	if [[ ! -e configure ]] ; then
-		./autogen.sh || die
-	fi
+	eautoreconf
 }
