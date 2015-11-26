@@ -98,3 +98,7 @@ net-print/brother-dcp9020cdw-bin: Brother printer driver for DCP-9020CDW & DCP-9
 games-util/urtconnector: Advanced UrbanTerror launcher program
 sci-visualization/circos: Circular layout visualization of genomic and other data
 ```
+
+# disclaimer
+
+I may not maintain older (functionally) ebuilds, this overlay is designed for continuous updated systems.
