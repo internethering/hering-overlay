@@ -2,31 +2,24 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/sci-visualization/circos/circos-0.55.ebuild,v 1.2 2012/11/30 06:59:28 bicatali Exp $
 
-EAPI=5
-
-inherit versionator
+EAPI=4
 
 DESCRIPTION="Circular layout visualization of genomic and other data"
 HOMEPAGE="http://mkweb.bcgsc.ca/circos/"
-MY_P="${PN}-$(get_version_component_range 1-2)-$(get_version_component_range 3)"
-SRC_URI="http://mkweb.bcgsc.ca/circos/distribution/${MY_P}.tgz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="http://mkweb.bcgsc.ca/circos/distribution/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-DEPEND="dev-perl/Config-General
+DEPEND="dev-perl/config-general
 	dev-perl/GD
 	dev-perl/Math-Bezier
 	dev-perl/Math-Round
 	dev-perl/Math-VecStat
 	dev-perl/Params-Validate
 	dev-perl/Readonly
-	dev-perl/Clone
-	dev-perl/Font-TTF
-	dev-perl/Text-Format
 	dev-perl/regexp-common
 	>=dev-perl/Set-IntSpan-1.11
 	dev-perl/Graphics-ColorObject
