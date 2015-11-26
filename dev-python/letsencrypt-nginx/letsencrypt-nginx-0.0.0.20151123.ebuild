@@ -22,5 +22,5 @@ IUSE=""
 DEPEND=""
 RDEPEND="dev-python/pyparsing
 	dev-python/zope-interface
-	dev-python/pyopenssl
+	>=dev-python/pyopenssl-0.15
 	www-servers/nginx"

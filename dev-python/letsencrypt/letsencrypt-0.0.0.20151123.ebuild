@@ -27,7 +27,7 @@ RDEPEND="dev-python/cryptography
     dev-python/six
 	dev-python/zope-interface
 	dev-python/zope-component
-	dev-python/pyopenssl
+	>=dev-python/pyopenssl-0.15
 	dev-python/mock
 	dev-python/pythondialog:python-2
 	>=dev-python/psutil-2.1.0
