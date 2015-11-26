@@ -34,10 +34,7 @@ dev-python/letsencrypt: Let's Encrypt client
 dev-python/letsencrypt-acme: ACME protocol implementation in Python
 dev-python/letsencrypt-apache: Apache plugin for Let's Encrypt client
 dev-python/letsencrypt-nginx: Nginx plugin for Let's Encrypt client
-dev-python/phply: Parser for PHP written using PLY
-dev-python/pyexiv2: A Python binding to exiv2 for manipulation of EXIF and IPTC image metadata
 dev-python/python-dmidecode: Python extension module for dmidecode
-dev-python/tblib: Traceback fiddling library. Allows you to pickle tracebacks.
 dev-python/zope-component: Zope Component Architecture
 dev-python/zope-event: Event publishing / dispatch, used by Zope Component Architecture
 games-util/urtconnector: Advanced UrbanTerror launcher program
@@ -57,7 +54,6 @@ media-sound/banshee: Import, organize, play, and share your music using a simple
 media-sound/hydrogen: Advanced drum machine
 media-sound/jack-audio-connection-kit: Jackdmp jack implemention for multi-processor machine
 media-sound/ladish: LADI Session Handler - a session management system for JACK applications
-media-sound/decibel-audio-player: A GTK+ audio player which aims at being very straightforward to use
 net-im/skype4pidgin: Skype API PLugin for Pidgin
 net-print/brother-dcp9020cdw-bin: Brother printer driver for DCP-9020CDW & DCP-9022CDW
 sci-visualization/circos: Circular layout visualization of genomic and other data
@@ -66,6 +62,4 @@ sys-kernel/rt-sources: Full Linux 4.1 kernel sources with the CONFIG_PREEMPT_RT 
 sys-power/phc-intel: Processor Hardware Control for Intel CPUs
 sys-process/rtirq: Change the realtime scheduling policy and priority of relevant system driver IRQ handlers
 www-servers/selenium-server-standalone: Selenium Serer Standalone
-x11-plugins/purple-facebook: Facebook protocol plugin for libpurple
-x11-themes/elegance-colors: a highly customizable chameleon theme for Gnome Shell
 ```
