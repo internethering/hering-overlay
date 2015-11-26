@@ -4,8 +4,6 @@
 
 EAPI="5"
 
-inherit exteutils
-
 RESTRICT="mirror"
 DESCRIPTION="Change the realtime scheduling policy and priority of relevant system driver IRQ handlers"
 HOMEPAGE="http://www.rncbc.org/jack/"
@@ -20,20 +18,15 @@ DEPEND=">=sys-apps/util-linux-2.13
 	sys-apps/sysvinit"
 
 src_prepare() {
-	#gzip -cdf "${FILESDIR}/rt-initscript.gz" >  rtirq
-	# use fullstatus to show the status of rtirq.sh
-	#esed_check  -i -e '/depend(/'i"opts=\"fullstatus\"\n" \
-	#	-e 's@\(^status(.*\)@full\1@g' rtirq
-
 	# set path for cfg file
-	esed_check -ie "s:^\(RTIRQ_CONFIG\=\)\(.*\):\1/etc/conf.d/rtirq:" rtirq.sh
+	sed -ie "s:^\(RTIRQ_CONFIG\=\)\(.*\):\1/etc/conf.d/rtirq:" rtirq.sh
 
 	# cfg path
-	esed_check -i -e "s:/etc/sysconfig/rtirq:/etc/conf.d/rtirq:" rtirq.conf
+	sed -i -e "s:/etc/sysconfig/rtirq:/etc/conf.d/rtirq:" rtirq.conf
 
 	# fixup to work with different kernels
 	# see http://article.gmane.org/gmane.linux.gentoo.proaudio/2497
-	esed_check -i -e 's@\(egrep.*\)softirq\(.*\)@\1s(oft)?irq\2@g' rtirq.sh
+	sed -i -e 's@\(egrep.*\)softirq\(.*\)@\1s(oft)?irq\2@g' rtirq.sh
 }
 
 src_install(){
