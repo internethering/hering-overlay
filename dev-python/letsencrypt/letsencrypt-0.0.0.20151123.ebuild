@@ -28,6 +28,7 @@ RDEPEND="dev-python/cryptography
 	dev-python/zope-interface
 	dev-python/zope-component
 	dev-python/pyopenssl
+	dev-python/mock
 	dev-python/pythondialog:python-2
 	>=dev-python/psutil-2.1.0
 	dev-python/parsedatetime
