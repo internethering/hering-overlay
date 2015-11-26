@@ -39,6 +39,7 @@ dev-python/pyexiv2: A Python binding to exiv2 for manipulation of EXIF and IPTC 
 dev-python/python-dmidecode: Python extension module for dmidecode
 dev-python/tblib: Traceback fiddling library. Allows you to pickle tracebacks.
 dev-python/zope-component: Zope Component Architecture
+dev-python/zope-event: Event publishing / dispatch, used by Zope Component Architecture
 games-util/urtconnector: Advanced UrbanTerror launcher program
 gnome-extra/nemo-audio-tab: View audio tag information from the file manager's properties tab
 gnome-extra/nemo-emblems: Change your folder and file emblems
