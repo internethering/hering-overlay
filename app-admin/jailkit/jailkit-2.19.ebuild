@@ -4,7 +4,9 @@
 
 EAPI="5"
 
-inherit autotools eutils
+PYTHON_COMPAT=( python2_7 )
+
+inherit autotools eutils python-single-r1 systemd
 
 DESCRIPTION="Allows you to easily put programs and users in a chrooted environment"
 HOMEPAGE="http://olivier.sessink.nl/jailkit/"
@@ -13,18 +15,31 @@ SRC_URI="http://olivier.sessink.nl/${PN}/${P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE=""
+IUSE="openrc systemd"
+
+RDEPEND="systemd? ( sys-apps/systemd )
+	openrc? ( sys-apps/openrc )"
 
 src_prepare() {
 	epatch \
 		"${FILESDIR}/${P}-pyc.patch" \
-		"${FILESDIR}/${P}-noshells.patch"
+		"${FILESDIR}/${P}-noshells.patch" \
+		"${FILESDIR}/${P}-pythoninterpreter.patch"
 	eautoreconf
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	doinitd "${FILESDIR}/jailkit" ||  die "doinit install failed"
+	emake DESTDIR="${D}" PYTHONINTERPRETER=${PYTHON} install || die "emake install failed"
+	if use openrc ;
+	then 
+		doinitd "${FILESDIR}/jailkit.initscript" ||  die "doinit install failed"
+	fi
+	if use systemd ;
+	then
+		systemd_dounit "${FILESDIR}/jailkit.service" || die "systemd_doinit install failed"
+	fi
+
+	python_fix_shebang "${ED}"
 }
 
 pkg_postinst() {

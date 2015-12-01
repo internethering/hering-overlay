@@ -1,0 +1,10 @@
+[Unit]
+Description=a daemon to create a rate-limited /dev/log socket inside a chroot
+Requires=network.target sshd.service
+After=network.target sshd.service
+
+[Service]
+ExecStart=/usr/sbin/jk_socketd -n
+
+[Install]
+WantedBy=multi-user.target
