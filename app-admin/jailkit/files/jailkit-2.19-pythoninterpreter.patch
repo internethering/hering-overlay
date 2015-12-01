@@ -14,3 +14,4 @@ diff --git a/py/Makefile.in b/py/Makefile.in
  
  PY_BINS = jk_cp jk_init jk_check jk_addjailuser jk_jailuser jk_list jk_update
  PY_LIBS = jk_lib.pyc
+
