@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name><![CDATA[hering-overlay]]></name>
+    <description lang="en"><![CDATA[Richard Hering's gentoo overlay]]></description>
+    <homepage>https://github.com/internethering/hering-overlay</homepage>
+    <owner type="person">
+      <email>richard@internethering.de</email>
+      <name><![CDATA[Richard Hering]]></name>
+    </owner>
+    <source type="git">git@github.com:internethering/hering-overlay.git</source>
+    <source type="git">https://github.com/internethering/hering-overlay.git</source>
+    <feed>https://github.com/internethering/hering-overlay/commits/master.atom</feed>
+  </repo>
+</repositories>
