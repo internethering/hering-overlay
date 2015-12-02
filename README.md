@@ -43,12 +43,10 @@ gnome-extra/nemo-terminal: Nemo extension to enable an embedded terminal
 ### letsencrypt stuff, no gentoo user wants there installer ;)
 
 ```
-dev-python/letsencrypt: Let's Encrypt client
-dev-python/letsencrypt-acme: ACME protocol implementation in Python
-dev-python/letsencrypt-apache: Apache plugin for Let's Encrypt client
-dev-python/letsencrypt-nginx: Nginx plugin for Let's Encrypt client
-dev-python/zope-component: Zope Component Architecture
-dev-python/zope-event: Event publishing / dispatch, used by Zope Component Architecture
+app-crypt/letsencrypt: Let's Encrypt client
+app-crypt/acme: ACME protocol implementation in Python
+app-crypt/letsencrypt-apache: Apache plugin for Let's Encrypt client
+app-crypt/letsencrypt-nginx: Nginx plugin for Let's Encrypt client
 
 ```
 

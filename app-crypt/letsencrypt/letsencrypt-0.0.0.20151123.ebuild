@@ -34,6 +34,6 @@ RDEPEND="dev-python/cryptography
 	dev-python/parsedatetime
 	dev-python/configargparse
 	dev-python/configobj
-	dev-python/letsencrypt-acme
-	nginx? ( dev-python/letsencrypt-nginx )
-	apache2? ( dev-python/letsencrypt-apache )"
+	app-crypt/acme
+	nginx? ( app-crypt/letsencrypt-nginx )
+	apache2? ( app-crypt/letsencrypt-apache )"
