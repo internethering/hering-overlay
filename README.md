@@ -59,7 +59,7 @@ app-backup/storebackup: free, super efficient backup software
 sys-apps/gentoo-systemd-units: some usefull units for systemd on gentoo based systems
 www-servers/selenium-server-standalone: Selenium Serer Standalone
 dev-php/pecl-mailparse: A PHP extension for parsing and working with RFC822 and RFC2045 (MIME) compliant messages
-
+app-antivirus/clamav: Clam Anti-Virus Scanner
 ```
 
 ### realtime stuff
