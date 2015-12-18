@@ -50,6 +50,7 @@ sys-apps/gentoo-systemd-units: some usefull units for systemd on gentoo based sy
 www-servers/selenium-server-standalone: Selenium Serer Standalone
 dev-php/pecl-mailparse: A PHP extension for parsing and working with RFC822 and RFC2045 (MIME) compliant messages
 dev-php/pecl-apcu: Stripped down version of APC supporting only user cache (for PHP7)
+dev-php/PEAR-Crypt_GPG: GNU Privacy Guard (GnuPG)
 ```
 
 ### realtime stuff
