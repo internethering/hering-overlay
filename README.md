@@ -51,6 +51,8 @@ www-servers/selenium-server-standalone: Selenium Serer Standalone
 dev-php/pecl-mailparse: A PHP extension for parsing and working with RFC822 and RFC2045 (MIME) compliant messages
 dev-php/PEAR-Crypt_GPG: GNU Privacy Guard (GnuPG)
 www-apache/mod_qos: A QOS module for the apache webserver
+www-apache/mod_security: Web application firewall and Intrusion Detection System for Apache
+www-apache/modsecurity-crs: Core Rule Set for ModSecurity
 ```
 
 ### realtime stuff
