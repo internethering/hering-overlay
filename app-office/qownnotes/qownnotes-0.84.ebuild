@@ -8,7 +8,7 @@ inherit qmake-utils eutils
 
 DESCRIPTION="OwnNotes is a plain-text notepad, that (optionally) works together with the notes application of ownCloud."
 HOMEPAGE="http://www.qownnotes.org/"
-MY_P="b538"
+MY_P="b830-131546"
 SRC_URI="https://github.com/pbek/QOwnNotes/archive/linux-${MY_P}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/QOwnNotes-linux-${MY_P}"
 
@@ -26,6 +26,7 @@ DEPEND="qt5? (
 		dev-qt/qtsvg:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtscript:5
+		dev-qt/qtprintsupport:5
 	)"
 RDEPEND="${DEPEND}"
 
