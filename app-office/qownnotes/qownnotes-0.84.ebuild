@@ -30,6 +30,12 @@ DEPEND="qt5? (
 	)"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	cd src/libraries
+	rmdir qmarkdowntextedit
+	git clone https://github.com/pbek/qmarkdowntextedit.git
+}
+
 src_compile() {
 	cd src
 	eqmake5 QOwnNotes.pro -r 
