@@ -71,6 +71,7 @@ media-sound/banshee: Import, organize, play, and share your music using a simple
 media-sound/hydrogen: Advanced drum machine
 media-sound/jack-audio-connection-kit: Jackdmp jack implemention for multi-processor machine
 media-sound/ladish: LADI Session Handler - a session management system for JACK applications
+media-sound/hdj_mod: GPL Linux MIDI drivers for Hercules DJ midi controller devices
 dev-dotnet/taglib-sharp: Taglib# 2.0 - Managed tag reader/writer
 ```
 
