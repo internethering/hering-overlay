@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,9 +32,10 @@ pkg_setup() {
 		eerror "Please use a previous version of ${PN} or a newer kernel."
 		die
 	fi
-	if kernel_is gt 4 3 ; then
-		eerror "Your kernel version is not yet tested with this version of ${PN}."
-		eerror "It might not build or expose runtime problems."
+	if kernel_is gt 4 4 ; then
+		eerror "Your kernel version is not yet supported by this version of ${PN}."
+		eerror "Please use a newer version of ${PN} or an older kernel."
+		die
 	fi
 	linux-mod_pkg_setup
 }
@@ -54,10 +55,10 @@ src_prepare() {
 
 	if kernel_is lt 3 0 ; then
 		epatch inc/${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}/linux-phc-0.3.2.patch
-	elif kernel_is lt 3 17 ; then
-		epatch inc/${KV_MAJOR}.${KV_MINOR}/linux-phc-0.3.2.patch
+	elif kernel_is gt 4 3; then
+		epatch inc/4.3/linux-phc-0.3.2.patch
 	else
-		epatch inc/3.16/linux-phc-0.3.2.patch
+		epatch inc/${KV_MAJOR}.${KV_MINOR}/linux-phc-0.3.2.patch
 	fi
 
 	mv acpi-cpufreq.c phc-intel.c || die
