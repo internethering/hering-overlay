@@ -88,7 +88,6 @@ sys-power/phc-intel: Processor Hardware Control for Intel CPUs
 ### office
 
 ```
-app-office/qownnotes: OwnNotes is a plain-text notepad, that (optionally) works together with the notes application of ownCloud.
 net-im/skype4pidgin: Skype API PLugin for Pidgin
 net-print/brother-dcp9020cdw-bin: Brother printer driver for DCP-9020CDW & DCP-9022CDW
 ```
