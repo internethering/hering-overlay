@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,8 +19,7 @@ inherit kernel-2
 detect_version
 
 K_BRANCH_ID="${KV_MAJOR}.${KV_MINOR}"
-#RT_FILE="patch-${K_BRANCH_ID}.${KV_PATCH}-rt${RT_PATCHSET}.patch.xz"
-RT_FILE="patch-${K_BRANCH_ID}-rt${RT_PATCHSET}.patch.xz"
+RT_FILE="patch-${K_BRANCH_ID}.${KV_PATCH}-rt${RT_PATCHSET}.patch.xz"
 RT_URI="mirror://kernel/linux/kernel/projects/rt/${K_BRANCH_ID}/${RT_FILE} \
 		mirror://kernel/linux/kernel/projects/rt/${K_BRANCH_ID}/older/${RT_FILE}"
 

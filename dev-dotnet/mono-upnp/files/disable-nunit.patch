@@ -1,0 +1,42 @@
+diff -Naru mono-upnp-0.1.2o/configure.ac mono-upnp-0.1.2/configure.ac
+--- mono-upnp-0.1.2o/configure.ac	2016-02-06 12:12:43.266623921 +0100
++++ mono-upnp-0.1.2/configure.ac	2016-02-06 12:12:55.650469102 +0100
+@@ -51,10 +51,6 @@
+ PKG_CHECK_MODULES([GLADE_SHARP_20], [glade-sharp-2.0])
+ PKG_CHECK_MODULES([MONO_ADDINS], [mono-addins])
+ PKG_CHECK_MODULES([TAGLIB_SHARP], [taglib-sharp])
+-PKG_CHECK_MODULES([NUNIT], [nunit])
+-
+-AC_PATH_PROG(NUNIT_CMD, nunit-console2, nunit-console)
+-AC_SUBST(NUNIT_CMD)
+ 
+ 
+ AC_CONFIG_FILES([
+@@ -76,11 +72,6 @@
+ src/Mono.Upnp.Dcp/Mono.Upnp.Dcp.MediaServer1/Mono.Upnp.Dcp.MediaServer1.GtkClient/mono.upnp.dcp.mediaserver1.gtkclient.pc
+ src/Mono.Upnp.Dcp/Mono.Upnp.Dcp.MediaServer1/Mono.Upnp.Dcp.MediaServer1.GtkClient/Makefile
+ src/Mono.Upnp.Dcp/Mono.Upnp.Dcp.MediaServer1/Makefile
+-tests/Mono.Ssdp.Tests/Makefile
+-tests/Mono.Upnp.Tests/Makefile
+-tests/Mono.Upnp.Dcp.MediaServer1.Tests/Makefile
+-tests/Mono.Upnp.Dcp.MediaServer1.FileSystem.Tests/Makefile
+-tests/Makefile
+ Makefile
+ 
+ ])
+diff -Naru mono-upnp-0.1.2o/Makefile.am mono-upnp-0.1.2/Makefile.am
+--- mono-upnp-0.1.2o/Makefile.am	2016-02-06 12:12:43.266623921 +0100
++++ mono-upnp-0.1.2/Makefile.am	2016-02-06 12:13:11.162275178 +0100
+@@ -5,10 +5,10 @@
+ 
+ #Warning: This is an automatically generated file, do not edit!
+ if ENABLE_DEBUG
+- SUBDIRS =  src/Mono.Ssdp/Mono.Ssdp src/Mono.Upnp src/Mono.Upnp.Dcp/Mono.Upnp.Dcp.MediaServer1 tests
++ SUBDIRS =  src/Mono.Ssdp/Mono.Ssdp src/Mono.Upnp src/Mono.Upnp.Dcp/Mono.Upnp.Dcp.MediaServer1 
+ endif
+ if ENABLE_RELEASE
+- SUBDIRS =  src/Mono.Ssdp/Mono.Ssdp src/Mono.Upnp src/Mono.Upnp.Dcp/Mono.Upnp.Dcp.MediaServer1 tests
++ SUBDIRS =  src/Mono.Ssdp/Mono.Ssdp src/Mono.Upnp src/Mono.Upnp.Dcp/Mono.Upnp.Dcp.MediaServer1 
+ endif
+ 
+ .PHONY: testyy 

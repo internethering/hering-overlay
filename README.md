@@ -55,9 +55,10 @@ www-apache/mod_security: Web application firewall and Intrusion Detection System
 www-apache/modsecurity-crs: Core Rule Set for ModSecurity
 ```
 
-### realtime stuff
+### kernel & realtime stuff
 
 ```
+sys-kernel/pf-sources: Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
 sys-kernel/rt-sources: Full Linux 4.1 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-process/rtirq: Change the realtime scheduling policy and priority of relevant system driver IRQ handlers
 ```
@@ -67,7 +68,6 @@ sys-process/rtirq: Change the realtime scheduling policy and priority of relevan
 ```
 app-emulation/wineasio: ASIO driver for WINE
 media-libs/asio-sdk: Steinberg ASIO SDK 2.3 - win32
-media-sound/banshee: Import, organize, play, and share your music using a simple and powerful interface
 media-sound/hydrogen: Advanced drum machine
 media-sound/jack-audio-connection-kit: Jackdmp jack implemention for multi-processor machine
 media-sound/ladish: LADI Session Handler - a session management system for JACK applications

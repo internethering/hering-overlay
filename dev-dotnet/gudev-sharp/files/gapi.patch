@@ -1,0 +1,24 @@
+diff -Naru gudev-sharp-3.0o/configure gudev-sharp-3.0/configure
+--- gudev-sharp-3.0o/configure	2016-02-06 13:10:41.063145482 +0100
++++ gudev-sharp-3.0/configure	2016-02-06 13:11:39.653413003 +0100
+@@ -2685,7 +2685,7 @@
+ 	has_mono=true
+ fi
+ 
+-GENERATED_SOURCES=generated/*.cs
++GENERATED_SOURCES='$(shell find generated -name \*.cs)'
+ # Extract the first word of "mono", so it can be a program name with args.
+ set dummy mono; ac_word=$2
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+diff -Naru gudev-sharp-3.0o/configure.ac gudev-sharp-3.0/configure.ac
+--- gudev-sharp-3.0o/configure.ac	2016-02-06 13:10:41.063145482 +0100
++++ gudev-sharp-3.0/configure.ac	2016-02-06 13:11:26.381578923 +0100
+@@ -17,7 +17,7 @@
+ PKG_CHECK_MODULES(BASE_DEPENDENCIES, gudev-1.0 >= $UDEV_REQUIRED_VERSION)
+ PKG_CHECK_MODULES(MONO_DEPENDENCY, mono >= $MONO_REQUIRED_VERSION, has_mono=true, has_mono=false)
+ 
+-GENERATED_SOURCES=generated/*.cs
++GENERATED_SOURCES='$(shell find generated -name \*.cs)'
+ AC_PATH_PROG(RUNTIME, mono, no)
+ AC_PATH_PROG(CSC, gmcs, no)
+ LIB_PREFIX=.so
