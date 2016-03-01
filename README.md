@@ -78,10 +78,6 @@ dev-dotnet/taglib-sharp: Taglib# 2.0 - Managed tag reader/writer
 ### thinkpad & co
 
 ```
-app-laptop/tpfan-admin: configuration and monitoring interface for app-laptop/tpfand
-app-laptop/tpfand: fan control software for IBM/Lenovo ThinkPads
-app-laptop/tpfand-profiles: profiles for app-laptop/tpfand
-dev-python/python-dmidecode: Python extension module for dmidecode
 sys-power/phc-intel: Processor Hardware Control for Intel CPUs
 ```
 
