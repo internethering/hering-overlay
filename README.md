@@ -58,7 +58,6 @@ www-apache/modsecurity-crs: Core Rule Set for ModSecurity
 ### kernel & realtime stuff
 
 ```
-sys-kernel/pf-sources: Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
 sys-kernel/rt-sources: Full Linux 4.1 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-process/rtirq: Change the realtime scheduling policy and priority of relevant system driver IRQ handlers
 ```
