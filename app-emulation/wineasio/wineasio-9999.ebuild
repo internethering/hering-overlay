@@ -3,26 +3,21 @@
 # $Id$
 
 EAPI="5"
-[[ "${PV}" = "9999" ]] && inherit subversion
-inherit multilib-minimal
+
+inherit subversion multilib-minimal
 
 DESCRIPTION="ASIO driver for WINE"
 HOMEPAGE="http://sourceforge.net/projects/wineasio"
-if [ "${PV}" = "9999" ]; then
-	ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}/trunk/${PN}"
-	KEYWORDS=""
-else
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="~x86 ~amd64"
-fi
+ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}/trunk/${PN}"
+KEYWORDS=""
 RESTRICT="mirror"
 LICENSE="GPL-2"
 IUSE=""
 SLOT="0"
 
 DEPEND="media-libs/asio-sdk"
-RDEPEND=">=app-emulation/wine-0.9.35[${MULTILIB_USEDEP}]
-	>=media-sound/jack-audio-connection-kit-1.9.9.5[${MULTILIB_USEDEP}]"
+RDEPEND="app-emulation/wine
+	>=media-sound/jack-audio-connection-kit-1.9.10[${MULTILIB_USEDEP}]"
 
 S="${WORKDIR}/${PN}"
 

@@ -49,7 +49,6 @@ app-backup/storebackup: free, super efficient backup software
 sys-apps/gentoo-systemd-units: some usefull units for systemd on gentoo based systems
 www-servers/selenium-server-standalone: Selenium Serer Standalone
 dev-php/pecl-mailparse: A PHP extension for parsing and working with RFC822 and RFC2045 (MIME) compliant messages
-dev-php/PEAR-Crypt_GPG: GNU Privacy Guard (GnuPG)
 www-apache/mod_qos: A QOS module for the apache webserver
 www-apache/mod_security: Web application firewall and Intrusion Detection System for Apache
 www-apache/modsecurity-crs: Core Rule Set for ModSecurity
@@ -58,8 +57,8 @@ www-apache/modsecurity-crs: Core Rule Set for ModSecurity
 ### kernel & realtime stuff
 
 ```
-sys-kernel/rt-sources: Full Linux 4.1 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-process/rtirq: Change the realtime scheduling policy and priority of relevant system driver IRQ handlers
+sys-power/phc-intel: Processor Hardware Control for Intel CPUs
 ```
 
 ### music stuff
@@ -67,30 +66,15 @@ sys-process/rtirq: Change the realtime scheduling policy and priority of relevan
 ```
 app-emulation/wineasio: ASIO driver for WINE
 media-libs/asio-sdk: Steinberg ASIO SDK 2.3 - win32
-media-sound/hydrogen: Advanced drum machine
 media-sound/jack-audio-connection-kit: Jackdmp jack implemention for multi-processor machine
-media-sound/ladish: LADI Session Handler - a session management system for JACK applications
 media-sound/hdj_mod: GPL Linux MIDI drivers for Hercules DJ midi controller devices
-dev-dotnet/taglib-sharp: Taglib# 2.0 - Managed tag reader/writer
-```
-
-### thinkpad & co
-
-```
-sys-power/phc-intel: Processor Hardware Control for Intel CPUs
-```
-
-### office
-
-```
-net-im/skype4pidgin: Skype API PLugin for Pidgin
-net-print/brother-dcp9020cdw-bin: Brother printer driver for DCP-9020CDW & DCP-9022CDW
 ```
 
 ### misc
 
 ```
 games-util/urtconnector: Advanced UrbanTerror launcher program
+net-print/brother-dcp9020cdw-bin: Brother printer driver for DCP-9020CDW & DCP-9022CDW
 sci-visualization/circos: Circular layout visualization of genomic and other data
 
 ```

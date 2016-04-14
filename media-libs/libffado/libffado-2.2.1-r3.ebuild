@@ -5,21 +5,14 @@
 EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
-[[ "${PV}" = "9999" ]] && inherit subversion
 inherit eutils python-single-r1 scons-utils toolchain-funcs udev multilib-minimal
 
 DESCRIPTION="Successor for freebob: Library for accessing BeBoB IEEE1394 devices"
 HOMEPAGE="http://www.ffado.org"
 
 RESTRICT="mirror"
-if [ "${PV}" = "9999" ]; then
-	ESVN_REPO_URI="http://subversion.ffado.org/ffado/trunk/${PN}"
-	SRC_URI=""
-	KEYWORDS=""
-else
-	SRC_URI="http://www.ffado.org/files/${P}.tgz"
-	KEYWORDS="~amd64 ~ppc ~x86"
-fi
+SRC_URI="http://www.ffado.org/files/${P}.tgz"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
