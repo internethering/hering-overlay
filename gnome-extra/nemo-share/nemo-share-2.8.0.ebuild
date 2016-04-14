@@ -13,17 +13,17 @@ S="${WORKDIR}/nemo-extensions-2.8.x/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=""
 DEPEND="net-fs/samba
-	>=gnome-extra/nemo-2.8.0[introspection]"
+    >=gnome-extra/nemo-2.8.0[introspection]"
 
 src_prepare() {
-	if [[ ! -e configure ]] ; then
-		./autogen.sh || die
-	fi
+    if [[ ! -e configure ]] ; then
+        ./autogen.sh || die
+    fi
 }
 
 pkg_postinst() {

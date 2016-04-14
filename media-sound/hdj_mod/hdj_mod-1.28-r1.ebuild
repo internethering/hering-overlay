@@ -31,8 +31,8 @@ src_unpack () {
 }
 
 src_prepare() {
-	mv "kernel module/usr/src/hdjmod-${PV}" ${S}
-	cd ${S}
+	mv "kernel module/usr/src/hdjmod-${PV}" "${S}"
+	cd "${S}"
 
 	epatch "${FILESDIR}/dj_console_mp3_e2.patch"
 

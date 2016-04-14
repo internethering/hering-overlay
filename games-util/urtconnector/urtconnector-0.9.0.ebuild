@@ -19,7 +19,6 @@ IUSE=""
 RDEPEND="dev-qt/qtgui:4
     games-util/qstat
     dev-libs/boost
-    dev-db/sqlite:3
-    "
+    dev-db/sqlite:3"
 
 DEPEND="${RDEPEND}"

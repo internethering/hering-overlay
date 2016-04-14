@@ -32,9 +32,9 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --enable-nemo --enable-libcrypto --enable-linux-crypto \
-		$(use_enable mhash ) \
-		$(use_enable nss ) \
-		$(use_enable nettle ) \
-		$(use_enable gcrypt ) 
+    econf --enable-nemo --enable-libcrypto --enable-linux-crypto \
+    $(use_enable mhash ) \
+    $(use_enable nss ) \
+    $(use_enable nettle ) \
+    $(use_enable gcrypt )
 }

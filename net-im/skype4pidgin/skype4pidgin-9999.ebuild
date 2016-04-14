@@ -15,7 +15,7 @@ SRC_URI=""
 
 RDEPEND="net-im/pidgin
 		 dbus? ( >sys-apps/dbus-1.0 )
-		 net-im/skype"
+		 >=net-im/skype-4.3.0.0"
 
 DEPEND="${RDEPEND}
 		>dev-libs/glib-2.0"

@@ -15,7 +15,7 @@ S="${WORKDIR}/nemo-extensions-2.8.x/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

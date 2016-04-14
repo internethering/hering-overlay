@@ -21,8 +21,8 @@ IUSE=""
 SLOT="0"
 
 DEPEND="media-libs/asio-sdk"
-RDEPEND=">=app-emulation/wine-0.9.35[${MULTILIB_USEDEP}]
-	>=media-sound/jack-audio-connection-kit-1.9.9.5[${MULTILIB_USEDEP}]"
+RDEPEND="app-emulation/wine[${MULTILIB_USEDEP}]
+	>=media-sound/jack-audio-connection-kit-1.9.10[${MULTILIB_USEDEP}]"
 
 S="${WORKDIR}/${PN}"
 
@@ -54,7 +54,7 @@ pkg_postinst() {
 	elog "On a 64 bit system with wine supporting both 32 and 64 applications, regsrv32"
 	elog "will register the 32 bit driver in a 64 bit prefix, use the following command"
 	elog "to register the 64 bit driver in a 64 bit wineprefix:"
-	elog 
+	elog
 	elog "# wine64 regsvr32 wineaiso.dll"
 	elog
 	elog "regsvr32 registers the ASIO COM object in the default prefix "~/.wine"."

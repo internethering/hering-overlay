@@ -54,7 +54,7 @@ pkg_postinst() {
 	elog "On a 64 bit system with wine supporting both 32 and 64 applications, regsrv32"
 	elog "will register the 32 bit driver in a 64 bit prefix, use the following command"
 	elog "to register the 64 bit driver in a 64 bit wineprefix:"
-	elog 
+	elog
 	elog "# wine64 regsvr32 wineaiso.dll"
 	elog
 	elog "regsvr32 registers the ASIO COM object in the default prefix "~/.wine"."

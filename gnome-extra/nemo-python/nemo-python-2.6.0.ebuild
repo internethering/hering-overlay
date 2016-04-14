@@ -22,7 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-   	>=gnome-extra/nemo-2.6.0[introspection]
+    >=gnome-extra/nemo-2.6.0[introspection]
 	>=dev-util/gtk-doc-am-1.9
 	virtual/pkgconfig
 	doc? (

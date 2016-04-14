@@ -29,12 +29,10 @@ src_prepare() {
 
 src_install() {
 	emake DESTDIR="${D}" PYTHONINTERPRETER=${PYTHON} install || die "emake install failed"
-	if use openrc ;
-	then 
+	if use openrc ; then
 		doinitd "${FILESDIR}/jailkit.initscript" ||  die "doinit install failed"
 	fi
-	if use systemd ;
-	then
+	if use systemd ; then
 		systemd_dounit "${FILESDIR}/jailkit.service" || die "systemd_doinit install failed"
 	fi
 

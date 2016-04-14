@@ -18,12 +18,12 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="net-fs/samba
-	>=gnome-extra/nemo-2.6.0[introspection]"
+    >=gnome-extra/nemo-2.6.0[introspection]"
 
 src_prepare() {
-	if [[ ! -e configure ]] ; then
-		./autogen.sh || die
-	fi
+    if [[ ! -e configure ]] ; then
+        ./autogen.sh || die
+    fi
 }
 
 pkg_postinst() {
@@ -36,5 +36,5 @@ pkg_postinst() {
     elog "usershare max shares = 100"
     elog "usershare allow guests = yes"
     elog "usershare owner only = yes"
-    elog "wins support = no"
+elog "wins support = no"
 }

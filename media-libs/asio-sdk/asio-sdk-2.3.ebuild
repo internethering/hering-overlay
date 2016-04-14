@@ -35,7 +35,6 @@ src_unpack() {
 }
 
 src_install() {
-	cd "${S}"
 	dodir "/opt/${MY_P}"
 	mv ./* "${D}/opt/${MY_P}"
 }
@@ -47,4 +46,3 @@ pkg_postinst() {
 	elog "/opt/${MY_P}/Steinberg ASIO Licensing Agreement.pdf"
 	echo
 }
-
