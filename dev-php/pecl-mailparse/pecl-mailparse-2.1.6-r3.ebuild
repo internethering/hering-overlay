@@ -15,7 +15,7 @@ inherit php-ext-pecl-r2
 
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-DESCRIPTION="A PHP extension for parsing and working with RFC822 and RFC2045 (MIME) compliant messages"
+DESCRIPTION="PHP extension for parsing and working with RFC822 and MIME compliant messages"
 LICENSE="PHP-2.02"
 SLOT="0"
 IUSE=""

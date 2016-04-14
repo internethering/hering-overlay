@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils
+inherit eutils
 
 DESCRIPTION="nemo extension to mass resize or rotate images"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"

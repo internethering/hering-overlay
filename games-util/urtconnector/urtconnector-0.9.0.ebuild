@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="5"
 
-inherit games cmake-utils
+inherit cmake-utils
 
 DESCRIPTION="Advanced UrbanTerror launcher program"
 HOMEPAGE="http://code.google.com/p/urtconnector/"
 SRC_URI="http://urtconnector.googlecode.com/files/${P}.tar.gz"
 S="${WORKDIR}/${PN}"
 
-LICENSE="GPL"
+LICENSE="GPL-3"
 KEYWORDS="~x86 ~amd64"
 SLOT="0"
 IUSE=""
@@ -23,6 +23,3 @@ RDEPEND="dev-qt/qtgui:4
     "
 
 DEPEND="${RDEPEND}"
-
-
-

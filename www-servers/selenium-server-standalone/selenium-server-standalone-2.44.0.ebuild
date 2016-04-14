@@ -28,6 +28,6 @@ src_unpack() {
 src_install() {
 	java-pkg_dojar ${PN}.jar
 	systemd_install_serviced
-    	systemd_dounit ftpsync.service
-    	systemd_dounit ftpsync.timer
+  	systemd_dounit ftpsync.service
+   	systemd_dounit ftpsync.timer
 }

@@ -15,10 +15,9 @@ SRC_URI="http://olivier.sessink.nl/${PN}/${P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="openrc systemd"
+IUSE="systemd"
 
-RDEPEND="systemd? ( sys-apps/systemd )
-	openrc? ( sys-apps/openrc )"
+RDEPEND="systemd? ( sys-apps/systemd )"
 
 src_prepare() {
 	epatch \

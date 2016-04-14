@@ -5,7 +5,7 @@
 EAPI="5"
 
 RESTRICT="mirror"
-DESCRIPTION="Change the realtime scheduling policy and priority of relevant system driver IRQ handlers"
+DESCRIPTION="Change realtime sched policy & priority of relevant system driver IRQ handlers"
 HOMEPAGE="http://www.rncbc.org/jack/"
 
 SRC_URI="http://www.rncbc.org/jack/${P}.tar.gz"

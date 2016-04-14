@@ -10,14 +10,15 @@ DESCRIPTION="Steinberg ASIO SDK 2.3 - win32"
 HOMEPAGE="http://www.steinberg.net/en/company/developer.html"
 SRC_URI="${At}"
 
-RESTRICT="nostrip fetch"
+RESTRICT="fetch"
 
 LICENSE="STEINBERG SOFT-UND HARDWARE GMBH"
 SLOT="0"
 KEYWORDS="x86 ~amd64"
 IUSE=""
 
-DEPEND="app-arch/unzip"
+DEPEND=""
+RDEPEND=""
 S="${WORKDIR}/ASIOSDK2"
 
 pkg_nofetch() {

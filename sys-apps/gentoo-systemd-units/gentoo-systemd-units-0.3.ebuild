@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit systemd 
+inherit systemd
 
 DESCRIPTION="some usefull units for systemd on gentoo based systems"
 HOMEPAGE="https://github.com/internethering/gentoo-systemd-units"

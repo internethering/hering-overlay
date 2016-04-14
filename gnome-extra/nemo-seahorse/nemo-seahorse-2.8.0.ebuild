@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils gnome2
+inherit eutils gnome2
 
 DESCRIPTION="seahorse plugins and utilities for encryption"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"

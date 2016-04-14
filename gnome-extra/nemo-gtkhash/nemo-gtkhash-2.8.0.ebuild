@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils gnome2
+inherit eutils gnome2
 
 DESCRIPTION="nemo extension for computing checksums and more using gtkhash"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"

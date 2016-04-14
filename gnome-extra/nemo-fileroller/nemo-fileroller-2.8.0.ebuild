@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils
+inherit eutils
 
 DESCRIPTION="File Roller integration for Nemo"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"

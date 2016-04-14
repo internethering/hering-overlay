@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils python-single-r1
+inherit eutils python-single-r1
 
 DESCRIPTION="Python binding for Nemo components"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"

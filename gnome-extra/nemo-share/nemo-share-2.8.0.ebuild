@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils
+inherit eutils
 
 DESCRIPTION="Nemo extension to share folder using Samba"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"

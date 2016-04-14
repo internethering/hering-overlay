@@ -17,8 +17,7 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="app-arch/rpm2targz"
-RDEPEND="${DEPEND}"
-
+RDEPEND=""
 
 src_unpack () {
 	unpack ${MY_P}.tgz || die "unpacking ${MY_P}.tgz failed";

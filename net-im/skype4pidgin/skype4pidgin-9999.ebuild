@@ -7,7 +7,7 @@ inherit subversion
 DESCRIPTION="Skype API PLugin for Pidgin"
 HOMEPAGE="http://myjobspace.co.nz/images/pidgin/"
 ESVN_REPO_URI="http://skype4pidgin.googlecode.com/svn/trunk/"
-LICENSE="GPL-2 CCPL-Attribution-ShareAlike-NonCommercial-3.0"
+LICENSE="GPL-2 CC-BY-NC-SA-3.0"
 KEYWORDS="~amd64 ~x86"
 IUSE="dbus nls"
 SLOT="0"

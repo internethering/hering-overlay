@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils
+inherit eutils
 
 DESCRIPTION="nemo-preview is a quick previewer for nemo"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"
