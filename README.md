@@ -6,7 +6,7 @@ My personal overlay with some ebuilds from different scope of applications. I pa
 
 ### by layman
 
-you can use my overlay with layman: `layman -a hering-overlay`. How to use layman? Read the [user guide](https://wiki.gentoo.org/wiki/Project:Overlays/User_Guide)
+you can use my overlay with layman: `layman -a hering-overlay`. How to use layman? Read the [user guide](https://wiki.gentoo.org/wiki/Project:Overlays/User_Guide) :)
 
 ### directly
 
