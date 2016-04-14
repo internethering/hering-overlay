@@ -81,6 +81,7 @@ multilib_src_configure()
 		$(usex debug --debug '')
 		$(usex doc --doxygen '')
 		$(use_enable lash liblash)
+		$(use_enable python pylash)
 	)
 	NO_WAF_LIBDIR=1 PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		WAF_BINARY="${BUILD_DIR}"/waf waf-utils_src_configure "${mywafconfargs[@]}"
