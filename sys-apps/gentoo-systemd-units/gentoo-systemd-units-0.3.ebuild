@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,11 +12,11 @@ SRC_URI="https://github.com/internethering/${PN}/archive/${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="sys-apps/systemd"
-RDEPEND="${DEPEND}"
+DEPEND=""
+RDEPEND=""
 
 src_install() {
 	for i in *.timer ; do

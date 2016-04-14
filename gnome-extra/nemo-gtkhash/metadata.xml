@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer><email>maintainer-wanted@gentoo.org</email></maintainer>
+	<maintainer>
+		<email>der@internethering.de</email>
+		<name>Richard Hering</name>
+	</maintainer>
 	<use>
 		<flag name='nss'>Use dev-libs/nss crypto backend</flag>
 		<flag name='nettle'>Use dev-libs/nettle crypto backend</flag>

@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI="5"
 
@@ -29,4 +29,3 @@ src_install() {
 	fperms 600 /etc/automysqlbackup/automysqlbackup.conf.example
 	dodoc README.md
 }
-

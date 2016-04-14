@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: This ebuild is from mva overlay $
+# $Id$
 
 EAPI="5"
 
@@ -29,11 +29,10 @@ src_prepare() {
 
 src_install() {
 	emake DESTDIR="${D}" PYTHONINTERPRETER=${PYTHON} install || die "emake install failed"
-	if use openrc ; then
-		doinitd "${FILESDIR}/jailkit.initscript" ||  die "doinit install failed"
-	fi
+
+	doinitd "${FILESDIR}/jailkit.initscript"
 	if use systemd ; then
-		systemd_dounit "${FILESDIR}/jailkit.service" || die "systemd_doinit install failed"
+		systemd_dounit "${FILESDIR}/jailkit.service"
 	fi
 
 	python_fix_shebang "${ED}"

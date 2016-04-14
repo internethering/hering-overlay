@@ -1,6 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -22,14 +22,15 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-    >=gnome-extra/nemo-2.6.0[introspection]
+	>=gnome-extra/nemo-2.6.0[introspection]
 	>=dev-util/gtk-doc-am-1.9
 	virtual/pkgconfig
 	doc? (
 		app-text/docbook-xml-dtd:4.1.2
 		dev-libs/libxslt
-		>=dev-util/gtk-doc-1.9 )
-"
+		>=dev-util/gtk-doc-1.9
+	)"
+
 src_prepare() {
 	if [[ ! -e configure ]] ; then
 		./autogen.sh || die

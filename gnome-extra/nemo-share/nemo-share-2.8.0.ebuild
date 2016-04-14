@@ -1,6 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -18,23 +18,23 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="net-fs/samba
-    >=gnome-extra/nemo-2.8.0[introspection]"
+	>=gnome-extra/nemo-2.8.0[introspection]"
 
 src_prepare() {
-    if [[ ! -e configure ]] ; then
-        ./autogen.sh || die
-    fi
+	if [[ ! -e configure ]] ; then
+		./autogen.sh || die
+	fi
 }
 
 pkg_postinst() {
-    elog "a sample smb.conf to use this extension:"
-    elog ""
-    elog "[global]"
-    elog "workgroup = HOME"
-    elog "security = share"
-    elog "usershare path = /var/lib/samba/usershares"
-    elog "usershare max shares = 100"
-    elog "usershare allow guests = yes"
-    elog "usershare owner only = yes"
-    elog "wins support = no"
+	elog "a sample smb.conf to use this extension:"
+	elog ""
+	elog "[global]"
+	elog "workgroup = HOME"
+	elog "security = share"
+	elog "usershare path = /var/lib/samba/usershares"
+	elog "usershare max shares = 100"
+	elog "usershare allow guests = yes"
+	elog "usershare owner only = yes"
+	elog "wins support = no"
 }

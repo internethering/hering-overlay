@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI="5"
 [[ "${PV}" = "9999" ]] && inherit subversion
@@ -21,7 +21,7 @@ IUSE=""
 SLOT="0"
 
 DEPEND="media-libs/asio-sdk"
-RDEPEND="app-emulation/wine[${MULTILIB_USEDEP}]
+RDEPEND="app-emulation/wine
 	>=media-sound/jack-audio-connection-kit-1.9.10[${MULTILIB_USEDEP}]"
 
 S="${WORKDIR}/${PN}"

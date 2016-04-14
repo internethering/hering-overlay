@@ -1,6 +1,6 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI="5"
 
@@ -17,8 +17,8 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="dev-qt/qtgui:4
-    games-util/qstat
-    dev-libs/boost
-    dev-db/sqlite:3"
+games-util/qstat
+dev-libs/boost
+dev-db/sqlite:3"
 
 DEPEND="${RDEPEND}"
