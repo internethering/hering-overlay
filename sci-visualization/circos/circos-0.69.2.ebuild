@@ -28,6 +28,8 @@ DEPEND="dev-perl/Config-General
 	dev-perl/Font-TTF
 	dev-perl/Text-Format
 	dev-perl/regexp-common
+	dev-perl/SVG
+	dev-perl/Statistics-Basic
 	>=dev-perl/Set-IntSpan-1.11
 	dev-perl/Graphics-ColorObject
 	dev-perl/List-MoreUtils"
