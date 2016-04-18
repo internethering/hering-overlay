@@ -16,7 +16,7 @@ KEYWORDS=""
 IUSE="doc"
 
 DEPEND=""
-RDEPEND="net-im/prosody"
+RDEPEND=""
 
 src_install() {
 	list=( "mod_register_json" "mod_muc_log_http" "mod_incidents_handling" "mod_http_dir_listing" "mod_couchdb" "mod_auth_imap" "mod_auth_dovecot" "mod_admin_web" )
@@ -41,5 +41,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "To be able to use the modules, please add to '/etc/jabber/prosody.cfg.lua':"
-	elog "plugin_paths = { "/usr/lib/prosody-modules" }"
+	elog "plugin_paths = { \"/usr/lib/prosody-modules\" }"
 }
