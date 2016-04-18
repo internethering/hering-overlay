@@ -52,6 +52,7 @@ dev-php/pecl-mailparse: A PHP extension for parsing and working with RFC822 and 
 www-apache/mod_qos: A QOS module for the apache webserver
 www-apache/mod_security: Web application firewall and Intrusion Detection System for Apache
 www-apache/modsecurity-crs: Core Rule Set for ModSecurity
+net-im/prosody-modules: unofficial modules for prosody
 ```
 
 ### kernel & realtime stuff
@@ -59,6 +60,7 @@ www-apache/modsecurity-crs: Core Rule Set for ModSecurity
 ```
 sys-process/rtirq: Change the realtime scheduling policy and priority of relevant system driver IRQ handlers
 sys-power/phc-intel: Processor Hardware Control for Intel CPUs
+media-sound/hdj_mod: GPL Linux MIDI drivers for Hercules DJ midi controller devices
 ```
 
 ### music stuff
@@ -67,7 +69,6 @@ sys-power/phc-intel: Processor Hardware Control for Intel CPUs
 app-emulation/wineasio: ASIO driver for WINE
 media-libs/asio-sdk: Steinberg ASIO SDK 2.3 - win32
 media-sound/jack-audio-connection-kit: Jackdmp jack implemention for multi-processor machine
-media-sound/hdj_mod: GPL Linux MIDI drivers for Hercules DJ midi controller devices
 ```
 
 ### misc
