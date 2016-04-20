@@ -48,6 +48,7 @@ app-backup/AutoMySQLBackup: Create Daily, Weekly and Monthly backups of MySQL da
 app-backup/storebackup: free, super efficient backup software
 sys-apps/gentoo-systemd-units: some usefull units for systemd on gentoo based systems
 www-servers/selenium-server-standalone: Selenium Serer Standalone
+dev-php/PEAR-Console_Table: Class that makes it easy to build console style tables
 dev-php/pecl-mailparse: A PHP extension for parsing and working with RFC822 and RFC2045 (MIME) compliant messages
 www-apache/mod_qos: A QOS module for the apache webserver
 www-apache/mod_security: Web application firewall and Intrusion Detection System for Apache
