@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>hering-overlay by internethering</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>hering-overlay</h1>
+        <h2>yet another gentoo overlay</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/internethering/hering-overlay/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/internethering/hering-overlay/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/internethering/hering-overlay" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="hering-overlay" class="anchor" href="#hering-overlay" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>hering-overlay</h1>
+
+<p>My personal overlay with some ebuilds from different scope of applications. I pay attention on keeping all ebuilds up to date and good harmony to the portage tree. If you have problems, please file an <a href="https://github.com/internethering/hering-overlay/issues">issue</a> or contact me per e-mail: <a href="mailto:richard@internethering.de">richard@internethering.de</a></p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>usage</h2>
+
+<h3>
+<a id="by-layman" class="anchor" href="#by-layman" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>by layman</h3>
+
+<p>you can use my overlay with layman: <code>layman -a hering-overlay</code>. How to use layman? Read the <a href="https://wiki.gentoo.org/wiki/Project:Overlays/User_Guide">user guide</a> ;)</p>
+
+<h3>
+<a id="directly" class="anchor" href="#directly" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>directly</h3>
+
+<p>create file <code>/etc/portage/repos.conf/hering-overlay.conf</code>:</p>
+
+<pre><code>[hering-overlay]
+location = /usr/local/portage/hering-overlay
+sync-type = git
+sync-uri = git://github.com/internethering/hering-overlay.git
+</code></pre>
+
+<p>after an <code>emerge --sync</code> you can use my overlay</p>
+
+<h2>
+<a id="avaiable-ebuilds" class="anchor" href="#avaiable-ebuilds" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>avaiable ebuilds</h2>
+
+<h3>
+<a id="nemo-extensions" class="anchor" href="#nemo-extensions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="https://github.com/linuxmint/nemo-extensions">nemo-extensions</a>
+</h3>
+
+<pre><code>gnome-extra/nemo-audio-tab: View audio tag information from the file manager's properties tab
+gnome-extra/nemo-emblems: Change your folder and file emblems
+gnome-extra/nemo-fileroller: File Roller integration for Nemo
+gnome-extra/nemo-gtkhash: nemo extension for computing checksums and more using gtkhash
+gnome-extra/nemo-image-converter: nemo extension to mass resize or rotate images
+gnome-extra/nemo-preview: nemo-preview is a quick previewer for nemo
+gnome-extra/nemo-python: Python binding for Nemo components
+gnome-extra/nemo-repairer: Nemo extension for filename encoding repair
+gnome-extra/nemo-seahorse: seahorse plugins and utilities for encryption
+gnome-extra/nemo-share: Nemo extension to share folder using Samba
+gnome-extra/nemo-terminal: Nemo extension to enable an embedded terminal
+
+</code></pre>
+
+<h3>
+<a id="some-usefull-stuff-for-server" class="anchor" href="#some-usefull-stuff-for-server" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>some usefull stuff for server</h3>
+
+<pre><code>app-admin/jailkit: Allows you to easily put programs and users in a chrooted environment
+app-backup/AutoMySQLBackup: Create Daily, Weekly and Monthly backups of MySQL databases.
+app-backup/storebackup: free, super efficient backup software
+sys-apps/gentoo-systemd-units: some usefull units for systemd on gentoo based systems
+www-servers/selenium-server-standalone: Selenium Serer Standalone
+dev-php/PEAR-Console_Table: Class that makes it easy to build console style tables
+dev-php/pecl-mailparse: A PHP extension for parsing and working with RFC822 and RFC2045 (MIME) compliant messages
+www-apache/mod_qos: A QOS module for the apache webserver
+www-apache/mod_security: Web application firewall and Intrusion Detection System for Apache
+www-apache/modsecurity-crs: Core Rule Set for ModSecurity
+net-im/prosody-modules: unofficial modules for prosody
+</code></pre>
+
+<h3>
+<a id="kernel--realtime-stuff" class="anchor" href="#kernel--realtime-stuff" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>kernel &amp; realtime stuff</h3>
+
+<pre><code>sys-process/rtirq: Change the realtime scheduling policy and priority of relevant system driver IRQ handlers
+sys-power/phc-intel: Processor Hardware Control for Intel CPUs
+media-sound/hdj_mod: GPL Linux MIDI drivers for Hercules DJ midi controller devices
+</code></pre>
+
+<h3>
+<a id="music-stuff" class="anchor" href="#music-stuff" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>music stuff</h3>
+
+<pre><code>app-emulation/wineasio: ASIO driver for WINE
+media-libs/asio-sdk: Steinberg ASIO SDK 2.3 - win32
+media-sound/jack-audio-connection-kit: Jackdmp jack implemention for multi-processor machine
+</code></pre>
+
+<h3>
+<a id="misc" class="anchor" href="#misc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>misc</h3>
+
+<pre><code>games-util/urtconnector: Advanced UrbanTerror launcher program
+net-print/brother-dcp9020cdw-bin: Brother printer driver for DCP-9020CDW &amp; DCP-9022CDW
+sci-visualization/circos: Circular layout visualization of genomic and other data
+
+</code></pre>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
