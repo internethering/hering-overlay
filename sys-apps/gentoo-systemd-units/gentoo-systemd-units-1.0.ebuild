@@ -39,7 +39,7 @@ src_install() {
 		systemd_dounit geoip-update.timer
 		systemd_dounit geoip-update.service
 	fi
-	if use clamav ; then
+	if use clamav-unofficial-sigs ; then
 		systemd_dounit clamav-unofficial-sigs.service
 		systemd_dounit clamav-unofficial-sigs.timer
 	fi
