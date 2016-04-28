@@ -4,15 +4,15 @@
 
 EAPI=5
 
-inherit systemd git-r3
+inherit systemd
 
 DESCRIPTION="some usefull units for systemd on gentoo based systems"
 HOMEPAGE="https://github.com/internethering/gentoo-systemd-units"
-EGIT_REPO_URI="git://github.com/internethering/gentoo-systemd-units.git"
+SRC_URI="https://github.com/internethering/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="opendmarc pure-ftpd spamassassin geoip clamav-unofficial-sigs amavisd-milter dhparams"
 
 DEPEND=""
