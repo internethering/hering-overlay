@@ -36,8 +36,8 @@ src_install() {
 		systemd_dounit sa-update.service
 	fi
 	if use geoip ; then
-		systemd_dounit geoip-update.timer
-		systemd_dounit geoip-update.service
+		systemd_dounit geoipupdate.timer
+		systemd_dounit geoipupdate.service
 	fi
 	if use clamav ; then
 		systemd_dounit clamav-unofficial-sigs.service
