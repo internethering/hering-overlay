@@ -1,15 +1,24 @@
 #!/bin/bash
 pid=$$
 
-# remove the # from next line to background learner
-#(
+(
 {
     echo "$(date) ${pid}-start ($*) /tmp/sendmail-msg-$$.txt"
     # set -x
     # id -a
     # env
     cat > /tmp/sendmail-msg-${pid}.txt
+
+    # start only as many sa-learn processes as avaible cores
+    while ((`ls /tmp/*lock 2>/dev/null | wc -l` > `nproc`))
+    do 
+        sleep 5
+    done
+
+    touch /tmp/${pid}.lock
     /usr/bin/sa-learn "$@" /tmp/sendmail-msg-${pid}.txt
+    rm /tmp/${pid}.lock
+
     echo "$(date) $$-end rc=$?"
 } >/tmp/antispam.${pid}.log 2>&1
 
@@ -17,7 +26,6 @@ cat /tmp/antispam.${pid}.log >>/tmp/sa-learn-pipe.log
 rm -f /tmp/antispam.${pid}.log /tmp/sendmail-msg-${pid}.txt
 true
 
-#remove the # from next line to background learner
-#) &
+) &
 
 exit 0
