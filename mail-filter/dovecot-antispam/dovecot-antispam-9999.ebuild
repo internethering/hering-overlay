@@ -25,7 +25,7 @@ src_install() {
 	mkdir -p "${D}/usr/lib64/dovecot"
 	emake DESTDIR="${D}" INSTALLDIR="usr/lib64/dovecot" install
 	
-	doman antispam.7
+	newman antispam.7 dovecot-antispam.7
 	
 	if use spamassassin ; then
 		dosbin "${FILESDIR}/sa-learn-pipe"
