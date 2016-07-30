@@ -49,11 +49,13 @@ app-backup/storebackup: free, super efficient backup software
 sys-apps/gentoo-systemd-units: some usefull units for systemd on gentoo based systems
 www-servers/selenium-server-standalone: Selenium Serer Standalone
 dev-php/PEAR-Console_Table: Class that makes it easy to build console style tables
-dev-php/pecl-mailparse: A PHP extension for parsing and working with RFC822 and RFC2045 (MIME) compliant messages
 www-apache/mod_qos: A QOS module for the apache webserver
 www-apache/mod_security: Web application firewall and Intrusion Detection System for Apache
 www-apache/modsecurity-crs: Core Rule Set for ModSecurity
 net-im/prosody-modules: unofficial modules for prosody
+mail-filter/dovecot-antispam: A dovecot antispam plugin supporting multiple backends
+net-mail/z-push: Z-Push syncs ActiveSync compatible devices against various backends
+dev-php/awl: Andrew McMillan's Web Libraries
 ```
 
 ### kernel & realtime stuff

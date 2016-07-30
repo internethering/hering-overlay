@@ -6,9 +6,10 @@ EAPI=5
 
 inherit versionator
 
-DESCRIPTION="Z-Push is an open-source application to synchronize ActiveSync compatible devices"
+DESCRIPTION="Z-Push syncs ActiveSync compatible devices against various backends"
 HOMEPAGE="http://z-push.org/"
 SRC_URI="http://download.z-push.org/final/$(get_version_component_range 1-2)/${P}.tar.gz"
+#EGIT_REPO_URI="https://stash.z-hub.io/scm/zp/z-push.git"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -16,23 +17,19 @@ KEYWORDS="~amd64 ~x86"
 IUSE="memcached ldap imap carddav caldav mysql postgres sqlite"
 
 DEPEND=""
-RDEPEND="
-    <dev-lang/php-7[cli,soap,sysvipc]
+RDEPEND="<dev-lang/php-7[cli,soap,posix]
 	memcached? ( dev-php/pecl-memcached )
+	!memcached? ( dev-lang/php[lpcntl,sysvipc] )
 	ldap? ( dev-lang/php[ldap] )
-	imap? (
-		dev-lang/php[imap] 
-		dev-php/awl
-	)
-	caldav? ( 
+	imap? ( dev-lang/php[imap] )
+	caldav? (
 		dev-lang/php[curl]
 		dev-php/awl
 	)
 	carddav? ( dev-lang/php[xslt,curl] )
 	mysql? ( dev-lang/php[pdo,mysql] )
 	postgres? ( dev-lang/php[pdo,postgres] )
-	sqlite? ( dev-lang/php[pdo,sqlite] )
-"
+	sqlite? ( dev-lang/php[pdo,sqlite] )"
 
 process_cfg_file() {
 	[ $(basename $(dirname ${1})) == "." ] && rn=${1} || rn=$(basename $(dirname ${1})).php
@@ -49,32 +46,32 @@ process_doc_file() {
 }
 
 src_install() {
-    # process config files
-	
+	# process config files
+
 	process_cfg_file policies.ini
 	process_cfg_file config.php
 	process_cfg_file autodiscover/config.php
 	process_cfg_file tools/gab-sync/config.php
 	for i in backend/*/config.php
-	do 
+	do
 		process_cfg_file ${i}
 	done
-	
+
 	# process documentation
 	process_doc_file INSTALL z-push
 	process_doc_file autodiscover/INSTALL
 	for i in backend/*/README
-	do 
+	do
 		process_doc_file ${i}
 	done
-	
-    # install application to /usr/share
-    insinto /usr/share/${PN}
+
+	# install application to /usr/share
+	insinto /usr/share/${PN}
 	doins -r .
 
-    # cli tools
-    exeinto /usr/share/${PN}
-    doexe z-push-*.php
-    dosym /usr/share/${PN}/z-push-top.php /usr/sbin/z-push-top
-    dosym /usr/share/${PN}/z-push-admin.php /usr/sbin/z-push-admin
+	# cli tools
+	exeinto /usr/share/${PN}
+	doexe z-push-*.php
+	dosym /usr/share/${PN}/z-push-top.php /usr/sbin/z-push-top
+	dosym /usr/share/${PN}/z-push-admin.php /usr/sbin/z-push-admin
 }

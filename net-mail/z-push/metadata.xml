@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>der@internethering.de</email>
+		<name>Richard Hering</name>
+	</maintainer>
+	<use>
+		<flag name="carddav">support Carddav</flag>
+		<flag name="caldav">support Caldav</flag>
+	</use>
+</pkgmetadata>

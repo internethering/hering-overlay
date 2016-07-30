@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools git-r3
+inherit git-r3
 
 DESCRIPTION="A dovecot antispam plugin supporting multiple backends"
 HOMEPAGE="http://wiki2.dovecot.org/Plugins/Antispam/"
@@ -24,15 +24,15 @@ DOCS=( README )
 src_install() {
 	mkdir -p "${D}/usr/lib64/dovecot"
 	emake DESTDIR="${D}" INSTALLDIR="usr/lib64/dovecot" install
-	
+
 	newman antispam.7 dovecot-antispam.7
-	
+
 	if use spamassassin ; then
 		dosbin "${FILESDIR}/sa-learn-pipe"
 	fi
-	
+
 	insinto /etc/dovecot/conf.d
-	doins "${FILESDIR}/90-antispam.conf"	
+	doins "${FILESDIR}/90-antispam.conf"
 }
 
 pkg_postinst() {
