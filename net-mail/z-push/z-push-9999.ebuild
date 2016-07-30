@@ -19,7 +19,7 @@ IUSE="memcached ldap imap carddav caldav mysql postgres sqlite"
 DEPEND=""
 RDEPEND="<dev-lang/php-7[cli,soap,posix]
 	memcached? ( dev-php/pecl-memcached )
-	!memcached? ( dev-lang/php[lpcntl,sysvipc] )
+	!memcached? ( dev-lang/php[pcntl,sysvipc] )
 	ldap? ( dev-lang/php[ldap] )
 	imap? ( dev-lang/php[imap] )
 	caldav? (
