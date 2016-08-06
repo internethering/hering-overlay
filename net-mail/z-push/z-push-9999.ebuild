@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://stash.z-hub.io/scm/zp/z-push.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="memcached ldap imap carddav caldav mysql postgres sqlite"
 
 DEPEND=""
