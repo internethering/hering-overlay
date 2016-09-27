@@ -19,7 +19,7 @@ SLOT="0"
 IUSE="debug qt4 +test-programs"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="dev-cpp/libxmlpp[${MULTILIB_USEDEP}]
+RDEPEND="dev-cpp/libxmlpp:2.6[${MULTILIB_USEDEP}]
 	dev-libs/dbus-c++
 	dev-libs/libconfig[cxx,${MULTILIB_USEDEP}]
 	media-libs/alsa-lib
