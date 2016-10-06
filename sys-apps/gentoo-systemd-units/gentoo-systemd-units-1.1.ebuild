@@ -21,7 +21,7 @@ pure-ftpd? ( net-ftp/pure-ftpd )
 spamassassin? ( mail-filter/spamassassin )
 geoip? ( dev-libs/geoip )
 clamav-unofficial-sigs? ( app-antivirus/clamav-unofficial-sigs )
-amavisd-milter? ( mail-filter/amavisd-milter )"
+amavisd-milter? ( mail-filter/amavisd-milter )
 rmilter? ( mail-filter/rmilter )"
 
 src_install() {
