@@ -8,6 +8,7 @@
 	<use>
 		<flag name='opendmarc'>Install opendmarc.service</flag>
 		<flag name='amavisd-milter'>Install amavisd-milter.service</flag>
+		<flag name='rmilter'>Install rmilter.service</flag>
 		<flag name='pure-ftpd'>Install pure-ftpd.service</flag>
 		<flag name='spamassassin'>Install timer to run sa-update</flag>
 		<flag name='clamav-unofficial-sigs'>Install timer to update clamav-unofficial-sigs</flag>
