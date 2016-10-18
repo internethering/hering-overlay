@@ -1,0 +1,96 @@
+diff -urN urtconnector.old/src/filters/filter_edit_widget.cpp urtconnector/src/filters/filter_edit_widget.cpp
+--- urtconnector.old/src/filters/filter_edit_widget.cpp	2016-10-18 13:42:00.265236656 +0200
++++ urtconnector/src/filters/filter_edit_widget.cpp	2016-10-18 13:52:25.636828585 +0200
+@@ -66,7 +66,7 @@
+     else
+         selected_ = filter_class_p();
+ 
+-    buttons_->button(QDialogButtonBox::Ok)->setEnabled(selected_);
++    buttons_->button(QDialogButtonBox::Ok)->setEnabled((bool) selected_);
+ }
+ 
+ void select_filter_class_dialog::update_list()
+diff -urN urtconnector.old/src/launcher/tools.cpp urtconnector/src/launcher/tools.cpp
+--- urtconnector.old/src/launcher/tools.cpp	2016-10-18 13:42:00.266236115 +0200
++++ urtconnector/src/launcher/tools.cpp	2016-10-18 13:51:59.002241391 +0200
+@@ -43,7 +43,7 @@
+     QStringList locks;
+     //poiner to QStringList::append method
+     QStringList & (QStringList::*append) (const QStringList&) = &QStringList::operator<<;
+-    for_each(tmpdirs.begin(), tmpdirs.end(), bind(append, ref(locks), bind(find_x_locks, _1)));
++    for_each(tmpdirs.begin(), tmpdirs.end(), bind(append, boost::ref(locks), bind(find_x_locks, _1)));
+ 
+     QList<int> locked_d;
+     transform(locks.begin(), locks.end(), back_inserter(locked_d), extract_display);
+diff -urN urtconnector.old/src/rcon/rcon_connection.cpp urtconnector/src/rcon/rcon_connection.cpp
+--- urtconnector.old/src/rcon/rcon_connection.cpp	2016-10-18 13:42:00.265236656 +0200
++++ urtconnector/src/rcon/rcon_connection.cpp	2016-10-18 14:00:28.717418613 +0200
+@@ -23,8 +23,8 @@
+ 
+ using namespace boost;
+ 
+-const char answer_header_codes[5] = { 0xff, 0xff, 0xff, 0xff, 0x00 };
+-const char rcon_header_codes[10] = {0xff, 0xff, 0xff, 0xff, 'r', 'c', 'o', 'n', 0x20, 0x00};
++const char answer_header_codes[5] = {(char) 0xff, (char) 0xff, (char) 0xff, (char) 0xff, (char) 0x00};
++const char rcon_header_codes[10] = {(char) 0xff, (char) 0xff, (char) 0xff, (char) 0xff, (char) 'r', (char) 'c', (char) 'o', (char) 'n', (char) 0x20, (char) 0x00};
+ 
+ const QByteArray answer_header_c( answer_header_codes );
+ const QByteArray rcon_header_c( rcon_header_codes );
+diff -urN urtconnector.old/src/tracking/task_prop_dlg.cpp urtconnector/src/tracking/task_prop_dlg.cpp
+--- urtconnector.old/src/tracking/task_prop_dlg.cpp	2016-10-18 13:42:27.312600484 +0200
++++ urtconnector/src/tracking/task_prop_dlg.cpp	2016-10-18 13:41:01.181208866 +0200
+@@ -351,7 +351,7 @@
+     QTreeWidget* list = ui_->actions_list;
+     QTreeWidgetItem* item = list->currentItem();
+     action_p a = get_action_from_item(item);
+-    ui_->del_action_btn->setEnabled(a);
++    ui_->del_action_btn->setEnabled((bool) a);
+     int i = list->indexOfTopLevelItem(item);
+     ui_->move_up_action->setEnabled(item && i > 0);
+     ui_->move_down_action->setEnabled(item && list->topLevelItemCount() > 0 && i < list->topLevelItemCount() - 1);
+diff -urN urtconnector.old/src/cl/syslog/output_file.cpp urtconnector/src/cl/syslog/output_file.cpp
+--- urtconnector.old/src/cl/syslog/output_file.cpp	2016-10-18 14:20:15.101429228 +0200
++++ urtconnector/src/cl/syslog/output_file.cpp	2016-10-18 14:22:51.113006498 +0200
+@@ -19,9 +19,9 @@
+     create_directories(fp.parent_path());
+ 
+     if (append)
+-        f_.open(file_name.c_str(), fstream::out | fstream::app);
++        f_.open(file_name.c_str(), boost::filesystem::fstream::out | boost::filesystem::fstream::app);
+     else
+-        f_.open(file_name.c_str(), fstream::out | fstream::trunc);
++        f_.open(file_name.c_str(), boost::filesystem::fstream::out | boost::filesystem::fstream::trunc);
+ 
+     if (!f_.good())
+         throw std::runtime_error("Can't open file " + file_name);
+@@ -34,4 +34,4 @@
+ }
+ 
+ }
+-}
+\ Kein Zeilenumbruch am Dateiende.
++}
+diff -urN urtconnector.old/src/geoip/geoip.cpp urtconnector/src/geoip/geoip.cpp
+--- urtconnector.old/src/geoip/geoip.cpp	2016-10-18 14:20:15.100429769 +0200
++++ urtconnector/src/geoip/geoip.cpp	2016-10-18 14:20:40.238826598 +0200
+@@ -88,7 +88,7 @@
+ 
+ bool geoip::operator()()const
+ {
+-    return p_;
++    return (bool) p_;
+ }
+ 
+ QString geoip::code(const QString& ip_or_host) const
+diff -urN urtconnector.old/src/preferences/src/preferences_item.cpp urtconnector/src/preferences/src/preferences_item.cpp
+--- urtconnector.old/src/preferences/src/preferences_item.cpp	2016-10-18 14:20:15.100429769 +0200
++++ urtconnector/src/preferences/src/preferences_item.cpp	2016-10-18 14:21:35.417967444 +0200
+@@ -68,7 +68,7 @@
+ 
+ 
+ preferences_item::operator bool() const
+-{ return p_; }
++{ return (bool) p_; }
+ 
+ preferences_widget * preferences_item::widget() const
+ {
