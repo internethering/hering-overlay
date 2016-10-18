@@ -63,13 +63,6 @@ diff -urN urtconnector.old/src/cl/syslog/output_file.cpp urtconnector/src/cl/sys
  
      if (!f_.good())
          throw std::runtime_error("Can't open file " + file_name);
-@@ -34,4 +34,4 @@
- }
- 
- }
--}
-\ Kein Zeilenumbruch am Dateiende.
-+}
 diff -urN urtconnector.old/src/geoip/geoip.cpp urtconnector/src/geoip/geoip.cpp
 --- urtconnector.old/src/geoip/geoip.cpp	2016-10-18 14:20:15.100429769 +0200
 +++ urtconnector/src/geoip/geoip.cpp	2016-10-18 14:20:40.238826598 +0200
