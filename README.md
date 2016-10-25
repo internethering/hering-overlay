@@ -46,17 +46,20 @@ gnome-extra/nemo-terminal: Nemo extension to enable an embedded terminal
 app-admin/jailkit: Allows you to easily put programs and users in a chrooted environment
 app-backup/AutoMySQLBackup: Create Daily, Weekly and Monthly backups of MySQL databases.
 app-backup/storebackup: free, super efficient backup software
-sys-apps/gentoo-systemd-units: some usefull units for systemd on gentoo based systems
-www-servers/selenium-server-standalone: Selenium Serer Standalone
+dev-php/awl: Andrew McMillan's Web Libraries
 dev-php/PEAR-Console_Table: Class that makes it easy to build console style tables
+dev-php/pecl-geoip: PHP extension to map IP address to geographic places
+gnustep-apps/sogo: Groupware server built around OpenGroupware.org and the SOPE application server
+gnustep-libs/sope: A set of frameworks forming a complete Web application server environment
+mail-filter/dovecot-antispam: A dovecot antispam plugin supporting multiple backends
+net-im/prosody-modules: unofficial modules for prosody
+net-mail/z-push: Z-Push syncs ActiveSync compatible devices against various backends
+net-misc/clusterssh: Concurrent Multi-Server Terminal Access
 www-apache/mod_qos: A QOS module for the apache webserver
 www-apache/mod_security: Web application firewall and Intrusion Detection System for Apache
 www-apache/modsecurity-crs: Core Rule Set for ModSecurity
-net-im/prosody-modules: unofficial modules for prosody
-net-misc/clusterssh: Concurrent Multi-Server Terminal Access
-mail-filter/dovecot-antispam: A dovecot antispam plugin supporting multiple backends
-net-mail/z-push: Z-Push syncs ActiveSync compatible devices against various backends
-dev-php/awl: Andrew McMillan's Web Libraries
+www-servers/selenium-server-standalone: Selenium Serer Standalone
+sys-apps/gentoo-systemd-units: some usefull units for systemd on gentoo based systems
 ```
 
 ### kernel & realtime stuff
