@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan-module">Encode::X11</remote-id>
+    <remote-id type="cpan-module">X11::AtomConstants</remote-id>
+    <remote-id type="cpan-module">X11::CursorFont</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::ChooseWindow</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::Composite</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::DAMAGE</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::DOUBLE_BUFFER</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::MIT_SCREEN_SAVER</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::MIT_SHM</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::MIT_SUNDRY_NONSTANDARD</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::TOG_CUP</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::XFIXES</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::XFree86_DGA</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::XINERAMA</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::XTEST</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Ext::X_Resource</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::GrabServer</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::Other</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::WM</remote-id>
+    <remote-id type="cpan-module">X11::Protocol::XSetRoot</remote-id>
+  </upstream>
+</pkgmetadata>
