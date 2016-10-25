@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>cluster@gentoo.org</email>
-    <name>Gentoo Cluster Project</name>
+  <maintainer type="person">
+    <email>der@internethering.de</email>
+    <name>Richard Hering</name>
   </maintainer>
   <longdescription lang="en">
   ClusterSSH is a tool for making the same change on multiple servers 

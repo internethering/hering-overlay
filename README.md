@@ -53,6 +53,7 @@ www-apache/mod_qos: A QOS module for the apache webserver
 www-apache/mod_security: Web application firewall and Intrusion Detection System for Apache
 www-apache/modsecurity-crs: Core Rule Set for ModSecurity
 net-im/prosody-modules: unofficial modules for prosody
+net-misc/clusterssh: Concurrent Multi-Server Terminal Access
 mail-filter/dovecot-antispam: A dovecot antispam plugin supporting multiple backends
 net-mail/z-push: Z-Push syncs ActiveSync compatible devices against various backends
 dev-php/awl: Andrew McMillan's Web Libraries
@@ -80,5 +81,6 @@ media-sound/jack-audio-connection-kit: Jackdmp jack implemention for multi-proce
 games-util/urtconnector: Advanced UrbanTerror launcher program
 net-print/brother-dcp9020cdw-bin: Brother printer driver for DCP-9020CDW & DCP-9022CDW
 sci-visualization/circos: Circular layout visualization of genomic and other data
+x11-plugins/pidgin-skypeweb: SkypeWeb Plugin for Pidgin
 
 ```

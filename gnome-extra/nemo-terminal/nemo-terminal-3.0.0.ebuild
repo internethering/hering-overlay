@@ -9,8 +9,8 @@ inherit python-single-r1 gnome2-utils
 
 DESCRIPTION="Nemo extension to enable an embedded terminal"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"
-SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/2.6.x.tar.gz"
-S="${WORKDIR}/nemo-extensions-2.6.x/${PN}"
+SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/${PV}.tar.gz"
+S="${WORKDIR}/nemo-extensions-${PV}/${PN}"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -18,7 +18,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND=">=gnome-extra/nemo-python-2.6.0
+RDEPEND=">=gnome-extra/nemo-python-${PV}
 	x11-libs/vte:2.90
 	dev-python/pyxdg[${PYTHON_USEDEP}]"
 

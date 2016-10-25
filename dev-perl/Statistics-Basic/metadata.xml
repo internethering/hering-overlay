@@ -4,5 +4,20 @@
 	<maintainer type="person">
 		<email>der@internethering.de</email>
 		<name>Richard Hering</name>
-	</maintainer>
+  	</maintainer>
+  	<upstream>
+		<remote-id type="cpan-module">Statistics::Basic</remote-id>
+		<remote-id type="cpan-module">Statistics::Basic::ComputedVector</remote-id>
+		<remote-id type="cpan-module">Statistics::Basic::Correlation</remote-id>
+		<remote-id type="cpan-module">Statistics::Basic::Covariance</remote-id>
+		<remote-id type="cpan-module">Statistics::Basic::LeastSquareFit</remote-id>
+		<remote-id type="cpan-module">Statistics::Basic::Mean</remote-id>
+		<remote-id type="cpan-module">Statistics::Basic::Median</remote-id>
+		<remote-id type="cpan-module">Statistics::Basic::Mode</remote-id>
+		<remote-id type="cpan-module">Statistics::Basic::StdDev</remote-id>
+		<remote-id type="cpan-module">Statistics::Basic::Variance</remote-id>
+		<remote-id type="cpan-module">Statistics::Basic::Vector</remote-id>
+		<remote-id type="cpan-module">Statistics::Basic::_OneVectorBase</remote-id>
+		<remote-id type="cpan-module">Statistics::Basic::_TwoVectorBase</remote-id>
+	</upstream>
 </pkgmetadata>

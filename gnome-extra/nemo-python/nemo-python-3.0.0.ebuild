@@ -10,8 +10,8 @@ inherit eutils python-single-r1
 
 DESCRIPTION="Python binding for Nemo components"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"
-SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/2.6.x.tar.gz"
-S="${WORKDIR}/nemo-extensions-2.6.x/${PN}"
+SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/${PV}.tar.gz"
+S="${WORKDIR}/nemo-extensions-${PV}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,15 +22,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	>=gnome-extra/nemo-2.6.0[introspection]
+	>=gnome-extra/nemo-${PV}[introspection]
 	>=dev-util/gtk-doc-am-1.9
 	virtual/pkgconfig
 	doc? (
 		app-text/docbook-xml-dtd:4.1.2
 		dev-libs/libxslt
-		>=dev-util/gtk-doc-1.9
-	)"
-
+		>=dev-util/gtk-doc-1.9 )
+"
 src_prepare() {
 	if [[ ! -e configure ]] ; then
 		./autogen.sh || die

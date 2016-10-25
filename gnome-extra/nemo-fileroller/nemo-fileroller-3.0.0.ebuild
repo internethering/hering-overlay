@@ -6,10 +6,10 @@ EAPI=5
 
 inherit eutils
 
-DESCRIPTION="nemo-preview is a quick previewer for nemo"
+DESCRIPTION="File Roller integration for Nemo"
 HOMEPAGE="https://github.com/linuxmint/nemo-extensions"
-SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/2.6.x.tar.gz"
-S="${WORKDIR}/nemo-extensions-2.6.x/${PN}"
+SRC_URI="https://github.com/linuxmint/nemo-extensions/archive/${PV}.tar.gz"
+S="${WORKDIR}/nemo-extensions-${PV}/${PN}"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,12 +17,9 @@ KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND=""
-DEPEND=">=gnome-extra/nemo-2.6.0[introspection]
-	media-libs/gstreamer:1.0
-	app-text/evince
-	net-libs/webkit-gtk:3
-	media-libs/musicbrainz:5
-"
+DEPEND="app-arch/file-roller
+	>=gnome-extra/nemo-${PV}[introspection]"
+
 src_prepare() {
 	if [[ ! -e configure ]] ; then
 		./autogen.sh || die
