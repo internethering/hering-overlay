@@ -9,7 +9,7 @@ DESCRIPTION="GPL Linux MIDI drivers for Hercules DJ midi controller devices"
 HOMEPAGE="http://ts.hercules.com/eng/index.php?pg=view_files&gid=2&fid=28&pid=215&cid=1"
 MY_P="Hercules_DJSeries_Linux"
 
-SRC_URI="ftp://ftp.hercules.com/pub/webupdate/DJCSeries/${MY_P}.tgz"
+SRC_URI="ftp://ftp.hercules.com/pub/webupdate/DJCSeries/Legacy/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -70,7 +70,8 @@ src_prepare() {
 multilib_src_configure() {
 	local mywafconfargs=(
 		$(usex alsa --alsa "")
-		$(usex dbus --dbus --classic)
+		$(usex dbus --dbus "")
+		$(usex dbus --classic "")
 		$(usex ieee1394 --firewire "")
 	)
 
