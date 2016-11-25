@@ -8,7 +8,7 @@ inherit git-r3
 
 DESCRIPTION="A dovecot antispam plugin supporting multiple backends"
 HOMEPAGE="http://wiki2.dovecot.org/Plugins/Antispam/"
-EGIT_REPO_URI="http://git.sipsolutions.net/dovecot-antispam.git"
+EGIT_REPO_URI="https://git.sipsolutions.net/dovecot-antispam.git"
 
 LICENSE="GPL-2"
 SLOT="0"
