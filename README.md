@@ -48,7 +48,6 @@ app-backup/AutoMySQLBackup: Create Daily, Weekly and Monthly backups of MySQL da
 app-backup/storebackup: free, super efficient backup software
 dev-php/awl: Andrew McMillan's Web Libraries
 dev-php/PEAR-Console_Table: Class that makes it easy to build console style tables
-dev-php/pecl-geoip: PHP extension to map IP address to geographic places
 dev-php/pecl-imagick: PHP wrapper for the ImageMagick library
 gnustep-apps/sogo: Groupware server built around OpenGroupware.org and the SOPE application server
 gnustep-libs/sope: A set of frameworks forming a complete Web application server environment
