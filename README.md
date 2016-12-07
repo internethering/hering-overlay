@@ -49,6 +49,7 @@ app-backup/storebackup: free, super efficient backup software
 dev-php/awl: Andrew McMillan's Web Libraries
 dev-php/PEAR-Console_Table: Class that makes it easy to build console style tables
 dev-php/pecl-geoip: PHP extension to map IP address to geographic places
+dev-php/pecl-imagick: PHP wrapper for the ImageMagick library
 gnustep-apps/sogo: Groupware server built around OpenGroupware.org and the SOPE application server
 gnustep-libs/sope: A set of frameworks forming a complete Web application server environment
 mail-filter/dovecot-antispam: A dovecot antispam plugin supporting multiple backends
@@ -82,7 +83,8 @@ media-sound/jack-audio-connection-kit: Jackdmp jack implemention for multi-proce
 
 ```
 games-util/urtconnector: Advanced UrbanTerror launcher program
-net-print/brother-dcp9020cdw-bin: Brother printer driver for DCP-9020CDW & DCP-9022CDW
+net-print/brother-dcp9020cdw-bin: Brother printer driver for DCP-9020CDW
+net-print/brother-dcp9022cdw-bin: Brother printer driver for DCP-9022CDW
 sci-visualization/circos: Circular layout visualization of genomic and other data
 x11-plugins/pidgin-skypeweb: SkypeWeb Plugin for Pidgin
 
