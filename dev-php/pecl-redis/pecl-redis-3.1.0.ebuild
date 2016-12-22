@@ -24,10 +24,7 @@ LICENSE="PHP-3.01"
 SLOT="7"
 IUSE="igbinary"
 
-DEPEND="igbinary? ( 
-	php_targets_php7-0? ( dev-php/igbinary[php_targets_php7-0] ) 
-	php_targets_php7-1? ( dev-php/igbinary[php_targets_php7-1] ) 
-)"
+DEPEND="igbinary? ( php_targets_php7-0? ( dev-php/igbinary[php_targets_php7-0] ) php_targets_php7-1? ( dev-php/igbinary[php_targets_php7-1] ) )"
 RDEPEND="${DEPEND} php_targets_php5-6? ( dev-php/pecl-redis:0 )"
 
 src_configure() {
@@ -38,7 +35,7 @@ src_configure() {
 }
 
 src_install() {
-	if use php_targets_php7-0 ; then
+	if use php_targets_php7-0 || use php_targets_php7-1 ; then
 		php-ext-pecl-r2_src_install
 	fi
 }

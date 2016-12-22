@@ -4,7 +4,7 @@
 
 EAPI=6
 
-USE_PHP="php5-5 php5-6 php7-0 php7-1"
+USE_PHP="php5-6 php7-0 php7-1"
 
 MY_P="${PN/pecl-/}-${PV/_rc/RC}"
 PHP_EXT_PECL_FILENAME="${MY_P}.tgz"
