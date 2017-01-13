@@ -8,19 +8,19 @@ PYTHON_COMPAT=( python3_4 python3_5 )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="Soundcloud Music Downloader"
-HOMEPAGE="https://github.com/flyingrub/scdl"
-EGIT_REPO_URI="https://github.com/flyingrub/scdl.git"
+DESCRIPTION="A friendly wrapper around the Soundcloud API."
+HOMEPAGE="https://github.com/soundcloud/soundcloud-python"
+EGIT_REPO_URI="https://github.com/soundcloud/soundcloud-python.git"
 
-LICENSE="GPL-2"
+LICENSE="Soundcloud"
 SLOT="0"
 KEYWORDS=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
-dev-python/docopt
-media-libs/mutagen
-dev-python/termcolor
 dev-python/requests
-dev-python/clint
+dev-python/simplejson
+dev-python/fudge
+dev-python/nose
+dev-python/six
 "

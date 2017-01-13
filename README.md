@@ -77,6 +77,7 @@ app-emulation/wineasio: ASIO driver for WINE
 media-libs/asio-sdk: Steinberg ASIO SDK 2.3 - win32
 media-sound/jack-audio-connection-kit: Jackdmp jack implemention for multi-processor machine
 media-sound/scdl: Soundcloud Music Downloader
+media-sound/soundscrape: SoundScrape makes it easy to download from SoundCloud, Bandcamp and MixCloud
 ```
 
 ### misc
