@@ -8,7 +8,7 @@ inherit cmake-utils
 
 DESCRIPTION="Advanced UrbanTerror launcher program"
 HOMEPAGE="http://code.google.com/p/urtconnector/"
-SRC_URI="http://urtconnector.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/urtconnector/${P}.tar.gz"
 S="${WORKDIR}/${PN}"
 
 LICENSE="GPL-3"
