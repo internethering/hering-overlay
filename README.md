@@ -47,10 +47,6 @@ app-admin/jailkit: Allows you to easily put programs and users in a chrooted env
 app-backup/AutoMySQLBackup: Create Daily, Weekly and Monthly backups of MySQL databases.
 app-backup/storebackup: free, super efficient backup software
 dev-php/awl: Andrew McMillan's Web Libraries
-dev-php/PEAR-Console_Table: Class that makes it easy to build console style tables
-dev-php/pecl-imagick: PHP wrapper for the ImageMagick library
-gnustep-apps/sogo: Groupware server built around OpenGroupware.org and the SOPE application server
-gnustep-libs/sope: A set of frameworks forming a complete Web application server environment
 mail-filter/dovecot-antispam: A dovecot antispam plugin supporting multiple backends
 net-im/prosody-modules: unofficial modules for prosody
 net-mail/z-push: Z-Push syncs ActiveSync compatible devices against various backends
@@ -77,7 +73,6 @@ app-emulation/wineasio: ASIO driver for WINE
 media-libs/asio-sdk: Steinberg ASIO SDK 2.3 - win32
 media-sound/jack-audio-connection-kit: Jackdmp jack implemention for multi-processor machine
 media-sound/scdl: Soundcloud Music Downloader
-media-sound/soundscrape: SoundScrape makes it easy to download from SoundCloud, Bandcamp and MixCloud
 ```
 
 ### misc
@@ -86,5 +81,5 @@ media-sound/soundscrape: SoundScrape makes it easy to download from SoundCloud, 
 games-util/urtconnector: Advanced UrbanTerror launcher program
 sci-visualization/circos: Circular layout visualization of genomic and other data
 x11-plugins/pidgin-skypeweb: SkypeWeb Plugin for Pidgin
-
+net-p2p/pybitmessage: P2P communications protocol
 ```
