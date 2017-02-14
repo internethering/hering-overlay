@@ -1,0 +1,5 @@
+[Unit]
+Description=Auto Mysql Backup
+
+[Service]
+ExecStart=/usr/bin/automysqlbackup
