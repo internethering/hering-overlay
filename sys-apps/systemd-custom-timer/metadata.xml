@@ -6,7 +6,6 @@
 		<name>Richard Hering</name>
 	</maintainer>
 	<use>
-		<flag name='spamassassin'>Install timer to run sa-update</flag>
 		<flag name='clamav-unofficial-sigs'>Install timer to update clamav-unofficial-sigs</flag>
 		<flag name='geoip'>Install timer to run geoipupdate.sh</flag>
 		<flag name='dhparams'>Install timer to update dhparams</flag>
