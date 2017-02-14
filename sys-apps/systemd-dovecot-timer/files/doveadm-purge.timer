@@ -2,7 +2,7 @@
 Description=doveadm purge
 
 [Timer]
-OnCalendar=daily
+OnCalendar=*-*-* 00:15:00
 
 [Install]
 WantedBy=timers.target
