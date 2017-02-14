@@ -1,0 +1,7 @@
+[Unit]
+Description=doveadm replicate
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/doveadm replicator add '*'
+ExecStart=/usr/bin/doveadm replicator replicate '*'

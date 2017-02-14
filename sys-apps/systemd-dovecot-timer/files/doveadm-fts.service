@@ -1,0 +1,6 @@
+[Unit]
+Description=doveadm fts
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/fts-index

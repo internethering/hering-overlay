@@ -1,0 +1,6 @@
+[Unit]
+Description=doveadm quota recalc
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/doveadm quota recalc -A

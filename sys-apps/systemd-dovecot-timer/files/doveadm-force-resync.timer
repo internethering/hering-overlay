@@ -1,0 +1,8 @@
+[Unit]
+Description=doveadm force-resync
+
+[Timer]
+OnCalendar=daily
+
+[Install]
+WantedBy=timers.target
