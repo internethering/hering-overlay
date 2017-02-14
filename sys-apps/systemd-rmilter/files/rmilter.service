@@ -1,0 +1,6 @@
+[Service]
+ExecStart=/usr/sbin/rmilter -c /etc/rmilter/rmilter.conf
+User=rmilter
+
+[Install]
+WantedBy=multi-user.target

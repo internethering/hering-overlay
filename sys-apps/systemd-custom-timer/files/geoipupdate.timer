@@ -1,0 +1,9 @@
+[Unit]
+Description=timer for geoipupdate.service
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

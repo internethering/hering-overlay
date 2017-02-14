@@ -51,11 +51,15 @@ mail-filter/dovecot-antispam: A dovecot antispam plugin supporting multiple back
 net-im/prosody-modules: unofficial modules for prosody
 net-mail/z-push: Z-Push syncs ActiveSync compatible devices against various backends
 net-misc/clusterssh: Concurrent Multi-Server Terminal Access
+sys-apps/systemd-amavisd-milter: Amavisd-milter systemd service
+sys-apps/systemd-custom-timer: some custom timer units for systemd on gentoo based systems
+sys-apps/systemd-opendmarc: opendmarc systemd service
+sys-apps/systemd-pure-ftpd: pure-ftpd systemd service
+sys-apps/systemd-rmilter: rmilter systemd service
 www-apache/mod_qos: A QOS module for the apache webserver
 www-apache/mod_security: Web application firewall and Intrusion Detection System for Apache
 www-apache/modsecurity-crs: Core Rule Set for ModSecurity
 www-servers/selenium-server-standalone: Selenium Serer Standalone
-sys-apps/gentoo-systemd-units: some usefull units for systemd on gentoo based systems
 ```
 
 ### kernel & realtime stuff

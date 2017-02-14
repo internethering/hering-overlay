@@ -1,0 +1,7 @@
+[Unit]
+Description=generate /etc/ssl/dh%i.pem
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/openssl dhparam %i -out /tmp/dh%i.pem
+ExecStartPost=/bin/mv /tmp/dh%i.pem /etc/ssl/dh%i.pem

@@ -1,0 +1,12 @@
+[Unit]
+Description=Pure-FTPd FTP server
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/conf.d/pure-ftpd
+PIDFile=/var/run/pure-ftpd.pid
+ExecStart=/usr/sbin/pure-ftpd $SERVER $MAX_CONN $MAX_CONN_IP $DISK_FULL $USE_NAT $AUTH $LOG $TIMEOUT $CHARCONV $MISC_OTHER $UPSCRIPT
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+[Unit]
+Description=GeoIP Database Updater
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/geoipupdate.sh --force

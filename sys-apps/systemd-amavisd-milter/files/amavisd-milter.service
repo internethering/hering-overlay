@@ -1,0 +1,11 @@
+[Unit]
+After=amavisd.service
+Requires=amavisd.service
+
+[Service]
+EnvironmentFile=/etc/conf.d/amavisd-milter
+ExecStart=/usr/sbin/amavisd-milter -f $MOPTIONS -w $AM_TMP -S $AM_SOCKET -s $SOCKET -p $PIDFILE
+User=amavis
+
+[Install]
+WantedBy=multi-user.target
