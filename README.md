@@ -45,7 +45,6 @@ gnome-extra/nemo-terminal: Nemo extension to enable an embedded terminal
 ```
 app-admin/jailkit: Allows you to easily put programs and users in a chrooted environment
 app-backup/AutoMySQLBackup: Create Daily, Weekly and Monthly backups of MySQL databases.
-app-backup/storebackup: free, super efficient backup software
 dev-php/awl: Andrew McMillan's Web Libraries
 mail-filter/dovecot-antispam: A dovecot antispam plugin supporting multiple backends
 net-im/prosody-modules: unofficial modules for prosody
