@@ -2,7 +2,7 @@
 Description=doveadm replicate
 
 [Timer]
-OnCalendar=daily
+OnCalendar=daily+1hour
 
 [Install]
 WantedBy=timers.target
