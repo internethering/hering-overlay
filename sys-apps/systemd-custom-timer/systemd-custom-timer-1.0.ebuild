@@ -20,6 +20,9 @@ RDEPEND="spamassassin? ( mail-filter/spamassassin )
 geoip? ( dev-libs/geoip )
 clamav-unofficial-sigs? ( app-antivirus/clamav-unofficial-sigs )"
 
+# Need to set S due to PMS saying we need it existing, but no SRC_URI
+S=${WORKDIR}
+
 src_install() {
 	if use spamassassin ; then
 		systemd_dounit "${FILESDIR}/sa-update.timer"

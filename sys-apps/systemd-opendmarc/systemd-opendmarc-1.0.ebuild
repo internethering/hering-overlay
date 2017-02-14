@@ -18,6 +18,9 @@ IUSE=""
 DEPEND=""
 RDEPEND="mail-filter/opendmarc"
 
+# Need to set S due to PMS saying we need it existing, but no SRC_URI
+S=${WORKDIR}
+
 src_install() {
 	systemd_dounit "${FILESDIR}/opendmarc.service"
 	systemd_dotmpfilesd "${FILESDIR}/opendmarc.tmpfiles.conf"
