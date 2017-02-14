@@ -13,21 +13,16 @@ SRC_URI=""
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="spamassassin geoip clamav-unofficial-sigs dhparams"
+IUSE="geoip clamav-unofficial-sigs dhparams"
 
 DEPEND=""
-RDEPEND="spamassassin? ( mail-filter/spamassassin )
-geoip? ( dev-libs/geoip )
+RDEPEND="geoip? ( dev-libs/geoip )
 clamav-unofficial-sigs? ( app-antivirus/clamav-unofficial-sigs )"
 
 # Need to set S due to PMS saying we need it existing, but no SRC_URI
 S=${WORKDIR}
 
 src_install() {
-	if use spamassassin ; then
-		systemd_dounit "${FILESDIR}/sa-update.timer"
-		systemd_dounit "${FILESDIR}/sa-update.service"
-	fi
 	if use geoip ; then
 		systemd_dounit "${FILESDIR}/geoipupdate.timer"
 		systemd_dounit "${FILESDIR}/geoipupdate.service"

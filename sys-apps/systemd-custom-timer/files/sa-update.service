@@ -1,9 +1,0 @@
-[Unit]
-Description=Spamassassin RuleUpdates
-
-[Service]
-Type=oneshot
-SuccessExitStatus=0 1
-ExecStart=/usr/bin/sa-update
-ExecStartPost=/usr/bin/sa-compile > /dev/null
-ExecStartPost=/usr/bin/systemctl restart spamassassin.service
