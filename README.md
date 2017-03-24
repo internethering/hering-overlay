@@ -48,6 +48,7 @@ app-backup/AutoMySQLBackup: Create Daily, Weekly and Monthly backups of MySQL da
 dev-php/awl: Andrew McMillan's Web Libraries
 mail-filter/dovecot-antispam: A dovecot antispam plugin supporting multiple backends
 net-im/prosody-modules: unofficial modules for prosody
+net-mail/imapsync: A tool allowing incremental and recursive IMAP transfers between mailboxes
 net-mail/z-push: Z-Push syncs ActiveSync compatible devices against various backends
 net-misc/clusterssh: Concurrent Multi-Server Terminal Access
 sys-apps/systemd-amavisd-milter: Amavisd-milter systemd service
