@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A tool allowing incremental and recursive IMAP transfers between mailboxes"
 HOMEPAGE="http://ks.lamiral.info/imapsync/"
-SRC_URI="https://fedorahosted.org/released/${PN}/${P}.tgz"
+SRC_URI="https://releases.pagure.org/${PN}/${P}.tgz"
 
 LICENSE="WTFPL-2"
 SLOT="0"
