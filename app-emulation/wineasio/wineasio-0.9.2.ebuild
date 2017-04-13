@@ -16,7 +16,10 @@ IUSE=""
 SLOT="0"
 
 DEPEND="media-libs/asio-sdk"
-RDEPEND="app-emulation/wine
+RDEPEND="|| (
+		app-emulation/wine
+		virtual/wine
+	)
 	>=media-sound/jack-audio-connection-kit-1.9.10[${MULTILIB_USEDEP}]"
 
 S="${WORKDIR}/${PN}"
