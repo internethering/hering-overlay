@@ -2,6 +2,4 @@
 Description=try start failed services
 
 [Service]
-Type=oneshot
 ExecStart=/usr/bin/systemctl default
-RemainAfterExit=yes
