@@ -54,7 +54,7 @@ src_install () {
 
 	python_foreach_impl install_python
 
-	dodoc README.md 
+	dodoc README.md
 	doman man/*
 
 	newicon -s 24 desktop/icon24.png ${PN}.png
