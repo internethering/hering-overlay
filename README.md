@@ -57,8 +57,6 @@ sys-apps/systemd-opendmarc: opendmarc systemd service
 sys-apps/systemd-pure-ftpd: pure-ftpd systemd service
 sys-apps/systemd-rmilter: rmilter systemd service
 www-apache/mod_qos: A QOS module for the apache webserver
-www-apache/mod_security: Web application firewall and Intrusion Detection System for Apache
-www-apache/modsecurity-crs: Core Rule Set for ModSecurity
 www-servers/selenium-server-standalone: Selenium Serer Standalone
 ```
 
@@ -85,5 +83,4 @@ media-sound/scdl: Soundcloud Music Downloader
 games-util/urtconnector: Advanced UrbanTerror launcher program
 sci-visualization/circos: Circular layout visualization of genomic and other data
 x11-plugins/pidgin-skypeweb: SkypeWeb Plugin for Pidgin
-net-p2p/pybitmessage: P2P communications protocol
 ```
