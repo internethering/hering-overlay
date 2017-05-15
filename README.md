@@ -60,14 +60,6 @@ www-apache/mod_qos: A QOS module for the apache webserver
 www-servers/selenium-server-standalone: Selenium Serer Standalone
 ```
 
-### kernel & realtime stuff
-
-```
-sys-process/rtirq: Change the realtime scheduling policy and priority of relevant system driver IRQ handlers
-sys-power/phc-intel: Processor Hardware Control for Intel CPUs
-media-sound/hdj_mod: GPL Linux MIDI drivers for Hercules DJ midi controller devices
-```
-
 ### music stuff
 
 ```
@@ -75,6 +67,7 @@ app-emulation/wineasio: ASIO driver for WINE
 media-libs/asio-sdk: Steinberg ASIO SDK 2.3 - win32
 media-sound/jack-audio-connection-kit: Jackdmp jack implemention for multi-processor machine
 media-sound/scdl: Soundcloud Music Downloader
+media-sound/hdj_mod: GPL Linux MIDI drivers for Hercules DJ midi controller devices
 ```
 
 ### misc
