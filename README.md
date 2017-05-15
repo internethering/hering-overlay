@@ -75,5 +75,4 @@ media-sound/hdj_mod: GPL Linux MIDI drivers for Hercules DJ midi controller devi
 ```
 games-util/urtconnector: Advanced UrbanTerror launcher program
 sci-visualization/circos: Circular layout visualization of genomic and other data
-x11-plugins/pidgin-skypeweb: SkypeWeb Plugin for Pidgin
 ```
