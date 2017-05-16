@@ -67,7 +67,7 @@ app-emulation/wineasio: ASIO driver for WINE
 media-libs/asio-sdk: Steinberg ASIO SDK 2.3 - win32
 media-sound/jack-audio-connection-kit: Jackdmp jack implemention for multi-processor machine
 media-sound/scdl: Soundcloud Music Downloader
-media-sound/hdj_mod: GPL Linux MIDI drivers for Hercules DJ midi controller devices
+media-sound/hdjd: Hercules DJ Control MP3e2 translation daemon
 ```
 
 ### misc
