@@ -10,7 +10,7 @@ DESCRIPTION="Hercules DJ Control MP3e2 translation daemon"
 HOMEPAGE="https://github.com/nealey/hdjd"
 EGIT_REPO_URI="https://github.com/nealey/hdjd.git"
 
-LICENSE=""
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS=""
 
@@ -19,6 +19,6 @@ RDEPEND=""
 
 src_install()
 {
-    dobin hdjd
-	newbin explore hdjd-explore
+	dobin hdjd
+	ewbin explore hdjd-explore
 }
