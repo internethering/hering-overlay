@@ -74,6 +74,5 @@ media-sound/hdjd: Hercules DJ Control MP3e2 translation daemon
 
 ```
 games-util/urtconnector: Advanced UrbanTerror launcher program
-net-p2p/zcash-bin: a cryptocurrency that fully protect privacy of transactions
 sci-visualization/circos: Circular layout visualization of genomic and other data
 ```
