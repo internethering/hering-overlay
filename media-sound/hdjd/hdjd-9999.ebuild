@@ -10,7 +10,7 @@ DESCRIPTION="Hercules DJ Control MP3e2 translation daemon"
 HOMEPAGE="https://github.com/nealey/hdjd"
 EGIT_REPO_URI="https://github.com/nealey/hdjd.git"
 
-LICENSE="all-rights-reserved"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
