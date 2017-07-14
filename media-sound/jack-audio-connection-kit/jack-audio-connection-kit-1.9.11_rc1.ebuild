@@ -17,8 +17,8 @@ if [[ "${PV}" = "2.9999" ]]; then
 	EGIT_REPO_URI="git://github.com/jackaudio/jack2.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/jackaudio/jack2/archive/v${PV}.tar.gz -> jack-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~x86"
+	SRC_URI="https://github.com/jackaudio/jack2/archive/v${PV/_rc/-RC}.tar.gz -> jack-${PV}.tar.gz"
+	KEYWORDS=""
 fi
 
 LICENSE="GPL-2"
@@ -50,7 +50,7 @@ RDEPEND="${CDEPEND}
 	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
 	pam? ( sys-auth/realtime-base )"
 
-[[ "${PV}" = "2.9999" ]] || S="${WORKDIR}/jack2-${PV}"
+[[ "${PV}" = "2.9999" ]] || S="${WORKDIR}/jack2-${PV/_rc/-RC}"
 
 DOCS=( ChangeLog README README_NETJACK2 TODO )
 
