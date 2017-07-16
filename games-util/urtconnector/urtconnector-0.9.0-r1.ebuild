@@ -22,7 +22,6 @@ games-util/qstat
 dev-db/sqlite:3
 >=media-libs/phonon-4.9.0"
 
-
 DEPEND="${RDEPEND}"
 
 PATCHES=(

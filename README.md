@@ -23,23 +23,6 @@ after an `emerge --sync` you can use my overlay
 
 ## avaiable ebuilds
 
-### [nemo-extensions](https://github.com/linuxmint/nemo-extensions)
-
-```
-gnome-extra/nemo-audio-tab: View audio tag information from the file manager's properties tab
-gnome-extra/nemo-emblems: Change your folder and file emblems
-gnome-extra/nemo-fileroller: File Roller integration for Nemo
-gnome-extra/nemo-gtkhash: nemo extension for computing checksums and more using gtkhash
-gnome-extra/nemo-image-converter: nemo extension to mass resize or rotate images
-gnome-extra/nemo-preview: nemo-preview is a quick previewer for nemo
-gnome-extra/nemo-python: Python binding for Nemo components
-gnome-extra/nemo-repairer: Nemo extension for filename encoding repair
-gnome-extra/nemo-seahorse: seahorse plugins and utilities for encryption
-gnome-extra/nemo-share: Nemo extension to share folder using Samba
-gnome-extra/nemo-terminal: Nemo extension to enable an embedded terminal
-
-```
-
 ### some usefull stuff for server
 
 ```
