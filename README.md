@@ -58,4 +58,6 @@ media-sound/hdjd: Hercules DJ Control MP3e2 translation daemon
 ```
 games-util/urtconnector: Advanced UrbanTerror launcher program
 sci-visualization/circos: Circular layout visualization of genomic and other data
+net-p2p/monero: a cryptocurrency with a focus on private and censorship-resistant transactions
+net-p2p/monero-core: This is the GUI for the core Monero implementation
 ```
