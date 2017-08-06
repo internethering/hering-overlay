@@ -20,7 +20,7 @@ fi
 LICENSE="Monero"
 SLOT="0"
 DOCS=""
-IUSE="upnp debug unwind lzma ldns expat doc graphviz debug munin systemd static-libs"
+IUSE="upnp debug unwind lzma ldns expat doc graphviz debug munin systemd static-libs utils"
 REQUIRED_USE="lzma? ( unwind )
 graphviz? ( doc )"
 
@@ -60,14 +60,14 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 
-	dobin "${BUILD_DIR}/bin/monero-blockchain-export"
-	dobin "${BUILD_DIR}/bin/monero-blockchain-import"
-	dobin "${BUILD_DIR}/bin/monero-utils-deserialize"
-
-	dolib.a "${BUILD_DIR}/lib/libwallet.a"
+	if use utils ; then
+		dobin "${BUILD_DIR}/bin/monero-blockchain-export"
+		dobin "${BUILD_DIR}/bin/monero-blockchain-import"
+		dobin "${BUILD_DIR}/bin/monero-utils-deserialize"
+	fi
 
 	if use doc ; then
-		HTML_DOCS=( "${BUILD_DIR}/docs/html/" )
+		HTML_DOCS=( "/docs/html/" )
 		einstalldocs
 	fi
 

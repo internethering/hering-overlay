@@ -6,7 +6,7 @@ EAPI=6
 [[ "${PV}" = "9999" ]] && inherit git-r3
 inherit cmake-utils systemd user
 
-DESCRIPTION="a cryptocurrency with a focus on private and censorship-resistant transactions"
+DESCRIPTION="Monero: the secure, private, untraceable cryptocurrency"
 HOMEPAGE="https://getmonero.org/"
 
 if [[ "${PV}" = "9999" ]]; then
@@ -20,7 +20,7 @@ fi
 LICENSE="Monero"
 SLOT="0"
 DOCS=""
-IUSE="upnp debug unwind lzma ldns expat doc graphviz debug munin systemd static-libs"
+IUSE="upnp debug unwind lzma ldns expat doc graphviz debug munin systemd static-libs utils"
 REQUIRED_USE="lzma? ( unwind )
 graphviz? ( doc )"
 
@@ -38,7 +38,8 @@ DEPEND="dev-libs/boost
 	graphviz? ( media-gfx/graphviz )"
 
 RDEPEND="munin? ( net-analyzer/munin )
-	systemd? ( sys-apps/systemd )"
+	systemd? ( sys-apps/systemd )
+	!net-p2p/monero-core[daemon]"
 
 BUILD_DIR="${S}/build/release"
 
@@ -59,14 +60,14 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 
-	dobin "${BUILD_DIR}/bin/monero-blockchain-export"
-	dobin "${BUILD_DIR}/bin/monero-blockchain-import"
-	dobin "${BUILD_DIR}/bin/monero-utils-deserialize"
-
-	dolib.a "${BUILD_DIR}/lib/libwallet.a"
+	if use utils ; then
+		dobin "${BUILD_DIR}/bin/monero-blockchain-export"
+		dobin "${BUILD_DIR}/bin/monero-blockchain-import"
+		dobin "${BUILD_DIR}/bin/monero-utils-deserialize"
+	fi
 
 	if use doc ; then
-		HTML_DOCS=( "${BUILD_DIR}/docs/html/" )
+		HTML_DOCS=( "/docs/html/" )
 		einstalldocs
 	fi
 
