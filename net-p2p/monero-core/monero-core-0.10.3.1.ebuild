@@ -6,7 +6,7 @@ EAPI=6
 [[ "${PV}" = "9999" ]] && inherit git-r3
 inherit eutils
 
-DESCRIPTION="This is the GUI for the core Monero implementation."
+DESCRIPTION="Monero Gui: the secure, private, untraceable cryptocurrency"
 HOMEPAGE="https://getmonero.org/"
 
 if [[ "${PV}" = "9999" ]]; then
@@ -21,22 +21,32 @@ fi
 LICENSE="Monero"
 SLOT="0"
 DOCS=""
-MY_L10N="l10n_ar l10n_de l10n_eo l10n_es l10n_fi l10n_fr l10n_hi l10n_hr l10n_id l10n_it l10n_ja l10n_nl l10n_pl l10n_pt-BR l10n_ru l10n_zh-TW l10n_zh-CN"
-IUSE="qrcode ${MY_L10N}"
+IUSE="qrcode daemon upnp unwind ldns lzma expat"
 
-DEPEND="net-p2p/monero
-net-dns/unbound
-dev-qt/qtcore:5
-dev-qt/qtdeclarative:5
-dev-qt/qtquickcontrols:5
-dev-qt/qtquickcontrols2:5
-dev-qt/qtgraphicaleffects:5
-qrcode? (
-	dev-qt/qtmultimedia:5[qml]
-	media-gfx/zbar
-)"
+DEPEND="!daemon? ( net-p2p/monero )
+	daemon? ( !net-p2p/monero )
+	dev-libs/boost
+	dev-libs/openssl:0
+	net-dns/unbound
+	sys-libs/libunwind
+	dev-qt/qtcore:5
+	dev-qt/qtdeclarative:5
+	dev-qt/qtquickcontrols:5
+	dev-qt/qtquickcontrols2:5
+	dev-qt/qtgraphicaleffects:5
+	qrcode? (
+		dev-qt/qtmultimedia:5[qml]
+		media-gfx/zbar
+	)
+	upnp? ( net-libs/miniupnpc:0/16 )
+	unwind? ( sys-libs/libunwind )
+	ldns? ( net-libs/ldns )
+	lzma? ( app-arch/xz-utils )
+	expat? ( dev-libs/expat )"
 
 RDEPEND="${DEPEND}"
+
+BUILD_DIR="${S}/build/release"
 
 src_unpack() {
 	unpack ${A}
@@ -49,14 +59,13 @@ src_compile() {
 }
 
 src_install() {
-	dobin build/release/bin/monero-wallet-gui
+	dobin "${BUILD_DIR}/bin/monero-wallet-gui"
+	use daemon && dobin "${BUILD_DIR}/bin/monerod"
 
 	insinto "usr/share/${PN}/translations"
-	for my_l10n in ${MY_L10N} ; do
-		if use "${my_l10n}" ; then
-			l10n=${my_l10n##l10n_}
-			newins "build/release/bin/translations/monero-core_${l10n,,}.qm" "monero-core_${l10n}.qm"
-		fi
+	for lang in "${BUILD_DIR}/bin/translations/*"
+	do
+		doins "${lang}"
 	done
 
 	for icon in images/appicons/* ; do

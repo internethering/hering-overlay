@@ -6,6 +6,8 @@
 		<name>Richard Hering</name>
 	</maintainer>
 	<use>
+		<flag name="ldns">Use LDNS as SSL toolkit.</flag>
+		<flag name="daemon">Build monerod or install net-p2p/monero</flag>
 		<flag name="qrcode">Build with QR-Code-scanner.</flag>
 	</use>
 </pkgmetadata>

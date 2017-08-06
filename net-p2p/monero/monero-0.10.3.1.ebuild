@@ -6,7 +6,7 @@ EAPI=6
 [[ "${PV}" = "9999" ]] && inherit git-r3
 inherit cmake-utils systemd user
 
-DESCRIPTION="a cryptocurrency with a focus on private and censorship-resistant transactions"
+DESCRIPTION="Monero: the secure, private, untraceable cryptocurrency"
 HOMEPAGE="https://getmonero.org/"
 
 if [[ "${PV}" = "9999" ]]; then
@@ -38,7 +38,8 @@ DEPEND="dev-libs/boost
 	graphviz? ( media-gfx/graphviz )"
 
 RDEPEND="munin? ( net-analyzer/munin )
-	systemd? ( sys-apps/systemd )"
+	systemd? ( sys-apps/systemd )
+	!net-p2p/monero-core[daemon]"
 
 BUILD_DIR="${S}/build/release"
 
