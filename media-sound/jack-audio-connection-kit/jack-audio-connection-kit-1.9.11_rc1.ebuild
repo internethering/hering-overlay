@@ -18,7 +18,7 @@ if [[ "${PV}" = "2.9999" ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/jackaudio/jack2/archive/v${PV/_rc/-RC}.tar.gz -> jack-${PV}.tar.gz"
-	KEYWORDS=""
+	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
 LICENSE="GPL-2"
