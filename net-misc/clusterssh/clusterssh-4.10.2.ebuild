@@ -10,12 +10,12 @@ MODULE_AUTHOR="DUNCS"
 # /!\ IMPORTANT /!\
 ###################
 # CHANGE ME AT EVERY VERSION BUMP
-#MODULE_VERSION="4.08"
+MODULE_VERSION="4.10_02"
 
 inherit eutils perl-module
 
 DESCRIPTION="Concurrent Multi-Server Terminal Access"
-HOMEPAGE="https://sourceforge.net/projects/clusterssh"
+HOMEPAGE="https://github.com/duncs/clusterssh"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -36,6 +36,7 @@ RDEPEND="
 	dev-perl/XML-Simple
 	x11-apps/xlsfonts
 	x11-terms/xterm"
+
 DEPEND="
 	${RDEPEND}
 	dev-perl/CPAN-Changes
