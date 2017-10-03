@@ -54,6 +54,7 @@ media-sound/hdjd: Hercules DJ Control MP3e2 translation daemon
 ### misc
 
 ```
+dev-tex/rechnung: LaTeX module to create invoices
 games-util/urtconnector: Advanced UrbanTerror launcher program
 sci-visualization/circos: Circular layout visualization of genomic and other data
 net-p2p/monero: a cryptocurrency with a focus on private and censorship-resistant transactions
