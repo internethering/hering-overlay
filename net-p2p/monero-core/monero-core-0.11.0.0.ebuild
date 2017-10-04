@@ -58,6 +58,21 @@ src_unpack() {
 	fi
 }
 
+src_prepare() {
+	default
+	patch1="monero-wallet-gui.pro"
+	patch2="build.sh"
+	patch3="utils.sh"
+	patch4="get_libwallet_api.sh"
+	# https://github.com/monero-project/monero-core/issues/882
+	sed -i -e 's/-leasylogging/-leasylogging \\\n        -lreadline \\/' ${patch1} || die "Patching ${patch1} failed!"
+	# Not every shell is bash https://github.com/monero-project/monero-core/pull/897
+	sed -i -e 's/\$SHELL get_libwallet_api.sh/.\/get_libwallet_api.sh/' ${patch2} || die "Patching ${patch2} failed!"
+	# disable useless git calls that lead to error messages when source is not git but an archive
+	sed -i -n '1h; 1!H; ${ g; s/function get_tag()\n{.*fi\n}/function get_tag()\n{\n  VERSIONTAG="release"\n}/p }' ${patch3} || die "Patching ${patch3} failed!"
+	sed -i -n '1h; 1!H; ${ g; s/# init.*"$OLD_GIT_EMAIL")//p }' ${patch4} || die "Patching ${patch4} failed!"
+}
+
 src_compile() {
 	QT_SELECT=5 ./build.sh
 }
