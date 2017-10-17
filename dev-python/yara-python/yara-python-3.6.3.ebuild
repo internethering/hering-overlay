@@ -16,16 +16,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cuckoo magic dotnet profiling"
+IUSE=""
 
-RDEPEND="cuckoo? ( app-antivirus/cuckoo )"
+RDEPEND=""
 DEPEND="${RDEPEND}"
-
-python_configure_all() {
-	mydistutilsargs=(
-		$(use_enable cuckoo)
-		$(use_enable magic)
-		$(use_enable dotnet)
-		$(use_enable profiling)
-	)
-}
