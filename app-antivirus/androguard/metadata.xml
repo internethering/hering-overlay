@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>der@internethering.de</email>
+		<name>Richard Hering</name>
+	</maintainer>
+	<use>
+		<flag name="gui">Add QT-Gui</flag>
+		<flag name="magic">support filetype</flag>
+		<flag name="graphing">support pydots</flag>
+	</use>
+</pkgmetadata>
