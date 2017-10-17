@@ -74,6 +74,8 @@ src_install() {
 	insinto etc
 	doins utils/conf/monerod.conf
 
+	newinitd "${FILESDIR}/monerod.initd" monerod
+
 	use systemd && systemd_dounit utils/systemd/monerod.service
 
 	if use munin ; then

@@ -6,6 +6,6 @@
 		<name>Richard Hering</name>
 	</maintainer>
 	<use>
-    	<flag name="spamassassin">install sa-learn pipe script</flag>
-    </use>
+		<flag name="spamassassin">install sa-learn pipe script</flag>
+	</use>
 </pkgmetadata>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>der@internethering.de</email>
+		<name>Richard Hering</name>
+	</maintainer>
+	<use>
+		<flag name="cuckoo">enable "cuckoo" module</flag>
+		<flag name="magic">enable "magic" module</flag>
+		<flag name="dotnet">enable "dotnet" module</flag>
+		<flag name="profiling">enable profiling features</flag>
+	</use>
+</pkgmetadata>

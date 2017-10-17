@@ -1,13 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
 inherit subversion multilib-minimal
 
 DESCRIPTION="ASIO driver for WINE"
-HOMEPAGE="http://sourceforge.net/projects/wineasio"
+HOMEPAGE="https://sourceforge.net/projects/wineasio"
 ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${PN}/trunk/${PN}"
 KEYWORDS=""
 RESTRICT="mirror"
