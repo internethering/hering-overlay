@@ -12,10 +12,10 @@ DESCRIPTION="Peekaboo Extended Email Attachment Behavior Observation Owl"
 HOMEPAGE="https://github.com/scVENUS/PeekabooAV"
 
 if [[ "${PV}" = "9999" ]]; then
-	EGIT_REPO_URI="https://github.com/scVENUS/PeekabooAV.git"
+	EGIT_REPO_URI="https://github.com/scVENUS/${PN}.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/scVENUS/PeekabooAV/archive/v${PV}.tar.gz -> ${PF}.tar.gz"
+	SRC_URI="https://github.com/scVENUS/${PN}/archive/v${PV}.tar.gz -> ${PF}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 

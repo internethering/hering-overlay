@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit systemd user
+inherit systemd user eutils
 
 MY_P="${P/_/-}"
 DESCRIPTION="High-performance interface between the MTA and content checkers"
@@ -63,7 +63,7 @@ RDEPEND="${DEPEND}
 	clamav? ( app-antivirus/clamav )
 	ldap? ( >=dev-perl/perl-ldap-0.33 )
 	mysql? ( dev-perl/DBD-mysql )
-	peekabooav? ( app-antivirus/peekabooav )
+	peekabooav? ( app-antivirus/PeekabooAV )
 	postgres? ( dev-perl/DBD-Pg )
 	razor? ( mail-filter/razor )
 	snmp? ( net-analyzer/net-snmp[perl] )
@@ -83,7 +83,7 @@ src_prepare() {
 	fi
 
 	if use peekabooav ; then
-		eapply -p0 "${FILESDIR}"/peekabooav.patch
+		epatch "${FILESDIR}"/peekabooav.patch
 	fi
 
 	sed -i  \
