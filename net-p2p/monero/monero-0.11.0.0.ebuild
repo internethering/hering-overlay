@@ -63,7 +63,6 @@ src_install() {
 	if use utils ; then
 		dobin "${BUILD_DIR}/bin/monero-blockchain-export"
 		dobin "${BUILD_DIR}/bin/monero-blockchain-import"
-		dobin "${BUILD_DIR}/bin/monero-utils-deserialize"
 	fi
 
 	if use doc ; then
@@ -73,6 +72,8 @@ src_install() {
 
 	insinto etc
 	doins utils/conf/monerod.conf
+
+	newinitd ${FILESDIR}/monerod.initd monerod
 
 	use systemd && systemd_dounit utils/systemd/monerod.service
 
