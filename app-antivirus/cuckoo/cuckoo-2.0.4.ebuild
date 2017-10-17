@@ -56,6 +56,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	python2 stuff/monitor.py
+	default
 }
 
 pkg_setup() {
