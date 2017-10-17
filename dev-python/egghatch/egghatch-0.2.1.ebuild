@@ -17,5 +17,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-python/mock"
+RDEPEND="dev-libs/capstone[python]
+	dev-python/pytest-runner"
 DEPEND="${RDEPEND}"
