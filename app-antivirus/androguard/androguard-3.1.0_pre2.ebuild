@@ -14,8 +14,8 @@ if [[ "${PV}" = "9999" ]]; then
 	EGIT_REPO_URI="git://github.com/${PN}/${PN}.git"
 	KEYWORDS=""
 else
-    MY_PV=$(get_version_component_range 1-3)-pre.2
-    MY_P="${PN}-${MY_PV}"
+	MY_PV=$(get_version_component_range 1-3)-pre.2
+	MY_P="${PN}-${MY_PV}"
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${PF}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${MY_P}"
