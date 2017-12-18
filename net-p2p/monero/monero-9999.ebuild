@@ -26,7 +26,7 @@ graphviz? ( doc )"
 
 DEPEND="dev-libs/boost
 	dev-libs/openssl:0
-	net-dns/unbound
+	net-dns/unbound[threads]
 	sys-libs/libunwind
 	dev-util/cmake
 	upnp? ( net-libs/miniupnpc:0/16 )

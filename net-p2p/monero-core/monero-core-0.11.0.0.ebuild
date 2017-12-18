@@ -30,7 +30,7 @@ DEPEND="!daemon? ( net-p2p/monero )
 	net-dns/unbound
 	sys-libs/libunwind
 	dev-qt/qtcore:5
-	dev-qt/qtdeclarative:5
+	dev-qt/qtdeclarative:5[xml]
 	dev-qt/qtquickcontrols:5
 	dev-qt/qtquickcontrols2:5
 	dev-qt/qtgraphicaleffects:5
