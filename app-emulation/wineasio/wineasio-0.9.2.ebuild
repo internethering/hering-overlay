@@ -14,17 +14,23 @@ LICENSE="GPL-2"
 IUSE=""
 SLOT="0"
 
-DEPEND="media-libs/asio-sdk"
-RDEPEND="|| (
-		app-emulation/wine
-		virtual/wine
-	)
-	>=media-sound/jack-audio-connection-kit-1.9.10[${MULTILIB_USEDEP}]"
+DEPEND="media-libs/asio-sdk
+	virtual/wine"
+RDEPEND=">=media-sound/jack-audio-connection-kit-1.9.10[${MULTILIB_USEDEP}]"
 
 S="${WORKDIR}/${PN}"
 
+pkg_setup() {
+	export WINETARGET=`eselect --brief --colour=no wine show | awk '{$1=$1;print}'`
+	[[ $WINETARGET == "(unset)" ]] && die "please set wine version (eselect wine)"
+}
+
 src_prepare() {
 	cp /opt/asiosdk2.3/ASIOSDK2.3/common/asio.h .
+	for i in Makefile*; do
+    	sed -i -e 's/lib32/lob32/g;s/lib/lib\/'"${WINETARGET}"'/g;s/lob32/lib32\/'"${WINEVER}"'/g' $i
+	done
+
 	multilib_copy_sources
 }
 
@@ -38,7 +44,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
-	exeinto /usr/$(get_libdir)/wine
+	exeinto /usr/$(get_libdir)/${WINETARGET}/wine
 	doexe *.so
 }
 
