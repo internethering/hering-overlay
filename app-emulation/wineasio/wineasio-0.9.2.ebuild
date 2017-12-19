@@ -28,7 +28,7 @@ pkg_setup() {
 src_prepare() {
 	cp /opt/asiosdk2.3/ASIOSDK2.3/common/asio.h .
 	for i in Makefile*; do
-    	sed -i -e 's/lib32/lob32/g;s/lib/lib\/'"${WINETARGET}"'/g;s/lob32/lib32\/'"${WINEVER}"'/g' $i
+    	sed -i -e 's/lib32/lob32/g;s/lib/lib\/'"${WINETARGET}"'/g;s/lob32/lib32\/'"${WINETARGET}"'/g' $i
 	done
 
 	multilib_copy_sources
