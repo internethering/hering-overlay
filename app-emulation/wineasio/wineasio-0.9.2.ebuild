@@ -16,7 +16,7 @@ SLOT="0"
 
 DEPEND="media-libs/asio-sdk
 	virtual/wine"
-RDEPEND=">=media-sound/jack-audio-connection-kit-1.9.10[${MULTILIB_USEDEP}]"
+RDEPEND="virtual/jack[${MULTILIB_USEDEP}]"
 
 S="${WORKDIR}/${PN}"
 
