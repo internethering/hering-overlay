@@ -1,0 +1,193 @@
+From a95e460c7116589b5dedf5c966cb84893fe8d521 Mon Sep 17 00:00:00 2001
+From: moneromooo-monero <moneromooo-monero@users.noreply.github.com>
+Date: Tue, 29 Aug 2017 11:14:42 +0100
+Subject: [PATCH] move db specific options to BlockchainDB
+
+Avoids common depending on blockchain_db, which can cause
+link errors.
+---
+ src/blockchain_db/blockchain_db.cpp     | 24 ++++++++++++++++++++++++
+ src/blockchain_db/blockchain_db.h       | 11 +++++++++++
+ src/common/command_line.cpp             | 17 -----------------
+ src/common/command_line.h               |  3 ---
+ src/cryptonote_core/cryptonote_core.cpp | 10 ++++------
+ src/daemon/main.cpp                     |  2 +-
+ 6 files changed, 40 insertions(+), 27 deletions(-)
+
+diff --git a/src/blockchain_db/blockchain_db.cpp b/src/blockchain_db/blockchain_db.cpp
+index 01a59e079..d62a250ff 100644
+--- a/src/blockchain_db/blockchain_db.cpp
++++ b/src/blockchain_db/blockchain_db.cpp
+@@ -78,6 +78,23 @@ std::string blockchain_db_types(const std::string& sep)
+   return ret;
+ }
+ 
++std::string arg_db_type_description = "Specify database type, available: " + cryptonote::blockchain_db_types(", ");
++const command_line::arg_descriptor<std::string> arg_db_type = {
++  "db-type"
++, arg_db_type_description.c_str()
++, DEFAULT_DB_TYPE
++};
++const command_line::arg_descriptor<std::string> arg_db_sync_mode = {
++  "db-sync-mode"
++, "Specify sync option, using format [safe|fast|fastest]:[sync|async]:[nblocks_per_sync]." 
++, "fast:async:1000"
++};
++const command_line::arg_descriptor<bool> arg_db_salvage  = {
++  "db-salvage"
++, "Try to salvage a blockchain database if it seems corrupted"
++, false
++};
++
+ BlockchainDB *new_db(const std::string& db_type)
+ {
+   if (db_type == "lmdb")
+@@ -89,6 +106,13 @@ BlockchainDB *new_db(const std::string& db_type)
+   return NULL;
+ }
+ 
++void BlockchainDB::init_options(boost::program_options::options_description& desc)
++{
++  command_line::add_arg(desc, arg_db_type);
++  command_line::add_arg(desc, arg_db_sync_mode);
++  command_line::add_arg(desc, arg_db_salvage);
++}
++
+ void BlockchainDB::pop_block()
+ {
+   block blk;
+diff --git a/src/blockchain_db/blockchain_db.h b/src/blockchain_db/blockchain_db.h
+index ad246d85e..85a494ce7 100644
+--- a/src/blockchain_db/blockchain_db.h
++++ b/src/blockchain_db/blockchain_db.h
+@@ -33,6 +33,8 @@
+ #include <list>
+ #include <string>
+ #include <exception>
++#include <boost/program_options.hpp>
++#include "common/command_line.h"
+ #include "crypto/hash.h"
+ #include "cryptonote_protocol/blobdatatype.h"
+ #include "cryptonote_basic/cryptonote_basic.h"
+@@ -101,6 +103,10 @@ namespace cryptonote
+ /** a pair of <transaction hash, output index>, typedef for convenience */
+ typedef std::pair<crypto::hash, uint64_t> tx_out_index;
+ 
++extern const command_line::arg_descriptor<std::string> arg_db_type;
++extern const command_line::arg_descriptor<std::string> arg_db_sync_mode;
++extern const command_line::arg_descriptor<bool, false> arg_db_salvage;
++
+ #pragma pack(push, 1)
+ 
+ /**
+@@ -535,6 +541,11 @@ class BlockchainDB
+    */
+   virtual ~BlockchainDB() { };
+ 
++  /**
++   * @brief init command line options
++   */
++  static void init_options(boost::program_options::options_description& desc);
++
+   /**
+    * @brief reset profiling stats
+    */
+diff --git a/src/common/command_line.cpp b/src/common/command_line.cpp
+index ad66b2009..8c03bed0d 100644
+--- a/src/common/command_line.cpp
++++ b/src/common/command_line.cpp
+@@ -32,7 +32,6 @@
+ #include <boost/algorithm/string/compare.hpp>
+ #include <boost/algorithm/string/predicate.hpp>
+ #include <unordered_set>
+-#include "blockchain_db/db_types.h"
+ #include "common/i18n.h"
+ #include "cryptonote_config.h"
+ #include "string_tools.h"
+@@ -96,22 +95,6 @@ namespace command_line
+   , "checkpoints from DNS server will be enforced"
+   , false
+   };
+-  std::string arg_db_type_description = "Specify database type, available: " + cryptonote::blockchain_db_types(", ");
+-  const command_line::arg_descriptor<std::string> arg_db_type = {
+-    "db-type"
+-  , arg_db_type_description.c_str()
+-  , DEFAULT_DB_TYPE
+-  };
+-  const command_line::arg_descriptor<std::string> arg_db_sync_mode = {
+-    "db-sync-mode"
+-  , "Specify sync option, using format [safe|fast|fastest]:[sync|async]:[nblocks_per_sync]." 
+-  , "fast:async:1000"
+-  };
+-  const arg_descriptor<bool> arg_db_salvage  = {
+-    "db-salvage"
+-  , "Try to salvage a blockchain database if it seems corrupted"
+-  , false
+-  };
+   const command_line::arg_descriptor<uint64_t> arg_fast_block_sync = {
+     "fast-block-sync"
+   , "Sync up most of the way by using embedded, known block hashes."
+diff --git a/src/common/command_line.h b/src/common/command_line.h
+index 03ba35a5b..ac64f519c 100644
+--- a/src/common/command_line.h
++++ b/src/common/command_line.h
+@@ -212,9 +212,6 @@ namespace command_line
+   extern const arg_descriptor<int> 		arg_test_dbg_lock_sleep;
+   extern const arg_descriptor<bool, false> arg_testnet_on;
+   extern const arg_descriptor<bool> arg_dns_checkpoints;
+-  extern const arg_descriptor<std::string> arg_db_type;
+-  extern const arg_descriptor<std::string> arg_db_sync_mode;
+-  extern const arg_descriptor<bool, false> arg_db_salvage;
+   extern const arg_descriptor<uint64_t> arg_fast_block_sync;
+   extern const arg_descriptor<uint64_t> arg_prep_blocks_threads;
+   extern const arg_descriptor<uint64_t> arg_show_time_stats;
+diff --git a/src/cryptonote_core/cryptonote_core.cpp b/src/cryptonote_core/cryptonote_core.cpp
+index c406dd0b4..e58cf7424 100644
+--- a/src/cryptonote_core/cryptonote_core.cpp
++++ b/src/cryptonote_core/cryptonote_core.cpp
+@@ -156,11 +156,8 @@ namespace cryptonote
+ 
+     command_line::add_arg(desc, command_line::arg_testnet_on);
+     command_line::add_arg(desc, command_line::arg_dns_checkpoints);
+-    command_line::add_arg(desc, command_line::arg_db_type);
+     command_line::add_arg(desc, command_line::arg_prep_blocks_threads);
+     command_line::add_arg(desc, command_line::arg_fast_block_sync);
+-    command_line::add_arg(desc, command_line::arg_db_sync_mode);
+-    command_line::add_arg(desc, command_line::arg_db_salvage);
+     command_line::add_arg(desc, command_line::arg_show_time_stats);
+     command_line::add_arg(desc, command_line::arg_block_sync_size);
+     command_line::add_arg(desc, command_line::arg_check_updates);
+@@ -170,6 +167,7 @@ namespace cryptonote
+     command_line::add_arg(desc, nodetool::arg_p2p_bind_port, false);
+ 
+     miner::init_options(desc);
++    BlockchainDB::init_options(desc);
+   }
+   //-----------------------------------------------------------------------------------------------
+   bool core::handle_command_line(const boost::program_options::variables_map& vm)
+@@ -279,9 +277,9 @@ namespace cryptonote
+       m_config_folder_mempool = m_config_folder_mempool + "/" + m_port;
+     }
+ 
+-    std::string db_type = command_line::get_arg(vm, command_line::arg_db_type);
+-    std::string db_sync_mode = command_line::get_arg(vm, command_line::arg_db_sync_mode);
+-    bool db_salvage = command_line::get_arg(vm, command_line::arg_db_salvage) != 0;
++    std::string db_type = command_line::get_arg(vm, cryptonote::arg_db_type);
++    std::string db_sync_mode = command_line::get_arg(vm, cryptonote::arg_db_sync_mode);
++    bool db_salvage = command_line::get_arg(vm, cryptonote::arg_db_salvage) != 0;
+     bool fast_sync = command_line::get_arg(vm, command_line::arg_fast_block_sync) != 0;
+     uint64_t blocks_threads = command_line::get_arg(vm, command_line::arg_prep_blocks_threads);
+     std::string check_updates_string = command_line::get_arg(vm, command_line::arg_check_updates);
+diff --git a/src/daemon/main.cpp b/src/daemon/main.cpp
+index 456eeee64..44d2dae43 100644
+--- a/src/daemon/main.cpp
++++ b/src/daemon/main.cpp
+@@ -142,7 +142,7 @@ int main(int argc, char const * argv[])
+ 
+     epee::debug::g_test_dbg_lock_sleep() = command_line::get_arg(vm, command_line::arg_test_dbg_lock_sleep);
+ 
+-    std::string db_type = command_line::get_arg(vm, command_line::arg_db_type);
++    std::string db_type = command_line::get_arg(vm, cryptonote::arg_db_type);
+ 
+     // verify that blockchaindb type is valid
+     if(!cryptonote::blockchain_valid_db_type(db_type))

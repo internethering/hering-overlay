@@ -43,6 +43,10 @@ RDEPEND="munin? ( net-analyzer/munin )
 
 BUILD_DIR="${S}/build/release"
 
+PATCHES=(                                                                                                                                                                                                                                                                                                                   
+	"${FILESDIR}"/${P}-cryptonote.patch
+)
+
 src_compile() {
 	if use debug ; then
 		BUILD_DIR="${S}/build/debug"
