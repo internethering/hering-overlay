@@ -19,4 +19,5 @@ IUSE=""
 
 RDEPEND="dev-libs/capstone[python]
 	dev-python/pytest-runner"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
