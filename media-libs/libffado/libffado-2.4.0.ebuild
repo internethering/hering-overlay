@@ -43,12 +43,6 @@ RDEPEND="dev-cpp/libxmlpp:2.6[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}/libffado-2.3.0-modelname-strip.patch"
-	"${FILESDIR}/libffado-2.3.0-gcc6.patch"
-	"${FILESDIR}/libffado-2.3.0-include-signal.patch"
-)
-
 myescons() {
 	local myesconsargs=(
 		PREFIX="${EPREFIX}/usr"
