@@ -15,17 +15,17 @@ IUSE="spamassassin dspam rspamd"
 REQUIRED_USE="^^ ( spamassassin dspam rspamd )"
 
 RDEPEND=">=net-mail/dovecot-2.3[sieve]
-    !mail-filter/dovecot-antispam"
+	!mail-filter/dovecot-antispam"
 DEPEND="${RDEPEND}
 	spamassassin? ( mail-filter/spamassassin )
-    dspam? ( mail-filter/dspam )
+	dspam? ( mail-filter/dspam )
 	rspamd? ( mail-filter/rspamd )"
 
 # Need to set S due to PMS saying we need it existing, but no SRC_URI
 S=${WORKDIR}
 
 src_install() {
-    insinto /etc/dovecot/conf.d
+	insinto /etc/dovecot/conf.d
 	doins "${FILESDIR}/90-antispam-sieve.conf"
 
 	insinto /usr/lib/dovecot/sieve
@@ -35,23 +35,22 @@ src_install() {
 	exeinto /usr/lib/dovecot/sieve
 
 	if use spamassassin ; then
-        newexe "${FILESDIR}/sa-learn-spam.sh" learn-spam.sh
-        newexe "${FILESDIR}/sa-learn-ham.sh" learn-ham.sh
+		newexe "${FILESDIR}/sa-learn-spam.sh" learn-spam.sh
+		newexe "${FILESDIR}/sa-learn-ham.sh" learn-ham.sh
 	fi
 
 	if use dspam ; then
-        newexe "${FILESDIR}/ds-learn-spam.sh" learn-spam.sh
-        newexe "${FILESDIR}/ds-learn-ham.sh" learn-ham.sh
+		newexe "${FILESDIR}/ds-learn-spam.sh" learn-spam.sh
+		newexe "${FILESDIR}/ds-learn-ham.sh" learn-ham.sh
 	fi
 
-    if use rspamd ; then
-        newexe "${FILESDIR}/rs-learn-spam.sh" learn-spam.sh
-        newexe "${FILESDIR}/rs-learn-ham.sh" learn-ham.sh
+	if use rspamd ; then
+		newexe "${FILESDIR}/rs-learn-spam.sh" learn-spam.sh
+		newexe "${FILESDIR}/rs-learn-ham.sh" learn-ham.sh
 	fi
 }
 
-pkg_postinst()
-{
+pkg_postinst() {
 	sievec /usr/lib/dovecot/sieve/report-spam.sieve
-    sievec /usr/lib/dovecot/sieve/report-ham.sieve
+	sievec /usr/lib/dovecot/sieve/report-ham.sieve
 }
