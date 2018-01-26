@@ -37,10 +37,8 @@ RDEPEND="${CDEPEND}
 DOCS=( AUTHORS BUGS ChangeLog FAQ INSTALL NEWS README UPGRADE )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.99-gcc-6.patch
-	#"${FILESDIR}"/${P}-tinfo.patch
-	#"${FILESDIR}"/${PN}-0.99-zlib.patch
-	#"${FILESDIR}"/${P}-bytecode_api.patch
-	#"${FILESDIR}"/${P}-pcre2-compile-erroffset.patch
+	"${FILESDIR}"/${PN}-0.99-bytecode_api.patch
+	"${FILESDIR}"/${PN}-0.99-pcre2-compile-erroffset.patch
 )
 
 pkg_setup() {
