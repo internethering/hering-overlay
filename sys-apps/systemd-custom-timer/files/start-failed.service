@@ -2,4 +2,4 @@
 Description=try start failed services
 
 [Service]
-ExecStart=/usr/bin/systemctl default
+ExecStart=/bin/systemctl default
