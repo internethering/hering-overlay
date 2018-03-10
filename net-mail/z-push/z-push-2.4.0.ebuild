@@ -3,12 +3,12 @@
 
 EAPI=5
 
-inherit versionator
+inherit versionator git-r3
 
 DESCRIPTION="Z-Push syncs ActiveSync compatible devices against various backends"
 HOMEPAGE="http://z-push.org/"
-SRC_URI="http://download.z-push.org/final/$(get_version_component_range 1-2)/${P}.tar.gz"
-#EGIT_REPO_URI="https://stash.z-hub.io/scm/zp/z-push.git"
+EGIT_REPO_URI="https://stash.z-hub.io/scm/zp/z-push.git"
+EGIT_COMMIT="${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"

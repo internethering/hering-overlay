@@ -9,7 +9,7 @@ MODULE_AUTHOR="DUNCS"
 # /!\ IMPORTANT /!\
 ###################
 # CHANGE ME AT EVERY VERSION BUMP
-MODULE_VERSION="4.10_02"
+MODULE_VERSION="4.13.1"
 
 inherit eutils perl-module
 
