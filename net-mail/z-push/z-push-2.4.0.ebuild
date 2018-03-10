@@ -51,7 +51,7 @@ src_install() {
 	process_cfg_file policies.ini
 	process_cfg_file config.php
 	process_cfg_file autodiscover/config.php
-	process_cfg_file tools/gab-sync/config.php
+	process_cfg_file ../tools/gab-sync/config.php
 	for i in backend/*/config.php
 	do
 		process_cfg_file ${i}
