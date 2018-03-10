@@ -9,6 +9,7 @@ DESCRIPTION="Z-Push syncs ActiveSync compatible devices against various backends
 HOMEPAGE="http://z-push.org/"
 EGIT_REPO_URI="https://stash.z-hub.io/scm/zp/z-push.git"
 EGIT_COMMIT="${PV}"
+S="${WORKDIR}/${P}/src"
 
 LICENSE="GPL-3"
 SLOT="0"
