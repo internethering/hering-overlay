@@ -5,11 +5,7 @@ EAPI=5
 
 MY_PN="App-ClusterSSH"
 MODULE_AUTHOR="DUNCS"
-###################
-# /!\ IMPORTANT /!\
-###################
-# CHANGE ME AT EVERY VERSION BUMP
-MODULE_VERSION="4.13"
+MODULE_VERSION="${PV}"
 
 inherit eutils perl-module
 
