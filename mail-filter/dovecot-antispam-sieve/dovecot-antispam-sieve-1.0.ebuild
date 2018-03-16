@@ -51,8 +51,8 @@ src_install() {
 }
 
 pkg_postinst() {
-    echo "restart dovecot and run:"
-    echo ""
+	echo "restart dovecot and run:"
+	echo ""
 	echo "sievec /usr/lib/dovecot/sieve/report-spam.sieve"
 	echo "sievec /usr/lib/dovecot/sieve/report-ham.sieve"
 }
