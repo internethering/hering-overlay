@@ -1,6 +1,0 @@
-#!/bin/sh
-
-for i in `doveadm user '*@*'`
-do
-    printf "a select INBOX\nb search text xyzzy\nc logout\n" | /usr/libexec/dovecot/imap -u $i > /dev/null 2>&1
-done

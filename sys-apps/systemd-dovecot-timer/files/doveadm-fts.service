@@ -3,4 +3,4 @@ Description=doveadm fts
 
 [Service]
 Type=oneshot
-ExecStart=/usr/sbin/fts-index
+ExecStart=/usr/bin/doveadm fts rescan -A

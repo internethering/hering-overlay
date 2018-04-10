@@ -22,6 +22,4 @@ src_install() {
 	do
 		systemd_dounit $i
 	done
-
-	dosbin "${FILESDIR}/fts-index"
 }
