@@ -22,7 +22,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}/${P}-pyc.patch" \
 		"${FILESDIR}/${P}-noshells.patch" \
-		"${FILESDIR}/${P}-pythoninterpreter.patch"
+		"${FILESDIR}/${P}-pythoninterpreter.patch" \
+		"${FILESDIR}/${P}-removedirs.patch"
 	eautoreconf
 }
 
