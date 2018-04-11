@@ -14,7 +14,7 @@ IUSE="spamassassin dspam rspamd"
 
 REQUIRED_USE="^^ ( spamassassin dspam rspamd )"
 
-RDEPEND=">=net-mail/dovecot-2.3[sieve]
+RDEPEND=">=net-mail/dovecot-2.2.24[sieve]
 	!mail-filter/dovecot-antispam"
 DEPEND="${RDEPEND}
 	spamassassin? ( mail-filter/spamassassin )
