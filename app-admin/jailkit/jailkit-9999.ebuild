@@ -16,7 +16,7 @@ ECVS_LOCALNAME="${P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 IUSE="systemd"
 
 RDEPEND="systemd? ( sys-apps/systemd )"
