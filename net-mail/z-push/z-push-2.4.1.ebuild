@@ -3,12 +3,13 @@
 
 EAPI=5
 
-inherit versionator
+inherit versionator git-r3
 
 DESCRIPTION="Z-Push syncs ActiveSync compatible devices against various backends"
 HOMEPAGE="http://z-push.org/"
-SRC_URI="http://download.z-push.org/final/$(get_version_component_range 1-2)/${P}.tar.gz"
-#EGIT_REPO_URI="https://stash.z-hub.io/scm/zp/z-push.git"
+EGIT_REPO_URI="https://stash.z-hub.io/scm/zp/z-push.git"
+EGIT_COMMIT="${PV}"
+S="${WORKDIR}/${P}/src"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -50,7 +51,7 @@ src_install() {
 	process_cfg_file policies.ini
 	process_cfg_file config.php
 	process_cfg_file autodiscover/config.php
-	process_cfg_file tools/gab-sync/config.php
+	process_cfg_file ../tools/gab-sync/config.php
 	for i in backend/*/config.php
 	do
 		process_cfg_file ${i}
