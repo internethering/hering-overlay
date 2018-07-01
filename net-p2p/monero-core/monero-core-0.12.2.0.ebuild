@@ -53,6 +53,7 @@ src_unpack() {
 		git-r3_src_unpack
 	else
 		unpack ${A}
+		mv "${WORKDIR}/monero-gui-${PV}" "${WORKDIR}/${P}"
 		rmdir "${WORKDIR}/${P}/monero"
 		mv "${WORKDIR}/monero-${PV}" "${WORKDIR}/${P}/monero"
 	fi

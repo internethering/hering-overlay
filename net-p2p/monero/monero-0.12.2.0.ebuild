@@ -27,6 +27,7 @@ graphviz? ( doc )"
 DEPEND="dev-libs/boost
 	dev-libs/openssl:0
 	net-dns/unbound[threads]
+	net-libs/cppzmq
 	sys-libs/libunwind
 	dev-util/cmake
 	upnp? ( net-libs/miniupnpc:0/16 )
@@ -42,10 +43,6 @@ RDEPEND="munin? ( net-analyzer/munin )
 	!net-p2p/monero-core[daemon]"
 
 BUILD_DIR="${S}/build/release"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-cryptonote.patch
-)
 
 src_compile() {
 	if use debug ; then
