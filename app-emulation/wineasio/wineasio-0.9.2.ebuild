@@ -26,7 +26,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cp /opt/asiosdk2.3.1/ASIOSDK2.3.1/common/asio.h .
+	cp /opt/asiosdk2.3.1/asiosdk2.3.1\ svnrev312937/ASIOSDK2.3.1/common/asio.h .
 	for i in Makefile*; do
 		sed -i -e 's/lib32/lob32/g;s/lib/lib\/'"${WINETARGET}"'/g;s/lob32/lib32\/'"${WINETARGET}"'/g' $i
 	done
