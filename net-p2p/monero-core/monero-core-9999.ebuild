@@ -3,19 +3,17 @@
 
 EAPI=6
 
-[[ "${PV}" = "9999" ]] && inherit git-r3
-inherit eutils
+inherit eutils git-r3
 
 DESCRIPTION="Monero Gui: the secure, private, untraceable cryptocurrency"
 HOMEPAGE="https://getmonero.org/"
+EGIT_REPO_URI="https://github.com/monero-project/${PN}.git"
 
 if [[ "${PV}" = "9999" ]]; then
-	EGIT_REPO_URI="git://github.com/monero-project/${PN}.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/monero-project/${PN}/archive/v${PV}.tar.gz -> ${PF}.tar.gz
-	https://github.com/monero-project/monero/archive/v${PV}.tar.gz -> monero-${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	EGIT_COMMIT="v${PV}"
 fi
 
 LICENSE="Monero"
@@ -48,16 +46,6 @@ RDEPEND="${DEPEND}"
 
 BUILD_DIR="${S}/build/release"
 
-src_unpack() {
-	if [[ "${PV}" = "9999" ]]; then
-		git-r3_src_unpack
-	else
-		unpack ${A}
-		rmdir "${WORKDIR}/${P}/monero"
-		mv "${WORKDIR}/monero-${PV}" "${WORKDIR}/${P}/monero"
-	fi
-}
-
 src_compile() {
 	QT_SELECT=5 ./build.sh
 }
@@ -67,7 +55,7 @@ src_install() {
 	use daemon && dobin "${BUILD_DIR}/bin/monerod"
 
 	insinto "usr/share/${PN}/translations"
-	for lang in ${BUILD_DIR}/bin/translations/*
+	for lang in ${BUILD_DIR}/../translations/*
 	do
 		doins "${lang}"
 	done

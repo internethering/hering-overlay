@@ -3,18 +3,17 @@
 
 EAPI=6
 
-[[ "${PV}" = "9999" ]] && inherit git-r3
-inherit cmake-utils systemd user
+inherit cmake-utils systemd user git-r3
 
 DESCRIPTION="Monero: the secure, private, untraceable cryptocurrency"
 HOMEPAGE="https://getmonero.org/"
+EGIT_REPO_URI="https://github.com/monero-project/${PN}.git"
 
 if [[ "${PV}" = "9999" ]]; then
-	EGIT_REPO_URI="git://github.com/monero-project/${PN}.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/monero-project/${PN}/archive/v${PV}.tar.gz -> ${PF}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	EGIT_COMMIT="v${PV}"
 fi
 
 LICENSE="Monero"

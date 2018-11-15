@@ -1,0 +1,8 @@
+# <der@internethering.de> (15 Nov 2018)
+#
+# removal in 30 days
+#
+# there are problems with the gui, you can't choose language. I've no time to fix this and I'm not using monero.
+
+net-p2p/monero
+net-p2p/monero-core
