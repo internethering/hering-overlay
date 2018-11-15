@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit versionator git-r3
+inherit git-r3
 
 DESCRIPTION="Z-Push syncs ActiveSync compatible devices against various backends"
 HOMEPAGE="http://z-push.org/"
@@ -37,7 +37,7 @@ process_cfg_file() {
 	insinto /etc/${PN}
 	newins ${1} ${rn}
 	rm ${1}
-	dosym /etc/${PN}/${rn} usr/share/${PN}/${1}
+	dosym ../../../etc/${PN}/${rn} usr/share/${PN}/${1}
 }
 
 process_doc_file() {
@@ -72,6 +72,6 @@ src_install() {
 	# cli tools
 	exeinto /usr/share/${PN}
 	doexe z-push-*.php
-	dosym /usr/share/${PN}/z-push-top.php usr/sbin/z-push-top
-	dosym /usr/share/${PN}/z-push-admin.php usr/sbin/z-push-admin
+	dosym ../share/${PN}/z-push-top.php usr/sbin/z-push-top
+	dosym ../share/${PN}/z-push-admin.php usr/sbin/z-push-admin
 }

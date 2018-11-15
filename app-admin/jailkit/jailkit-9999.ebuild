@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -23,9 +23,9 @@ RDEPEND="systemd? ( sys-apps/systemd )"
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}/${P}-pyc.patch" \
-		"${FILESDIR}/${P}-noshells.patch" \
-		"${FILESDIR}/${P}-pythoninterpreter.patch"
+        "${FILESDIR}/pyc.patch" \
+		"${FILESDIR}/noshells.patch" \
+		"${FILESDIR}/pythoninterpreter.patch"
 	eautoreconf
 }
 

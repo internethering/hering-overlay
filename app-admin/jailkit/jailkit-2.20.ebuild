@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,17 +13,16 @@ SRC_URI="http://olivier.sessink.nl/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="systemd"
 
 RDEPEND="systemd? ( sys-apps/systemd )"
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}/${P}-pyc.patch" \
-		"${FILESDIR}/${P}-noshells.patch" \
-		"${FILESDIR}/${P}-pythoninterpreter.patch" \
-		"${FILESDIR}/${P}-removedirs.patch"
+        "${FILESDIR}/pyc.patch" \
+		"${FILESDIR}/noshells.patch" \
+		"${FILESDIR}/pythoninterpreter.patch"
 	eautoreconf
 }
 

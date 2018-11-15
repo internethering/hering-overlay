@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,7 +38,7 @@ DEPEND="!daemon? ( net-p2p/monero )
 		dev-qt/qtmultimedia:5[qml]
 		media-gfx/zbar
 	)
-	upnp? ( net-libs/miniupnpc:0/16 )
+	upnp? ( net-libs/miniupnpc )
 	unwind? ( sys-libs/libunwind )
 	ldns? ( net-libs/ldns )
 	lzma? ( app-arch/xz-utils )

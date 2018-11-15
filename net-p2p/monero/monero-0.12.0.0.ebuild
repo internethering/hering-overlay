@@ -30,7 +30,7 @@ DEPEND="dev-libs/boost
 	net-libs/cppzmq
 	sys-libs/libunwind
 	dev-util/cmake
-	upnp? ( net-libs/miniupnpc:0/16 )
+	upnp? ( net-libs/miniupnpc )
 	unwind? ( sys-libs/libunwind )
 	ldns? ( net-libs/ldns )
 	lzma? ( app-arch/xz-utils )

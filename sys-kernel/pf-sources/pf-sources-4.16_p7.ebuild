@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-inherit readme.gentoo-r1 toolchain-funcs versionator
+EAPI="6"
+inherit readme.gentoo-r1 toolchain-funcs eapi7-ver
 
 K_USEPV="yes"
 UNIPATCH_STRICTORDER="yes"
 K_SECURITY_UNSUPPORTED="1"
 
-CKV="$(get_version_component_range 1-2)"
+CKV="$(ver_cut 1-2)"
 ETYPE="sources"
 inherit kernel-2
 detect_version
@@ -18,7 +18,7 @@ DESCRIPTION="Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOn
 HOMEPAGE="https://pf.natalenko.name/"
 
 PF_VERS="1"
-PF_FILE="v$(get_version_component_range 1-2)...v$(get_version_component_range 1-2)-pf${PV/*_p/}.diff"
+PF_FILE="v$(ver_cut 1-2)...v$(ver_cut 1-2)-pf${PV/*_p/}.diff"
 PF_URI="https://github.com/pfactum/pf-kernel/compare/${PF_FILE}"
 SRC_URI="${KERNEL_URI} ${PF_URI}"
 

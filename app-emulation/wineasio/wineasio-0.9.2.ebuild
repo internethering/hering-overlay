@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 IUSE=""
 SLOT="0"
 
-DEPEND="=media-libs/asio-sdk-2.3.1
+DEPEND="media-libs/asio-sdk
 	virtual/wine"
 RDEPEND="virtual/jack[${MULTILIB_USEDEP}]"
 
