@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 MY_PN="${PN/-/}"
@@ -13,7 +13,7 @@ RESTRICT="fetch"
 
 LICENSE="STEINBERG-EULA"
 SLOT="0"
-KEYWORDS="x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
@@ -25,7 +25,7 @@ pkg_nofetch() {
 	einfo "2. Create a developer login if you do not have one (this is required)"
 	einfo "3. When you are logged in, click on the link for ASIO SDK"
 	einfo "4. Agree to license terms and click on 'proceed to download'"
-	einfo "5. move ${At} to ${DISTDIR}"
+	einfo "5. move ${At} to /usr/portage/distfiles"
 	einfo
 }
 
