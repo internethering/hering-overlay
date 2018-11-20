@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils
+inherit eutils systemd
 
 DESCRIPTION="Create Daily, Weekly and Monthly backups of MySQL databases."
 HOMEPAGE="https://github.com/internethering/AutoMySQLBackup"
@@ -27,4 +27,6 @@ src_install() {
 	doins automysqlbackup.conf.example
 	fperms 600 /etc/automysqlbackup/automysqlbackup.conf.example
 	dodoc README.md
+	systemd_dounit "${FILESDIR}/automysqlbackup.service"
+	systemd_dounit "${FILESDIR}/automysqlbackup.timer"
 }
