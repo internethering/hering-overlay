@@ -35,7 +35,7 @@ process_cfg_file() {
 	insinto /etc/${PN}
 	newins ${1} ${rn}
 	rm ${1}
-	dosym ../../../etc/${PN}/${rn} usr/share/${PN}/${1}
+	dosym /etc/${PN}/${rn} usr/share/${PN}/${1}
 }
 
 process_doc_file() {
