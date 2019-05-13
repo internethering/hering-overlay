@@ -18,8 +18,7 @@ DESCRIPTION="Linux kernel fork with new features (-ck patchset (BFS), BFQ, TuxOn
 HOMEPAGE="https://pf.natalenko.name/"
 
 PF_VERS="1"
-#PF_FILE="v$(ver_cut 1-2)...v$(ver_cut 1-2)-pf${PV/*_p/}.diff"
-PF_FILE="pf-4.20...pf-5.0.diff"
+PF_FILE="v$(ver_cut 1-2)...v$(ver_cut 1-2)-pf${PV/*_p/}.diff"
 PF_URI="https://github.com/pfactum/pf-kernel/compare/${PF_FILE}"
 SRC_URI="${KERNEL_URI} ${PF_URI}"
 
