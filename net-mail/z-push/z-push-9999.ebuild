@@ -15,7 +15,7 @@ KEYWORDS=""
 IUSE="memcached ldap imap carddav caldav mysql postgres sqlite"
 
 DEPEND=""
-RDEPEND="<dev-lang/php-7[cli,soap,posix]
+RDEPEND="dev-lang/php[cli,soap,posix]
 	memcached? ( dev-php/pecl-memcached )
 	!memcached? ( dev-lang/php[pcntl,sysvipc] )
 	ldap? ( dev-lang/php[ldap] )
