@@ -64,7 +64,6 @@ multilib_src_configure() {
 		--celt=no
 		--doxygen=$(multilib_native_usex doc yes no)
 		--firewire=$(usex ieee1394 yes no)
-		--freebob=no
 		--iio=no
 		--opus=$(usex opus yes no)
 		--portaudio=no
