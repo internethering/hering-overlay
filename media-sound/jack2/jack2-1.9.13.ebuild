@@ -48,7 +48,7 @@ RDEPEND="${CDEPEND}
 	pam? ( sys-auth/realtime-base )
 	!media-sound/jack-audio-connection-kit:0"
 
-DOCS=( ChangeLog README README_NETJACK2 TODO )
+DOCS=( ChangeLog.rst README.rst README_NETJACK2 )
 
 src_prepare() {
 	default
