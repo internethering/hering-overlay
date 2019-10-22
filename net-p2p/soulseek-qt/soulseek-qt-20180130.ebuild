@@ -33,5 +33,5 @@ src_install() {
 	into /opt
 	newbin "${BINARY_NAME}".AppImage "${PN}"
 	doicon "${DISTDIR}/slsk.png"
-	make_desktop_entry "/opt/bin/soulseek-qt %u" "Soulseek" "slsk" "Network;P2P;" "Terminal=false"
+	make_desktop_entry "soulseek-qt" "Soulseek" "slsk" "Network;FileTransfer;" "/opt/bin/"
 }
