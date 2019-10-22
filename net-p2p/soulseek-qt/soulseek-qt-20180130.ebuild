@@ -8,11 +8,11 @@ inherit desktop
 DESCRIPTION="Official binary Qt SoulSeek client"
 HOMEPAGE="http://www.soulseekqt.net/"
 BINARY_NAME="SoulseekQt-${PV:0:4}-$((${PV:4:2}))-$((${PV:6:2}))"
-SRC_URI="https://www.dropbox.com/s/kebk1b5ib1m3xxw/${BINARY_NAME}-32bit.tgz https://www.dropbox.com/s/7qh902qv2sxyp6p/${BINARY_NAME}-64bit.tgz"
+SRC_URI="https://www.slsknet.org/SoulseekQt/Linux/${BINARY_NAME}-64bit-appimage.tgz"
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=""
@@ -26,9 +26,8 @@ QA_PREBUILT="opt/bin/.*"
 
 src_install() {
 	use amd64 && BINARY_NAME="${BINARY_NAME}-64bit"
-	use x86 && BINARY_NAME="${BINARY_NAME}-32bit"
 	into /opt
-	newbin "${BINARY_NAME}" "${PN}"
+	newbin "${BINARY_NAME}".AppImage "${PN}"
 	doicon "${FILESDIR}/soulseek-qt.png"
 	make_desktop_entry "/opt/bin/soulseek-qt %u" "Soulseek" "soulseek-qt" "Network;P2P;" "Terminal=false"
 }
