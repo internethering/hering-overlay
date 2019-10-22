@@ -24,9 +24,9 @@ RESTRICT="mirror"
 
 QA_PREBUILT="opt/bin/.*"
 
-#src_unpack() {
-#	unpack ${BINARY_NAME}-64bit-appimage.tgz
-#}
+src_unpack() {
+	unpack ${BINARY_NAME}-64bit-appimage.tgz
+}
 
 src_install() {
 	use amd64 && BINARY_NAME="${BINARY_NAME}-64bit"
