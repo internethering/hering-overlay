@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_5 python3_6 python3_7 )
 PYTHON_REQ_USE="threads(+)"
 inherit python-single-r1 waf-utils multilib-minimal
 
@@ -17,13 +17,13 @@ else
 	MY_PV="${PV/_rc/-RC}"
 	MY_P="${PN}-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://github.com/jackaudio/jack2/releases/download/v${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~x86"
+	SRC_URI="https://github.com/jackaudio/jack2/releases/download/v${MY_PV}/v${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+	KEYWORDS="amd64 ~ppc x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="2"
-IUSE="alsa +classic dbus doc ieee1394 libsamplerate opus pam readline sndfile"
+IUSE="alsa +classic dbus doc ieee1394 libsamplerate metadata opus pam readline sndfile"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -39,6 +39,7 @@ CDEPEND="${PYTHON_DEPS}
 		sys-apps/dbus[${MULTILIB_USEDEP}]
 	)
 	ieee1394? ( media-libs/libffado:=[${MULTILIB_USEDEP}] )
+	metadata? ( sys-libs/db:* )
 	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
@@ -62,6 +63,7 @@ multilib_src_configure() {
 		$(usex classic --classic "")
 		--alsa=$(usex alsa yes no)
 		--celt=no
+		--db=$(usex metadata yes no)
 		--doxygen=$(multilib_native_usex doc yes no)
 		--firewire=$(usex ieee1394 yes no)
 		--iio=no
