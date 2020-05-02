@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="|| ( dev-java/oracle-jdk-bin:1.8[javafx] dev-java/oracle-jre-bin:1.8[javafx] )
+RDEPEND="|| ( virtual/jdk virtual/jre )
 		media-libs/chromaprint
 		media-libs/fontconfig"
 
