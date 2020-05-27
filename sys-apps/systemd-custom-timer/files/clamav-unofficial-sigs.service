@@ -1,6 +1,0 @@
-[Unit]
-Description=ClamAV Unofficial Signatures Updater
-
-[Service]
-Type=oneshot
-ExecStart=/usr/sbin/clamav-unofficial-sigs.sh

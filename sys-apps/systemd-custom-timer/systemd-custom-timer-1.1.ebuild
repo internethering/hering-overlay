@@ -15,8 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="geoip clamav-unofficial-sigs dhparams"
 
 DEPEND=""
-RDEPEND="geoip? ( dev-libs/geoip )
-clamav-unofficial-sigs? ( app-antivirus/clamav-unofficial-sigs )"
+RDEPEND="geoip? ( dev-libs/geoip )"
 
 # Need to set S due to PMS saying we need it existing, but no SRC_URI
 S=${WORKDIR}
@@ -25,10 +24,6 @@ src_install() {
 	if use geoip ; then
 		systemd_dounit "${FILESDIR}/geoipupdate.timer"
 		systemd_dounit "${FILESDIR}/geoipupdate.service"
-	fi
-	if use clamav-unofficial-sigs ; then
-		systemd_dounit "${FILESDIR}/clamav-unofficial-sigs.service"
-		systemd_dounit "${FILESDIR}/clamav-unofficial-sigs.timer"
 	fi
 	if use dhparams ; then
 		systemd_newunit "${FILESDIR}/dhparams-update.service" "dhparams-update@.service"
