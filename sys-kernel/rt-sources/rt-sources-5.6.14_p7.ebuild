@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 ETYPE="sources"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 HOMEPAGE="https://www.kernel.org/pub/linux/kernel/projects/rt/"
 
@@ -36,8 +36,8 @@ src_prepare() {
 
 	# 627796
 	sed \
-		"s/default PREEMPT_NONE/default PREEMPT_RT_FULL/g" \
-		-i "${S}/kernel/Kconfig.preempt"
+		"s/default PREEMPT_NONE/default PREEMPT_RT/g" \
+		-i "${S}/kernel/Kconfig.preempt" || die "sed failed"
 }
 
 pkg_postinst() {

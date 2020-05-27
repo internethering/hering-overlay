@@ -19,15 +19,15 @@ RDEPEND="dev-lang/php:*[pdo,xml]"
 S="${WORKDIR}"
 
 src_compile() {
-        :
+	:
 }
 
 src_test() {
-        phpunit tests/ || die "test suite failed"
+	phpunit tests/ || die "test suite failed"
 }
 
 src_install() {
-        einstalldocs
-        insinto /usr/share/php/${PN}
-        doins -r dba inc
+	einstalldocs
+	insinto /usr/share/php/${PN}
+	doins -r dba inc
 }
