@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="spamassassin">install sa-learn pipe script</flag>
-		<flag name="dspam">install ds-learn pipe script</flag>
 		<flag name="rspamd">install rs-learn pipe script</flag>
 	</use>
 </pkgmetadata>

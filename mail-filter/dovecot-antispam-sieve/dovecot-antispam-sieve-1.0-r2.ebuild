@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,15 +10,14 @@ SRC_URI=""
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="spamassassin dspam rspamd"
+IUSE="spamassassin rspamd"
 
-REQUIRED_USE="^^ ( spamassassin dspam rspamd )"
+REQUIRED_USE="^^ ( spamassassin rspamd )"
 
 RDEPEND=">=net-mail/dovecot-2.2.24[sieve]
 	!mail-filter/dovecot-antispam"
 DEPEND="${RDEPEND}
 	spamassassin? ( mail-filter/spamassassin )
-	dspam? ( mail-filter/dspam )
 	rspamd? ( mail-filter/rspamd )"
 
 # Need to set S due to PMS saying we need it existing, but no SRC_URI
@@ -37,11 +36,6 @@ src_install() {
 	if use spamassassin ; then
 		newexe "${FILESDIR}/sa-learn-spam.sh" learn-spam.sh
 		newexe "${FILESDIR}/sa-learn-ham.sh" learn-ham.sh
-	fi
-
-	if use dspam ; then
-		newexe "${FILESDIR}/ds-learn-spam.sh" learn-spam.sh
-		newexe "${FILESDIR}/ds-learn-ham.sh" learn-ham.sh
 	fi
 
 	if use rspamd ; then
