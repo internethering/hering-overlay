@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6..9} )
 
 inherit autotools eutils python-single-r1 systemd
 
@@ -19,12 +19,11 @@ IUSE="systemd"
 RDEPEND="systemd? ( sys-apps/systemd )"
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}/pyc.patch" \
-		"${FILESDIR}/noshells.patch" \
-		"${FILESDIR}/pythoninterpreter.patch" \
-		"${FILESDIR}/${PV}-removedirs.patch"
+	eapply \
+        "${FILESDIR}/pyc.patch" \
+		"${FILESDIR}/noshells.patch"
 	eautoreconf
+	default
 }
 
 src_install() {
