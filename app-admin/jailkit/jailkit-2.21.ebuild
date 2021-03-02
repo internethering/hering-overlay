@@ -34,7 +34,8 @@ src_install() {
 		systemd_dounit "${FILESDIR}/jailkit.service"
 	fi
 
-	python_fix_shebang "${ED}"
+	sed -i -e 's:^#!.*:#!/usr/bin/env python3:' "${ED}"/usr/sbin/* || die
+    python_fix_shebang "${ED}"
 }
 
 pkg_postinst() {
