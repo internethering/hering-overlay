@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,7 @@ src_install() {
 	fi
 
 	sed -i -e 's:^#!.*:#!/usr/bin/env python3:' "${ED}"/usr/sbin/* || die
-    python_fix_shebang "${ED}"
+	python_fix_shebang "${ED}"
 }
 
 pkg_postinst() {
