@@ -3,11 +3,6 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>der@internethering.de</email>
+		<name>Richard Hering</name>
 	</maintainer>
-	<use>
-		<flag name="deblob">Remove binary blobs from kernel sources to provide libre license compliance.</flag>
-	</use>
-	<upstream>
-		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
-	</upstream>
 </pkgmetadata>
