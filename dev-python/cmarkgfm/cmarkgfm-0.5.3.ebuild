@@ -3,11 +3,11 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_8 )
+PYTHON_COMPAT=( pypy3 python3_{8..10} )
 inherit distutils-r1
 
-DESCRIPTION="This is a Django project that contains default settings and url settings for Mailman 3 Web Interface"
-HOMEPAGE="https://pypi.org/project/mailman-web/"
+DESCRIPTION="Python bindings to GitHub's cmark"
+HOMEPAGE="https://pypi.org/project/cmarkgfm/"
 SRC_URI="mirror://pypi/${PN:0:1}"/${PN}/${P}.tar.gz
 
 LICENSE="MIT"
@@ -15,6 +15,5 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND=""
-RDEPEND="net-mail/hyperkitty[${PYTHON_USEDEP}]
-	net-mail/postorius[${PYTHON_USEDEP}]"
+RDEPEND=""
 BDEPEND=""

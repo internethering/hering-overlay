@@ -13,8 +13,12 @@ SRC_URI="mirror://pypi/${PN:0:1}"/${PN}/${P}.tar.gz
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="mysql"
 
 DEPEND=""
 RDEPEND="net-mail/hyperkitty[${PYTHON_USEDEP}]
-	net-mail/postorius[${PYTHON_USEDEP}]"
+	net-mail/postorius[${PYTHON_USEDEP}]
+	dev-python/cmarkgfm[${PYTHON_USEDEP}]
+	<dev-python/django-3.1[${PYTHON_USEDEP}]
+	mysql? ( dev-python/mysqlclient[${PYTHON_USEDEP}] )"
 BDEPEND=""
