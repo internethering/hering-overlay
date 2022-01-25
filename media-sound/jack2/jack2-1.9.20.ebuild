@@ -1,9 +1,9 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 PYTHON_REQ_USE="threads(+)"
 inherit python-single-r1 waf-utils multilib-minimal
 
@@ -17,8 +17,8 @@ else
 	MY_PV="${PV/_rc/-RC}"
 	MY_P="${PN}-${MY_PV}"
 	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://github.com/jackaudio/jack2/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
+	SRC_URI="https://github.com/jackaudio/jack2/archive/v${MY_PV}/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="amd64 arm arm64 ppc ppc64 ~riscv x86"
 fi
 
 LICENSE="GPL-2"
@@ -29,7 +29,11 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( classic dbus )"
 
-CDEPEND="${PYTHON_DEPS}
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
+DEPEND="${PYTHON_DEPS}
 	media-libs/libsamplerate
 	media-libs/libsndfile
 	sys-libs/readline:0=
@@ -41,22 +45,20 @@ CDEPEND="${PYTHON_DEPS}
 	ieee1394? ( media-libs/libffado:=[${MULTILIB_USEDEP}] )
 	metadata? ( sys-libs/db:* )
 	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	dbus? (
 		$(python_gen_cond_dep '
-			dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+			dev-python/dbus-python[${PYTHON_USEDEP}]
 		')
 	)
 	pam? ( sys-auth/realtime-base )
 	!media-sound/jack-audio-connection-kit:0"
 
-DOCS=( ChangeLog.rst README.rst README_NETJACK2 )
+DOCS=( AUTHORS.rst ChangeLog.rst README.rst README_NETJACK2 )
 
 src_prepare() {
 	default
+	python_fix_shebang waf
 	multilib_copy_sources
 }
 
