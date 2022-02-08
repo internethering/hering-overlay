@@ -23,7 +23,8 @@ media-fonts/dejavu
 media-fonts/liberation-fonts
 media-fonts/corefonts
 media-fonts/crosextrafonts-carlito
-media-fonts/takao-fonts"
+media-fonts/takao-fonts
+net-misc/rabbitmq-server"
 BDEPEND=""
 
 S="${WORKDIR}"
