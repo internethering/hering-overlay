@@ -16,7 +16,14 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND=""
-RDEPEND="media-fonts/corefonts"
+RDEPEND="media-fonts/corefonts
+dev-libs/libxml2
+app-admin/supervisor
+media-fonts/dejavu
+media-fonts/liberation-fonts
+media-fonts/corefonts
+media-fonts/crosextrafonts-carlito
+media-fonts/takao-fonts"
 BDEPEND=""
 
 S="${WORKDIR}"
