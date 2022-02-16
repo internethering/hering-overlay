@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -34,8 +34,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	sys-libs/libraw1394[${MULTILIB_USEDEP}]
 	qt5? (
 		$(python_gen_cond_dep '
-			dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-			dev-python/PyQt5[dbus,${PYTHON_MULTI_USEDEP}]
+			dev-python/dbus-python[${PYTHON_USEDEP}]
+			dev-python/PyQt5[dbus,${PYTHON_USEDEP}]
 		')
 		x11-misc/xdg-utils
 	)"
