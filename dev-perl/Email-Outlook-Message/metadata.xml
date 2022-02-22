@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>der@internethering.de</email>
+		<name>Richard Hering</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="cpan-module">Email::Outlook</remote-id>
+		<remote-id type="cpan-module">Email::Outlook::AddressInfo</remote-id>
+		<remote-id type="cpan-module">Email::Outlook::Attachment</remote-id>
+		<remote-id type="cpan-module">Email::Outlook::Base</remote-id>
+	</upstream>
+</pkgmetadata>
