@@ -12,17 +12,18 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
+BDEPEND="dev-perl/Module-Build"
+
 RDEPEND="
 	dev-perl/Email-LocalDelivery
 	dev-perl/Email-MIME
 	dev-perl/Email-Sender
 	dev-perl/IO-All
 	dev-perl/IO-String
-	dev-perl/Module-Build
 	dev-perl/OLE-StorageLite
 	virtual/perl-Getopt-Long
-	dev-perl/Pod-Parser
-	"
+	dev-perl/Pod-Parser"
+
 DEPEND="${RDEPEND}"
 
 SRC_TEST=do
