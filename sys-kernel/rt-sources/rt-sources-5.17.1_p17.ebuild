@@ -1,13 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 ETYPE="sources"
 KEYWORDS="~amd64 ~arm64"
 
-HOMEPAGE="https://www.kernel.org/pub/linux/kernel/projects/rt/"
-
-inherit eapi7-ver
+HOMEPAGE="https://wiki.linuxfoundation.org/realtime/start"
 
 CKV="$(ver_cut 1-3)"
 K_SECURITY_UNSUPPORTED="1"
