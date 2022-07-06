@@ -19,6 +19,6 @@ DEPEND=""
 RDEPEND="net-mail/hyperkitty[${PYTHON_USEDEP}]
 	net-mail/postorius[${PYTHON_USEDEP}]
 	dev-python/cmarkgfm[${PYTHON_USEDEP}]
-	<dev-python/django-3.1[${PYTHON_USEDEP}]
+	dev-python/django[${PYTHON_USEDEP}]
 	mysql? ( dev-python/mysqlclient[${PYTHON_USEDEP}] )"
 BDEPEND=""
