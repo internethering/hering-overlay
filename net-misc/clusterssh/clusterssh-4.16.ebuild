@@ -1,11 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-MY_PN="App-ClusterSSH"
-MODULE_AUTHOR="DUNCS"
-MODULE_VERSION="${PV}"
+DIST_NAME="App-ClusterSSH"
+DIST_AUTHOR="DUNCS"
 
 inherit eutils perl-module
 

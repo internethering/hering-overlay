@@ -1,10 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-MODULE_AUTHOR=JETTERO
-MODULE_VERSION=1.6611
+DIST_AUTHOR=JETTERO
 inherit perl-module
 
 DESCRIPTION="A collection of very basic statistics modules"
