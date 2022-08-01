@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 DESCRIPTION="Cleaning /etc/portage/package.* from unused entries"
 HOMEPAGE="https://wiki.gentoo.org/wiki/User:Tillschaefer/cleanup_package"
