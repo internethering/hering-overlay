@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DEPEND=>=net-mail/dovecot-2.2.24[sieve] !mail-filter/dovecot-antispam spamassassin? ( mail-filter/spamassassin ) rspamd? ( mail-filter/rspamd )
+DESCRIPTION=Integrates spam learning into Dovecot by Sieve
+EAPI=8
+HOMEPAGE=https://wiki.dovecot.org/HowTo/AntispamWithSieve
+IUSE=spamassassin rspamd
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=net-mail/dovecot-2.2.24[sieve] !mail-filter/dovecot-antispam
+REQUIRED_USE=^^ ( spamassassin rspamd )
+SLOT=0
+_md5_=bf13899f2b313cb399a8e7308e518107

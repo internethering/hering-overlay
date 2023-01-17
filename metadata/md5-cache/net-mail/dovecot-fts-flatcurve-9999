@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure unpack
+DESCRIPTION=Dovecot FTS plugin to enable message indexing using Xapian
+EAPI=8
+HOMEPAGE=https://github.com/slusarz/dovecot-fts-flatcurve
+INHERIT=git-r3
+LICENSE=LGPL-2.1
+PROPERTIES=live
+RDEPEND=net-mail/dovecot[stemmer] dev-libs/xapian
+SLOT=0
+_eclasses_=git-r3	2347f8fe2d392b2a091191f94be37e6f
+_md5_=cf7428967b26a44e8da142e86ed5675f

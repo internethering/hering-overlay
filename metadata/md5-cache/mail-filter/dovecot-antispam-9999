@@ -1,0 +1,14 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install postinst unpack
+DEPEND=>=net-mail/dovecot-2.1.16 spamassassin? ( mail-filter/spamassassin )
+DESCRIPTION=A dovecot antispam plugin supporting multiple backends
+EAPI=8
+HOMEPAGE=http://wiki2.dovecot.org/Plugins/Antispam/
+INHERIT=git-r3
+IUSE=spamassassin
+LICENSE=GPL-2
+PROPERTIES=live
+RDEPEND=>=net-mail/dovecot-2.1.16
+SLOT=0
+_eclasses_=git-r3	2347f8fe2d392b2a091191f94be37e6f
+_md5_=92c4cfc660f42ebade3ba6dfe157fa6c

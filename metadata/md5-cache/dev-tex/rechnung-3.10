@@ -1,0 +1,13 @@
+BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DEFINED_PHASES=compile install postinst postrm prepare
+DESCRIPTION=LaTeX module to create invoices
+EAPI=7
+HOMEPAGE=http://www.forwiss.uni-passau.de/~berberic/TeX/Rechnung/index.html
+INHERIT=latex-package
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=virtual/latex-base
+SLOT=0
+SRC_URI=http://www.forwiss.uni-passau.de/~berberic/TeX/Rechnung/rechnung310.tar.gz
+_eclasses_=eapi8-dosym	cd7d420bb5be5ee079f27239ce76b8f5	latex-package	c20e442c3953c765f636630631c96194
+_md5_=a8800a639d203aabe6326c6f8b33ce2d
