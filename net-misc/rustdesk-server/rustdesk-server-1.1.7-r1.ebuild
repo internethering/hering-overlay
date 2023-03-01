@@ -17,7 +17,7 @@ SRC_URI="https://github.com/rustdesk/${PN}/archive/refs/tags/${MY_PVR}.tar.gz ->
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="x86 amd64"
+KEYWORDS="~x86 ~amd64"
 
 DEPEND="sys-devel/gcc
 	sys-libs/glibc"
