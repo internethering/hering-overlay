@@ -1,0 +1,15 @@
+BDEPEND=virtual/rust virtual/pkgconfig
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=sys-devel/gcc sys-libs/glibc
+DESCRIPTION=RustDesk Server
+EAPI=8
+HOMEPAGE=https://rustdesk.com/
+INHERIT=systemd
+KEYWORDS=x86 amd64
+LICENSE=AGPL-3
+RDEPEND=sys-devel/gcc sys-libs/glibc
+RESTRICT=network-sandbox
+SLOT=0
+SRC_URI=https://github.com/rustdesk/rustdesk-server/archive/refs/tags/1.1.7-1.tar.gz -> rustdesk-server-1.1.7-1.tar.gz
+_eclasses_=toolchain-funcs	6001248ef162a5fa2a21ce132a212f6b	multilib	5ca4e49abed8e3a2f7b56920eadee157	systemd	5f4bb0758df2e483babf68cd517078ca
+_md5_=b6e5930598833ce448656b82aa833705
