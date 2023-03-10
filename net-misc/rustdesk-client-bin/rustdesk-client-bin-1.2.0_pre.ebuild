@@ -86,8 +86,7 @@ BDEPEND=""
 S=${WORKDIR}
 
 src_unpack() {
-	unpack ${P}.deb || die "Cannot unpack!"
-	unpack ${WORKDIR}/data.tar.xz
+	unpack ${P}.tar.zst || die "Cannot unpack!"
 }
 
 src_prepare() {
