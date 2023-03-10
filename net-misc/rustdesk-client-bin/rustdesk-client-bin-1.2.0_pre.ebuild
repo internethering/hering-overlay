@@ -98,8 +98,13 @@ src_install() {
 	# Install Library
 	dodir usr/lib/rustdesk
 	dodir usr/share/rustdesk/files
-	insinto /usr/share/rustdesk/files
-	dobin usr/share/rustdesk/files/pynput_service.py
+
+	# desktop file + image
+	insinto /usr/share/applications
+	doins usr/share/rustdesk/files/rustdesk.desktop
+	insinto /usr/share/icons/hicolor/256x256/apps
+	doins usr/share/rustdesk/files/rustdesk.png
+
 	# Install Systemd-Unit
 	systemd_dounit usr/share/rustdesk/files/rustdesk.service
 }
