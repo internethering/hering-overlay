@@ -101,7 +101,7 @@ src_install() {
 
 	# Install Symlink
 	dosym /usr/lib/rustdesk/rustdesk /usr/bin/rustdesk
-	fperms 0750 /usr/lib/rustdesk/rustdesk
+	fperms 0755 /usr/lib/rustdesk/rustdesk
 
 	# desktop file + image
 	insinto /usr/share/applications
