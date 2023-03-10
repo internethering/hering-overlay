@@ -91,7 +91,7 @@ src_unpack() {
 
 src_install() {
 	# Install Binary
-	dobin usr/bin/rustdesk || die "Cannot install Binary!"
+	dobin /usr/lib/rustdesk/rustdesk || die "Cannot install Binary!"
 	# Install Library
 	dodir /usr/lib/rustdesk
 	dodir /usr/share/rustdesk/files
