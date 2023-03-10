@@ -96,12 +96,12 @@ src_install() {
 	# Install Library
 	insinto /usr/lib
 	doins -r usr/lib/rustdesk
-	chmod +x usr/lib/rustdesk/rustdesk
 	insinto usr/share/rustdesk
 	doins -r usr/share/rustdesk/files
 
 	# Install Symlink
 	dosym /usr/lib/rustdesk/rustdesk /usr/bin/rustdesk
+	fperms 0750 /usr/lib/rustdesk/rustdesk
 
 	# desktop file + image
 	insinto /usr/share/applications
