@@ -96,7 +96,7 @@ src_install() {
 	# Install Library
 	insinto /usr/lib
 	doins -r usr/lib/rustdesk
-	chmod +x /usr/lib/rustdesk/rustdesk
+	chmod +x usr/lib/rustdesk/rustdesk
 	insinto usr/share/rustdesk
 	doins -r usr/share/rustdesk/files
 
