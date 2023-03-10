@@ -96,12 +96,11 @@ src_install() {
 	# Install Library
 	insinto /usr/lib
 	doins -r usr/lib/rustdesk
+	chmod +x /usr/lib/rustdesk/rustdesk
 	insinto usr/share/rustdesk
 	doins -r usr/share/rustdesk/files
 
-	# Install Binary
-	into /usr/lib/rustdesk
-	dobin usr/lib/rustdesk/rustdesk || die "Cannot install Binary!"
+	# Install Symlink
 	dosym /usr/lib/rustdesk/rustdesk /usr/bin/rustdesk
 
 	# desktop file + image
