@@ -96,8 +96,10 @@ src_install() {
 	# Install Binary
 	dobin usr/lib/rustdesk/rustdesk || die "Cannot install Binary!"
 	# Install Library
-	dodir usr/lib/rustdesk
-	dodir usr/share/rustdesk/files
+	insinto /usr/lib
+	doins -r usr/lib/rustdesk
+	insinto usr/share/rustdesk
+	doins -r usr/share/rustdesk/files
 
 	# desktop file + image
 	insinto /usr/share/applications
