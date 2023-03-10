@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd
+inherit systemd 
 
 DESCRIPTION="RustDesk Client"
 HOMEPAGE="https://rustdesk.com/"
@@ -86,15 +86,18 @@ BDEPEND=""
 S=${WORKDIR}
 
 src_unpack() {
-	unpack ${P}.tar.zst || die "Cannot unpack!"
+	# unpack doesn't work, this shit!
+	#unpack ${P}.tar.zst || die "Cannot unpack!"
+	cd ${WORKDIR}
+	tar xvpf ${DISTDIR}/${P}.tar.zst
 }
 
 src_install() {
 	# Install Binary
-	dobin /usr/lib/rustdesk/rustdesk || die "Cannot install Binary!"
+	dobin usr/lib/rustdesk/rustdesk || die "Cannot install Binary!"
 	# Install Library
-	dodir /usr/lib/rustdesk
-	dodir /usr/share/rustdesk/files
+	dodir usr/lib/rustdesk
+	dodir usr/share/rustdesk/files
 	insinto /usr/share/rustdesk/files
 	dobin usr/share/rustdesk/files/pynput_service.py
 	# Install Systemd-Unit
