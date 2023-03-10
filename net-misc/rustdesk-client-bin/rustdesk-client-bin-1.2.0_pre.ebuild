@@ -7,7 +7,7 @@ inherit systemd
 
 DESCRIPTION="RustDesk Client"
 HOMEPAGE="https://rustdesk.com/"
-SRC_URI="https://github.com/rustdesk/rustdesk/releases/download/nightly/rustdesk-1.2.0-x86_64-unknown-linux-gnu-ubuntu-18.04.deb -> ${P}.deb"
+SRC_URI="https://github.com/rustdesk/rustdesk/releases/download/nightly/rustdesk-1.2.0-0-x86_64.pkg.tar.zst -> ${P}.tar.zst"
 
 LICENSE="AGPL-3"
 SLOT="0"
