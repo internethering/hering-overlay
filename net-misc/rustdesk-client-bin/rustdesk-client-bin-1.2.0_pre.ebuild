@@ -93,13 +93,16 @@ src_unpack() {
 }
 
 src_install() {
-	# Install Binary
-	dobin usr/lib/rustdesk/rustdesk || die "Cannot install Binary!"
 	# Install Library
 	insinto /usr/lib
 	doins -r usr/lib/rustdesk
 	insinto usr/share/rustdesk
 	doins -r usr/share/rustdesk/files
+
+	# Install Binary
+	into /usr/lib/rustdesk
+	dobin usr/lib/rustdesk/rustdesk || die "Cannot install Binary!"
+	dosym /usr/lib/rustdesk/rustdesk /usr/bin/rustdesk
 
 	# desktop file + image
 	insinto /usr/share/applications
