@@ -89,35 +89,14 @@ src_unpack() {
 	unpack ${P}.tar.zst || die "Cannot unpack!"
 }
 
-src_prepare() {
-	default
-	# Add Categories to Desktop-File
-	sed -i -e '/Type=Application/aCategories=Network;GTK;' usr/share/applications/rustdesk.desktop || die "sed failed!"
-	# Fix Path in Systemd-Unit
-	sed -i -e 's|/var/run/rustdesk.pid|/run/rustdesk.pid|' usr/share/rustdesk/files/systemd/rustdesk.service || die "sed failed!"
-}
-
 src_install() {
 	# Install Binary
 	dobin usr/bin/rustdesk || die "Cannot install Binary!"
 	# Install Library
 	dodir /usr/lib/rustdesk
-	insinto /usr/lib/rustdesk
-	doins usr/lib/rustdesk/libsciter-gtk.so
-	doins usr/lib/rustdesk/mac-tray.png
-	# Install Miscellaneous
-	insinto /usr/share/applications
-	doins usr/share/applications/rustdesk.desktop
-	insinto /usr/share/icons/hicolor/32x32/apps
-	doins usr/share/icons/hicolor/32x32/apps/rustdesk.png
-        insinto /usr/share/icons/hicolor/128x128/apps
-        doins usr/share/icons/hicolor/128x128/apps/rustdesk.png
-        insinto /usr/share/icons/hicolor/256x256/apps
-        doins usr/share/icons/hicolor/256x256@2x/apps/rustdesk.png
-	# Install Python-Script
 	dodir /usr/share/rustdesk/files
-	into /usr/share/rustdesk/files
+	insinto /usr/share/rustdesk/files
 	dobin usr/share/rustdesk/files/pynput_service.py
 	# Install Systemd-Unit
-	systemd_dounit usr/share/rustdesk/files/systemd/rustdesk.service
+	systemd_dounit usr/share/rustdesk/files/rustdesk.service
 }
