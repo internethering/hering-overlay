@@ -22,7 +22,7 @@ DOCS=( README )
 
 src_install() {
 	mkdir -p "${D}/usr/lib64/dovecot"
-	emake DESTDIR="${D}" INSTALLDIR="usr/lib64/dovecot" install
+	emake DESTDIR="${D}" INSTALLDIR="/usr/lib64/dovecot" install
 
 	newman antispam.7 dovecot-antispam.7
 
