@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rustdesk/rustdesk/releases/download/nightly/rustdesk
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 
 DEPEND="app-accessibility/at-spi2-atk
 	app-accessibility/at-spi2-core
