@@ -11,7 +11,8 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="<net-mail/dovecot[stemmer]-2.4
+RDEPEND="net-mail/dovecot[stemmer]
+!>=net-mail/dovecot-2.4
 dev-libs/xapian"
 
 src_configure() {
