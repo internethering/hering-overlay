@@ -17,5 +17,5 @@ dev-libs/xapian"
 
 src_configure() {
 	./autogen.sh
-	./configure --with-dovecot=/usr/lib64/dovecot
+	./configure --prefix=/usr --with-dovecot=/usr/lib64/dovecot
 }
