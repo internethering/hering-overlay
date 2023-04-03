@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit cvs autotools eutils python-single-r1 systemd
 
@@ -23,7 +23,7 @@ RDEPEND="systemd? ( sys-apps/systemd )"
 
 src_prepare() {
 	epatch \
-        "${FILESDIR}/pyc.patch" \
+		"${FILESDIR}/pyc.patch" \
 		"${FILESDIR}/noshells.patch"
 	eautoreconf
 }
