@@ -3,7 +3,7 @@
 
 MY_PN="${PN/-/}"
 MY_P="${MY_PN}${PV}"
-At="${MY_P}.zip"
+At="asiosdk_2.3.3_2019-06-14.zip"
 
 DESCRIPTION="Steinberg ASIO SDK 2.3 - win32"
 HOMEPAGE="http://www.steinberg.net/en/company/developer.html"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{8..10} )
+PYTHON_COMPAT=( pypy3 python3_{9..11} )
 inherit distutils-r1
 
 DESCRIPTION="The author of this package has not provided a project description"

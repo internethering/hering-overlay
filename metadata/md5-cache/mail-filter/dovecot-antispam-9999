@@ -10,5 +10,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=net-mail/dovecot-2.1.16
 SLOT=0
-_eclasses_=git-r3	2347f8fe2d392b2a091191f94be37e6f
-_md5_=92c4cfc660f42ebade3ba6dfe157fa6c
+_eclasses_=git-r3	27e13c09a4c7e4c78ac812f74727e676
+_md5_=dde40ab482c3face6bd35acc2bc99940

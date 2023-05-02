@@ -4,7 +4,7 @@ EAPI=8
 HOMEPAGE=https://github.com/slusarz/dovecot-fts-flatcurve
 KEYWORDS=~amd64
 LICENSE=LGPL-2.1
-RDEPEND=net-mail/dovecot[stemmer] dev-libs/xapian
+RDEPEND=net-mail/dovecot[stemmer] !>=net-mail/dovecot-2.4 dev-libs/xapian
 SLOT=0
 SRC_URI=https://github.com/slusarz/dovecot-fts-flatcurve/archive/v0.3.0.tar.gz -> dovecot-fts-flatcurve-0.3.0.tar.gz
-_md5_=f5cb7b51784126a91f3642fee0a73a41
+_md5_=127bb687b20c98d588fb1351c6d3dec6

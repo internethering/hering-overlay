@@ -6,7 +6,7 @@ HOMEPAGE=https://github.com/slusarz/dovecot-fts-flatcurve
 INHERIT=git-r3
 LICENSE=LGPL-2.1
 PROPERTIES=live
-RDEPEND=net-mail/dovecot[stemmer] dev-libs/xapian
+RDEPEND=net-mail/dovecot[stemmer] !>=net-mail/dovecot-2.4 dev-libs/xapian
 SLOT=0
-_eclasses_=git-r3	2347f8fe2d392b2a091191f94be37e6f
-_md5_=cf7428967b26a44e8da142e86ed5675f
+_eclasses_=git-r3	27e13c09a4c7e4c78ac812f74727e676
+_md5_=b80496df8f2859befc84c280d14b2675

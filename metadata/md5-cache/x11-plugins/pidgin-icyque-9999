@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 PROPERTIES=live
 RDEPEND=net-im/pidgin dev-libs/json-glib
 SLOT=0
-_eclasses_=git-r3	2347f8fe2d392b2a091191f94be37e6f
+_eclasses_=git-r3	27e13c09a4c7e4c78ac812f74727e676
 _md5_=e78c1c777b5a2bba3ff1da9d9d554002

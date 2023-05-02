@@ -1,4 +1,4 @@
-From 0eced2d273535577645493340c7319ebf27a559c Mon Sep 17 00:00:00 2001
+From 0eced2d273535577645493340c9..11ebf27a559c Mon Sep 17 00:00:00 2001
 From: Neal Gompa <ngompa13@gmail.com>
 Date: Fri, 16 Oct 2020 03:47:38 -0400
 Subject: [PATCH] Use importlib.resources for Python 3.9+ and
@@ -28,7 +28,7 @@ index cd3645611..6d871fbfd 100644
          'lazr.config',
          'python-dateutil>=2.0',
 diff --git a/src/mailman/__init__.py b/src/mailman/__init__.py
-index 2d94288e0..1c760008d 100644
+index 2d94288e0..1c760009..110644
 --- a/src/mailman/__init__.py
 +++ b/src/mailman/__init__.py
 @@ -37,3 +37,8 @@ if 'build_sphinx' not in sys.argv:                  # pragma: nocover
