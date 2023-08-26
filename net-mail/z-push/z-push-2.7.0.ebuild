@@ -7,7 +7,7 @@ EAPI=7
 DESCRIPTION="Z-Push syncs ActiveSync compatible devices against various backends"
 HOMEPAGE="http://z-push.org/"
 SRC_URI="https://github.com/Z-Hub/Z-Push/archive/${PV}.tar.gz -> z-push-${PV}.tar.gz"
-#S="${WORKDIR}/${P}/src"
+S="${WORKDIR}/${P}/src"
 
 LICENSE="GPL-3"
 SLOT="0"
