@@ -1,11 +1,11 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 PYTHON_COMPAT=( python3_{9..11} )
 
-inherit cvs autotools eutils python-single-r1 systemd
+inherit cvs autotools python-single-r1 systemd
 
 DESCRIPTION="Allows you to easily put programs and users in a chrooted environment"
 HOMEPAGE="http://olivier.sessink.nl/jailkit/"

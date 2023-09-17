@@ -1,9 +1,9 @@
 # Copyright 2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit eutils systemd
+inherit systemd
 
 DESCRIPTION="Create Daily, Weekly and Monthly backups of MySQL databases."
 HOMEPAGE="https://github.com/internethering/AutoMySQLBackup"
