@@ -149,6 +149,7 @@ PATCHES=(
 	"${FILESDIR}"/php-7.4.33-CVE-2023-0567.patch
 	"${FILESDIR}"/php-7.4.33-CVE-2023-0568.patch
 	"${FILESDIR}"/php-7.4.33-CVE-2023-0662.patch
+	"${FILESDIR}"/php-7.4.33-openssl-3.patch
 )
 
 php_install_ini() {
