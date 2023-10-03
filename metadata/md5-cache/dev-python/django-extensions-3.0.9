@@ -1,16 +1,16 @@
-BDEPEND=python_targets_python3_9? ( >=dev-lang/python-3.9.16-r1:3.9 ) python_targets_python3_10? ( >=dev-lang/python-3.10.9-r1:3.10 ) python_targets_python3_11? ( >=dev-lang/python-3.11.1-r1:3.11 ) >=dev-python/setuptools-65.7.0[python_targets_python3_9(-)?,python_targets_python3_10(-)?,python_targets_python3_11(-)?]
+BDEPEND=python_targets_python3_10? ( dev-lang/python:3.10 ) python_targets_python3_11? ( dev-lang/python:3.11 ) >=dev-python/setuptools-67.8.0-r1[python_targets_python3_10(-)?,python_targets_python3_11(-)?]
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-python/setuptools[python_targets_python3_9(-)?,python_targets_python3_10(-)?,python_targets_python3_11(-)?]
+DEPEND=dev-python/setuptools[python_targets_python3_10(-)?,python_targets_python3_11(-)?]
 DESCRIPTION=A collection of custom extensions for the Django Framework
 EAPI=7
 HOMEPAGE=https://github.com/django-extensions/django-extensions
 INHERIT=distutils-r1
-IUSE=python_targets_python3_9 python_targets_python3_10 python_targets_python3_11
+IUSE=python_targets_python3_10 python_targets_python3_11
 KEYWORDS=~amd64
 LICENSE=MIT
-RDEPEND=dev-python/django[python_targets_python3_9(-)?,python_targets_python3_10(-)?,python_targets_python3_11(-)?] python_targets_python3_9? ( >=dev-lang/python-3.9.16-r1:3.9 ) python_targets_python3_10? ( >=dev-lang/python-3.10.9-r1:3.10 ) python_targets_python3_11? ( >=dev-lang/python-3.11.1-r1:3.11 )
-REQUIRED_USE=|| ( python_targets_python3_9 python_targets_python3_10 python_targets_python3_11 )
+RDEPEND=dev-python/django[python_targets_python3_10(-)?,python_targets_python3_11(-)?] python_targets_python3_10? ( dev-lang/python:3.10 ) python_targets_python3_11? ( dev-lang/python:3.11 )
+REQUIRED_USE=|| ( python_targets_python3_10 python_targets_python3_11 )
 SLOT=0
 SRC_URI=mirror://pypi/d/django-extensions/django-extensions-3.0.9.tar.gz
-_eclasses_=out-of-source-utils	1a9007554652a6e627edbccb3c25a439	multibuild	bddcb51b74f4a76724ff7cf8e7388869	multilib	d1408425c7c4a7669b9b17735404b693	toolchain-funcs	14a8ae365191b518fad51caad7a08f3e	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	76050953ad5b70d7e09a6ca55558db92	eapi8-dosym	741bfa77afb2a9321261501aca58c208	python-utils-r1	429bfd4e8d8e39db5385ba5744f30788	python-r1	3c6cd0f418ba702c186a9865b85e704d	distutils-r1	f12c3dec394316618cba1e403667cdd8
+_eclasses_=toolchain-funcs	fbbbc99d10168de2926e06da7169b8dc	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	be27a904c614cb93ae037762dc69bcc2	out-of-source-utils	1a9007554652a6e627edbccb3c25a439	multibuild	30dbf3c5a31db09a19f31ad0a68f2405	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	f3010c780f65d1bb5aea15a9af1adc9c	eapi8-dosym	5ac4857ad078256d939c44f7c64197a9	python-utils-r1	12aa0037eb004139215ff04894d52b28	python-r1	8a28fa6d3e3bc96ff8a7eff2badbe71f	distutils-r1	24344aec2be39c69d9f279b5415298ce
 _md5_=f2487644d1d8baabf91fce9969ff3ad0

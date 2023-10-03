@@ -1,16 +1,15 @@
-BDEPEND=test? ( >=dev-python/pytest-7.3.1[python_targets_python3_10(-)?,python_targets_python3_11(-)?] ) python_targets_python3_10? ( dev-lang/python:3.10 ) python_targets_python3_11? ( dev-lang/python:3.11 ) >=dev-python/gpep517-13[python_targets_python3_10(-)?,python_targets_python3_11(-)?] >=dev-python/setuptools-67.8.0-r1[python_targets_python3_10(-)?,python_targets_python3_11(-)?]
+BDEPEND=python_targets_python3_10? ( dev-lang/python:3.10 ) python_targets_python3_11? ( dev-lang/python:3.11 ) >=dev-python/setuptools-67.8.0-r1[python_targets_python3_10(-)?,python_targets_python3_11(-)?]
 DEFINED_PHASES=compile configure install prepare test
-DESCRIPTION=CSS minifier written in python
+DESCRIPTION=INWX Domrobot Python 3 Client
 EAPI=8
-HOMEPAGE=http://opensource.perlig.de/rcssmin/
+HOMEPAGE=https://github.com/inwx/python-client
 INHERIT=distutils-r1
-IUSE=test python_targets_python3_10 python_targets_python3_11
+IUSE=python_targets_python3_10 python_targets_python3_11
 KEYWORDS=~amd64
-LICENSE=Apache-2.0
+LICENSE=GPL-3
 RDEPEND=python_targets_python3_10? ( dev-lang/python:3.10 ) python_targets_python3_11? ( dev-lang/python:3.11 )
 REQUIRED_USE=|| ( python_targets_python3_10 python_targets_python3_11 )
-RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=mirror://pypi/r/rcssmin/rcssmin-1.1.0.tar.gz
+SRC_URI=https://github.com/inwx/python-client/archive/v3.1.0.tar.gz -> inwx-domrobot-3.1.0.tar.gz
 _eclasses_=toolchain-funcs	fbbbc99d10168de2926e06da7169b8dc	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	be27a904c614cb93ae037762dc69bcc2	out-of-source-utils	1a9007554652a6e627edbccb3c25a439	multibuild	30dbf3c5a31db09a19f31ad0a68f2405	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	f3010c780f65d1bb5aea15a9af1adc9c	python-utils-r1	12aa0037eb004139215ff04894d52b28	python-r1	8a28fa6d3e3bc96ff8a7eff2badbe71f	distutils-r1	24344aec2be39c69d9f279b5415298ce
-_md5_=7bbff5d1e78f8c96163721843fc0af65
+_md5_=1f8b8fbd1c6f164f402416144e1768b9
