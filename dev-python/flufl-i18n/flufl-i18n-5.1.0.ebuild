@@ -3,16 +3,12 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=pdm
-PYTHON_COMPAT=( python3_{9..11} )
-inherit distutils-r1
-
-MY_P=${P/-/.}
+DISTUTILS_USE_PEP517=hatchling
+PYTHON_COMPAT=( python3_{10..12} )
+inherit distutils-r1 pypi
 
 DESCRIPTION="A high level API for Python internationalization"
 HOMEPAGE="https://gitlab.com/warsaw/flufl.i18n"
-SRC_URI="mirror://pypi/${PN::1}/${PN/-/.}/${MY_P}.tar.gz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
