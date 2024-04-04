@@ -78,7 +78,6 @@ COMMON_DEPEND="
 	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
 	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
-	imap? ( virtual/imap-c-client[kerberos=,ssl=] )
 	intl? ( dev-libs/icu:= )
 	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
