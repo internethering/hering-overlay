@@ -3,8 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
-
+PYTHON_COMPAT=( pypy3 python3_{8..13} )
 inherit cvs autotools python-single-r1 systemd
 
 DESCRIPTION="Allows you to easily put programs and users in a chrooted environment"

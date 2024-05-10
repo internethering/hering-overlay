@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
-
+PYTHON_COMPAT=( pypy3 python3_{8..13} )
 inherit distutils-r1
 
 DESCRIPTION="A collection of custom extensions for the Django Framework"
