@@ -3,13 +3,12 @@
 
 EAPI=8
 PYTHON_COMPAT=( pypy3 python3_{8..13} )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 MY_P=${P/-/.}
 
 DESCRIPTION="Small collection of test tool plugins"
 HOMEPAGE="https://gitlab.com/warsaw/flufl.testing https://pypi.org/project/flufl.testing/"
-SRC_URI="mirror://pypi/${PN::1}/${PN/-/.}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"

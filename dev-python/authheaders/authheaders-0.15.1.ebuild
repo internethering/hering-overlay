@@ -6,14 +6,13 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{8..13} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A library wrapping email authentication header verification and generation"
 HOMEPAGE="
 	https://pypi.org/project/authheaders/
 	https://github.com/ValiMail/authentication-headers/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

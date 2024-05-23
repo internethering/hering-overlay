@@ -4,11 +4,10 @@
 EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{8..13} )
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A web user interface for GNU Mailman 3"
 HOMEPAGE="https://www.list.org"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

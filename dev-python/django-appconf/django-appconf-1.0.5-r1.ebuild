@@ -6,11 +6,10 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{8..13} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="A helper class for handling configuration defaults of packaged apps gracefully"
 HOMEPAGE="https://django-appconf.readthedocs.io/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
