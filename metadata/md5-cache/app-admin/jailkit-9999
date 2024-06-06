@@ -1,13 +1,13 @@
-BDEPEND=dev-vcs/cvs sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.5:1.16 ) >=sys-devel/autoconf-2.71-r5 >=sys-devel/libtool-2.4.7 virtual/pkgconfig
+BDEPEND=dev-vcs/cvs >=app-portage/elt-patches-20240116 sys-devel/gnuconfig || ( >=dev-build/automake-1.16.5:1.16 ) || ( >=dev-build/autoconf-2.72-r1:2.72 >=dev-build/autoconf-2.71-r6:2.71 ) >=dev-build/libtool-2.4.7-r3 virtual/pkgconfig
 DEFINED_PHASES=install postinst prepare setup unpack
 DESCRIPTION=Allows you to easily put programs and users in a chrooted environment
 EAPI=8
 HOMEPAGE=http://olivier.sessink.nl/jailkit/
 INHERIT=cvs autotools python-single-r1 systemd
-IUSE=systemd python_single_target_python3_10 python_single_target_python3_11
+IUSE=systemd python_single_target_pypy3 python_single_target_python3_10 python_single_target_python3_11 python_single_target_python3_12 python_single_target_python3_13
 LICENSE=BSD
 PROPERTIES=live
 RDEPEND=systemd? ( sys-apps/systemd )
 SLOT=0
-_eclasses_=cvs	9f4e8d0ccfe320d03725d1f7e66762cb	gnuconfig	b6b3e92f8b8c996400074b5f61a59256	toolchain-funcs	fbbbc99d10168de2926e06da7169b8dc	multilib	c19072c3cd7ac5cb21de013f7e9832e0	libtool	9d3a9a889a6fa62ae794f817c156491b	autotools	6ae9a4347149b19a112caa1182d03bde	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	python-utils-r1	12aa0037eb004139215ff04894d52b28	python-single-r1	75118e916668a74c660a13b0ecb22562	systemd	c8b03e8df84486aa991d4396686e8942
-_md5_=7ee33604dccc7445349c371bb77e033b
+_eclasses_=autotools	dc70c1dc473b68317fc4a86f5fbfc57d	cvs	9f4e8d0ccfe320d03725d1f7e66762cb	gnuconfig	a397adda6984a4c423e28ac274c1ba98	libtool	5f49a16f67f81bdf873e3d1f10b10001	multilib	c19072c3cd7ac5cb21de013f7e9832e0	multiprocessing	30ead54fa2e2b5f9cd4e612ffc34d0fe	python-single-r1	75118e916668a74c660a13b0ecb22562	python-utils-r1	8b220bbce5c119fb1d4d5c2f5588f3ea	systemd	c8b03e8df84486aa991d4396686e8942	toolchain-funcs	e56c7649b804f051623c8bc1a1c44084
+_md5_=3c542c5573fc8b72b3e1fb392c105abe

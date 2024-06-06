@@ -1,14 +1,11 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=install unpack
 DESCRIPTION=Z-Push syncs ActiveSync compatible devices against various backends
 EAPI=7
 HOMEPAGE=http://z-push.org/
-INHERIT=git-r3
 IUSE=memcached ldap imap carddav caldav mysql postgres sqlite
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-PROPERTIES=live
 RDEPEND=dev-lang/php[cli,soap,posix] memcached? ( dev-php/pecl-memcached ) !memcached? ( dev-lang/php[pcntl,sysvipc] ) ldap? ( dev-lang/php[ldap] ) imap? ( dev-lang/php[imap] ) caldav? ( dev-lang/php[curl] dev-php/awl ) carddav? ( dev-lang/php[xslt,curl] ) mysql? ( dev-lang/php[pdo,mysql] ) postgres? ( dev-lang/php[pdo,postgres] ) sqlite? ( dev-lang/php[pdo,sqlite] )
 SLOT=0
-_eclasses_=git-r3	27e13c09a4c7e4c78ac812f74727e676
-_md5_=3d50b29cb3e209be305bd06dbef6ef4b
+SRC_URI=https://github.com/Z-Hub/Z-Push/archive/2.7.3.tar.gz -> z-push-2.7.3.tar.gz
+_md5_=521dcc3551990ebe2306741c11a80213

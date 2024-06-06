@@ -7,7 +7,7 @@ inherit flag-o-matic
 
 DESCRIPTION="Tool for storing/restoring JACK and/or ALSA connections to/from cml files."
 HOMEPAGE="https://sourceforge.net/projects/aj-snapshot/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
