@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-DEPEND="dev-libs/mxml
+DEPEND="dev-libs/mxml:0
 	media-libs/alsa-lib
 	virtual/jack"
 RDEPEND="$DEPEND"
