@@ -11,6 +11,7 @@ MY_PN=${PN/-/.}
 
 DESCRIPTION="Easily write objects that delegate behavior"
 HOMEPAGE="https://code.launchpad.net/lazr.delegates"
+SRC_URI="$(pypi_sdist_url --no-normalize "${MY_PN}" "${PV}")"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-3"

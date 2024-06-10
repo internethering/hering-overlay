@@ -3,6 +3,7 @@
 
 EAPI=7
 
+PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( pypy3 python3_{8..13} )
 inherit distutils-r1 pypi
 

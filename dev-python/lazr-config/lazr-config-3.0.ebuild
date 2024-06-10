@@ -11,6 +11,7 @@ MY_PN=${PN/-/.}
 
 DESCRIPTION="Create configuration schemas, and process and validate configurations"
 HOMEPAGE="https://code.launchpad.net/lazr.config"
+SRC_URI="$(pypi_sdist_url --no-normalize "${MY_PN}" "${PV}")"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-3"
