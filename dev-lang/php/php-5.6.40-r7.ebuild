@@ -7,6 +7,8 @@ inherit autotools flag-o-matic systemd
 
 PATCH_V="7.1.31bp"
 
+WANT_AUTOCONF="2.71"
+
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://secure.php.net/"
 SRC_URI="https://php.net/distributions/${P}.tar.xz
@@ -78,6 +80,7 @@ COMMON_DEPEND="
 	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
 	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
+	imap? ( net-libs/c-client )
 	intl? ( dev-libs/icu:= )
 	iodbc? ( dev-db/libiodbc )
 	kerberos? ( virtual/krb5 )
@@ -92,6 +95,7 @@ COMMON_DEPEND="
 	nls? ( sys-devel/gettext )
 	oci8-instant-client? ( dev-db/oracle-instantclient-basic )
 	odbc? ( >=dev-db/unixODBC-1.8.13 )
+	opcache? ( dev-libs/libltdl )
 	postgres? ( dev-db/postgresql:* )
 	qdbm? ( dev-db/qdbm )
 	readline? ( sys-libs/readline:0= )
@@ -291,6 +295,10 @@ src_configure() {
 	addpredict /var/lib/net-snmp/mib_indexes #nowarn
 
 	PHP_DESTDIR="${EPREFIX}/usr/$(get_libdir)/php${SLOT}"
+
+	# For dev-libs/icu-74.2
+	append-cflags -DU_DEFINE_FALSE_AND_TRUE=1
+	append-cxxflags -DU_DEFINE_FALSE_AND_TRUE=1
 
 	# The php-fpm config file wants localstatedir to be ${EPREFIX}/var
 	# and not the Gentoo default ${EPREFIX}/var/lib. See bug 572002.
