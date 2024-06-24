@@ -15,5 +15,5 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-<=dev-python/prompt_toolkit-3.0.36[${PYTHON_USEDEP}]
+<=dev-python/prompt-toolkit-3.0.36[${PYTHON_USEDEP}]
 "
