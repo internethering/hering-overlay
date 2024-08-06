@@ -1,0 +1,11 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+#
+#
+# my mailman3 ebuilds got copied from portage when they got deleted from portage. it's at the moment unmaintained: don't use it. it's on my todo to migrate from 2 to 3, than they will be usable
+net-mail/mailman
+net-mail/mailman-web
+net-mail/mailman-meta
+net-mail/mailmanclient
+net-mail/postorius
+net-mail/hyperkitty
