@@ -11,5 +11,5 @@ RDEPEND=sys-devel/gcc sys-libs/glibc
 RESTRICT=network-sandbox
 SLOT=0
 SRC_URI=https://github.com/rustdesk/rustdesk-server/archive/refs/tags/1.1.7-1.tar.gz -> rustdesk-server-1.1.7-1.tar.gz
-_eclasses_=multilib	c19072c3cd7ac5cb21de013f7e9832e0	systemd	c8b03e8df84486aa991d4396686e8942	toolchain-funcs	5f8f1dc0c94e007fa08af4e98a19d0e5
+_eclasses_=multilib	c19072c3cd7ac5cb21de013f7e9832e0	systemd	c8b03e8df84486aa991d4396686e8942	toolchain-funcs	333970c740aa7b1a92e4fcdc52f612bd
 _md5_=fd0f6ed9e5a918d6bce2d5048040f8cd
