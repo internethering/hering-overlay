@@ -5,11 +5,10 @@ EAPI=8
 
 inherit php-pear-r2
 
-DESCRIPTION="Provides an easy way to perform HTTP requests"
+DESCRIPTION="Class for parsing and handling URL"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 arm ~hppa ppc64 sparc x86"
 IUSE=""
 
-RDEPEND=">=dev-php/PEAR-PEAR-1.10.1
-dev-php/PEAR-Net_URL2"
+RDEPEND=">=dev-php/PEAR-PEAR-1.10.1"
