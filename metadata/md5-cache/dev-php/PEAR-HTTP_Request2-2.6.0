@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Provides an easy way to perform HTTP requests
+EAPI=8
+HOMEPAGE=https://pear.php.net/package/HTTP_Request2
+IDEPEND=>=dev-php/pear-1.8.1
+INHERIT=php-pear-r2
+KEYWORDS=amd64 arm ~hppa ppc64 sparc x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-php/PEAR-PEAR-1.10.1 >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/HTTP_Request2-2.6.0.tgz
+_eclasses_=php-pear-r2	920a4ee643aaaeef0f8b358fbf2255ab
+_md5_=8536f160dccec12cc5c2b418956536bd
