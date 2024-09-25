@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-php/PEAR-PEAR-1.10.1 dev-php/PEAR-Net_URL2 >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTTP_Request2-2.6.0.tgz
-_eclasses_=php-pear-r2	920a4ee643aaaeef0f8b358fbf2255ab
+_eclasses_=php-pear-r2	e6cc44d3901140eedc82306a38b8249f
 _md5_=54958372438ab5563fcba8c9413ee909

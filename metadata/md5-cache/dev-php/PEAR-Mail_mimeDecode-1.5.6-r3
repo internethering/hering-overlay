@@ -12,5 +12,5 @@ RDEPEND=>=dev-php/PEAR-Mail_Mime-1.5.2 >=dev-php/pear-1.8.1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Mail_mimeDecode-1.5.6.tgz
-_eclasses_=php-pear-r2	920a4ee643aaaeef0f8b358fbf2255ab
+_eclasses_=php-pear-r2	e6cc44d3901140eedc82306a38b8249f
 _md5_=ab835b465b8ea86c334217d910055aa2

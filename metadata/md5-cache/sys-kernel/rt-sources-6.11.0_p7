@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
-DESCRIPTION=Full Linux 6.10 kernel sources with the CONFIG_PREEMPT_RT patch
+DESCRIPTION=Full Linux 6.11 kernel sources with the CONFIG_PREEMPT_RT patch
 EAPI=8
 HOMEPAGE=https://www.kernel.org/ https://wiki.gentoo.org/wiki/Kernel https://wiki.linuxfoundation.org/realtime/start https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/
 INHERIT=kernel-2
@@ -8,7 +8,7 @@ KEYWORDS=~amd64 ~arm64
 LICENSE=GPL-2
 RDEPEND=!build? ( app-alternatives/cpio dev-lang/perl app-alternatives/bc dev-build/make sys-devel/bison sys-devel/flex >=sys-libs/ncurses-5.2 virtual/libelf virtual/pkgconfig )
 RESTRICT=binchecks strip
-SLOT=6.10.2_p14
-SRC_URI=https://www.kernel.org/pub/linux/kernel/v6.x/patch-6.10.2.xz https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.10.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//6.10-gnu/deblob-6.10 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//6.10-gnu/deblob-check -> deblob-check-6.10 ) https://www.kernel.org/pub/linux/kernel/projects/rt/6.10/patch-6.10.2-rt14.patch.xz https://www.kernel.org/pub/linux/kernel/projects/rt/6.10/older/patch-6.10.2-rt14.patch.xz
+SLOT=6.11.0_p7
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.11.tar.xz deblob? ( https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//6.11-gnu/deblob-6.11 https://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags//6.11-gnu/deblob-check -> deblob-check-6.11 ) https://www.kernel.org/pub/linux/kernel/projects/rt/6.11/patch-6.11-rt7.patch.xz https://www.kernel.org/pub/linux/kernel/projects/rt/6.11/older/patch-6.11-rt7.patch.xz
 _eclasses_=crossdev	f04338ff78f213a4a55c5c37b3c6563e	estack	c61c368a76fdf3a82fdf8dbaebea3804	kernel-2	0e01377cce73a7a06321d0ef97388d31	multilib	7e1347c006a76bb812f3a9f663b79991	multiprocessing	e644caa6eb7ce7e5ab0864383ac13ad9	optfeature	222cb475c5a4f7ae7cfb0bf510a6fe54	toolchain-funcs	948855ec7ad9f11351edf9066708dfa9
-_md5_=f6a9c79ff5e6b5ea13a6fa587de67550
+_md5_=ff2533c714559d9317449e5c2e8e7e24
