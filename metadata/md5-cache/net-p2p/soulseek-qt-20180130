@@ -9,5 +9,5 @@ RDEPEND=media-libs/libpng x11-libs/libX11 x11-libs/libxcb media-libs/freetype x1
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://www.slsknet.org/SoulseekQt/Linux/SoulseekQt-2018-1-30-64bit-appimage.tgz https://www.dropbox.com/s/3qdatnoi10e3c17/slsk.png
-_eclasses_=desktop	56973babb9c5f19cab0eeb53ece644c6
+_eclasses_=desktop	3a72ffe0d8e1dd73af3a1c8c15a59fed
 _md5_=a520cbd629384e8752bb50e82e6aaa86

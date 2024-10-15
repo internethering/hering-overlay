@@ -8,5 +8,5 @@ IUSE=doc
 LICENSE=MIT
 PROPERTIES=live
 SLOT=0
-_eclasses_=mercurial	e6a56a378cb9241482284b8b897c7a39
+_eclasses_=mercurial	74061a7620da41b2cb72b135cc6431c7
 _md5_=a026460affd5912df93881eeee5ecd8e
