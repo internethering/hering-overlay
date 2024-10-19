@@ -16,28 +16,31 @@ KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/django[${PYTHON_USEDEP}]
-	net-mail/django-mailman3[${PYTHON_USEDEP}]
-	dev-python/django-gravatar2[${PYTHON_USEDEP}]
-	dev-python/djangorestframework[${PYTHON_USEDEP}]
-	dev-python/robot-detection[${PYTHON_USEDEP}]
-	dev-python/pytz[${PYTHON_USEDEP}]
-	dev-python/django-compressor[${PYTHON_USEDEP}]
-	net-mail/mailmanclient[${PYTHON_USEDEP}]
-	dev-python/python-dateutil[${PYTHON_USEDEP}]
-	dev-python/networkx[${PYTHON_USEDEP}]
-	dev-python/django-haystack[${PYTHON_USEDEP}]
-	dev-python/django-extensions[${PYTHON_USEDEP}]
-	dev-python/flufl-lock[${PYTHON_USEDEP}]
-	dev-python/django-q[${PYTHON_USEDEP}]
-	dev-python/whoosh[${PYTHON_USEDEP}]
-	dev-lang/sassc"
+RDEPEND="dev-python/django-gravatar2[${PYTHON_USEDEP}]
+    dev-python/django-q[${PYTHON_USEDEP}]
+    dev-python/djangorestframework[${PYTHON_USEDEP}]
+    dev-python/django-compressor[${PYTHON_USEDEP}]
+    dev-python/rjsmin[${PYTHON_USEDEP}]
+    dev-lang/sassc
+    net-mail/mailmanclient[${PYTHON_USEDEP}]
+    dev-python/robot-detection[${PYTHON_USEDEP}]
+    dev-python/pytz
+    dev-python/django-paintstore[${PYTHON_USEDEP}]
+    dev-python/python-dateutil[${PYTHON_USEDEP}]
+    dev-python/networkx[${PYTHON_USEDEP}]
+    dev-python/enum34[${PYTHON_USEDEP}]
+    dev-python/django-haystack[${PYTHON_USEDEP}]
+    dev-python/django-extensions[${PYTHON_USEDEP}]
+    net-mail/django-mailman3[${PYTHON_USEDEP}]
+    dev-python/lockfile[${PYTHON_USEDEP}]"
 
-BDEPEND="dev-python/isort[${PYTHON_USEDEP}]
-	test? (
+BDEPEND="${RDEPEND}
+    dev-python/sphinx[${PYTHON_USEDEP}]
+  	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
-		dev-python/django-debug-toolbar[${PYTHON_USEDEP}]
+		dev-python/whoosh[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
 	)"
 
 DOCS=( README.rst )
