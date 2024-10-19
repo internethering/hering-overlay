@@ -53,12 +53,9 @@ DEPEND="app-accessibility/at-spi2-atk
 	media-sound/mpg123
 	net-libs/libasyncns
 	sys-apps/dbus
-	sys-apps/systemd
 	sys-apps/util-linux
-	sys-devel/gcc
 	sys-fs/cryptsetup
 	sys-fs/lvm2
-	sys-libs/glibc
 	sys-libs/libcap
 	sys-libs/zlib
 	x11-libs/cairo

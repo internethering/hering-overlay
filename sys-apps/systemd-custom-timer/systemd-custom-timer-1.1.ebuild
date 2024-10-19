@@ -8,15 +8,15 @@ inherit systemd
 DESCRIPTION="some custom timer units for systemd on gentoo based systems"
 HOMEPAGE="https://github.com/internethering"
 
+# Need to set S due to PMS saying we need it existing, but no SRC_URI
+S=${WORKDIR}
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="geoip clamav-unofficial-sigs dhparams"
 
 RDEPEND="geoip? ( dev-libs/geoip )"
-
-# Need to set S due to PMS saying we need it existing, but no SRC_URI
-S=${WORKDIR}
 
 src_install() {
 	if use geoip ; then

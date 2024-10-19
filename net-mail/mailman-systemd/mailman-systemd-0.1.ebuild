@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="net-mail/mailman"
+RDEPEND=">=net-mail/mailman-3.0"
 
 src_install() {
 	systemd_dounit "${FILESDIR}/mailman3.service"

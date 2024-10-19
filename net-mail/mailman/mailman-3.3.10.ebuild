@@ -3,7 +3,8 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{8..13} )
+DISTUTILS_USE_PEP517=pdm-backend
+PYTHON_COMPAT=( python3_{10..13} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="Mailman -- the GNU mailing list manager"
@@ -44,16 +45,6 @@ RDEPEND="
 BDEPEND="
 	test? (
 		dev-python/flufl-testing[${PYTHON_USEDEP}]
-		virtual/python-greenlet[${PYTHON_USEDEP}]
+		dev-python/greenlet[${PYTHON_USEDEP}]
 	)
 "
-
-PATCHES=(
-	"${FILESDIR}/${P}-py3.9-importlib.patch"
-	"${FILESDIR}/${P}-fix-click-8.patch"
-)
-
-python_test() {
-	distutils_install_for_testing --via-venv
-	"${EPYTHON}" -m nose2 -vv || die "Tests failed with ${EPYTHON}"
-}

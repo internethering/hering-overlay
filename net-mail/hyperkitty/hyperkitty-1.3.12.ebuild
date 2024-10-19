@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=pdm-backend
-PYTHON_COMPAT=( pypy3 python3_{8..13} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 pypi
 
@@ -29,15 +29,14 @@ RDEPEND="dev-python/django-gravatar2[${PYTHON_USEDEP}]
 	dev-python/django-paintstore[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]
-	dev-python/enum34[${PYTHON_USEDEP}]
 	dev-python/django-haystack[${PYTHON_USEDEP}]
 	dev-python/django-extensions[${PYTHON_USEDEP}]
-	net-mail/django-mailman3[${PYTHON_USEDEP}]
+	dev-python/django-mailman3[${PYTHON_USEDEP}]
 	dev-python/lockfile[${PYTHON_USEDEP}]"
 
 BDEPEND="${RDEPEND}
-    dev-python/sphinx[${PYTHON_USEDEP}]
-  	test? (
+	dev-python/sphinx[${PYTHON_USEDEP}]
+	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/whoosh[${PYTHON_USEDEP}]

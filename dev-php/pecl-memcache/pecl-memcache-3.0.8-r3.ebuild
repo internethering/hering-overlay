@@ -13,9 +13,9 @@ USE_PHP="php5-6"
 inherit php-ext-pecl-r3
 
 DESCRIPTION="PHP extension for using memcached"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 LICENSE="PHP-3"
 SLOT="0"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="+session"
 
 DEPEND="sys-libs/zlib
