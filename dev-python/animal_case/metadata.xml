@@ -5,4 +5,8 @@
 		<email>der@internethering.de</email>
 		<name>Richard Hering</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">animal-case</remote-id>
+		<remote-id type="github">dternyak/animal_case</remote-id>
+	</upstream>
 </pkgmetadata>

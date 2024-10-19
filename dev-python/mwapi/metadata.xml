@@ -5,4 +5,8 @@
 		<email>der@internethering.de</email>
 		<name>Richard Hering</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">mwapi</remote-id>
+		<remote-id type="gitlab">mediawiki-utilities/python-mwapi</remote-id>
+	</upstream>
 </pkgmetadata>

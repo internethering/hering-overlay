@@ -5,4 +5,8 @@
 		<email>der@internethering.de</email>
 		<name>Richard Hering</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">cmarkgfm</remote-id>
+		<remote-id type="github">theacodes/cmarkgfm</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>python@gentoo.org</email>
-	</maintainer>
 	<maintainer type="person">
-		<email>prometheanfire@gentoo.org</email>
-		<name>Matthew Thode</name>
+		<email>der@internethering.de</email>
+		<name>Richard Hering</name>
 	</maintainer>
-	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="pypi">flufl.bounce</remote-id>
 		<remote-id type="gitlab">warsaw/flufl.bounce</remote-id>

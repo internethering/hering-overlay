@@ -1,26 +1,23 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+PYPI_NO_NORMALIZE=1
+PYPI_PN=${PN/-/.}
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{8..13} )
 inherit distutils-r1 pypi
 
-MY_PN=${PN/-/.}
-
 DESCRIPTION="Easily write objects that delegate behavior"
 HOMEPAGE="https://code.launchpad.net/lazr.delegates"
-SRC_URI="$(pypi_sdist_url --no-normalize "${MY_PN}" "${PV}")"
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-python/zope-interface[${PYTHON_USEDEP}]
-	!dev-python/namespace-lazr
 "
 
 distutils_enable_tests pytest

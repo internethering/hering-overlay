@@ -5,4 +5,8 @@
 		<email>der@internethering.de</email>
 		<name>Richard Hering</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">instaviz</remote-id>
+		<remote-id type="gitlab">tonybaloney/instaviz</remote-id>
+	</upstream>
 </pkgmetadata>
