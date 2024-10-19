@@ -101,23 +101,17 @@ src_install() {
 	# Install Binary
 	dobin usr/lib/rustdesk/rustdesk || die "Cannot install Binary!"
 	# Install Library
-	dodir /usr/lib/rustdesk
-	insinto /usr/lib/rustdesk
-	doins usr/lib/rustdesk/libsciter-gtk.so
-	doins usr/lib/rustdesk/mac-tray.png
+	insinto /usr/lib/
+	doins -r usr/lib/rustdesk/
+
 	# Install Miscellaneous
 	insinto /usr/share/applications
 	doins usr/share/applications/rustdesk.desktop
-	insinto /usr/share/icons/hicolor/32x32/apps
-	doins usr/share/icons/hicolor/32x32/apps/rustdesk.png
-	insinto /usr/share/icons/hicolor/128x128/apps
-	doins usr/share/icons/hicolor/128x128/apps/rustdesk.png
+	doins usr/share/applications/rustdesk-link.desktop
 	insinto /usr/share/icons/hicolor/256x256/apps
-	doins usr/share/icons/hicolor/256x256@2x/apps/rustdesk.png
-	# Install Python-Script
-	dodir /usr/share/rustdesk/files
-	into /usr/share/rustdesk/files
-	dobin usr/share/rustdesk/files/pynput_service.py
+	doins usr/share/icons/hicolor/256x256/apps/rustdesk.png
+	insinto /usr/share/icons/hicolor/scalable/apps
+	doins usr/share/icons/hicolor/scalable/apps/rustdesk.svg
 	# Install Systemd-Unit
 	systemd_dounit usr/share/rustdesk/files/systemd/rustdesk.service
 }

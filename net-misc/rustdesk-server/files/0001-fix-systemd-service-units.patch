@@ -1,0 +1,73 @@
+From 432a7a6151103be3d69cf756f7aeb1b9dd805385 Mon Sep 17 00:00:00 2001
+From: Stefan Schmid <schmidicom@gmail.com>
+Date: Tue, 30 Jan 2024 12:54:21 +0100
+Subject: [PATCH] fix-systemd-service-units
+
+---
+ systemd/rustdesk-hbbr.service |  5 ++---
+ systemd/rustdesk-hbbs.service |  5 ++---
+ systemd/rustdesk-server       | 18 ++++++++++++++++++
+ 3 files changed, 22 insertions(+), 6 deletions(-)
+ create mode 100644 systemd/rustdesk-server
+
+diff --git a/systemd/rustdesk-hbbr.service b/systemd/rustdesk-hbbr.service
+index e8309a4..99e4fad 100644
+--- a/systemd/rustdesk-hbbr.service
++++ b/systemd/rustdesk-hbbr.service
+@@ -5,10 +5,9 @@ Description=Rustdesk Relay Server
+ [Service]
+ Type=simple
+ LimitNOFILE=1000000
+-ExecStart=/usr/bin/hbbr
++EnvironmentFile=/etc/conf.d/rustdesk-server
++ExecStart=/usr/bin/hbbr $HBBR_OPTS
+ WorkingDirectory=/var/lib/rustdesk-server/
+-User=
+-Group=
+ Restart=always
+ StandardOutput=append:/var/log/rustdesk-server/hbbr.log
+ StandardError=append:/var/log/rustdesk-server/hbbr.error
+diff --git a/systemd/rustdesk-hbbs.service b/systemd/rustdesk-hbbs.service
+index 248a6a4..0fe3050 100644
+--- a/systemd/rustdesk-hbbs.service
++++ b/systemd/rustdesk-hbbs.service
+@@ -5,10 +5,9 @@ Description=Rustdesk Signal Server
+ [Service]
+ Type=simple
+ LimitNOFILE=1000000
+-ExecStart=/usr/bin/hbbs
++EnvironmentFile=/etc/conf.d/rustdesk-server
++ExecStart=/usr/bin/hbbs $HBBS_OPTS
+ WorkingDirectory=/var/lib/rustdesk-server/
+-User=
+-Group=
+ Restart=always
+ StandardOutput=append:/var/log/rustdesk-server/hbbs.log
+ StandardError=append:/var/log/rustdesk-server/hbbs.error
+diff --git a/systemd/rustdesk-server b/systemd/rustdesk-server
+new file mode 100644
+index 0000000..026656c
+--- /dev/null
++++ b/systemd/rustdesk-server
+@@ -0,0 +1,18 @@
++# Options for Rustdesk Signal Server
++#    -c, --config <FILE>                   Sets a custom config file
++#    -k, --key <KEY>                       Only allow the client with the same key
++#        --mask <MASK>                     Determine if the connection comes from LAN, e.g. 192.168.0.0/16
++#    -p, --port <NUMBER(default=21116)>    Sets the listening port
++#    -r, --relay-servers <HOST>            Sets the default relay servers, seperated by colon
++#    -R, --rendezvous-servers <HOSTS>      Sets rendezvous servers, seperated by colon
++#    -M, --rmem <NUMBER(default=0)>        Sets UDP recv buffer size, set system rmem_max first, e.g., sudo sysctl -w
++#                                          net.core.rmem_max=52428800. vi /etc/sysctl.conf, net.core.rmem_max=52428800,
++#                                          sudo sysctl –p
++#    -s, --serial <NUMBER(default=0)>      Sets configure update serial number
++#    -u, --software-url <URL>              Sets download url of RustDesk software of newest version
++HBBS_OPTS=""
++
++# Options for Rustdesk Relay Server
++#    -k, --key <KEY>                       Only allow the client with the same key
++#    -p, --port <NUMBER(default=21117)>    Sets the listening port
++HBBR_OPTS=""
+-- 
+2.43.0
+
