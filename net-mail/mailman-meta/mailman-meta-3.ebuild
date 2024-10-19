@@ -12,4 +12,7 @@ KEYWORDS="~amd64"
 
 RDEPEND=">=net-mail/mailman-3.0
 	net-mail/postorius
-	net-mail/hyperkitty"
+	net-mail/hyperkitty
+	net-mail/mailman-web
+	net-mail/mailman-systemd
+	net-mail/mailman-hyperkitty"

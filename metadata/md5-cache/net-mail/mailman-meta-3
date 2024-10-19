@@ -4,6 +4,6 @@ EAPI=8
 HOMEPAGE=https://list.org/
 KEYWORDS=~amd64
 LICENSE=metapackage
-RDEPEND=>=net-mail/mailman-3.0 net-mail/postorius net-mail/hyperkitty
+RDEPEND=>=net-mail/mailman-3.0 net-mail/postorius net-mail/hyperkitty net-mail/mailman-web net-mail/mailman-systemd net-mail/mailman-hyperkitty
 SLOT=0
-_md5_=e60878e55793162e1ea0a9871c151c05
+_md5_=66fd54f772c87d47fa3e71c32ded812c
