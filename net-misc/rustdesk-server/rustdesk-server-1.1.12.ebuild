@@ -15,6 +15,7 @@ MY_P="${PN}-${MY_PVR}"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="AGPL-3"
+SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="sys-devel/gcc

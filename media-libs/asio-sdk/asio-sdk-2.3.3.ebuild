@@ -10,12 +10,12 @@ At="asiosdk_2.3.3_2019-06-14.zip"
 DESCRIPTION="Steinberg ASIO SDK 2.3 - win32"
 HOMEPAGE="http://www.steinberg.net/en/company/developer.html"
 SRC_URI="${At}"
+S="${WORKDIR}/ASIOSDK2"
 
 LICENSE="STEINBERG-EULA"
-RESTRICT="fetch"
-S="${WORKDIR}/ASIOSDK2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="fetch"
 
 DEPEND="app-arch/unzip"
 

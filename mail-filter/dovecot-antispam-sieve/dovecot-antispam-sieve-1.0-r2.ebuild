@@ -6,11 +6,13 @@ EAPI=8
 DESCRIPTION="Integrates spam learning into Dovecot by Sieve"
 HOMEPAGE="https://wiki.dovecot.org/HowTo/AntispamWithSieve"
 
+S=${WORKDIR}
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 # Need to set S due to PMS saying we need it existing, but no SRC_URI
-S=${WORKDIR}
+
 IUSE="spamassassin rspamd"
 
 REQUIRED_USE="^^ ( spamassassin rspamd )"
@@ -20,8 +22,6 @@ RDEPEND=">=net-mail/dovecot-2.2.24[sieve]
 DEPEND="${RDEPEND}
 	spamassassin? ( mail-filter/spamassassin )
 	rspamd? ( mail-filter/rspamd )"
-
-
 
 src_install() {
 	insinto /etc/dovecot/conf.d

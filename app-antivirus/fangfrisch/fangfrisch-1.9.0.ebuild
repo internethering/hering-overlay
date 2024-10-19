@@ -47,9 +47,8 @@ DEPEND=">=dev-python/requests-2.22.0[${PYTHON_USEDEP}]
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-        "${FILESDIR}/stray.patch"
+	"${FILESDIR}/stray.patch"
 )
-
 
 distutils_enable_tests unittest
 

@@ -6,12 +6,12 @@ EAPI=8
 DESCRIPTION="Cleaning /etc/portage/package.* from unused entries"
 HOMEPAGE="https://wiki.gentoo.org/wiki/User:Tillschaefer/cleanup_package"
 
+# Need to set S due to PMS saying we need it existing, but no SRC_URI
+S=${WORKDIR}
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-
-# Need to set S due to PMS saying we need it existing, but no SRC_URI
-S=${WORKDIR}
 
 RDEPEND="app-portage/portage-utils"
 

@@ -11,11 +11,11 @@ DESCRIPTION="LaTeX module to create invoices"
 HOMEPAGE="http://www.forwiss.uni-passau.de/~berberic/TeX/Rechnung/index.html"
 SRC_URI="http://www.forwiss.uni-passau.de/~berberic/TeX/Rechnung/${PN}${MY_PV}.tar.gz"
 
+S="${WORKDIR}"/${PN}${MY_PV}
+
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-S="${WORKDIR}"/${PN}${MY_PV}
 
 src_prepare() {
 	rm "${S}/rechnung.sty"

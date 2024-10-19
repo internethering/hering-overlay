@@ -9,6 +9,7 @@ DESCRIPTION="some custom timer units for systemd on gentoo based systems"
 HOMEPAGE="https://github.com/internethering"
 
 LICENSE="GPL-3"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="geoip clamav-unofficial-sigs dhparams"
 

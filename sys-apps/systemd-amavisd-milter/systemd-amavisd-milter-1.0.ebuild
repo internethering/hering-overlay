@@ -9,6 +9,7 @@ DESCRIPTION="Amavisd-milter systemd service"
 HOMEPAGE="https://github.com/internethering"
 
 LICENSE="GPL-3"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="mail-filter/amavisd-milter"

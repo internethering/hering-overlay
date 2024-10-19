@@ -10,13 +10,13 @@ HOMEPAGE="http://www.soulseekqt.net/"
 BINARY_NAME="SoulseekQt-${PV:0:4}-$((${PV:4:2}))-$((${PV:6:2}))"
 SRC_URI="https://www.slsknet.org/SoulseekQt/Linux/${BINARY_NAME}-64bit-appimage.tgz https://www.dropbox.com/s/3qdatnoi10e3c17/slsk.png"
 
+S="${WORKDIR}"
+
 LICENSE="free-noncomm"
 SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="media-libs/libpng x11-libs/libX11 x11-libs/libxcb media-libs/freetype x11-libs/libXau x11-libs/libXdmcp dev-libs/libbsd dev-libs/expat sys-libs/libselinux"
-
-S="${WORKDIR}"
 
 RESTRICT="mirror"
 

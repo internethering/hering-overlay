@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{8..13} )
+PYTHON_COMPAT=( pypy3 python3_{8..13} python3_13t )
 
 inherit autotools python-single-r1 systemd
 
@@ -42,7 +42,7 @@ src_install() {
 
 pkg_postinst() {
 	ebegin "Updating /etc/shells"
-		{ grep -v "^/usr/sbin/jk_chrootsh$" "${ROOT}"etc/shells; echo "/usr/sbin/jk_chrootsh"; } > "${T}"/shells
-		mv -f "${T}"/shells "${ROOT}"etc/shells
+	{ grep -v "^/usr/sbin/jk_chrootsh$" "${ROOT}"/etc/shells; echo "/usr/sbin/jk_chrootsh"; } > "${T}"/shells
+	mv -f "${T}"/shells "${ROOT}"/etc/shells
 	eend $?
 }

@@ -8,11 +8,12 @@ inherit multilib-minimal
 DESCRIPTION="ASIO driver for WINE"
 HOMEPAGE="https://sourceforge.net/projects/wineasio"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
-LICENSE="GPL-2"
-RESTRICT="mirror"
 S="${WORKDIR}/${PN}"
+
+LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
+RESTRICT="mirror"
 
 DEPEND="media-libs/asio-sdk
 	virtual/wine"

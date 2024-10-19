@@ -10,4 +10,4 @@ RESTRICT=mirror
 SLOT=0
 SRC_URI=https://www.slsknet.org/SoulseekQt/Linux/SoulseekQt-2018-1-30-64bit-appimage.tgz https://www.dropbox.com/s/3qdatnoi10e3c17/slsk.png
 _eclasses_=desktop	3a72ffe0d8e1dd73af3a1c8c15a59fed
-_md5_=0ae133a92d6fcfa72ceadb68fbda1b85
+_md5_=b234a214e8443207fce09f6b5eb45f34

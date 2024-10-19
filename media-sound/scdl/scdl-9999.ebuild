@@ -26,5 +26,5 @@ dev-python/clint
 "
 
 PATCHES=(
-        "${FILESDIR}/stray.patch"
+	"${FILESDIR}/stray.patch"
 )

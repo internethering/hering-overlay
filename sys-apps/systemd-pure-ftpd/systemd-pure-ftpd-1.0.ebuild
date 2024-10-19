@@ -8,14 +8,14 @@ inherit systemd
 DESCRIPTION="pure-ftpd systemd service"
 HOMEPAGE="https://github.com/internethering"
 
+# Need to set S due to PMS saying we need it existing, but no SRC_URI
+S=${WORKDIR}
+
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="net-ftp/pure-ftpd"
-
-# Need to set S due to PMS saying we need it existing, but no SRC_URI
-S=${WORKDIR}
 
 src_install() {
 	systemd_dounit "${FILESDIR}/pure-ftpd.service"
