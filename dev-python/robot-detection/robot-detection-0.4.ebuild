@@ -3,12 +3,14 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{8..13} )
-inherit distutils-r1
+PYPI_NO_NORMALIZE=1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( pypy3 python3_{8..13} python3_13t )
+
+inherit distutils-r1 pypi
 
 DESCRIPTION="Module to detect if a given HTTP User Agent is a web crawler"
 HOMEPAGE="https://github.com/rory/robot-detection"
-SRC_URI="https://github.com/rory/robot-detection/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
