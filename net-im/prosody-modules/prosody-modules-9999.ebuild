@@ -14,9 +14,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc"
 
-DEPEND=""
-RDEPEND=""
-
 src_install() {
 	list=( "mod_register_json" "mod_muc_log_http" "mod_incidents_handling" "mod_http_dir_listing" "mod_couchdb" "mod_auth_imap" "mod_auth_dovecot" "mod_admin_web" )
 	for dir in "${list[@]}" ; do

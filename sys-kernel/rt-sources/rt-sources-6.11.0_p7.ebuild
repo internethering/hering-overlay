@@ -1,10 +1,10 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="8"
+EAPI=8
 ETYPE="sources"
-KEYWORDS="~amd64 ~arm64"
 
+DESCRIPTION="Full Linux ${K_BRANCH_ID} kernel sources with the CONFIG_PREEMPT_RT patch"
 HOMEPAGE="https://wiki.linuxfoundation.org/realtime/start"
 
 CKV="$(ver_cut 1-3)"
@@ -21,11 +21,12 @@ RT_FILE="patch-${K_BRANCH_ID}-rt${RT_PATCHSET}.patch.xz"
 RT_URI="https://www.kernel.org/pub/linux/kernel/projects/rt/${K_BRANCH_ID}/${RT_FILE} \
 		https://www.kernel.org/pub/linux/kernel/projects/rt/${K_BRANCH_ID}/older/${RT_FILE}"
 
-DESCRIPTION="Full Linux ${K_BRANCH_ID} kernel sources with the CONFIG_PREEMPT_RT patch"
 SRC_URI="${KERNEL_URI} ${RT_URI}"
 
 KV_FULL="${PVR/_p/-rt}"
 S="${WORKDIR}/linux-${KV_FULL}"
+
+KEYWORDS="~amd64 ~arm64"
 
 UNIPATCH_LIST="${DISTDIR}/${RT_FILE}"
 UNIPATCH_STRICTORDER="yes"

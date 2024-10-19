@@ -1,15 +1,16 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DESCRIPTION="Integrates spam learning into Dovecot by Sieve"
 HOMEPAGE="https://wiki.dovecot.org/HowTo/AntispamWithSieve"
-SRC_URI=""
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
+# Need to set S due to PMS saying we need it existing, but no SRC_URI
+S=${WORKDIR}
 IUSE="spamassassin rspamd"
 
 REQUIRED_USE="^^ ( spamassassin rspamd )"
@@ -20,8 +21,7 @@ DEPEND="${RDEPEND}
 	spamassassin? ( mail-filter/spamassassin )
 	rspamd? ( mail-filter/rspamd )"
 
-# Need to set S due to PMS saying we need it existing, but no SRC_URI
-S=${WORKDIR}
+
 
 src_install() {
 	insinto /etc/dovecot/conf.d

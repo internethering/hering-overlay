@@ -11,18 +11,15 @@ HOMEPAGE="https://www.filebot.net/"
 
 MY_PN="FileBot"
 SRC_URI="https://downloads.sourceforge.net/project/${PN}/${PN}/${MY_PN}_${PV}/${MY_PN}_${PV}-portable.tar.xz"
+S="${WORKDIR}"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND=""
 RDEPEND="|| ( virtual/jdk virtual/jre )
 		media-libs/chromaprint
 		media-libs/fontconfig"
-
-S="${WORKDIR}"
 
 src_install() {
 	java-pkg_dojar "${MY_PN}.jar"

@@ -18,22 +18,22 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/django-gravatar2[${PYTHON_USEDEP}]
-    dev-python/django-q[${PYTHON_USEDEP}]
-    dev-python/djangorestframework[${PYTHON_USEDEP}]
-    dev-python/django-compressor[${PYTHON_USEDEP}]
-    dev-python/rjsmin[${PYTHON_USEDEP}]
-    dev-lang/sassc
-    net-mail/mailmanclient[${PYTHON_USEDEP}]
-    dev-python/robot-detection[${PYTHON_USEDEP}]
-    dev-python/pytz
-    dev-python/django-paintstore[${PYTHON_USEDEP}]
-    dev-python/python-dateutil[${PYTHON_USEDEP}]
-    dev-python/networkx[${PYTHON_USEDEP}]
-    dev-python/enum34[${PYTHON_USEDEP}]
-    dev-python/django-haystack[${PYTHON_USEDEP}]
-    dev-python/django-extensions[${PYTHON_USEDEP}]
-    net-mail/django-mailman3[${PYTHON_USEDEP}]
-    dev-python/lockfile[${PYTHON_USEDEP}]"
+	dev-python/django-q[${PYTHON_USEDEP}]
+	dev-python/djangorestframework[${PYTHON_USEDEP}]
+	dev-python/django-compressor[${PYTHON_USEDEP}]
+	dev-python/rjsmin[${PYTHON_USEDEP}]
+	dev-lang/sassc
+	net-mail/mailmanclient[${PYTHON_USEDEP}]
+	dev-python/robot-detection[${PYTHON_USEDEP}]
+	dev-python/pytz[${PYTHON_USEDEP}]
+	dev-python/django-paintstore[${PYTHON_USEDEP}]
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
+	dev-python/networkx[${PYTHON_USEDEP}]
+	dev-python/enum34[${PYTHON_USEDEP}]
+	dev-python/django-haystack[${PYTHON_USEDEP}]
+	dev-python/django-extensions[${PYTHON_USEDEP}]
+	net-mail/django-mailman3[${PYTHON_USEDEP}]
+	dev-python/lockfile[${PYTHON_USEDEP}]"
 
 BDEPEND="${RDEPEND}
     dev-python/sphinx[${PYTHON_USEDEP}]

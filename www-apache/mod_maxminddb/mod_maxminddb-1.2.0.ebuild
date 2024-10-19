@@ -16,8 +16,6 @@ KEYWORDS="amd64 x86"
 DEPEND="dev-libs/libmaxminddb:="
 RDEPEND="${DEPEND}"
 
-need_apache2_4
-
 src_prepare() {
 	default
 	eautoreconf

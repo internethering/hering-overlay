@@ -1,8 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
+EAPI=8
 
 DESCRIPTION="Z-Push syncs ActiveSync compatible devices against various backends"
 HOMEPAGE="http://z-push.org/"
@@ -14,7 +13,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="memcached ldap imap carddav caldav mysql postgres sqlite"
 
-DEPEND=""
 RDEPEND="dev-lang/php[cli,soap,posix]
 	memcached? ( dev-php/pecl-memcached )
 	!memcached? ( dev-lang/php[pcntl,sysvipc] )
@@ -47,7 +45,7 @@ src_unpack() {
 	if [[ -n ${A} ]]; then
 		unpack ${A}
 	fi
-	for i in ${WORKDIR}/*; do mv "$i" `echo $i | tr '[A-Z]' '[a-z]'`; done
+	for i in "${WORKDIR}/*"; do mv "$i" `echo $i | tr '[A-Z]' '[a-z]'`; done
 }
 
 src_install() {

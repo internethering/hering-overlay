@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=net-mail/dovecot[stemmer] !>=net-mail/dovecot-2.4 dev-libs/xapian
 SLOT=0
 _eclasses_=git-r3	875eb471682d3e1f18da124be97dcc81
-_md5_=b80496df8f2859befc84c280d14b2675
+_md5_=b063d4371313c658d493e9e247de1877

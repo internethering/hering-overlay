@@ -9,4 +9,7 @@
 		<flag name="carddav">support Carddav</flag>
 		<flag name="caldav">support Caldav</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">Z-Hub/Z-Push</remote-id>
+	</upstream>
 </pkgmetadata>

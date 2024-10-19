@@ -1,5 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
 
 MY_PN="${PN/-/}"
 MY_P="${MY_PN}${PV}"
@@ -9,16 +11,13 @@ DESCRIPTION="Steinberg ASIO SDK 2.3 - win32"
 HOMEPAGE="http://www.steinberg.net/en/company/developer.html"
 SRC_URI="${At}"
 
-RESTRICT="fetch"
-
 LICENSE="STEINBERG-EULA"
+RESTRICT="fetch"
+S="${WORKDIR}/ASIOSDK2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND=""
-RDEPEND=""
-S="${WORKDIR}/ASIOSDK2"
+DEPEND="app-arch/unzip"
 
 pkg_nofetch() {
 	einfo "1. Go to ${HOMEPAGE}"

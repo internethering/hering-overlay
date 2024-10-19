@@ -4,10 +4,10 @@ EAPI=8
 HOMEPAGE=https://pear.php.net/package/HTTP_Request2
 IDEPEND=>=dev-php/pear-1.8.1
 INHERIT=php-pear-r2
-KEYWORDS=amd64 arm ~hppa ppc64 sparc x86
+KEYWORDS=amd64 arm ppc64 sparc x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-php/PEAR-PEAR-1.10.1 dev-php/PEAR-Net_URL2 >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://pear.php.net/get/HTTP_Request2-2.6.0.tgz
 _eclasses_=php-pear-r2	ae9c27bf3a9af15b98e9c2fa867e2485
-_md5_=54958372438ab5563fcba8c9413ee909
+_md5_=2bb5137ced1f248360379ca4666e623d

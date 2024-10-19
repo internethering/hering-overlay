@@ -1,0 +1,15 @@
+diff '--color=auto' -urN o/setup.cfg n/setup.cfg
+--- o/setup.cfg	2024-03-08 12:22:21.780174700 +0100
++++ n/setup.cfg	2024-10-19 21:21:23.097797866 +0200
+@@ -42,6 +42,11 @@
+ 	*.conf
+ 	*.sql
+ 
++[options.packages.find]
++exclude =
++        tests
++        tests.*
++
+ [egg_info]
+ tag_build = 
+ tag_date = 0

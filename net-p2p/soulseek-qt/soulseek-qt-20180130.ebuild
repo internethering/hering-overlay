@@ -1,7 +1,7 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop
 
@@ -13,9 +13,7 @@ SRC_URI="https://www.slsknet.org/SoulseekQt/Linux/${BINARY_NAME}-64bit-appimage.
 LICENSE="free-noncomm"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
-DEPEND=""
 RDEPEND="media-libs/libpng x11-libs/libX11 x11-libs/libxcb media-libs/freetype x11-libs/libXau x11-libs/libXdmcp dev-libs/libbsd dev-libs/expat sys-libs/libselinux"
 
 S="${WORKDIR}"

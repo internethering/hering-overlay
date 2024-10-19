@@ -1,4 +1,4 @@
-# Copyright 2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,8 +17,10 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE="systemd"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="systemd? ( sys-apps/systemd )"
+RDEPEND="${PYTHON_DEPS}
+	systemd? ( sys-apps/systemd )"
 
 src_prepare() {
 	epatch \
@@ -40,7 +42,7 @@ src_install() {
 
 pkg_postinst() {
 	ebegin "Updating /etc/shells"
-	{ grep -v "^/usr/sbin/jk_chrootsh$" "${ROOT}"etc/shells; echo "/usr/sbin/jk_chrootsh"; } > "${T}"/shells
-	mv -f "${T}"/shells "${ROOT}"etc/shells
+		{ grep -v "^/usr/sbin/jk_chrootsh$" "${ROOT}"etc/shells; echo "/usr/sbin/jk_chrootsh"; } > "${T}"/shells
+		mv -f "${T}"/shells "${ROOT}"etc/shells
 	eend $?
 }

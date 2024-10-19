@@ -1,4 +1,4 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,16 +9,14 @@ DESCRIPTION="ASIO driver for WINE"
 HOMEPAGE="https://sourceforge.net/projects/wineasio"
 SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="mirror"
 LICENSE="GPL-2"
-IUSE=""
+RESTRICT="mirror"
+S="${WORKDIR}/${PN}"
 SLOT="0"
 
 DEPEND="media-libs/asio-sdk
 	virtual/wine"
 RDEPEND="virtual/jack[${MULTILIB_USEDEP}]"
-
-S="${WORKDIR}/${PN}"
 
 pkg_setup() {
 	export WINETARGET=`eselect --brief --colour=no wine show | awk '{$1=$1;print}'`

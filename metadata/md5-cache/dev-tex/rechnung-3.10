@@ -10,4 +10,4 @@ RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=http://www.forwiss.uni-passau.de/~berberic/TeX/Rechnung/rechnung310.tar.gz
 _eclasses_=latex-package	b4107369f908088e98dd16d3459a8669
-_md5_=9c57db7daec7e96c90ba8fc4947bbcb3
+_md5_=bb02ac6a35637b1949dbfdc7c5f8ce98

@@ -8,7 +8,7 @@ inherit php-pear-r2
 DESCRIPTION="Provides a class to decode mime messages (split from PEAR-Mail_Mime)"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ppc64 ~s390 sparc x86"
+KEYWORDS="amd64 arm ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

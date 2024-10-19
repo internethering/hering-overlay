@@ -1,0 +1,12 @@
+diff '--color=auto' -urN o/setup.py n/setup.py
+--- o/setup.py	2024-10-19 21:33:30.479840367 +0200
++++ n/setup.py	2024-10-19 21:34:50.992529012 +0200
+@@ -11,7 +11,7 @@
+ setup(
+     name="scdl",
+     version=scdl.__version__,
+-    packages=find_packages(),
++    packages=find_packages(exclude=["tests", "tests.*"]),
+     include_package_data=True,
+     author="FlyinGrub",
+     author_email="flyinggrub@gmail.com",

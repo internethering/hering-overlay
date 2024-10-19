@@ -1,14 +1,14 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{8..13} )
-inherit distutils-r1 readme.gentoo-r1 systemd
+inherit distutils-r1 readme.gentoo-r1 systemd pypi
 
 DESCRIPTION="Update and verify unofficial Clam Anti-Virus signatures"
 HOMEPAGE="https://github.com/rseichter/fangfrisch https://pypi.org/project/fangfrisch/"
-SRC_URI="https://github.com/rseichter/fangfrisch/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 MY_CONF="/etc/${PN}.conf"
 MY_DBDIR="/var/lib/${PN}"
@@ -46,12 +46,12 @@ DEPEND=">=dev-python/requests-2.22.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.3.11[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
-distutils_enable_tests unittest
+PATCHES=(
+        "${FILESDIR}/stray.patch"
+)
 
-python_prepare_all() {
-	sed -i -e '/SQLAlchemy/d' setup.py || die
-	distutils-r1_python_prepare_all
-}
+
+distutils_enable_tests unittest
 
 python_install_all() {
 	insinto /etc

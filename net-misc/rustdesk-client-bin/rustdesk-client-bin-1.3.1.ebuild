@@ -1,17 +1,19 @@
-# Copyright 2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit systemd 
+inherit systemd
 
 DESCRIPTION="RustDesk Client"
 HOMEPAGE="https://rustdesk.com/"
-SRC_URI="https://github.com/rustdesk/rustdesk/releases/download/nightly/rustdesk-1.2.0-0-x86_64.pkg.tar.zst -> ${P}.tar.zst"
+SRC_URI="https://github.com/rustdesk/rustdesk/releases/download/${PV}/rustdesk-${PV}-x86_64.deb -> ${P}.deb"
+
+S=${WORKDIR}
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 
 DEPEND="app-accessibility/at-spi2-atk
 	app-accessibility/at-spi2-core
@@ -81,34 +83,41 @@ DEPEND="app-accessibility/at-spi2-atk
 	x11-libs/pixman
 	x11-misc/xdotool"
 RDEPEND="${DEPEND}"
-BDEPEND=""
-
-S=${WORKDIR}
 
 src_unpack() {
-	# unpack doesn't work, this shit!
-	#unpack ${P}.tar.zst || die "Cannot unpack!"
-	cd ${WORKDIR}
-	tar xvpf ${DISTDIR}/${P}.tar.zst
+	unpack ${P}.deb || die "Cannot unpack!"
+	unpack ${WORKDIR}/data.tar.xz
+}
+
+src_prepare() {
+	default
+	# Add Categories to Desktop-File
+	sed -i -e '/Type=Application/aCategories=Network;GTK;' usr/share/applications/rustdesk.desktop || die "sed failed!"
+	# Fix Path in Systemd-Unit
+	sed -i -e 's|/var/run/rustdesk.pid|/run/rustdesk.pid|' usr/share/rustdesk/files/systemd/rustdesk.service || die "sed failed!"
 }
 
 src_install() {
+	# Install Binary
+	dobin usr/lib/rustdesk/rustdesk || die "Cannot install Binary!"
 	# Install Library
-	insinto /usr/lib
-	doins -r usr/lib/rustdesk
-	insinto usr/share/rustdesk
-	doins -r usr/share/rustdesk/files
-
-	# Install Symlink
-	dosym /usr/lib/rustdesk/rustdesk /usr/bin/rustdesk
-	fperms 0755 /usr/lib/rustdesk/rustdesk
-
-	# desktop file + image
+	dodir /usr/lib/rustdesk
+	insinto /usr/lib/rustdesk
+	doins usr/lib/rustdesk/libsciter-gtk.so
+	doins usr/lib/rustdesk/mac-tray.png
+	# Install Miscellaneous
 	insinto /usr/share/applications
-	doins usr/share/rustdesk/files/rustdesk.desktop
+	doins usr/share/applications/rustdesk.desktop
+	insinto /usr/share/icons/hicolor/32x32/apps
+	doins usr/share/icons/hicolor/32x32/apps/rustdesk.png
+	insinto /usr/share/icons/hicolor/128x128/apps
+	doins usr/share/icons/hicolor/128x128/apps/rustdesk.png
 	insinto /usr/share/icons/hicolor/256x256/apps
-	doins usr/share/rustdesk/files/rustdesk.png
-
+	doins usr/share/icons/hicolor/256x256@2x/apps/rustdesk.png
+	# Install Python-Script
+	dodir /usr/share/rustdesk/files
+	into /usr/share/rustdesk/files
+	dobin usr/share/rustdesk/files/pynput_service.py
 	# Install Systemd-Unit
-	systemd_dounit usr/share/rustdesk/files/rustdesk.service
+	systemd_dounit usr/share/rustdesk/files/systemd/rustdesk.service
 }
