@@ -85,8 +85,8 @@ DEPEND="app-accessibility/at-spi2-atk
 RDEPEND="${DEPEND}"
 
 src_unpack() {
-	unpack ${P}.deb || die "Cannot unpack!"
-	unpack ${WORKDIR}/data.tar.xz
+	unpack "${P}".deb || die "Cannot unpack!"
+	unpack "${WORKDIR}"/data.tar.xz
 }
 
 src_prepare() {
@@ -99,11 +99,13 @@ src_prepare() {
 
 src_install() {
 	# Install Binary
-	dobin usr/lib/rustdesk/rustdesk || die "Cannot install Binary!"
+	#dobin usr/lib/rustdesk/rustdesk || die "Cannot install Binary!"
 	# Install Library
 	insinto /usr/lib/
 	doins -r usr/lib/rustdesk/
 
+	fperms 0755 /usr/lib/rustdesk/rustdesk
+	dosym /usr/lib/rustdesk/rustdesk /usr/bin/rustdesk
 	# Install Miscellaneous
 	insinto /usr/share/applications
 	doins usr/share/applications/rustdesk.desktop
