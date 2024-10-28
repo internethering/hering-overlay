@@ -15,7 +15,7 @@ inherit php-ext-pecl-r3
 
 DESCRIPTION="PHP extension for using memcached"
 LICENSE="PHP-3"
-SLOT="0"
+SLOT="7"
 KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="+session"
 
