@@ -4,8 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=pdm-backend
-PYTHON_COMPAT=( python3_{10..13} )
-inherit distutils-r1 pypi
+PYTHON_COMPAT=( python3_{10..12} )
+inherit distutils-r1 pypi systemd tmpfiles
 
 DESCRIPTION="Mailman -- the GNU mailing list manager"
 HOMEPAGE="https://www.list.org"
@@ -13,7 +13,7 @@ HOMEPAGE="https://www.list.org"
 LICENSE="GPL-3+"
 SLOT="3"
 KEYWORDS="~amd64"
-IUSE="test"
+IUSE="test html2text postgresql systemd whoosh xapian"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -41,6 +41,12 @@ RDEPEND="
 	dev-python/zope-configuration[${PYTHON_USEDEP}]
 	dev-python/zope-event[${PYTHON_USEDEP}]
 	>=dev-python/zope-interface-5.0[${PYTHON_USEDEP}]
+	dev-lang/sassc
+	html2text? ( www-client/lynx )
+	postgresql? ( dev-python/psycopg[${PYTHON_USEDEP}] )
+	xapian? ( dev-libs/xapian )
+	whoosh? ( dev-python/whoosh[${PYTHON_USEDEP}] )
+	virtual/mta
 "
 BDEPEND="
 	test? (
@@ -48,3 +54,17 @@ BDEPEND="
 		dev-python/greenlet[${PYTHON_USEDEP}]
 	)
 "
+
+python_install() {
+	distutils-r1_python_install
+
+	keepdir /var/spool/mailman /var/log/mailman /etc/mailman.d
+	fowners mailman:mailman /var/spool/mailman /var/log/mailman /etc/mailman.d
+
+	insinto /etc
+	doins "${FILESDIR}"/mailman.cfg
+	systemd_dounit "${FILESDIR}"/mailman.service
+	dotmpfiles "${FILESDIR}"/mailman.conf
+}
+
+

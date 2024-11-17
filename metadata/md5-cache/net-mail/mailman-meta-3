@@ -1,4 +1,5 @@
 DEFINED_PHASES=-
+DEPEND=acct-group/mailman acct-user/mailman
 DESCRIPTION=Meta ebuild for GNU Mailman 3
 EAPI=8
 HOMEPAGE=https://list.org/
@@ -6,4 +7,4 @@ KEYWORDS=~amd64
 LICENSE=metapackage
 RDEPEND=>=net-mail/mailman-3.0 net-mail/postorius net-mail/hyperkitty net-mail/mailman-web net-mail/mailman-systemd net-mail/mailman-hyperkitty
 SLOT=0
-_md5_=66fd54f772c87d47fa3e71c32ded812c
+_md5_=5c59f6ec9199e3fbab7f3e110aa9d689
