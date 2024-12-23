@@ -13,7 +13,7 @@ HOMEPAGE="https://www.list.org"
 LICENSE="GPL-3+"
 SLOT="3"
 KEYWORDS="~amd64"
-IUSE="test html2text postgresql systemd whoosh xapian"
+IUSE="cron test html2text postgresql systemd whoosh xapian"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -63,8 +63,18 @@ python_install() {
 
 	insinto /etc
 	doins "${FILESDIR}"/mailman.cfg
-	systemd_dounit "${FILESDIR}"/mailman.service
 	dotmpfiles "${FILESDIR}"/mailman.conf
+
+	if use systemd ; then
+		systemd_dounit "${FILESDIR}"/mailman3.service
+		systemd_dounit "${FILESDIR}"/mailman3-cron.service
+		systemd_dounit "${FILESDIR}"/mailman3-cron.timer
+	fi
+
+	if use cron ; then
+		exeinto /etc/cron.daily
+		doexe "${FILESDIR}"/mailman3.cron
+	fi
 }
 
 

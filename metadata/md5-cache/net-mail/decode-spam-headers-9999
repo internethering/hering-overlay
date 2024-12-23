@@ -1,0 +1,13 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install unpack
+DEPEND=dev-python/setuptools
+DESCRIPTION=A script that helps you understand why your E-Mail ended up in Spam
+EAPI=8
+HOMEPAGE=https://github.com/mgeeky/decode-spam-headers
+INHERIT=git-r3
+LICENSE=MIT
+PROPERTIES=live
+RDEPEND=dev-python/python-dateutil dev-python/tldextract dev-python/packaging dev-python/dnspython dev-python/requests dev-python/colorama
+SLOT=0
+_eclasses_=git-r3	875eb471682d3e1f18da124be97dcc81
+_md5_=2fb7075f0d807f5b395068f75372420d

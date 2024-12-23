@@ -1,0 +1,3 @@
+#!/bin/sh
+/sbin/runuser -u mailman -- nice -n10 /usr/bin/mailman digests --periodic
+/sbin/runuser -u mailman -- nice -n10 /usr/bin/mailman notify

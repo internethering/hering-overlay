@@ -31,6 +31,6 @@ python_install() {
 	distutils-r1_python_install
 
 	# ensure config are getting installed too
-	insinto /etc/mailman3.d
+	insinto /etc/mailman.d
 	newins "${S}/mailman-hyperkitty.cfg" hyperkitty.cfg
 }

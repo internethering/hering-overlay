@@ -1,0 +1,8 @@
+[Unit]
+Description=Run mailman Cronjobs
+
+[Timer]
+OnCalendar=daily
+
+[Install]
+WantedBy=timers.target
