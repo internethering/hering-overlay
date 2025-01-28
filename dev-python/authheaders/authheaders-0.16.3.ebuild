@@ -21,7 +21,7 @@ KEYWORDS="~amd64"
 RDEPEND="dev-python/authres[${PYTHON_USEDEP}]
 	dev-python/dkimpy[${PYTHON_USEDEP}]
 	dev-python/dnspython[${PYTHON_USEDEP}]
-	dev-python/publicsuffix[${PYTHON_USEDEP}]
+	dev-python/publicsuffix2[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest
