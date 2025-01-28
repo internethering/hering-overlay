@@ -274,6 +274,7 @@ src_prepare() {
 	eapply -p1 "${FILESDIR}/php-htmltidy-5.8.0.patch"
 	eapply -p1 "${FILESDIR}/php-icu-70.patch"
 	eapply -p1 "${FILESDIR}/php-5.6.40-openssl-3.patch"
+    eapply -p1 "${FILESDIR}/php-5.6-libxml2-2.12.patch"
 
 	eapply_user
 
