@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=Apache Directory Studio is an universal LDAP directory tool.
+EAPI=7
+HOMEPAGE=http://directory.apache.org/studio/
+INHERIT=desktop xdg-utils
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=|| ( >=virtual/jre-1.8 >=virtual/jdk-1.8 ) x11-libs/gtk+:2 app-crypt/libsecret
+SLOT=0
+SRC_URI=https://archive.apache.org/dist/directory/studio/2.0.0.v20210717-M17/ApacheDirectoryStudio-2.0.0.v20210717-M17-linux.gtk.x86_64.tar.gz
+_eclasses_=desktop	3a72ffe0d8e1dd73af3a1c8c15a59fed	xdg-utils	42869b3c8d86a70ef3cf75165a395e09
+_md5_=ca47c4a91f0a453974bc20b2b4418982
