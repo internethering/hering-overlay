@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl] virtual/pkgconfig
+DEFINED_PHASES=install unpack
+DESCRIPTION=CalDAV Reminder Telegram Bot
+EAPI=8
+HOMEPAGE=https://github.com/mcdax/caldav-reminder-telegram-bot
+INHERIT=git-r3 systemd
+LICENSE=GPL3
+PROPERTIES=live
+RDEPEND=dev-python/markupsafe dev-python/jinja2 dev-python/anyio dev-python/caldav dev-python/certifi dev-python/charset-normalizer dev-python/h11 dev-python/httpcore dev-python/httpx dev-python/icalendar dev-python/idna dev-python/lxml dev-python/python-dateutil dev-python/python-dotenv dev-python/python-telegram-bot dev-python/pytz dev-python/recurring-ical-events dev-python/requests dev-python/six dev-python/sniffio dev-python/tzlocal dev-python/urllib3 dev-python/vobject dev-python/x-wr-timezone
+SLOT=0
+_eclasses_=git-r3	875eb471682d3e1f18da124be97dcc81	multilib	b2a329026f2e404e9e371097dda47f96	systemd	54bd206bb5c4efac6ae28b6b006713b0	toolchain-funcs	6afdb6107430c1832ca7e16aacbf8fa1
+_md5_=1e956a5339c3d5f0084fc2df9756681f
