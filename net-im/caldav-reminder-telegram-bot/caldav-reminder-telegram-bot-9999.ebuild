@@ -47,7 +47,7 @@ src_install() {
 	doins "src/template.example.html"
 
 	insinto /etc
-	doins "${FILESDIR}"/caldav-reminder-telegram-bot.conf
+	newins .env.example /etc/caldav-reminder-telegram-bot.conf
 
 	systemd_dounit "${FILESDIR}"/caldav-reminder-telegram-bot.service
 }
