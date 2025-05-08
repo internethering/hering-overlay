@@ -244,7 +244,7 @@ src_prepare() {
 	# Copy test binaries from patches
 	local ext_src
 	for ext_src in exif iconv ; do
-		cp "${patchdir}/${ext_src}/"* "ext/${ext_src}/tests/" || die
+		cp "${patchdir}/${ext_src}/"* "ext/${ext_src}ghgit /tests/" || die
 	done
 
 	# Change PHP branding

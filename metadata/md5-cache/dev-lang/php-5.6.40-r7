@@ -13,4 +13,4 @@ REQUIRED_USE=|| ( cli cgi fpm apache2 embed ) cli? ( ^^ ( readline libedit ) ) t
 SLOT=5.6
 SRC_URI=https://php.net/distributions/php-5.6.40.tar.xz https://gitweb.gentoo.org/proj/php-patches.git/snapshot/php-patches-7.1.33bp.tar.bz2
 _eclasses_=autotools	35f9bf6198bb538e28dcdea5fda274f2	flag-o-matic	b892042b2667b8ac69ec8a2571dc290a	gnuconfig	ddeb9f8caff1b5f71a09c75b7534df79	libtool	c81bd096be5f4c82f4e8f156ef112402	systemd	a964c0cbe818b5729da1dbfcee5be861	toolchain-funcs	f9d71a6efe9d083aec750dd13968e169
-_md5_=7774a113802077d9fba6faf78eb66f46
+_md5_=3a3a891c6379239669fd8ba2102606e3
