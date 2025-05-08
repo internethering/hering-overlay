@@ -1,0 +1,51 @@
+From 30d2b94a2e88021b77b07149e1f4438662ca8e5e Mon Sep 17 00:00:00 2001
+From: Stanislav Malyshev <stas@php.net>
+Date: Sat, 2 Mar 2019 13:38:00 -0800
+Subject: [PATCH] Fix bug #77540 - Invalid Read on exif_process_SOFn
+
+---
+ ext/exif/exif.c              |  10 ++++++++--
+ ext/exif/tests/bug77540.jpg  | Bin 0 -> 91 bytes
+ ext/exif/tests/bug77540.phpt |  16 ++++++++++++++++
+ 3 files changed, 24 insertions(+), 2 deletions(-)
+ create mode 100644 ext/exif/tests/bug77540.jpg
+ create mode 100644 ext/exif/tests/bug77540.phpt
+
+diff --git a/ext/exif/exif.c b/ext/exif/exif.c
+index 4f2f660..8ed9c85 100644
+--- a/ext/exif/exif.c
++++ b/ext/exif/exif.c
+@@ -3902,7 +3902,7 @@ static int exif_scan_thumbnail(image_info_type *ImageInfo)
+ 			return FALSE;
+ 		marker = c;
+ 		length = php_jpg_get16(data+pos);
+-		if (pos+length>=ImageInfo->Thumbnail.size) {
++		if (length > ImageInfo->Thumbnail.size || pos >= ImageInfo->Thumbnail.size - length) {
+ 			return FALSE;
+ 		}
+ #ifdef EXIF_DEBUG
+@@ -3923,6 +3923,10 @@ static int exif_scan_thumbnail(image_info_type *ImageInfo)
+ 			case M_SOF14:
+ 			case M_SOF15:
+ 				/* handle SOFn block */
++				if (length < 8 || ImageInfo->Thumbnail.size - 8 < pos) {
++					/* exif_process_SOFn needs 8 bytes */
++					return FALSE;
++				}
+ 				exif_process_SOFn(data+pos, marker, &sof_info);
+ 				ImageInfo->Thumbnail.height   = sof_info.height;
+ 				ImageInfo->Thumbnail.width    = sof_info.width;
+@@ -4654,7 +4658,9 @@ PHP_FUNCTION(exif_thumbnail)
+ 	ZVAL_STRINGL(return_value, ImageInfo.Thumbnail.data, ImageInfo.Thumbnail.size, 1);
+ 	if (arg_c >= 3) {
+ 		if (!ImageInfo.Thumbnail.width || !ImageInfo.Thumbnail.height) {
+-			exif_scan_thumbnail(&ImageInfo TSRMLS_CC);
++			if (!exif_scan_thumbnail(&ImageInfo TSRMLS_CC)) {
++				ImageInfo.Thumbnail.width = ImageInfo.Thumbnail.height = 0;
++			}
+ 		}
+ 		zval_dtor(p_width);
+ 		zval_dtor(p_height);
+-- 
+2.1.4
+

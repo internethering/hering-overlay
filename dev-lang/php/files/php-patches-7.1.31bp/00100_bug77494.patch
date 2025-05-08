@@ -1,0 +1,54 @@
+From 73f222d722460bebb98a1d2f11f891eefe4defde Mon Sep 17 00:00:00 2001
+From: Dmitry Stogov <dmitry@zend.com>
+Date: Thu, 24 Jan 2019 13:06:36 +0300
+Subject: [PATCH] Fixed bug #77494 (Disabling class causes segfault on member
+ access)
+
+---
+ Zend/tests/bug77494.phpt | 16 ++++++++++++++++
+ Zend/zend_API.c          | 11 +++++++++++
+ 2 files changed, 27 insertions(+)
+ create mode 100644 Zend/tests/bug77494.phpt
+
+diff --git a/Zend/tests/bug77494.phpt b/Zend/tests/bug77494.phpt
+new file mode 100644
+index 000000000000..1793f6b219d5
+--- /dev/null
++++ b/Zend/tests/bug77494.phpt
+@@ -0,0 +1,16 @@
++--TEST--
++Bug #77494 (Disabling class causes segfault on member access)
++--SKIPIF--
++<?php if (!extension_loaded("curl")) exit("skip curl extension not loaded"); ?>
++--INI--
++disable_classes=CURLFile
++--FILE--
++<?php
++$a = new CURLFile();
++var_dump($a->name);
++?>
++--EXPECTF--
++Warning: CURLFile() has been disabled for security reasons in %sbug77494.php on line 2
++
++Notice: Undefined property: CURLFile::$name in %sbug77494.php on line 3
++NULL
+diff --git a/Zend/zend_API.c b/Zend/zend_API.c
+index 600520552c52..d4b1502734f1 100644
+--- a/Zend/zend_API.c
++++ b/Zend/zend_API.c
+@@ -2855,5 +2855,15 @@ static zend_object *display_disabled_class(zend_class_entry *class_type) /* {{{
+ 	zend_object *intern;
++       int i;
+ 	retval = zend_objects_new(&intern, class_type TSRMLS_CC);
++
++	/* Initialize default properties */
++	if (EXPECTED(class_type->default_properties_count != 0)) {
++		intern->properties_table = emalloc(sizeof(zval*) * class_type->default_properties_count);
++		for (i = 0; i < class_type->default_properties_count; i++) {
++			intern->properties_table[i] = NULL;
++		}
++	}
++
+ 	zend_error(E_WARNING, "%s() has been disabled for security reasons", class_type->name);
+ 	return retval;
+ }

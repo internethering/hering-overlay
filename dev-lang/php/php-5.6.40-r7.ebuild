@@ -11,8 +11,7 @@ WANT_AUTOCONF="2.71"
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://secure.php.net/"
-SRC_URI="https://php.net/distributions/${P}.tar.xz
-	https://gitweb.gentoo.org/proj/php-patches.git/snapshot/php-patches-${PATCH_V}.tar.bz2"
+SRC_URI="https://php.net/distributions/${P}.tar.xz"
 
 LICENSE="PHP-3.01
 	BSD
@@ -49,6 +48,7 @@ IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
 # the ./configure script. Other versions *work*, but we need to stick to
 # the ones that can be detected to avoid a repeat of bug #564824.
 COMMON_DEPEND="
+    dev-build/autoconf:2.71
 	>=app-eselect/eselect-php-0.9.1[apache2?,fpm?]
 	>=dev-libs/libpcre-8.32[unicode]
 	fpm? ( acl? ( sys-apps/acl ) )
@@ -236,7 +236,7 @@ php_set_ini_dir() {
 }
 
 src_prepare() {
-	local patchdir="${WORKDIR}/php-patches-${PATCH_V}"
+	local patchdir="${FILESDIR}/php-patches-${PATCH_V}"
 
 	eapply "${patchdir}/"
 
@@ -289,6 +289,8 @@ src_prepare() {
 		# http://bugs.php.net/bug.php?id=48795, bug #343481
 		sed -i -e '/BUILD_CGI="\\$(CC)/s/CC/CXX/' configure || die
 	fi
+
+	eapply -p1 "${FILESDIR}/php-5.6.40-test.patch"
 }
 
 src_configure() {

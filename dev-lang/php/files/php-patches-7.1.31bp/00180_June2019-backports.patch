@@ -1,0 +1,223 @@
+From fde7833378c023134aafd054efa023d40aa78858 Mon Sep 17 00:00:00 2001
+From: "Christoph M. Becker" <cmbecker69@gmx.de>
+Date: Mon, 6 May 2019 10:18:51 +0200
+Subject: [PATCH 1/5] Fix #77973: Uninitialized read in gdImageCreateFromXbm
+
+We have to ensure that `sscanf()` does indeed read a hex value here,
+and bail out otherwise.
+
+(cherry picked from commit ed6dee9a198c904ad5e03113e58a2d2c200f5184)
+---
+ ext/gd/libgd/xbm.c         |  6 +++++-
+ ext/gd/tests/bug77973.phpt | 26 ++++++++++++++++++++++++++
+ 2 files changed, 31 insertions(+), 1 deletion(-)
+ create mode 100644 ext/gd/tests/bug77973.phpt
+
+diff --git a/ext/gd/libgd/xbm.c b/ext/gd/libgd/xbm.c
+index 503ac824bc..99931a5878 100644
+--- a/ext/gd/libgd/xbm.c
++++ b/ext/gd/libgd/xbm.c
+@@ -135,7 +135,11 @@ gdImagePtr gdImageCreateFromXbm(FILE * fd)
+ 			}
+ 			h[3] = ch;
+ 		}
+-		sscanf(h, "%x", &b);
++		if (sscanf(h, "%x", &b) != 1) {
++			php_gd_error("invalid XBM");
++			gdImageDestroy(im);
++			return 0;
++		}
+ 		for (bit = 1; bit <= max_bit; bit = bit << 1) {
+ 			gdImageSetPixel(im, x++, y, (b & bit) ? 1 : 0);
+ 			if (x == im->sx) {
+diff --git a/ext/gd/tests/bug77973.phpt b/ext/gd/tests/bug77973.phpt
+new file mode 100644
+index 0000000000..2545dbe128
+--- /dev/null
++++ b/ext/gd/tests/bug77973.phpt
+@@ -0,0 +1,26 @@
++--TEST--
++Bug #77973 (Uninitialized read in gdImageCreateFromXbm)
++--SKIPIF--
++<?php
++if (!extension_loaded('gd')) die("skip gd extension not available");
++if (!function_exists('imagecreatefromxbm')) die("skip imagecreatefromxbm not available");
++?>
++--FILE--
++<?php
++$contents = hex2bin("23646566696e6520776964746820320a23646566696e652068656967687420320a737461746963206368617220626974735b5d203d7b0a7a7a787a7a");
++$filepath = __DIR__ . '/bug77973.xbm';
++file_put_contents($filepath, $contents);
++$im = imagecreatefromxbm($filepath);
++var_dump($im);
++?>
++===DONE===
++--EXPECTF--
++Warning: imagecreatefromxbm(): invalid XBM in %s on line %d
++
++Warning: imagecreatefromxbm(): '%s' is not a valid XBM file in %s on line %d
++bool(false)
++===DONE===
++--CLEAN--
++<?php
++unlink(__DIR__ . '/bug77973.xbm');
++?>
+
+From aabd02d6dd1eab180486cff933dc8d08d4297e38 Mon Sep 17 00:00:00 2001
+From: Stanislav Malyshev <stas@php.net>
+Date: Mon, 27 May 2019 16:32:42 -0700
+Subject: [PATCH 2/5] Fix bug #78069 - Out-of-bounds read in
+ iconv.c:_php_iconv_mime_decode() due to integer overflow
+
+(cherry picked from commit 7cf7148a8f8f4f55fb04de2a517d740bb6253eac)
+---
+ ext/iconv/iconv.c             |   4 +++-
+ ext/iconv/tests/bug78069.data | Bin 0 -> 107 bytes
+ ext/iconv/tests/bug78069.phpt |  15 +++++++++++++++
+ 3 files changed, 18 insertions(+), 1 deletion(-)
+ create mode 100644 ext/iconv/tests/bug78069.data
+ create mode 100644 ext/iconv/tests/bug78069.phpt
+
+diff --git a/ext/iconv/iconv.c b/ext/iconv/iconv.c
+index 335dbd17e9..bbc4b0f5e3 100644
+--- a/ext/iconv/iconv.c
++++ b/ext/iconv/iconv.c
+@@ -1645,7 +1645,9 @@ static php_iconv_err_t _php_iconv_mime_decode(smart_str *pretval, const char *st
+ 							 * we can do at this point. */
+ 							if (*(p1 + 1) == '=') {
+ 								++p1;
+-								--str_left;
++								if (str_left > 1) {
++									--str_left;
++								}
+ 							}
+ 
+ 							err = _php_iconv_appendl(pretval, encoded_word, (size_t)((p1 + 1) - encoded_word), cd_pl);
+diff --git a/ext/iconv/tests/bug78069.phpt b/ext/iconv/tests/bug78069.phpt
+new file mode 100644
+index 0000000000..1341a5ef4f
+--- /dev/null
++++ b/ext/iconv/tests/bug78069.phpt
+@@ -0,0 +1,15 @@
++--TEST--
++Bug #78069 (Out-of-bounds read in iconv.c:_php_iconv_mime_decode() due to integer overflow)
++--SKIPIF--
++<?php
++if (!extension_loaded('iconv')) die('skip ext/iconv required');
++?>
++--FILE--
++<?php
++$hdr = iconv_mime_decode_headers(file_get_contents(__DIR__ . "/bug78069.data"),2);
++var_dump(count($hdr));
++?>
++DONE
++--EXPECT--
++int(1)
++DONE
+\ No newline at end of file
+
+From ad08e8b3cecdde5d10038501c310494ba01a7aa8 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Tue, 28 May 2019 07:28:46 +0200
+Subject: [PATCH 3/5] fix test output
+
+(cherry picked from commit 4e0362c2c3b667e55fadee1029a626d63cb9a655)
+---
+ ext/iconv/tests/bug78069.phpt | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/ext/iconv/tests/bug78069.phpt b/ext/iconv/tests/bug78069.phpt
+index 1341a5ef4f..d2fcaf871e 100644
+--- a/ext/iconv/tests/bug78069.phpt
++++ b/ext/iconv/tests/bug78069.phpt
+@@ -10,6 +10,7 @@ $hdr = iconv_mime_decode_headers(file_get_contents(__DIR__ . "/bug78069.data"),2
+ var_dump(count($hdr));
+ ?>
+ DONE
+---EXPECT--
++--EXPECTF--
++Notice: iconv_mime_decode_headers%s
+ int(1)
+-DONE
+\ No newline at end of file
++DONE
+
+From 9e0574adfd9566ed6308291e4917b095a238fa79 Mon Sep 17 00:00:00 2001
+From: Stanislav Malyshev <stas@php.net>
+Date: Mon, 27 May 2019 17:16:29 -0700
+Subject: [PATCH 4/5] Fix bug #77988 - heap-buffer-overflow on php_jpg_get16
+
+(cherry picked from commit 73ff4193be24192c894dc0502d06e2b2db35eefb)
+---
+ NEWS                         |  14 ++++++++++++++
+ ext/exif/exif.c              |   2 ++
+ ext/exif/tests/bug77988.jpg  | Bin 0 -> 1202 bytes
+ ext/exif/tests/bug77988.phpt |  11 +++++++++++
+ 4 files changed, 27 insertions(+)
+ create mode 100644 ext/exif/tests/bug77988.jpg
+ create mode 100644 ext/exif/tests/bug77988.phpt
+
+diff --git a/ext/exif/exif.c b/ext/exif/exif.c
+index 15e091b6c5..b6c31773ab 100644
+--- a/ext/exif/exif.c
++++ b/ext/exif/exif.c
+@@ -3536,6 +3536,8 @@ static int exif_scan_thumbnail(image_info_type *ImageInfo TSRMLS_DC)
+ 		if (c == 0xFF)
+ 			return FALSE;
+ 		marker = c;
++		if (pos>=ImageInfo->Thumbnail.size)
++			return FALSE;
+ 		length = php_jpg_get16(data+pos);
+ 		if (length > ImageInfo->Thumbnail.size || pos >= ImageInfo->Thumbnail.size - length) {
+ 			return FALSE;
+diff --git a/ext/exif/tests/bug77988.phpt b/ext/exif/tests/bug77988.phpt
+new file mode 100644
+index 0000000000..1632c8afaa
+--- /dev/null
++++ b/ext/exif/tests/bug77988.phpt
+@@ -0,0 +1,11 @@
++--TEST--
++Bug #77988 (heap-buffer-overflow on php_jpg_get16)
++--SKIPIF--
++<?php if (!extension_loaded('exif')) print 'skip exif extension not available';?>
++--FILE--
++<?php
++exif_read_data(__DIR__."/bug77988.jpg", 'COMMENT', FALSE, TRUE);
++?>
++DONE
++--EXPECTF--
++DONE
+\ No newline at end of file
+
+From 7de8c0284cd9e237eb8a1faa9b41af1d3ef32ea9 Mon Sep 17 00:00:00 2001
+From: Stanislav Malyshev <stas@php.net>
+Date: Mon, 27 May 2019 18:04:00 -0700
+Subject: [PATCH 5/5] Fix bug #77967 - Bypassing open_basedir restrictions via
+ file uris
+
+(cherry picked from commit c34895e837b50213c2bb201c612904342d2bd216)
+---
+ NEWS                  | 7 +++++--
+ ext/sqlite3/sqlite3.c | 9 +++++++++
+ 2 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/ext/sqlite3/sqlite3.c b/ext/sqlite3/sqlite3.c
+index 761b777d06..7bf873ff69 100644
+--- a/ext/sqlite3/sqlite3.c
++++ b/ext/sqlite3/sqlite3.c
+@@ -2062,6 +2062,15 @@ static int php_sqlite3_authorizer(void *autharg, int access_type, const char *ar
+ 				}
+ #endif
+ 
++				if (strncmp(arg3, "file:", 5) == 0) {
++					/* starts with "file:" */
++					if (!arg3[5]) {
++						return SQLITE_DENY;
++					}
++					if (php_check_open_basedir(arg3 + 5 TSRMLS_CC)) {
++						return SQLITE_DENY;
++					}
++				}
+ 				if (php_check_open_basedir(arg3 TSRMLS_CC)) {
+ 					return SQLITE_DENY;
+ 				}
