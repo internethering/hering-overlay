@@ -5,13 +5,14 @@ EAPI="7"
 
 inherit autotools flag-o-matic systemd
 
-PATCH_V="7.1.31bp"
+PATCH_V="7.1.33bp"
 
 WANT_AUTOCONF="2.71"
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://secure.php.net/"
-SRC_URI="https://php.net/distributions/${P}.tar.xz"
+SRC_URI="https://php.net/distributions/${P}.tar.xz
+	https://gitweb.gentoo.org/proj/php-patches.git/snapshot/php-patches-${PATCH_V}.tar.bz2"
 
 LICENSE="PHP-3.01
 	BSD
@@ -236,7 +237,7 @@ php_set_ini_dir() {
 }
 
 src_prepare() {
-	local patchdir="${FILESDIR}/php-patches-${PATCH_V}"
+	local patchdir="${WORKDIR}/php-patches-${PATCH_V}"
 
 	eapply "${patchdir}/"
 
