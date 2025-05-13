@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit autotools flag-o-matic systemd
+inherit autotools flag-o-matic systemd multilib
 
 PATCH_V="7.1.33bp"
 
