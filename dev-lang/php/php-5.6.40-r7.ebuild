@@ -11,8 +11,7 @@ WANT_AUTOCONF="2.71"
 
 DESCRIPTION="The PHP language runtime engine"
 HOMEPAGE="https://secure.php.net/"
-SRC_URI="https://php.net/distributions/${P}.tar.xz
-	https://gitweb.gentoo.org/proj/php-patches.git/snapshot/php-patches-${PATCH_V}.tar.bz2"
+SRC_URI="https://php.net/distributions/${P}.tar.xz"
 
 LICENSE="PHP-3.01
 	BSD
@@ -237,14 +236,14 @@ php_set_ini_dir() {
 }
 
 src_prepare() {
-	local patchdir="${WORKDIR}/php-patches-${PATCH_V}"
+	local patchdir="${FILESDIR}/php-patches-${PATCH_V}"
 
-	eapply "${patchdir}/"
+	eapply "${patchdir}"
 
 	# Copy test binaries from patches
 	local ext_src
 	for ext_src in exif iconv ; do
-		cp "${patchdir}/${ext_src}/"* "ext/${ext_src}ghgit /tests/" || die
+		cp "${patchdir}/${ext_src}/"* "ext/${ext_src}/tests/" || die
 	done
 
 	# Change PHP branding

@@ -46,6 +46,29 @@ index 4f2f660..8ed9c85 100644
  		}
  		zval_dtor(p_width);
  		zval_dtor(p_height);
+diff --git a/ext/exif/tests/bug77540.phpt b/ext/exif/tests/bug77540.phpt
+new file mode 100644
+index 0000000..a284e1f
+--- /dev/null
++++ b/ext/exif/tests/bug77540.phpt
+@@ -0,0 +1,16 @@
++--TEST--
++Bug 77540 (Invalid Read on exif_process_SOFn)
++--SKIPIF--
++<?php if (!extension_loaded('exif')) print 'skip exif extension not available';?>
++--FILE--
++<?php
++$width = $height = 42;
++$s = exif_thumbnail(__DIR__."/bug77540.jpg", $width, $height);
++echo "Width ".$width."\n";
++echo "Height ".$height."\n";
++?>
++DONE
++--EXPECTF--
++Width 0
++Height 0
++DONE
+\ No newline at end of file
 -- 
 2.1.4
 
