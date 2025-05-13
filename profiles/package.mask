@@ -1,0 +1,2 @@
+# these php versions are unsupported and risky. use on your own risk and don't use them in productive environments
+<dev-lang/php-8.2
