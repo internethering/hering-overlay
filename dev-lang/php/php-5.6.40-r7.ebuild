@@ -49,6 +49,7 @@ IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
 # the ./configure script. Other versions *work*, but we need to stick to
 # the ones that can be detected to avoid a repeat of bug #564824.
 COMMON_DEPEND="
+	sys-devel/gcc:13
     dev-build/autoconf:2.71
 	>=app-eselect/eselect-php-0.9.1[apache2?,fpm?]
 	>=dev-libs/libpcre-8.32[unicode]
