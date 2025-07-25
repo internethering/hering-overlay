@@ -8,5 +8,5 @@ LICENSE=GPL3
 PROPERTIES=live
 RDEPEND=dev-python/markupsafe dev-python/jinja2 dev-python/anyio dev-python/caldav dev-python/certifi dev-python/charset-normalizer dev-python/h11 dev-python/httpcore dev-python/httpx dev-python/icalendar dev-python/idna dev-python/lxml dev-python/python-dateutil dev-python/python-dotenv dev-python/python-telegram-bot dev-python/pytz dev-python/recurring-ical-events dev-python/requests dev-python/six dev-python/sniffio dev-python/tzlocal dev-python/urllib3 dev-python/vobject dev-python/x-wr-timezone
 SLOT=0
-_eclasses_=git-r3	875eb471682d3e1f18da124be97dcc81	systemd	a964c0cbe818b5729da1dbfcee5be861	toolchain-funcs	f9d71a6efe9d083aec750dd13968e169
+_eclasses_=git-r3	875eb471682d3e1f18da124be97dcc81	systemd	a964c0cbe818b5729da1dbfcee5be861	toolchain-funcs	a0b29008c671a362b505f96fa80ce9c0
 _md5_=b87b45c437fbdc970eaaaaa4f74e6c80
