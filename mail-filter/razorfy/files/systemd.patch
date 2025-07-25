@@ -1,0 +1,12 @@
+diff '--color=auto' -urN o/razorfy.service n/razorfy.service
+--- o/razorfy.service	2025-07-25 20:18:15.275358160 +0200
++++ n/razorfy.service	2025-07-25 20:19:14.730229443 +0200
+@@ -12,7 +12,7 @@
+ Group=razorfy
+ 
+ EnvironmentFile=/etc/razorfy.conf
+-ExecStart=/usr/local/bin/razorfy.pl
++ExecStart=/usr/bin/razorfy
+ ExecReload=/bin/kill -HUP $MAINPID
+ ExecStop=/bin/kill $MAINPID
+ 
