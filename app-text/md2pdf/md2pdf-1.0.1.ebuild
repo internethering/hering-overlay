@@ -21,7 +21,8 @@ RDEPEND="dev-python/weasyprint[${PYTHON_USEDEP}]
 	dev-python/jinja2[${PYTHON_USEDEP}]
 	dev-python/pymdown-extensions[${PYTHON_USEDEP}]
 	dev-python/markdown2[${PYTHON_USEDEP}]
-	dev-python/python-frontmatter[${PYTHON_USEDEP}]"
+	dev-python/python-frontmatter[${PYTHON_USEDEP}]
+	dev-python/docopt[${PYTHON_USEDEP}]"
 
 src_prepare() {
 	rm -rf tests

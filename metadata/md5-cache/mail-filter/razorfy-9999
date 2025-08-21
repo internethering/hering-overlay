@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install unpack
+DEPEND=acct-group/razorfy acct-user/razorfy
+DESCRIPTION=Small Perl Daemon to use razor over TCP sockets. Mainly to use razor in Rspamd.
+EAPI=8
+HOMEPAGE=https://github.com/HeinleinSupport/razorfy
+INHERIT=systemd git-r3
+LICENSE=Apache-2
+PROPERTIES=live
+RDEPEND=mail-filter/razor virtual/perl-Data-Dumper virtual/perl-IO-Socket-IP virtual/perl-IO
+SLOT=0
+_eclasses_=git-r3	875eb471682d3e1f18da124be97dcc81	systemd	a964c0cbe818b5729da1dbfcee5be861	toolchain-funcs	a0b29008c671a362b505f96fa80ce9c0
+_md5_=0313a730dff490a95f6b64598e65a133

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=app-arch/bzip2 app-arch/gzip virtual/mysql
 SLOT=0
 SRC_URI=https://github.com/internethering/AutoMySQLBackup/archive/3.0_rc9.tar.gz -> AutoMySQLBackup-3.0_rc9.tar.gz
-_eclasses_=systemd	a964c0cbe818b5729da1dbfcee5be861	toolchain-funcs	f9d71a6efe9d083aec750dd13968e169
+_eclasses_=systemd	a964c0cbe818b5729da1dbfcee5be861	toolchain-funcs	a0b29008c671a362b505f96fa80ce9c0
 _md5_=089f8df3e642d920d2c7769a35005611

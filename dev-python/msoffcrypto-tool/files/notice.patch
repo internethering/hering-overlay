@@ -1,0 +1,12 @@
+diff '--color=auto' -urN o/pyproject.toml n/pyproject.toml
+--- o/pyproject.toml	2024-08-08 17:50:18.127864100 +0200
++++ n/pyproject.toml	2025-07-25 17:46:04.503971683 +0200
+@@ -6,7 +6,7 @@
+ homepage = "https://github.com/nolze/msoffcrypto-tool"
+ authors = ["nolze <nolze@int3.net>"]
+ readme = "README.md"
+-packages = [{ include = "msoffcrypto" }, { include = "NOTICE.txt" }]
++packages = [{ include = "msoffcrypto" }]
+ 
+ [tool.poetry.dependencies]
+ python = "^3.8"

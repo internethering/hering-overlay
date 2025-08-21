@@ -1,0 +1,12 @@
+diff '--color=auto' -urN o/olefy.service n/olefy.service
+--- o/olefy.service	2025-07-25 18:09:27.779151258 +0200
++++ n/olefy.service	2025-07-25 18:14:18.024262468 +0200
+@@ -8,7 +8,7 @@
+ Group=olefy
+ 
+ EnvironmentFile=/etc/olefy.conf
+-ExecStart=/usr/bin/python3 /usr/local/bin/olefy.py
++ExecStart=/usr/bin/olefy
+ ExecReload=/bin/kill -HUP $MAINPID
+ 
+ PIDFile=/run/olefy.pid
