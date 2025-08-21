@@ -41,6 +41,9 @@ src_install() {
 	if use rspamd ; then
 		newexe "${FILESDIR}/rs-learn-spam.sh" learn-spam.sh
 		newexe "${FILESDIR}/rs-learn-ham.sh" learn-ham.sh
+		
+		insinto /etc/mail
+		doins "${FILESDIR}/dovecot-antispam.conf"
 	fi
 }
 
