@@ -24,6 +24,7 @@ RDEPEND="dev-python/python-magic
 PATCHES=(
         "${FILESDIR}/systemd.patch"
         "${FILESDIR}/olevba.patch"
+        "${FILESDIR}/python-3.12.patch"
 )
 
 src_install() {

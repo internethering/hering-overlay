@@ -1,0 +1,38 @@
+From 90fc27ccc82494988990e4b53a992c6e4c065caa Mon Sep 17 00:00:00 2001
+From: capsaicincapsicum <github.com@maik.li>
+Date: Thu, 8 Feb 2024 15:21:34 +0100
+Subject: [PATCH] fix python >3.12
+
+---
+ olefy.py | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/olefy.py b/olefy.py
+index 74069cf..23037cb 100644
+--- a/olefy.py
++++ b/olefy.py
+@@ -60,7 +60,7 @@
+ if not olefy_listen_addr_string:
+     olefy_listen_addr = ""
+ else:
+-    addr_re = re.compile('[\[" \]]')
++    addr_re = re.compile('[]" []')
+     olefy_listen_addr = addr_re.sub('', olefy_listen_addr_string.replace("'", "")).split(',')
+ 
+ # log runtime variables
+@@ -201,7 +201,14 @@ def eof_received(self):
+ 
+ 
+ # start the listeners
+-loop = asyncio.get_event_loop()
++if sys.version_info < (3, 10):
++    loop = asyncio.get_event_loop()
++else:
++    try:
++        loop = asyncio.get_running_loop()
++    except RuntimeError:
++        loop = asyncio.new_event_loop()
++    asyncio.set_event_loop(loop)
+ # each client connection will create a new protocol instance
+ coro = loop.create_server(AIO, olefy_listen_addr, olefy_listen_port)
+ server = loop.run_until_complete(coro)
