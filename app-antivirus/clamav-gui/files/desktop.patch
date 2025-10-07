@@ -1,0 +1,22 @@
+diff '--color=auto' -urN o/extra/ClamAV-GUI.desktop n/extra/ClamAV-GUI.desktop
+--- o/extra/ClamAV-GUI.desktop	2025-06-09 21:42:29.000000000 +0200
++++ n/extra/ClamAV-GUI.desktop	2025-09-28 14:05:05.311445962 +0200
+@@ -14,7 +14,7 @@
+ Comment[fr]=Interface graphique pour ClamAV
+ Comment[it]=Interfaccia grafica per ClamAV
+ Comment[uk]=Графічний інтерфейс для ClamAV
+-Exec=clamav-gui
++Exec=ClamAV-GUI
+ Icon=clamav-gui
+ Type=Application
+ Terminal=false
+diff '--color=auto' -urN o/extra/ClamAV-GUI-ServiceMenu.desktop n/extra/ClamAV-GUI-ServiceMenu.desktop
+--- o/extra/ClamAV-GUI-ServiceMenu.desktop	2025-06-09 21:42:29.000000000 +0200
++++ n/extra/ClamAV-GUI-ServiceMenu.desktop	2025-09-28 14:06:21.718265900 +0200
+@@ -35,5 +35,5 @@
+ Name[it]=Scansione con ClamAV-GUI
+ Name[uk]=Сканування за допомогою ClamAV-GUI
+ Icon=clamav-gui
+-Exec=clamav-gui --scan %F
++Exec=ClamAV-GUI --scan %F
+ 
