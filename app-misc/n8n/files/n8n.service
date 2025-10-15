@@ -1,0 +1,13 @@
+[Unit]
+Description = n8n service
+After = network-online.target
+
+[Service]
+User = n8n
+Restart = on-failure
+RestartSec = 5
+EnvironmentFile = -/etc/env.d/77n8n
+ExecStart = /usr/bin/n8n
+
+[Install]
+WantedBy = multi-user.target
