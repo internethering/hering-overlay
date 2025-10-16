@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<!-- maintainer-needed -->
+	<stabilize-allarches/>
+	<longdescription>
+		automx2 makes configuring a mail account easy. It unites
+		methods for automated mailbox configuration from Apple
+		(mobileconfig), Microsoft (autodiscover) and Mozilla
+		(autoconfig) in one tool. fixed version for K9/Kmail
+	</longdescription>
+	<upstream>
+		<doc>https://rseichter.github.io/automx2/</doc>
+		<maintainer>
+			<email>der@internethering.de</email>
+			<name>Richard Hering</name>
+		</maintainer>
+		<remote-id type="github">internethering/automx2</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,19 @@
+[Unit]
+After=network.target
+Description=MUA configuration service
+Documentation=https://rseichter.github.io/automx2/
+
+[Service]
+Environment=FLASK_APP=automx2.server:app
+Environment=FLASK_CONFIG=production
+# Change paths in this file as necessary, depending on your
+# chosen method of installation.
+ExecStart=/usr/bin/flask run --host=127.0.0.1 --port=4243
+NotifyAccess=exec
+Restart=always
+Type=notify
+User=automx2
+WorkingDirectory=/var/lib/automx2
+
+[Install]
+WantedBy=multi-user.target
