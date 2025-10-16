@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://github.com/internethering/automx2.git"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="systemd"
 
 RDEPEND="acct-user/automx2
