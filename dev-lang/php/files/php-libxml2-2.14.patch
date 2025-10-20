@@ -1,0 +1,12 @@
+diff '--color=auto' -urN o/ext/libxml/libxml.c n/ext/libxml/libxml.c
+--- o/ext/libxml/libxml.c	2025-10-20 20:52:31.427098586 +0200
++++ n/ext/libxml/libxml.c	2025-10-20 20:59:30.175025831 +0200
+@@ -421,7 +421,7 @@
+ static xmlOutputBufferPtr
+ php_libxml_output_buffer_create_filename(const char *URI,
+                               xmlCharEncodingHandlerPtr encoder,
+-                              int compression ATTRIBUTE_UNUSED)
++                              int compression)
+ {
+ 	xmlOutputBufferPtr ret;
+ 	xmlURIPtr puri;

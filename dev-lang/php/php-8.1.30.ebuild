@@ -152,6 +152,7 @@ PATCHES=(
 	"${FILESDIR}/php-8.1.27-implicit-decls.patch"
 	"${FILESDIR}/fix-musl-llvm.patch"
 	"${FILESDIR}/php-8.1.29-gcc14-intl.patch"
+	"${FILESDIR}"/php-libxml2-2.14.patch
 )
 
 # ARM/Windows functions that are expected to be undefined.
