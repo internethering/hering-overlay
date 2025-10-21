@@ -4,13 +4,12 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( pypy3 python3_{8..13} python3_13t )
+PYTHON_COMPAT=( pypy3 python3_{10..13} python3_13t )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 pypi
 
 DESCRIPTION="Soundcloud Music Downloader"
 HOMEPAGE="https://github.com/flyingrub/scdl"
-EGIT_REPO_URI="https://github.com/flyingrub/scdl.git"
 
 LICENSE="GPL-2"
 SLOT="0"
