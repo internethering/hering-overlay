@@ -78,7 +78,7 @@ DEPEND="app-accessibility/at-spi2-atk
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
-	x11-misc/xdotool"
+	<x11-misc/xdotool-4"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
