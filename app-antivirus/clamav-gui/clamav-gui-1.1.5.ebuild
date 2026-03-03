@@ -19,7 +19,6 @@ PATCHES=(
 )
 
 DEPEND="app-antivirus/clamav
-    dev-qt/qtbase
-    dev-qt/qtchooser"
+    dev-qt/qtbase"
 RDEPEND="${DEPEND}"
 BDEPEND=""
