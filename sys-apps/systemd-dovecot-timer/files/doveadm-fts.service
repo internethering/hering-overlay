@@ -4,3 +4,4 @@ Description=doveadm fts
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/doveadm fts rescan -A
+LimitNOFILE=65535
