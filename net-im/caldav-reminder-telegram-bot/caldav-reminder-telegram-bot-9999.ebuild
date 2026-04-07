@@ -19,7 +19,7 @@ RESTRICT=""
 RDEPEND="dev-python/markupsafe
 	dev-python/jinja2
 	dev-python/anyio
-	dev-python/caldav
+	<dev-python/caldav-2.0.0
 	dev-python/certifi
 	dev-python/charset-normalizer
 	dev-python/h11
