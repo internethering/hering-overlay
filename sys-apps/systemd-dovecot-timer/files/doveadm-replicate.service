@@ -5,3 +5,4 @@ Description=doveadm replicate
 Type=oneshot
 ExecStart=/usr/bin/doveadm replicator add '*'
 ExecStart=/usr/bin/doveadm replicator replicate '*'
+LimitNOFILE=65535

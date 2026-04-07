@@ -4,3 +4,4 @@ Description=doveadm purge
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/doveadm purge -A
+LimitNOFILE=65535

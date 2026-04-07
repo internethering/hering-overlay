@@ -3,4 +3,5 @@ Description=doveadm fts
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/doveadm fts rescan -A
+ExecStart=/usr/bin/doveadm fts optimize -A
+LimitNOFILE=65535
