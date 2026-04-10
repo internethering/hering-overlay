@@ -1,0 +1,12 @@
+[Unit]
+Description=Apache Tika server
+After=network.target
+Requires=network.target
+
+[Service]
+ExecStart=/usr/bin/java -jar /usr/share/tika-server-standard/tika-server-standard.jar --host localhost --port 9998
+User=tika
+Group=tika
+
+[Install]
+WantedBy=multi-user.target
