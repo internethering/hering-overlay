@@ -11,7 +11,7 @@ inherit distutils-r1 pypi
 DESCRIPTION="This library provides a pure Python, asynchronous interface for the Telegram Bot API"
 HOMEPAGE="https://python-telegram-bot.org/"
 
-LICENSE="LGPL3"
+LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 

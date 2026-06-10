@@ -4,19 +4,18 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 
 inherit distutils-r1 pypi
 
-DESCRIPTION="python tools to analyze MS OLE2 files and MS Office documents, for malware analysis, forensics and debugging"
+DESCRIPTION="python tools to analyze MS OLE2 files and MS Office documents"
 HOMEPAGE="
 	https://github.com/decalage2/oletools
 	https://pypi.org/project/oletools/
 "
 SRC_URI="$(pypi_sdist_url "${PN}" "${PV}" .zip)"
 
-
-LICENSE="All rights reserved"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
 

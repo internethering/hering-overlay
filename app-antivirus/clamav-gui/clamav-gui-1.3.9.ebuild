@@ -3,18 +3,18 @@
 
 EAPI=8
 
-inherit cmake prefix
+inherit cmake xdg-utils
 
 DESCRIPTION="Front-End for ClamAV"
 HOMEPAGE="https://www.pling.com/p/1127892/"
 SRC_URI="https://github.com/wusel1007/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3.0"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
 PATCHES=(
-    "${FILESDIR}/fix-installdir-1.3.9.patch"
+	"${FILESDIR}/fix-installdir-1.3.9.patch"
 )
 
 pkg_postinst() {
@@ -22,6 +22,5 @@ pkg_postinst() {
 }
 
 DEPEND="app-antivirus/clamav
-    dev-qt/qtbase"
+	dev-qt/qtbase"
 RDEPEND="${DEPEND}"
-BDEPEND=""

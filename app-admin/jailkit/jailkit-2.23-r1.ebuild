@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( pypy3 python3_{8..14} python3_{13..15}t )
+PYTHON_COMPAT=( pypy3 python3_{8..15} python3_{13..14}t )
 
 inherit autotools python-single-r1 systemd
 

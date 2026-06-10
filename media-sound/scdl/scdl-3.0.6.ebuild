@@ -1,0 +1,29 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( pypy3 python3_{10..14} python3_{13..14}t )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="Soundcloud Music Downloader"
+HOMEPAGE="https://github.com/flyingrub/scdl"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS=""
+
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND="
+dev-python/docopt
+media-libs/mutagen
+dev-python/termcolor
+dev-python/requests
+dev-python/clint
+"
+
+PATCHES=(
+	"${FILESDIR}/stray.patch"
+)

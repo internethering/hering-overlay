@@ -34,7 +34,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	if has_multilib_profile && [[ ${ABI} == "amd64" ]] ; then
+	if [[ ${ABI} == "amd64" ]] ; then
 		mv Makefile64 Makefile
 		./prepare_64bit_asio
 	fi

@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=dev-python/python-dateutil dev-python/tldextract dev-python/packaging dev-python/dnspython dev-python/requests dev-python/colorama
 SLOT=0
 _eclasses_=git-r3	2f8cdb10b033f92c3136aa6488a31c98
-_md5_=2fb7075f0d807f5b395068f75372420d
+_md5_=23615c3b4f13bdc6aa1a413414c1d013

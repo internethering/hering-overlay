@@ -5,7 +5,7 @@ EAPI=8
 
 PYPI_NO_NORMALIZE=1
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{10..15} )
 inherit distutils-r1 pypi
 
 DESCRIPTION="Verify that currently installed version is the latest one released on PyPI"

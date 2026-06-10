@@ -1,0 +1,13 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Official binary Qt SoulSeek client
+EAPI=8
+HOMEPAGE=https://www.slsknet.org
+INHERIT=desktop
+KEYWORDS=~amd64
+LICENSE=free-noncomm
+RDEPEND=media-libs/libpng x11-libs/libX11 x11-libs/libxcb media-libs/freetype x11-libs/libXau x11-libs/libXdmcp dev-libs/libbsd dev-libs/expat sys-libs/libselinux
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://github.com/M0Rf30/soulseekqt-binaries/releases/download/20240630/SoulseekQt-2024-6-30-64bit.AppImage.tgz https://github.com/M0Rf30/soulseekqt-binaries/blob/main/desktop/soulseekqt.png
+_eclasses_=desktop	26d57169ca094c04be416993844ec8bc
+_md5_=e4c93835952195bbb52072b6536abf77

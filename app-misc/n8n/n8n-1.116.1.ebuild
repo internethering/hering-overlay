@@ -14,8 +14,6 @@ LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RESTRICT="network-sandbox"
-
 RDEPEND="
 	net-libs/nodejs
 	net-misc/curl
@@ -33,20 +31,19 @@ src_compile() {
 
 src_install() {
 	local -a myopts=(
-    	--audit false
-        --color false
-        --foreground-scripts
-        --global
-        --omit dev
-        --prefix "${ED}/usr"
-        --progress false
-        --verbose
-    )
+		--audit false
+		--color false
+		--foreground-scripts
+		--global
+		--omit dev
+		--prefix "${ED}/usr"
+		--progress false
+		--verbose
+	)
 	npm "${myopts[@]}" install "${DISTDIR}/${P}.tgz" || die "npm install failed"
 
 	systemd_dounit "${FILESDIR}"/n8n.service
 	systemd_newuserunit "${FILESDIR}"/n8n.user.service n8n.service
 	newtmpfiles "${FILESDIR}"/n8n.tmpfiles n8n.conf
-	insinto /etc/env.d
-	newins "${FILESDIR}"/n8n.env 77n8n
+	newenvd "${FILESDIR}"/n8n.env 77n8n
 }

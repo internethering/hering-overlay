@@ -9,12 +9,12 @@ DESCRIPTION="oletools verify over TCP socket"
 HOMEPAGE="https://github.com/HeinleinSupport/olefy"
 EGIT_REPO_URI="https://github.com/HeinleinSupport/olefy.git"
 
-LICENSE="Apache-2"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
 
 DEPEND="acct-group/olefy
-    acct-user/olefy"
+	acct-user/olefy"
 
 RDEPEND="dev-python/python-magic
 	dev-python/colorclass
@@ -22,9 +22,9 @@ RDEPEND="dev-python/python-magic
 "
 
 PATCHES=(
-    "${FILESDIR}/systemd.patch"
-    "${FILESDIR}/olevba.patch"
-    "${FILESDIR}/python-3.12.patch"
+	"${FILESDIR}/systemd.patch"
+	"${FILESDIR}/olevba.patch"
+	"${FILESDIR}/python-3.12.patch"
 )
 
 src_install() {
