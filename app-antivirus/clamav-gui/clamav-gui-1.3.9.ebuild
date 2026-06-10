@@ -14,8 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 PATCHES=(
-    "${FILESDIR}/fix-installdir-1.1.5.patch"
-    "${FILESDIR}/desktop-1.1.5.patch"
+    "${FILESDIR}/fix-installdir-1.3.9.patch"
 )
 
 pkg_postinst() {
