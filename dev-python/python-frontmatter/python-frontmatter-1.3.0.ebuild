@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=uv-build
 PYTHON_COMPAT=( pypy3 python3_{10..15} )
 
 inherit distutils-r1 pypi
