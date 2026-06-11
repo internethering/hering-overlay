@@ -27,11 +27,6 @@ RDEPEND="acct-user/automx2
 
 distutils_enable_tests unittest
 
-python_prepare_all() {
-	rm -r src/alembic || die
-	distutils-r1_python_prepare_all
-}
-
 python_test() {
 	local -x AUTOMX2_CONF="tests/unittest.conf"
 	eunittest tests/
