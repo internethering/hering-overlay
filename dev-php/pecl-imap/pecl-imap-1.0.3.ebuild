@@ -18,7 +18,19 @@ KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="+imap kerberos ssl"
 REQUIRED_USE="ssl? ( imap )"
 
-DEPEND="imap? ( net-libs/c-client )
+DEPEND="imap? ( net-libs/c-client[static-libs] )
 	kerberos? ( virtual/krb5 )
 	ssl? ( dev-libs/openssl )"
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	local PHP_EXT_ECONF_ARGS=( $(use_with kerberos) )
+	if use imap; then
+		PHP_EXT_ECONF_ARGS+=( --with-imap=/usr/include/imap )
+	fi
+	if use ssl; then
+		PHP_EXT_ECONF_ARGS+=( --with-imap-ssl )
+	fi
+	php-ext-source-r3_src_configure
+}
+
