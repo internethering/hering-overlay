@@ -16,7 +16,7 @@ LICENSE="PHP-3.01"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 IUSE="imap kerberos ssl"
-REQUIRE_USE="ssl? ( imap )"
+REQUIRED_USE="ssl? ( imap )"
 
 DEPEND="imap? ( net-libs/c-client )
 	kerberos? ( virtual/krb5 )
