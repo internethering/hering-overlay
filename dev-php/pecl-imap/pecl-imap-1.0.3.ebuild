@@ -15,7 +15,7 @@ DESCRIPTION="PHP IMAP protocol, as well as the NNTP, POP3, and local mailbox acc
 LICENSE="PHP-3.01"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
-IUSE="imap kerberos ssl"
+IUSE="+imap kerberos ssl"
 REQUIRED_USE="ssl? ( imap )"
 
 DEPEND="imap? ( net-libs/c-client )
