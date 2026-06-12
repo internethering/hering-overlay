@@ -1,0 +1,28 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{12..15} )
+
+inherit distutils-r1 pypi
+
+DESCRIPTION="This module simplifies creation of data classes (PEP 557) from dictionaries"
+HOMEPAGE="https://github.com/konradhalas/dacite
+	https://pypi.org/project/dacite/"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64"
+
+EPYTEST_IGNORE=(
+	# benchmarks
+	tests/performance
+)
+
+distutils_enable_tests pytest
+
+python_test() {
+	epytest -o "addopts="
+}
