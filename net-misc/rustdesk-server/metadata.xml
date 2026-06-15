@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>der@internethering.de</email>
+		<name>Richard Hering</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">rustdesk/rustdesk-server</remote-id>
+	</upstream>
+</pkgmetadata>
