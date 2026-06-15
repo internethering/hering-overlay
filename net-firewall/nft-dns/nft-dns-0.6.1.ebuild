@@ -26,7 +26,7 @@ src_install() {
 	exeinto /usr/share/nft-dns
 	doexe nft-dns.py
 
-	dosym /usr/share/nft-dns/nft-dns.py /usr/bin/nft-dns
+	dosym -r "/usr/share/nft-dns/nft-dns.py" /usr/bin/nft-dns
 
 	insinto /etc
 	doins nft-dns.conf

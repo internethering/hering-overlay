@@ -1,7 +1,6 @@
 # Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-
 EAPI=8
 
 DESCRIPTION="Dovecot FTS plugin to enable message indexing using Xapian"
@@ -12,14 +11,14 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="net-mail/dovecot[xapian]
+RDEPEND=">=net-mail/dovecot-2.4[xapian]
 dev-db/sqlite
 dev-libs/icu
 dev-libs/xapian"
 
 src_unpack() {
 	default
-	mv ${WORKDIR}/fts-xapian-${PV} ${WORKDIR}/${PF}
+	mv "${WORKDIR}/fts-xapian-${PV}" "${WORKDIR}/${PF}"
 }
 
 src_configure() {

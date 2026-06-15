@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="gitlab">mgeeky/decode-spam-headers</remote-id>
+		<remote-id type="github">mgeeky/decode-spam-headers</remote-id>
 	</upstream>
 </pkgmetadata>

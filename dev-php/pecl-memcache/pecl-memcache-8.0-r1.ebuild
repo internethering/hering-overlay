@@ -13,14 +13,13 @@ USE_PHP="php8-1"
 
 inherit php-ext-pecl-r3
 
-KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
-
 DESCRIPTION="PHP extension for using memcached"
 LICENSE="PHP-3"
 SLOT="8"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="+session"
 
-DEPEND="php_targets_php8-1? ( sys-libs/zlib )"
+DEPEND="php_targets_php8-1? ( virtual/zlib )"
 RDEPEND="${DEPEND}"
 
 # The test suite requires memcached to be running.

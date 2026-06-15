@@ -23,7 +23,6 @@ RDEPEND="dev-python/python-dateutil
 	dev-python/requests
 	dev-python/colorama"
 
-
 src_install() {
 	newbin decode-spam-headers.py decode-spam-headers
 	newbin correlate-rules.py correlate-rules

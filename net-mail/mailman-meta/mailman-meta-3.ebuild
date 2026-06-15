@@ -11,7 +11,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="acct-group/mailman
-        acct-user/mailman"
+	acct-user/mailman"
 RDEPEND=">=net-mail/mailman-3.0
 	net-mail/postorius
 	net-mail/hyperkitty

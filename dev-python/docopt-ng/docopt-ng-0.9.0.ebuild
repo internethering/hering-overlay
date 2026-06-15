@@ -4,7 +4,8 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=pdm-backend
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{11..15} )
+EPYTEST_PLUGINS=()
 
 inherit distutils-r1 pypi
 

@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=pdm-backend
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..14} )
 inherit distutils-r1 pypi systemd tmpfiles
 
 DESCRIPTION="Mailman -- the GNU mailing list manager"
@@ -13,7 +13,7 @@ HOMEPAGE="https://www.list.org"
 LICENSE="GPL-3+"
 SLOT="3"
 KEYWORDS="~amd64"
-IUSE="cron test html2text postgresql systemd whoosh xapian"
+IUSE="cron test html2text postgres systemd whoosh xapian"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -43,7 +43,7 @@ RDEPEND="
 	>=dev-python/zope-interface-5.0[${PYTHON_USEDEP}]
 	dev-lang/sassc
 	html2text? ( www-client/lynx )
-	postgresql? ( dev-python/psycopg[${PYTHON_USEDEP}] )
+	postgres? ( dev-python/psycopg[${PYTHON_USEDEP}] )
 	xapian? ( dev-libs/xapian )
 	whoosh? ( dev-python/whoosh[${PYTHON_USEDEP}] )
 	virtual/mta
@@ -76,5 +76,3 @@ python_install() {
 		doexe "${FILESDIR}"/mailman3.cron
 	fi
 }
-
-

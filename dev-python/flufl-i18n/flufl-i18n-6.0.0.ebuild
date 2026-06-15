@@ -5,6 +5,8 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{10..15} )
+EPYTEST_PLUGINS=()
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="A high level API for Python internationalization"

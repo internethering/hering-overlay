@@ -6,6 +6,8 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 DISTUTILS_EXT=1
 PYTHON_COMPAT=( pypy3 python3_{8..15} python3_{13..14}t )
+EPYTEST_PLUGINS=()
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="CSS minifier written in python"

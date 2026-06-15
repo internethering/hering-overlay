@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{10..15} )
 
 inherit distutils-r1 pypi
 
-DESCRIPTION="Python tool and library for decrypting and encrypting MS Office files using a password or other keys"
+DESCRIPTION="tool and library for decrypting and encrypting MS Office files"
 HOMEPAGE="
 	https://github.com/nolze/msoffcrypto-tool
 	https://pypi.org/project/msoffcrypto-tool
@@ -24,10 +24,10 @@ RDEPEND="
 "
 
 PATCHES=(
-        "${FILESDIR}/notice.patch"
+	"${FILESDIR}/notice.patch"
 )
 
 python_prepare_all() {
-    rm NOTICE.txt || die
-    distutils-r1_python_prepare_all
+	rm NOTICE.txt || die
+	distutils-r1_python_prepare_all
 }

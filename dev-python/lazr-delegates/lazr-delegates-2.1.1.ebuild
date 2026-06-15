@@ -5,6 +5,8 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{8..15} )
+EPYTEST_PLUGINS=()
+
 inherit distutils-r1 pypi
 
 DESCRIPTION="Easily write objects that delegate behavior"

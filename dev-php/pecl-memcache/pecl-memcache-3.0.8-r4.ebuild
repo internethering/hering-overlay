@@ -18,7 +18,7 @@ SLOT="5"
 KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="+session"
 
-DEPEND="sys-libs/zlib
+DEPEND="virtual/zlib
 	dev-lang/php:5.6[session?]"
 RDEPEND="${DEPEND}"
 

@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd
+inherit systemd desktop
 
 DESCRIPTION="RustDesk Client"
 HOMEPAGE="https://rustdesk.com/"
@@ -15,15 +15,13 @@ LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="app-accessibility/at-spi2-atk
-	app-accessibility/at-spi2-core
+DEPEND="app-accessibility/at-spi2-core
 	app-arch/bzip2
 	app-arch/lz4
 	app-arch/xz-utils
 	app-arch/zstd
 	app-crypt/argon2
 	app-crypt/libmd
-	dev-libs/atk
 	dev-libs/expat
 	dev-libs/fribidi
 	dev-libs/glib
@@ -57,7 +55,7 @@ DEPEND="app-accessibility/at-spi2-atk
 	sys-fs/cryptsetup
 	sys-fs/lvm2
 	sys-libs/libcap
-	sys-libs/zlib
+	virtual/zlib
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+
@@ -91,7 +89,8 @@ src_prepare() {
 	# Add Categories to Desktop-File
 	sed -i -e '/Type=Application/aCategories=Network;GTK;' usr/share/applications/rustdesk.desktop || die "sed failed!"
 	# Fix Path in Systemd-Unit
-	sed -i -e 's|/var/run/rustdesk.pid|/run/rustdesk.pid|' usr/share/rustdesk/files/systemd/rustdesk.service || die "sed failed!"
+	sed -i -e 's|/var/run/rustdesk.pid|/run/rustdesk.pid|' usr/share/rustdesk/files/systemd/rustdesk.service || \
+	die "sed failed!"
 }
 
 src_install() {
@@ -102,15 +101,12 @@ src_install() {
 	doins -r usr/share/rustdesk/
 
 	fperms 0755 /usr/share/rustdesk/rustdesk
-	dosym /usr/share/rustdesk/rustdesk /usr/bin/rustdesk
+	dosym -r "/usr/share/rustdesk/rustdesk" /usr/bin/rustdesk
 	# Install Miscellaneous
-	insinto /usr/share/applications
-	doins usr/share/applications/rustdesk.desktop
-	doins usr/share/applications/rustdesk-link.desktop
-	insinto /usr/share/icons/hicolor/256x256/apps
-	doins usr/share/icons/hicolor/256x256/apps/rustdesk.png
-	insinto /usr/share/icons/hicolor/scalable/apps
-	doins usr/share/icons/hicolor/scalable/apps/rustdesk.svg
+	domenu usr/share/applications/rustdesk.desktop
+	domenu usr/share/applications/rustdesk-link.desktop
+	doicon -s 256x256 usr/share/icons/hicolor/256x256/apps/rustdesk.png
+	doicon -s scalable usr/share/icons/hicolor/scalable/apps/rustdesk.svg
 	# Install Systemd-Unit
 	systemd_dounit usr/share/rustdesk/files/systemd/rustdesk.service
 }

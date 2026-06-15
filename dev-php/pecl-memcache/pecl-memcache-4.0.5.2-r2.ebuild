@@ -19,7 +19,7 @@ SLOT="7"
 KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="+session"
 
-DEPEND="php_targets_php7-4? ( sys-libs/zlib )"
+DEPEND="php_targets_php7-4? ( virtual/zlib )"
 RDEPEND="${DEPEND}"
 
 # The test suite requires memcached to be running.

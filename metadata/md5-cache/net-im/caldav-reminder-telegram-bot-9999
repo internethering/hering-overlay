@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=dev-python/markupsafe dev-python/jinja2 dev-python/anyio <dev-python/caldav-2.0.0 dev-python/certifi dev-python/charset-normalizer dev-python/h11 dev-python/httpcore dev-python/httpx dev-python/icalendar dev-python/idna dev-python/lxml dev-python/python-dateutil dev-python/python-dotenv dev-python/python-telegram-bot dev-python/pytz dev-python/recurring-ical-events dev-python/requests dev-python/six dev-python/sniffio dev-python/tzlocal dev-python/urllib3 dev-python/vobject dev-python/x-wr-timezone
 SLOT=0
 _eclasses_=git-r3	2f8cdb10b033f92c3136aa6488a31c98	toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	systemd	a964c0cbe818b5729da1dbfcee5be861
-_md5_=b2879aac0958162f051b07efbe6d0e2d
+_md5_=685c3b12186e6959bdc6f57cc94a8fa3

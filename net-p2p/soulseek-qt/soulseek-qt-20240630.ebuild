@@ -8,7 +8,7 @@ inherit desktop
 DESCRIPTION="Official binary Qt SoulSeek client"
 HOMEPAGE="https://www.slsknet.org"
 BINARY_NAME="SoulseekQt-${PV:0:4}-$((${PV:4:2}))-$((${PV:6:2}))"
-SRC_URI="https://github.com/M0Rf30/soulseekqt-binaries/releases/download/20240630/${BINARY_NAME}-64bit.AppImage.tgz https://github.com/M0Rf30/soulseekqt-binaries/blob/main/desktop/soulseekqt.png"
+SRC_URI="https://github.com/M0Rf30/soulseekqt-binaries/releases/download/${PV}/${BINARY_NAME}-64bit.AppImage.tgz https://github.com/M0Rf30/soulseekqt-binaries/blob/main/desktop/soulseekqt.png"
 
 S="${WORKDIR}"
 

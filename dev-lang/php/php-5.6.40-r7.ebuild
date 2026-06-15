@@ -23,7 +23,7 @@ LICENSE="PHP-3.01
 	unicode? ( BSD-2 LGPL-2.1 )"
 
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~amd64"
 
 # We can build the following SAPIs in the given order
 SAPIS="embed cli cgi fpm apache2"
@@ -38,7 +38,7 @@ IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
 	enchant exif +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +hash +iconv imap inifile
 	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit libressl
-	mhash mssql mysql libmysqlclient mysqli nls
+	mhash mssql mysql mysqli nls
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline recode selinux +session sharedmem
 	+simplexml snmp soap sockets spell sqlite ssl
@@ -64,21 +64,21 @@ COMMON_DEPEND="
 	bzip2? ( app-arch/bzip2:0= )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
 	cjk? ( !gd? (
-		virtual/jpeg:0
+		media-libs/libjpeg-turbo:0
 		media-libs/libpng:0=
-		sys-libs/zlib:0=
+		virtual/zlib:0=
 	) )
 	coverage? ( dev-util/lcov )
 	crypt? ( >=dev-libs/libmcrypt-2.4 )
 	curl? ( >=net-misc/curl-7.10.5 )
 	enchant? ( app-text/enchant )
 	exif? ( !gd? (
-		virtual/jpeg:0
+		media-libs/libjpeg-turbo:0
 		media-libs/libpng:0=
-		sys-libs/zlib:0=
+		virtual/zlib:0=
 	) )
 	firebird? ( dev-db/firebird )
-	gd? ( virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib:0= )
+	gd? ( media-libs/libjpeg-turbo:0 media-libs/libpng:0= virtual/zlib:0= )
 	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
 	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
@@ -90,10 +90,6 @@ COMMON_DEPEND="
 	ldap-sasl? ( dev-libs/cyrus-sasl >=net-nds/openldap-1.2.11 )
 	libedit? ( dev-libs/libedit )
 	mssql? ( dev-db/freetds[mssql] )
-	libmysqlclient? (
-		mysql? ( <dev-db/mysql-connector-c-8.0:0= )
-		mysqli? ( <dev-db/mysql-connector-c-8.0:0= )
-	)
 	nls? ( sys-devel/gettext )
 	oci8-instant-client? ( dev-db/oracle-instantclient-basic )
 	odbc? ( >=dev-db/unixODBC-1.8.13 )
@@ -118,7 +114,7 @@ COMMON_DEPEND="
 		=media-libs/freetype-2*
 		>=media-libs/t1lib-5.0.0
 		!gd? (
-			virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib:0= )
+			media-libs/libjpeg-turbo:0 media-libs/libpng:0= virtual/zlib:0= )
 	)
 	unicode? ( dev-libs/oniguruma:= )
 	vpx? ( media-libs/libvpx:0= )
@@ -129,12 +125,12 @@ COMMON_DEPEND="
 	xmlwriter? ( >=dev-libs/libxml2-2.6.8 )
 	xpm? (
 		x11-libs/libXpm
-		virtual/jpeg:0
-		media-libs/libpng:0= sys-libs/zlib:0=
+		media-libs/libjpeg-turbo:0
+		media-libs/libpng:0= virtual/zlib:0=
 	)
 	xslt? ( dev-libs/libxslt >=dev-libs/libxml2-2.6.8 )
-	zip? ( sys-libs/zlib:0= )
-	zlib? ( sys-libs/zlib:0= )
+	zip? ( virtual/zlib:0= )
+	zlib? ( virtual/zlib:0= )
 "
 
 RDEPEND="${COMMON_DEPEND}

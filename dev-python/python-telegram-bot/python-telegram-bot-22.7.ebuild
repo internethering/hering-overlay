@@ -4,11 +4,12 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( pypy3 python3_{10..15} )
+PYTHON_COMPAT=( pypy3 python3_{12..14} )
+EPYTEST_PLUGINS=()
 
 inherit distutils-r1 pypi
 
-DESCRIPTION="This library provides a pure Python, asynchronous interface for the Telegram Bot API"
+DESCRIPTION="provides a pure Python, asynchronous interface for the Telegram Bot API"
 HOMEPAGE="https://python-telegram-bot.org/"
 
 LICENSE="LGPL-3"
