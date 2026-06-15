@@ -24,7 +24,6 @@ LICENSE="PHP-3.01
 
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64"
-
 # We can build the following SAPIs in the given order
 SAPIS="embed cli cgi fpm apache2"
 
@@ -38,7 +37,7 @@ IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
 	enchant exif +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +hash +iconv imap inifile
 	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit libressl
-	mhash mssql mysql mysqli nls
+	mhash mssql mysql libmysqlclient mysqli nls
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline recode selinux +session sharedmem
 	+simplexml snmp soap sockets spell sqlite ssl
@@ -64,7 +63,7 @@ COMMON_DEPEND="
 	bzip2? ( app-arch/bzip2:0= )
 	cdb? ( || ( dev-db/cdb dev-db/tinycdb ) )
 	cjk? ( !gd? (
-		media-libs/libjpeg-turbo:0
+		virtual/jpeg:0
 		media-libs/libpng:0=
 		virtual/zlib:0=
 	) )
@@ -73,12 +72,12 @@ COMMON_DEPEND="
 	curl? ( >=net-misc/curl-7.10.5 )
 	enchant? ( app-text/enchant )
 	exif? ( !gd? (
-		media-libs/libjpeg-turbo:0
+		virtual/jpeg:0
 		media-libs/libpng:0=
 		virtual/zlib:0=
 	) )
 	firebird? ( dev-db/firebird )
-	gd? ( media-libs/libjpeg-turbo:0 media-libs/libpng:0= virtual/zlib:0= )
+	gd? ( virtual/jpeg:0 media-libs/libpng:0= virtual/zlib:0= )
 	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
 	gmp? ( dev-libs/gmp:0= )
 	iconv? ( virtual/libiconv )
@@ -114,7 +113,7 @@ COMMON_DEPEND="
 		=media-libs/freetype-2*
 		>=media-libs/t1lib-5.0.0
 		!gd? (
-			media-libs/libjpeg-turbo:0 media-libs/libpng:0= virtual/zlib:0= )
+			virtual/jpeg:0 media-libs/libpng:0= virtual/zlib:0= )
 	)
 	unicode? ( dev-libs/oniguruma:= )
 	vpx? ( media-libs/libvpx:0= )
@@ -125,7 +124,7 @@ COMMON_DEPEND="
 	xmlwriter? ( >=dev-libs/libxml2-2.6.8 )
 	xpm? (
 		x11-libs/libXpm
-		media-libs/libjpeg-turbo:0
+		virtual/jpeg:0
 		media-libs/libpng:0= virtual/zlib:0=
 	)
 	xslt? ( dev-libs/libxslt >=dev-libs/libxml2-2.6.8 )
