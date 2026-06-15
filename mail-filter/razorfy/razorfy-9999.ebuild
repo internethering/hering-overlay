@@ -9,21 +9,20 @@ DESCRIPTION="Small Perl Daemon to use razor over TCP sockets. Mainly to use razo
 HOMEPAGE="https://github.com/HeinleinSupport/razorfy"
 EGIT_REPO_URI="https://github.com/HeinleinSupport/razorfy.git"
 
-LICENSE="Apache-2"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
 
-DEPEND="acct-group/razorfy
-    acct-user/razorfy"
-
-RDEPEND="mail-filter/razor
+RDEPEND="acct-group/razorfy
+	acct-user/razorfy
+	mail-filter/razor
 	virtual/perl-Data-Dumper
 	virtual/perl-IO-Socket-IP
 	virtual/perl-IO
 "
 
 PATCHES=(
-    "${FILESDIR}/systemd.patch"
+	"${FILESDIR}/systemd.patch"
 )
 
 src_install() {

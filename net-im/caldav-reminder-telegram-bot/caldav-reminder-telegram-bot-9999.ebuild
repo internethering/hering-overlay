@@ -10,11 +10,9 @@ DESCRIPTION="CalDAV Reminder Telegram Bot"
 HOMEPAGE="https://github.com/mcdax/caldav-reminder-telegram-bot"
 EGIT_REPO_URI="https://github.com/mcdax/caldav-reminder-telegram-bot.git"
 
-LICENSE="GPL3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
-RESTRICT=""
 
 RDEPEND="dev-python/markupsafe
 	dev-python/jinja2

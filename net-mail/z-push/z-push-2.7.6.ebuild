@@ -13,11 +13,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="memcached ldap imap carddav caldav mysql postgres sqlite"
 
-RDEPEND="<dev-lang/php-8.4[cli,soap,posix]
+RDEPEND="dev-lang/php[cli,soap,posix]
 	memcached? ( dev-php/pecl-memcached )
 	!memcached? ( dev-lang/php[pcntl,sysvipc] )
 	ldap? ( dev-lang/php[ldap] )
-	imap? ( dev-lang/php[imap] )
+	imap? ( <dev-lang/php-8.4[imap] )
 	caldav? (
 		dev-lang/php[curl]
 		dev-php/awl
