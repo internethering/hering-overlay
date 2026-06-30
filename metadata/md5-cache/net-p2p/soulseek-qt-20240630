@@ -9,5 +9,5 @@ RDEPEND=media-libs/libpng x11-libs/libX11 x11-libs/libxcb media-libs/freetype x1
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://github.com/M0Rf30/soulseekqt-binaries/releases/download/20240630/SoulseekQt-2024-6-30-64bit.AppImage.tgz https://github.com/M0Rf30/soulseekqt-binaries/blob/main/desktop/soulseekqt.png
-_eclasses_=desktop	26d57169ca094c04be416993844ec8bc
+_eclasses_=desktop	e447b5f77146d69797e9f03ff177f3f1
 _md5_=8dc69167748a107c3a1aaf8a75606d05
