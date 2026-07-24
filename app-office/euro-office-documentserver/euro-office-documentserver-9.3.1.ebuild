@@ -16,9 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	net-misc/rabbitmq-server
+	app-admin/supervisor
 	dev-db/postgresql
 	dev-db/redis
+	media-fonts/corefonts
+	net-misc/rabbitmq-server
 	virtual/httpd-basic
 "
 RDEPEND="${DEPEND}"
@@ -38,4 +40,5 @@ pkg_postinst() {
 	ewarn "there is no official documentation how to setup DocumentServer without docker"
 	ewarn "see https://github.com/Euro-Office/DocumentServer/issues/229"
 	ewarn "have fun to find out yourself ;)"
+	ewarn "maybe https://euro-office.github.io/documentation/installation/debian/ can help"
 }
