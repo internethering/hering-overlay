@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
+	acct-group/cool
+	acct-user/cool
 	app-office/collaboraofficebasis-draw
 	app-office/collaboraofficebasis-impress
 	app-office/collaboraoffice
@@ -40,5 +42,6 @@ src_unpack(){
 
 src_install() {
 	cp -R "${WORKDIR}/usr" "${D}" || die "install failed!"
-	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!"
+	cp -R "${WORKDIR}/lib" "${D}" || die "install failed!"
+	cp -R "${WORKDIR}/usr" "${D}" || die "install failed!"
 }
