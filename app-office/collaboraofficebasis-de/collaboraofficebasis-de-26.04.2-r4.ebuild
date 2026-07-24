@@ -5,9 +5,11 @@ EAPI=8
 
 inherit unpacker
 
-DESCRIPTION="Language module for Collabora Office 26.04, language de"
+MY_PVR=$(ver_cut 1-3 ${PVR})-$(ver_cut 5 ${PVR})
+
+DESCRIPTION="Language module for Collabora Office"
 HOMEPAGE="https://www.collaboraoffice.com"
-SRC_URI="https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb/collaboraofficebasis-de_26.04.2-4_amd64.deb"
+SRC_URI="https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb/${PN}_${MY_PVR}_amd64.deb"
 
 S="${WORKDIR}"
 

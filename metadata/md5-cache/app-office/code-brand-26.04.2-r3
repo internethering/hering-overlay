@@ -10,4 +10,4 @@ RDEPEND=app-office/coolwsd
 SLOT=0
 SRC_URI=https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb/code-brand_26.04.2-3_all.deb
 _eclasses_=eapi9-pipestatus	d2c134036ac31c3085aebc9147f572bd	multiprocessing	45d0620f25c2f063ad6276ecd9ed9399	toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	unpacker	a89c769f7dcf68bd2a6d23da9ede2ad2
-_md5_=4d13c40bb244d93a21f247e09b8732b5
+_md5_=89fe760316bbd7d6163143a5cc0ef4c3

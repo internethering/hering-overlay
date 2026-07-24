@@ -8,4 +8,4 @@ LICENSE=AGPL-3.0
 SLOT=0
 SRC_URI=https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb/collaboraoffice-ure_26.04.2-4_amd64.deb
 _eclasses_=eapi9-pipestatus	d2c134036ac31c3085aebc9147f572bd	multiprocessing	45d0620f25c2f063ad6276ecd9ed9399	toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	unpacker	a89c769f7dcf68bd2a6d23da9ede2ad2
-_md5_=44f54b81856fd13d4ba663827f35a8d8
+_md5_=e00b622a84f519ea13b8c27357b0f7ea

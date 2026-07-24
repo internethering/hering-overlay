@@ -5,10 +5,11 @@ EAPI=8
 
 inherit unpacker
 
+MY_PVR=$(ver_cut 1-3 ${PVR})-$(ver_cut 5 ${PVR})
+
 DESCRIPTION="UNO Runtime Environment"
 HOMEPAGE="https://www.collaboraoffice.com"
-SRC_URI="https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb/collaboraoffice-ure_26.04.2-4_amd64.deb"
-
+SRC_URI="https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb/${PN}_${MY_PVR}_amd64.deb"
 S="${WORKDIR}"
 
 LICENSE="AGPL-3.0"

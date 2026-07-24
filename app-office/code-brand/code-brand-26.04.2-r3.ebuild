@@ -5,9 +5,11 @@ EAPI=8
 
 inherit unpacker
 
+MY_PVR=$(ver_cut 1-3 ${PVR})-$(ver_cut 5 ${PVR})
+
 DESCRIPTION="Collabora Online Development Edition (CODE) branding"
 HOMEPAGE="https://www.collaboraoffice.com"
-SRC_URI="https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb/code-brand_26.04.2-3_all.deb"
+SRC_URI="https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb/${PN}_${MY_PVR}_all.deb"
 
 S="${WORKDIR}"
 

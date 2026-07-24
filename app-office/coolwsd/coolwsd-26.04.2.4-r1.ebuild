@@ -5,9 +5,11 @@ EAPI=8
 
 inherit unpacker
 
+MY_PVR=$(ver_cut 1-4 ${PVR})-$(ver_cut 6 ${PVR})
+
 DESCRIPTION="Collabora Online WebSocket Daemon"
 HOMEPAGE="https://www.collaboraoffice.com"
-SRC_URI="https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb/coolwsd_26.04.2.4-1_amd64.deb"
+SRC_URI="https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb/${PN}_${MY_PVR}_amd64.deb"
 
 S="${WORKDIR}"
 
