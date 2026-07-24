@@ -7,8 +7,7 @@ inherit unpacker
 
 DESCRIPTION="Euro-Office DocumentServer"
 HOMEPAGE="https://github.com/Euro-Office/DocumentServer"
-#SRC_URI="https://github.com/Euro-Office/DocumentServer/releases/download/v${PV}/${PN}_${PV}-0_amd64.deb"
-SRC_URI="https://github.com/Euro-Office/DocumentServer/releases/download/v${PV}/${PN}_9.3.1-dev.1_amd64.deb"
+SRC_URI="https://github.com/Euro-Office/DocumentServer/releases/download/v${PV}/${PN}_${PV}-0_amd64.deb"
 
 S="${WORKDIR}"
 
@@ -20,6 +19,7 @@ DEPEND="
 	net-misc/rabbitmq-server
 	dev-db/postgresql
 	dev-db/redis
+	virtual/httpd-basic
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""

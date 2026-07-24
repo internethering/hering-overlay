@@ -20,6 +20,7 @@ DEPEND="
 	net-misc/rabbitmq-server
 	dev-db/postgresql
 	dev-db/redis
+	virtual/httpd-basic
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
