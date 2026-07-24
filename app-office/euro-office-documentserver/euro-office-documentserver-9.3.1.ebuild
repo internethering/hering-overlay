@@ -7,7 +7,8 @@ inherit unpacker
 
 DESCRIPTION="Euro-Office DocumentServer"
 HOMEPAGE="https://github.com/Euro-Office/DocumentServer"
-SRC_URI="https://github.com/Euro-Office/DocumentServer/releases/download/v${PV}/${PN}_${PV}-0_amd64.deb"
+#SRC_URI="https://github.com/Euro-Office/DocumentServer/releases/download/v${PV}/${PN}_${PV}-0_amd64.deb"
+SRC_URI="https://github.com/Euro-Office/DocumentServer/releases/download/v${PV}/${PN}_9.3.1-dev.1_amd64.deb"
 
 S="${WORKDIR}"
 
@@ -15,7 +16,11 @@ LICENSE="AGPL-3.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=""
+DEPEND="
+	net-misc/rabbitmq-server
+	dev-db/postgresql
+	dev-db/redis
+"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
@@ -27,4 +32,10 @@ src_install(){
 	cp -R "${WORKDIR}/usr" "${D}" || die "install failed!"
 	cp -R "${WORKDIR}/etc" "${D}" || die "install failed!"
 	cp -R "${WORKDIR}/var" "${D}" || die "install failed!"
+}
+
+pkg_postinst() {
+	ewarn "there is no official documentation how to setup DocumentServer without docker"
+	ewarn "see https://github.com/Euro-Office/DocumentServer/issues/229"
+	ewarn "have fun to find out yourself ;)"
 }
