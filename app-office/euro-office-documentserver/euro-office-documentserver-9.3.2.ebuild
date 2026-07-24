@@ -44,7 +44,7 @@ make_log_dirs() {
 	dodir "${LOG_DIR}"
 	for i in $@; do
 		keepdir "${LOG_DIR}/documentserver/${i}"
-    done
+	done
 }
 
 make_lib_dirs() {
@@ -52,7 +52,7 @@ make_lib_dirs() {
 	dodir "${APP_DIR}"
 	for i in $@; do
 		keepdir "${APP_DIR}/${i}"
-    done
+	done
 }
 
 src_install() {

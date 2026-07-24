@@ -1,0 +1,13 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-office/collaboraofficebasis-draw app-office/collaboraofficebasis-impress app-office/collaboraoffice app-office/collaboraofficebasis-en-us app-office/collaboraofficebasis-math app-office/collaboraofficebasis-calc app-office/collaboraofficebasis-extension-pdf-import app-office/collaboraofficebasis-ooofonts app-office/collaboraofficebasis-core app-office/collaboraofficebasis-graphicfilter app-office/collaboraofficebasis-writer app-office/collaboraofficebasis-de app-office/collaboraofficebasis-images app-office/collaboraoffice-ure
+DESCRIPTION=Collabora Online WebSocket Daemon
+EAPI=8
+HOMEPAGE=https://www.collaboraoffice.com
+INHERIT=unpacker
+KEYWORDS=~amd64
+LICENSE=AGPL-3.0
+RDEPEND=app-office/collaboraofficebasis-draw app-office/collaboraofficebasis-impress app-office/collaboraoffice app-office/collaboraofficebasis-en-us app-office/collaboraofficebasis-math app-office/collaboraofficebasis-calc app-office/collaboraofficebasis-extension-pdf-import app-office/collaboraofficebasis-ooofonts app-office/collaboraofficebasis-core app-office/collaboraofficebasis-graphicfilter app-office/collaboraofficebasis-writer app-office/collaboraofficebasis-de app-office/collaboraofficebasis-images app-office/collaboraoffice-ure
+SLOT=0
+SRC_URI=https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb/coolwsd_26.04.2.4-1_amd64.deb
+_eclasses_=eapi9-pipestatus	d2c134036ac31c3085aebc9147f572bd	multiprocessing	45d0620f25c2f063ad6276ecd9ed9399	toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	unpacker	a89c769f7dcf68bd2a6d23da9ede2ad2
+_md5_=c94e85983c35e674ce6e3b84f12ee565

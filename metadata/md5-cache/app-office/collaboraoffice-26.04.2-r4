@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Brand module for Collabora Office 26.04
+EAPI=8
+HOMEPAGE=https://www.collaboraoffice.com
+INHERIT=unpacker
+KEYWORDS=~amd64
+LICENSE=AGPL-3.0
+SLOT=0
+SRC_URI=https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-deb/collaboraoffice_26.04.2-4_amd64.deb
+_eclasses_=eapi9-pipestatus	d2c134036ac31c3085aebc9147f572bd	multiprocessing	45d0620f25c2f063ad6276ecd9ed9399	toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	unpacker	a89c769f7dcf68bd2a6d23da9ede2ad2
+_md5_=ac17f452b7ada28c566b4fae4ddf5340
