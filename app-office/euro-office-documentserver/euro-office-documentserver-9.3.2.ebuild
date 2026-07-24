@@ -7,7 +7,7 @@ inherit unpacker
 
 DESCRIPTION="Euro-Office DocumentServer"
 HOMEPAGE="https://github.com/Euro-Office/DocumentServer"
-SRC_URI="https://github.com/Euro-Office/DocumentServer/releases/download/v9.3.1/${PN}_9.3.1-dev.1_amd64.deb"
+SRC_URI="https://github.com/Euro-Office/DocumentServer/releases/download/v${PV}/${PN}_9.3.1-dev.1_amd64.deb"
 
 S="${WORKDIR}"
 
