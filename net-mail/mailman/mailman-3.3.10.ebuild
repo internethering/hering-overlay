@@ -34,7 +34,7 @@ RDEPEND="
 	www-servers/gunicorn[${PYTHON_USEDEP}]
 	dev-python/lazr-config[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.0[${PYTHON_USEDEP}]
-	dev-python/passlib[${PYTHON_USEDEP}]
+	dev-python/libpass[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	dev-python/zope-component[${PYTHON_USEDEP}]
