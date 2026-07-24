@@ -17,6 +17,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
+	acct-group/ds
+	acct-user/ds
 	app-admin/supervisor
 	dev-db/postgresql
 	dev-db/redis

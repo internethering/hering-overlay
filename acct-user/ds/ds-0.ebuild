@@ -5,9 +5,9 @@ EAPI=8
 
 inherit acct-user
 
-ACCT_USER_ID="282"
-ACCT_USER_GROUPS=( "razorfy" )
-ACCT_USER_HOME="/dev/null"
+ACCT_USER_ID="599"
+ACCT_USER_GROUPS=( "ds" )
+ACCT_USER_HOME="/var/lib/euro-office/documentserver/"
 ACCT_USER_SHELL="/sbin/nologin"
 
 acct-user_add_deps
