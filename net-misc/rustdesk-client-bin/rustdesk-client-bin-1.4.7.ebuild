@@ -37,6 +37,7 @@ DEPEND="app-accessibility/at-spi2-core
 	media-libs/flac
 	media-libs/fontconfig
 	media-libs/freetype
+	media-libs/gst-plugins-base
 	media-libs/harfbuzz
 	media-libs/libepoxy
 	media-libs/libglvnd
