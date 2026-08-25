@@ -9,5 +9,5 @@ LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=dev-lang/php[cli,soap,posix] memcached? ( dev-php/pecl-memcached ) !memcached? ( dev-lang/php[pcntl,sysvipc] ) ldap? ( dev-lang/php[ldap] ) imap? ( <dev-lang/php-8.4[imap] ) caldav? ( dev-lang/php[curl] dev-php/awl ) carddav? ( dev-lang/php[xslt,curl] ) mysql? ( dev-lang/php[pdo,mysql] ) postgres? ( dev-lang/php[pdo,postgres] ) sqlite? ( dev-lang/php[pdo,sqlite] )
 SLOT=0
-_eclasses_=git-r3	2f8cdb10b033f92c3136aa6488a31c98
+_eclasses_=git-r3	e6c2f983e006e805160436c75a0c1562
 _md5_=72ff2d3fb67694a532d6aa3b0b368a84

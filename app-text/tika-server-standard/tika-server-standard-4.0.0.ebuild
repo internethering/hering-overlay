@@ -7,7 +7,9 @@ inherit systemd
 
 DESCRIPTION="Apache Tika - a content analysis toolkit"
 HOMEPAGE="https://tika.apache.org/"
-SRC_URI="https://dlcdn.apache.org/tika/${PV}/${PF}.jar"
+SRC_URI="https://dlcdn.apache.org/tika/${PV}/${PF}.zip"
+
+S="${WORKDIR}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -15,14 +17,9 @@ KEYWORDS="~amd64"
 
 DEPEND="acct-group/tika
 	acct-user/tika
-	virtual/jre
+	>=virtual/jre-17
 "
 RDEPEND="${DEPEND}"
-
-src_unpack() {
-	mkdir "${WORKDIR}/${PF}"
-	cp "${DISTDIR}/${PF}.jar" "${WORKDIR}/${PF}/"
-}
 
 src_install() {
 	insinto /usr/share/tika-server-standard/
