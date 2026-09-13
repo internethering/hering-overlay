@@ -39,6 +39,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "If you have multiple Java versions you should set user java-vm to a version >=17."
+	elog "If you have multiple Java versions you may set user java-vm to a version >=17."
 	elog "see https://wiki.gentoo.org/wiki/Java#Setting_a_default"
 }
