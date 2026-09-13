@@ -1,0 +1,14 @@
+[Unit]
+Description=Apache Tika server
+After=network.target
+Requires=network.target
+
+[Service]
+Environment=TIKA_PID_DIR=/run/tika
+Environment=TIKA_HOST=localhost
+ExecStart=/usr/bin/tika -f -d /usr/share/tika -p 9998
+User=tika
+Group=tika
+
+[Install]
+WantedBy=multi-user.target

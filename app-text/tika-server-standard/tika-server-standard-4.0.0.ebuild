@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit systemd
+inherit systemd tmpfiles
 
 DESCRIPTION="Apache Tika - a content analysis toolkit"
 HOMEPAGE="https://tika.apache.org/"
@@ -22,8 +22,23 @@ DEPEND="acct-group/tika
 RDEPEND="${DEPEND}"
 
 src_install() {
-	insinto /usr/share/tika-server-standard/
-	newins ${PF}.jar ${PN}.jar
+	dobin bin/tika
 
-	systemd_dounit "${FILESDIR}/tika.service"
+	insinto /usr/share/tika/
+	doins -r lib
+	doins -r plugins
+	doins ${PF}.jar
+	doins bin/tika.in.sh
+
+	systemd_newunit "${FILESDIR}/tika-4.service" tika.service
+	dotmpfiles "${FILESDIR}"/tika.conf
+
+	keepdir usr/share/tika/logs
+	fowners tika:tika usr/share/tika/logs
+	dosym -r "/usr/share/tika/logs" var/log/tika
+}
+
+pkg_postinst() {
+	elog "If you have multiple Java versions you should set user java-vm to a version >=17."
+	elog "see https://wiki.gentoo.org/wiki/Java#Setting_a_default"
 }

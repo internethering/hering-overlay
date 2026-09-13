@@ -28,5 +28,5 @@ src_install() {
 	insinto /usr/share/tika-server-standard/
 	newins ${PF}.jar ${PN}.jar
 
-	systemd_dounit "${FILESDIR}/tika.service"
+	systemd_newunit "${FILESDIR}/tika-3.service" tika.service
 }
