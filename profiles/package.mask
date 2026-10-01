@@ -1,2 +1,4 @@
 # these php versions are unsupported and risky. use on your own risk and don't use them in productive environments
 <dev-lang/php-8.2
+# going to remove n8n in 30 days, switch to docker cause of https://docs.n8n.io/changelog/v30-breaking-changes
+app-misc/n8n
