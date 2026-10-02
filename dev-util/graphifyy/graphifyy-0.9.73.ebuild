@@ -38,24 +38,24 @@ RDEPEND="dev-python/networkx[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
     dev-python/rapidfuzz[${PYTHON_USEDEP}]
     dev-python/tomli[${PYTHON_USEDEP}]
-    dev-python/tree-sitter
-    dev-libs/tree-sitter-python[${PYTHON_USEDEP}]
-    dev-libs/tree-sitter-javascript[${PYTHON_USEDEP}]
-    dev-libs/tree-sitter-typescript
-    dev-libs/tree-sitter-go
-    dev-libs/tree-sitter-rust[${PYTHON_USEDEP}]
-    dev-libs/tree-sitter-java
-    dev-libs/tree-sitter-c[${PYTHON_USEDEP}]
-    dev-libs/tree-sitter-cpp[${PYTHON_USEDEP}]
-    dev-libs/tree-sitter-ruby[${PYTHON_USEDEP}]
-    dev-libs/tree-sitter-c-sharp
-    dev-libs/tree-sitter-scala
-    dev-libs/tree-sitter-php
-    dev-libs/tree-sitter-lua[${PYTHON_USEDEP}]
-    dev-libs/tree-sitter-powershell
-    dev-libs/tree-sitter-julia
-    dev-libs/tree-sitter-bash[${PYTHON_USEDEP}]
-    dev-libs/tree-sitter-json[${PYTHON_USEDEP}]
+    dev-python/tree-sitter[${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-python[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-javascript[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-typescript[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-go[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-rust[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-java[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-c[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-cpp[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-ruby[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-c-sharp[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-scala[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-php[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-lua[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-powershell[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-julia[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-bash[python,${PYTHON_USEDEP}]
+    dev-libs/tree-sitter-json[python,${PYTHON_USEDEP}]
     mcp? (
         dev-python/mcp[${PYTHON_USEDEP}]
         dev-python/starlette[${PYTHON_USEDEP}]
@@ -90,7 +90,7 @@ RDEPEND="dev-python/networkx[${PYTHON_USEDEP}]
         dev-python/tiktoken[${PYTHON_USEDEP}]
     )
 
-    ocaml? ( dev-libs/tree-sitter-ocaml )
-    erlang? ( dev-libs/tree-sitter-erlang )"
+    ocaml? ( dev-libs/tree-sitter-ocaml[python,${PYTHON_USEDEP}] )
+    erlang? ( dev-libs/tree-sitter-erlang[python,${PYTHON_USEDEP}] )"
 
 BDEPEND=""

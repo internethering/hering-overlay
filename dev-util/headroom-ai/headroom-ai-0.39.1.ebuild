@@ -549,9 +549,39 @@ SRC_URI+="
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="verify-provenance"
+IUSE="verify-provenance all proxy proxy-prod code ml memory vector pytorch-mps relevance image reports otel evals \
+	voice voice-train html mcp spreadsheet anyllm agno strands bedrock"
 
 RUST_MIN_VER="1.94.1"
+
+REQUIRED_USE="
+	voice-train? ( voice )
+	all? ( proxy code ml memory relevance image reports otel evals voice html mcp spreadsheet )
+"
+
+# TODO:
+# missing deps:
+# proxy: magika – https://github.com/google/magika
+# proxy: rapidocr-onnxruntime rapidocr
+# proxy & memory: sqlite-vec – https://github.com/asg017/sqlite-vec
+# memory & pytorch-mps & evals: sentence-transformers
+# vector: hnswlib
+# relevance: fastembed
+# anyllm: any-llm-sdk
+# html: trafilatura
+
+# 	memory? (
+# 		$(python_gen_cond_dep '
+# 			dev-python/sentence-transformers[${PYTHON_USEDEP}]
+# 		')
+# 	)
+# 	pytorch-mps? (
+# 		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
+# 		$(python_gen_cond_dep 'dev-python/sentence-transformers[${PYTHON_USEDEP}]')
+# 	)
+# 	vector? ( $(python_gen_cond_dep 'dev-python/hnswlib[${PYTHON_USEDEP}]') )
+# 	anyllm? ( $(python_gen_cond_dep 'dev-python/any-llm-sdk[${PYTHON_USEDEP}]')	)
+# 	html? (	$(python_gen_cond_dep 'dev-python/trafilatura[${PYTHON_USEDEP}]') )
 
 RDEPEND="
 	dev-util/ast-grep
@@ -566,7 +596,92 @@ RDEPEND="
 		dev-python/tomlkit[${PYTHON_USEDEP}]
 		dev-python/truststore[${PYTHON_USEDEP}]
 	')
-	dev-python/litellm[${PYTHON_SINGLE_USEDEP}]"
+	dev-python/litellm[${PYTHON_SINGLE_USEDEP}]
+	proxy? (
+		sci-ml/transformers[${PYTHON_SINGLE_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/fastapi[${PYTHON_USEDEP}]
+			dev-python/uvicorn[${PYTHON_USEDEP}]
+			dev-python/orjson[${PYTHON_USEDEP}]
+			dev-python/httpx[${PYTHON_USEDEP}]
+			dev-python/openai[${PYTHON_USEDEP}]
+			dev-python/mcp[${PYTHON_USEDEP}]
+			dev-python/zstandard[${PYTHON_USEDEP}]
+			dev-python/websockets[${PYTHON_USEDEP}]
+			sci-libs/onnxruntime[${PYTHON_USEDEP}]
+			dev-python/watchdog[${PYTHON_USEDEP}]
+		')
+	)
+
+	proxy-prod? ( www-servers/gunicorn )
+	code? ( $(python_gen_cond_dep 'dev-python/tree-sitter[${PYTHON_USEDEP}]') )
+	ml? (
+		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
+		sci-ml/transformers[${PYTHON_SINGLE_USEDEP}]
+		sci-ml/huggingface_hub[${PYTHON_SINGLE_USEDEP}]
+	)
+	relevance? (
+		$(python_gen_cond_dep '
+			dev-python/numpy[${PYTHON_USEDEP}]
+		')
+	)
+	proxy? (
+		$(python_gen_cond_dep '
+			dev-python/pillow[${PYTHON_USEDEP}]
+			sci-ml/sentencepiece[${PYTHON_USEDEP}]
+			sci-libs/onnxruntime[${PYTHON_USEDEP}]
+		')
+	)
+	reports? (
+		$(python_gen_cond_dep '
+			dev-python/jinja2[${PYTHON_USEDEP}]
+		')
+	)
+	spreadsheet? (
+		$(python_gen_cond_dep '
+			dev-python/openpyxl[${PYTHON_USEDEP}]
+			dev-python/xlrd[${PYTHON_USEDEP}]
+		')
+	)
+	otel? (
+		$(python_gen_cond_dep '
+			dev-python/opentelemetry-sdk[${PYTHON_USEDEP}]
+			dev-python/opentelemetry-exporter-otlp-proto-http[${PYTHON_USEDEP}]
+		')
+	)
+	mcp? (
+		$(python_gen_cond_dep '
+			dev-python/mcp[${PYTHON_USEDEP}]
+			dev-python/httpx[${PYTHON_USEDEP}]
+			dev-python/starlette[${PYTHON_USEDEP}]
+			dev-python/uvicorn[${PYTHON_USEDEP}]
+		')
+	)
+	voice? (
+		sci-ml/transformers[${PYTHON_SINGLE_USEDEP}]
+		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
+		$(python_gen_cond_dep 'sci-libs/onnxruntime[${PYTHON_USEDEP}]')
+	)
+	voice-train? (
+		sci-ml/datasets[${PYTHON_SINGLE_USEDEP}]
+		sci-ml/accelerate[${PYTHON_SINGLE_USEDEP}]
+	)
+	evals? (
+		sci-ml/datasets[${PYTHON_SINGLE_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/numpy[${PYTHON_USEDEP}]
+			dev-python/scikit-learn[${PYTHON_USEDEP}]
+			dev-python/openai[${PYTHON_USEDEP}]
+			dev-python/anthropic[${PYTHON_USEDEP}]
+		')
+	)
+	bedrock? (
+		$(python_gen_cond_dep '
+			dev-python/boto3[${PYTHON_USEDEP}]
+			dev-python/botocore[${PYTHON_USEDEP}]
+		')
+	)
+"
 
 BDEPEND=""
 
