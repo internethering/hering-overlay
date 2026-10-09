@@ -561,24 +561,10 @@ REQUIRED_USE="
 
 # TODO:
 # missing deps:
-# proxy: magika – https://github.com/google/magika
-# proxy: rapidocr-onnxruntime rapidocr
 # proxy & memory: sqlite-vec – https://github.com/asg017/sqlite-vec
-# memory & pytorch-mps & evals: sentence-transformers
 # vector: hnswlib
-# relevance: fastembed
 # anyllm: any-llm-sdk
 # html: trafilatura
-
-# 	memory? (
-# 		$(python_gen_cond_dep '
-# 			dev-python/sentence-transformers[${PYTHON_USEDEP}]
-# 		')
-# 	)
-# 	pytorch-mps? (
-# 		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
-# 		$(python_gen_cond_dep 'dev-python/sentence-transformers[${PYTHON_USEDEP}]')
-# 	)
 # 	vector? ( $(python_gen_cond_dep 'dev-python/hnswlib[${PYTHON_USEDEP}]') )
 # 	anyllm? ( $(python_gen_cond_dep 'dev-python/any-llm-sdk[${PYTHON_USEDEP}]')	)
 # 	html? (	$(python_gen_cond_dep 'dev-python/trafilatura[${PYTHON_USEDEP}]') )
@@ -590,8 +576,10 @@ RDEPEND="
 		dev-python/pydantic[${PYTHON_USEDEP}]
 		dev-python/click[${PYTHON_USEDEP}]
 		dev-python/rich[${PYTHON_USEDEP}]
+		dev-python/magika[${PYTHON_USEDEP}]
 		dev-python/opentelemetry-api[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/rapidocr[${PYTHON_USEDEP}]
 		dev-python/tomli[${PYTHON_USEDEP}]
 		dev-python/tomlkit[${PYTHON_USEDEP}]
 		dev-python/truststore[${PYTHON_USEDEP}]
@@ -615,12 +603,14 @@ RDEPEND="
 
 	proxy-prod? ( www-servers/gunicorn )
 	code? ( $(python_gen_cond_dep 'dev-python/tree-sitter[${PYTHON_USEDEP}]') )
+	memory? ( dev-python/sentence-transformers[${PYTHON_SINGLE_USEDEP}]	)
 	ml? (
 		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 		sci-ml/transformers[${PYTHON_SINGLE_USEDEP}]
-		sci-ml/huggingface_hub[${PYTHON_SINGLE_USEDEP}]
+		sci-ml/huggingface_hub[torch,${PYTHON_SINGLE_USEDEP}]
 	)
 	relevance? (
+		dev-python/fastembed[${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
 		')
@@ -629,9 +619,13 @@ RDEPEND="
 		$(python_gen_cond_dep '
 			dev-python/pillow[${PYTHON_USEDEP}]
 			sci-ml/sentencepiece[${PYTHON_USEDEP}]
-			sci-libs/onnxruntime[${PYTHON_USEDEP}]
+			sci-libs/onnxruntime[python,${PYTHON_USEDEP}]
 		')
 	)
+ 	pytorch-mps? (
+ 		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
+		dev-python/sentence-transformers[${PYTHON_SINGLE_USEDEP}]
+ 	)
 	reports? (
 		$(python_gen_cond_dep '
 			dev-python/jinja2[${PYTHON_USEDEP}]
@@ -658,7 +652,7 @@ RDEPEND="
 		')
 	)
 	voice? (
-		sci-ml/transformers[${PYTHON_SINGLE_USEDEP}]
+		sci-ml/transformers[torch,${PYTHON_SINGLE_USEDEP}]
 		sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep 'sci-libs/onnxruntime[${PYTHON_USEDEP}]')
 	)
@@ -668,6 +662,7 @@ RDEPEND="
 	)
 	evals? (
 		sci-ml/datasets[${PYTHON_SINGLE_USEDEP}]
+		dev-python/sentence-transformers[${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/numpy[${PYTHON_USEDEP}]
 			dev-python/scikit-learn[${PYTHON_USEDEP}]
