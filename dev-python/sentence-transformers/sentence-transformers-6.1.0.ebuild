@@ -19,13 +19,13 @@ RDEPEND="
 	sci-ml/pytorch[${PYTHON_SINGLE_USEDEP}]
 	sci-ml/transformers[${PYTHON_SINGLE_USEDEP}]
 	sci-ml/huggingface_hub[${PYTHON_SINGLE_USEDEP}]
-	sci-ml/tokenizers[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/scikit-learn[${PYTHON_USEDEP}]
 		dev-python/scipy[${PYTHON_USEDEP}]
 		dev-python/tqdm[${PYTHON_USEDEP}]
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
+		sci-ml/tokenizers[${PYTHON_USEDEP}]
 	')"
 
 distutils_enable_tests pytest

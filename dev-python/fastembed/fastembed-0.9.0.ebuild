@@ -18,7 +18,6 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	sci-ml/huggingface_hub[${PYTHON_SINGLE_USEDEP}]
-	sci-ml/tokenizers[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/tqdm[${PYTHON_USEDEP}]
@@ -26,6 +25,7 @@ RDEPEND="
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/loguru[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
+		sci-ml/tokenizers[${PYTHON_USEDEP}]
 	')"
 
 distutils_enable_tests pytest
