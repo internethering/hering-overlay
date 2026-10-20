@@ -16,6 +16,14 @@ S="${WORKDIR}"
 LICENSE="AGPL-3.0"
 SLOT="0"
 KEYWORDS="~amd64"
+LANGUAGES=( bg ca cs cy da de el en-gb en-us eo es eu fi fr ga gl he hr hu hy id is it ja kk
+ko lo nb nl oc pl pt-br pt ro ru sk sl sq sv tr uk vi zh-cn zh-tw )
+
+for LANG in ${LANGUAGES[@]}; do
+	IUSE+=" l10n_${LANG}"
+	PDEPEND+=" l10n_${LANG}? ( app-office/collaboraofficebasis-${LANG} )"
+done
+unset LANG LANGUAGES
 
 DEPEND="
 	acct-group/cool
@@ -23,7 +31,6 @@ DEPEND="
 	app-office/collaboraofficebasis-draw
 	app-office/collaboraofficebasis-impress
 	app-office/collaboraoffice
-	app-office/collaboraofficebasis-en-us
 	app-office/collaboraofficebasis-math
 	app-office/collaboraofficebasis-calc
 	app-office/collaboraofficebasis-extension-pdf-import
@@ -31,7 +38,6 @@ DEPEND="
 	app-office/collaboraofficebasis-core
 	app-office/collaboraofficebasis-graphicfilter
 	app-office/collaboraofficebasis-writer
-	app-office/collaboraofficebasis-de
 	app-office/collaboraofficebasis-images
 	app-office/collaboraoffice-ure
 "
