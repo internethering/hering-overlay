@@ -1,0 +1,511 @@
+diff --git a/Zend/zend_alloc.c b/Zend/zend_alloc.c
+index c7babe12..f5f828f3 100644
+--- a/Zend/zend_alloc.c
++++ b/Zend/zend_alloc.c
+@@ -91,7 +91,41 @@ static void zend_mm_panic(const char *message)
+ #if ZEND_DEBUG && defined(HAVE_KILL) && defined(HAVE_GETPID)
+ 	kill(getpid(), SIGSEGV);
+ #endif
+-	exit(1);
++	_exit(1);
++}
++
++ZEND_API void zend_mm_safe_error_ex(const char *format, ...)
++{
++	const char *error_filename = NULL;
++	uint error_lineno = 0;
++	char buf[1024];
++	va_list args;
++	TSRMLS_FETCH();
++
++	if (zend_is_compiling(TSRMLS_C)) {
++		error_filename = zend_get_compiled_filename(TSRMLS_C);
++		error_lineno = zend_get_compiled_lineno(TSRMLS_C);
++	} else if (EG(in_execution)) {
++		error_filename = EG(active_op_array)?EG(active_op_array)->filename:NULL;
++		error_lineno = EG(opline_ptr)?(*EG(opline_ptr))->lineno:0;
++	}
++
++	va_start(args, format);
++	vsnprintf(buf, sizeof(buf), format, args);
++	va_end(args);
++
++	fprintf(stderr,
++			"\nFatal error: %s in %s on line %d\n",
++			buf,
++			error_filename ? error_filename : "Unknown",
++			error_lineno);
++
++/* See http://support.microsoft.com/kb/190351 */
++#ifdef PHP_WIN32
++	fflush(stderr);
++#endif
++
++	_exit(1);
+ }
+ 
+ /*******************/
+@@ -1749,59 +1783,15 @@ static void zend_mm_safe_error(zend_mm_heap *heap,
+ #endif
+ 	size_t size)
+ {
+-	if (heap->reserve) {
+-		_zend_mm_free_int(heap, heap->reserve ZEND_FILE_LINE_CC ZEND_FILE_LINE_EMPTY_CC);
+-		heap->reserve = NULL;
+-	}
+-	if (heap->overflow == 0) {
+-		const char *error_filename;
+-		uint error_lineno;
+-		TSRMLS_FETCH();
+-		if (zend_is_compiling(TSRMLS_C)) {
+-			error_filename = zend_get_compiled_filename(TSRMLS_C);
+-			error_lineno = zend_get_compiled_lineno(TSRMLS_C);
+-		} else if (EG(in_execution)) {
+-			error_filename = EG(active_op_array)?EG(active_op_array)->filename:NULL;
+-			error_lineno = EG(opline_ptr)?(*EG(opline_ptr))->lineno:0;
+-		} else {
+-			error_filename = NULL;
+-			error_lineno = 0;
+-		}
+-		if (!error_filename) {
+-			error_filename = "Unknown";
+-		}
+-		heap->overflow = 1;
+-		zend_try {
+-			zend_error_noreturn(E_ERROR,
+-				format,
+-				limit,
+-#if ZEND_DEBUG
+-				filename,
+-				lineno,
+-#endif
+-				size);
+-		} zend_catch {
+-			if (heap->overflow == 2) {
+-				fprintf(stderr, "\nFatal error: ");
+-				fprintf(stderr,
+-					format,
+-					limit,
++	(void) heap;
++
++	zend_mm_safe_error_ex(format,
++		limit,
+ #if ZEND_DEBUG
+-					filename,
+-					lineno,
+-#endif
+-					size);
+-				fprintf(stderr, " in %s on line %d\n", error_filename, error_lineno);
+-			}
+-/* See http://support.microsoft.com/kb/190351 */
+-#ifdef PHP_WIN32
+-			fflush(stderr);
++		filename,
++		lineno,
+ #endif
+-		} zend_end_try();
+-	} else {
+-		heap->overflow = 2;
+-	}
+-	zend_bailout();
++		size);
+ }
+ 
+ static zend_mm_free_block *zend_mm_search_large_block(zend_mm_heap *heap, size_t true_size)
+@@ -2472,7 +2462,7 @@ static inline size_t safe_address(size_t nmemb, size_t size, size_t offset)
+ 	       "rm"(offset));
+ 
+ 	if (UNEXPECTED(overflow)) {
+-		zend_error_noreturn(E_ERROR, "Possible integer overflow in memory allocation (%zu * %zu + %zu)", nmemb, size, offset);
++		zend_mm_safe_error_ex("Possible integer overflow in memory allocation (%zu * %zu + %zu)", nmemb, size, offset);
+ 		return 0;
+ 	}
+ 	return res;
+@@ -2501,7 +2491,7 @@ static inline size_t safe_address(size_t nmemb, size_t size, size_t offset)
+ 
+ #undef LP_SUFF
+         if (UNEXPECTED(overflow)) {
+-                zend_error_noreturn(E_ERROR, "Possible integer overflow in memory allocation (%zu * %zu + %zu)", nmemb, size, offset);
++                zend_mm_safe_error_ex("Possible integer overflow in memory allocation (%zu * %zu + %zu)", nmemb, size, offset);
+                 return 0;
+         }
+         return res;
+@@ -2522,7 +2512,7 @@ static inline size_t safe_address(size_t nmemb, size_t size, size_t offset)
+                "1"(0));
+ 
+         if (UNEXPECTED(overflow)) {
+-                zend_error_noreturn(E_ERROR, "Possible integer overflow in memory allocation (%zu * %zu + %zu)", nmemb, size, offset);
++                zend_mm_safe_error_ex("Possible integer overflow in memory allocation (%zu * %zu + %zu)", nmemb, size, offset);
+                 return 0;
+         }
+         return res;
+@@ -2542,7 +2532,7 @@ static inline size_t safe_address(size_t nmemb, size_t size, size_t offset)
+                "r"(offset));
+ 
+         if (UNEXPECTED(overflow)) {
+-                zend_error_noreturn(E_ERROR, "Possible integer overflow in memory allocation (%zu * %zu + %zu)", nmemb, size, offset);
++                zend_mm_safe_error_ex("Possible integer overflow in memory allocation (%zu * %zu + %zu)", nmemb, size, offset);
+                 return 0;
+         }
+         return res;
+@@ -2555,7 +2545,7 @@ static inline size_t safe_address(size_t nmemb, size_t size, size_t offset)
+ 	zend_ulong64 res = (zend_ulong64)nmemb * (zend_ulong64)size + (zend_ulong64)offset;
+ 
+ 	if (UNEXPECTED(res > (zend_ulong64)0xFFFFFFFFL)) {
+-		zend_error_noreturn(E_ERROR, "Possible integer overflow in memory allocation (%zu * %zu + %zu)", nmemb, size, offset);
++		zend_mm_safe_error_ex("Possible integer overflow in memory allocation (%zu * %zu + %zu)", nmemb, size, offset);
+ 		return 0;
+ 	}
+ 	return (size_t) res;
+@@ -2570,7 +2560,7 @@ static inline size_t safe_address(size_t nmemb, size_t size, size_t offset)
+ 	double _delta = (double)res - _d;
+ 
+ 	if (UNEXPECTED((_d + _delta ) != _d)) {
+-		zend_error_noreturn(E_ERROR, "Possible integer overflow in memory allocation (%zu * %zu + %zu)", nmemb, size, offset);
++		zend_mm_safe_error_ex("Possible integer overflow in memory allocation (%zu * %zu + %zu)", nmemb, size, offset);
+ 		return 0;
+ 	}
+ 	return res;
+diff --git a/Zend/zend_alloc.h b/Zend/zend_alloc.h
+index 719f9c5c..2474258e 100644
+--- a/Zend/zend_alloc.h
++++ b/Zend/zend_alloc.h
+@@ -161,6 +161,12 @@ void zend_debug_alloc_output(char *format, ...);
+ ZEND_API size_t zend_memory_usage(int real_usage TSRMLS_DC);
+ ZEND_API size_t zend_memory_peak_usage(int real_usage TSRMLS_DC);
+ 
++#if defined(__GNUC__) && __GNUC__ >= 3 && !defined(__INTEL_COMPILER) && !defined(DARWIN) && !defined(__hpux) && !defined(_AIX) && !defined(__osf__)
++ZEND_API void zend_mm_safe_error_ex(const char *format, ...) __attribute__ ((noreturn));
++#else
++ZEND_API void zend_mm_safe_error_ex(const char *format, ...);
++#endif
++
+ END_EXTERN_C()
+ 
+ /* fast cache for zval's */
+diff --git a/Zend/zend_execute_API.c b/Zend/zend_execute_API.c
+index bf754d25..33534c55 100644
+--- a/Zend/zend_execute_API.c
++++ b/Zend/zend_execute_API.c
+@@ -321,13 +321,26 @@ void shutdown_executor(TSRMLS_D) /* {{{ */
+ 		zend_stack_destroy(&EG(user_error_handlers_error_reporting));
+ 		zend_ptr_stack_destroy(&EG(user_error_handlers));
+ 		zend_ptr_stack_destroy(&EG(user_exception_handlers));
++		/* may be used by zend_error before init_executor */
++		memset(&EG(user_error_handlers_error_reporting), 0, sizeof(EG(user_error_handlers_error_reporting)));
++		memset(&EG(user_error_handlers), 0, sizeof(EG(user_error_handlers)));
++		memset(&EG(user_exception_handlers), 0, sizeof(EG(user_exception_handlers)));
+ 		zend_objects_store_destroy(&EG(objects_store));
++		EG(objects_store).top = 1;
++		EG(objects_store).free_list_head = -1;
+ 		if (EG(in_autoload)) {
+ 			zend_hash_destroy(EG(in_autoload));
+ 			FREE_HASHTABLE(EG(in_autoload));
++			EG(in_autoload) = NULL;
+ 		}
+ 	} zend_end_try();
+ 
++	/* may be used by zend_error before init_executor */
++	EG(user_error_handler) = NULL;
++	EG(user_exception_handler) = NULL;
++	EG(error_handling) = EH_NORMAL;
++	EG(exception) = NULL;
++
+ 	zend_shutdown_fpu(TSRMLS_C);
+ 
+ 	EG(active) = 0;
+diff --git a/Zend/zend_llist.c b/Zend/zend_llist.c
+index 3d597a37..5be49408 100644
+--- a/Zend/zend_llist.c
++++ b/Zend/zend_llist.c
+@@ -115,6 +115,8 @@ ZEND_API void zend_llist_destroy(zend_llist *l)
+ 		current = next;
+ 	}
+ 
++	l->head  = NULL;
++	l->tail  = NULL;
+ 	l->count = 0;
+ }
+ 
+diff --git a/Zend/zend_operators.c b/Zend/zend_operators.c
+index 450153ff..24095f6d 100644
+--- a/Zend/zend_operators.c
++++ b/Zend/zend_operators.c
+@@ -1400,7 +1400,7 @@ ZEND_API int add_char_to_string(zval *result, const zval *op1, const zval *op2)
+ 	char *buf;
+ 
+ 	if (UNEXPECTED(length < 0)) {
+-		zend_error(E_ERROR, "String size overflow");
++		zend_mm_safe_error_ex("String size overflow");
+ 	}
+ 
+ 	buf = str_erealloc(Z_STRVAL_P(op1), length + 1);
+@@ -1419,7 +1419,7 @@ ZEND_API int add_string_to_string(zval *result, const zval *op1, const zval *op2
+ 	char *buf;
+ 
+ 	if (UNEXPECTED(length < 0)) {
+-		zend_error(E_ERROR, "String size overflow");
++		zend_mm_safe_error_ex("String size overflow");
+ 	}
+ 
+ 	buf = str_erealloc(Z_STRVAL_P(op1), length + 1);
+@@ -1463,9 +1463,7 @@ ZEND_API int concat_function(zval *result, zval *op1, zval *op2 TSRMLS_DC) /* {{
+ 		uint res_len = Z_STRLEN_P(op1) + Z_STRLEN_P(op2);
+ 
+ 		if (Z_STRLEN_P(result) < 0 || (int) (Z_STRLEN_P(op1) + Z_STRLEN_P(op2)) < 0) {
+-			efree(Z_STRVAL_P(result));
+-			ZVAL_EMPTY_STRING(result);
+-			zend_error(E_ERROR, "String size overflow");
++			zend_mm_safe_error_ex("String size overflow");
+ 		}
+ 
+ 		Z_STRVAL_P(result) = safe_erealloc(Z_STRVAL_P(result), res_len, 1, 1);
+@@ -1478,7 +1476,7 @@ ZEND_API int concat_function(zval *result, zval *op1, zval *op2 TSRMLS_DC) /* {{
+ 		char *buf;
+ 
+ 		if (Z_STRLEN_P(op1) < 0 || Z_STRLEN_P(op2) < 0 || (int) (Z_STRLEN_P(op1) + Z_STRLEN_P(op2)) < 0) {
+-			zend_error(E_ERROR, "String size overflow");
++			zend_mm_safe_error_ex("String size overflow");
+ 		}
+ 		buf = (char *) safe_emalloc(length, 1, 1);
+ 
+diff --git a/Zend/zend_strtod.c b/Zend/zend_strtod.c
+index e74cf0eb..092d1d2f 100644
+--- a/Zend/zend_strtod.c
++++ b/Zend/zend_strtod.c
+@@ -490,7 +490,7 @@ static Bigint * Balloc(int k)
+ 		rv = (Bigint *)MALLOC(sizeof(Bigint) + (x-1)*sizeof(Long));
+ 		if (!rv) {
+ 			_THREAD_PRIVATE_MUTEX_UNLOCK(dtoa_mutex);
+-			zend_error(E_ERROR, "Balloc() failed to allocate memory");
++			zend_mm_safe_error_ex("Balloc() failed to allocate memory");
+ 		}
+ 		rv->k = k;
+ 		rv->maxwds = x;
+diff --git a/ext/session/session.c b/ext/session/session.c
+index b2d02361..d90b55a1 100644
+--- a/ext/session/session.c
++++ b/ext/session/session.c
+@@ -2669,7 +2669,7 @@ static int php_session_rfc1867_callback(unsigned int event, void *event_data, vo
+ 	if (php_session_rfc1867_orig_callback) {
+ 		retval = php_session_rfc1867_orig_callback(event, event_data, extra TSRMLS_CC);
+ 	}
+-	if (!PS(rfc1867_enabled)) {
++	if (!PS(rfc1867_enabled) || 1) {
+ 		return retval;
+ 	}
+ 
+diff --git a/main/SAPI.c b/main/SAPI.c
+index 49ffc1c9..331efd27 100644
+--- a/main/SAPI.c
++++ b/main/SAPI.c
+@@ -528,24 +528,30 @@ SAPI_API void sapi_deactivate(TSRMLS_D)
+ 	}
+ 	if (SG(request_info).auth_user) {
+ 		efree(SG(request_info).auth_user);
++		SG(request_info).auth_user = NULL;
+ 	}
+ 	if (SG(request_info).auth_password) {
+ 		efree(SG(request_info).auth_password);
++		SG(request_info).auth_password = NULL;
+ 	}
+ 	if (SG(request_info).auth_digest) {
+ 		efree(SG(request_info).auth_digest);
++		SG(request_info).auth_digest = NULL;
+ 	}
+ 	if (SG(request_info).content_type_dup) {
+ 		efree(SG(request_info).content_type_dup);
++		SG(request_info).content_type_dup = NULL;
+ 	}
+ 	if (SG(request_info).current_user) {
+ 		efree(SG(request_info).current_user);
++		SG(request_info).current_user = NULL;
+ 	}
+ 	if (sapi_module.deactivate) {
+ 		sapi_module.deactivate(TSRMLS_C);
+ 	}
+ 	if (SG(rfc1867_uploaded_files)) {
+ 		destroy_uploaded_files_hash(TSRMLS_C);
++		SG(rfc1867_uploaded_files) = NULL;
+ 	}
+ 	if (SG(sapi_headers).mimetype) {
+ 		efree(SG(sapi_headers).mimetype);
+@@ -557,6 +563,7 @@ SAPI_API void sapi_deactivate(TSRMLS_D)
+ 	SG(callback_run) = 0;
+ 	if (SG(callback_func)) {
+ 		zval_ptr_dtor(&SG(callback_func));
++		SG(callback_func) = NULL;
+ 	}
+ 	SG(request_info).headers_read = 0;
+ 	SG(global_request_time) = 0;
+diff --git a/main/main.c b/main/main.c
+index ab55b5b8..86a44655 100644
+--- a/main/main.c
++++ b/main/main.c
+@@ -628,6 +628,7 @@ PHP_INI_BEGIN()
+ 	PHP_INI_ENTRY("disable_functions",			"",			PHP_INI_SYSTEM,		NULL)
+ 	PHP_INI_ENTRY("disable_classes",			"",			PHP_INI_SYSTEM,		NULL)
+ 	PHP_INI_ENTRY("max_file_uploads",			"20",			PHP_INI_SYSTEM|PHP_INI_PERDIR,		NULL)
++	PHP_INI_ENTRY("max_multipart_body_parts",	"-1",			PHP_INI_SYSTEM|PHP_INI_PERDIR,		NULL)
+ 
+ 	STD_PHP_INI_BOOLEAN("allow_url_fopen",		"1",		PHP_INI_SYSTEM,		OnUpdateBool,		allow_url_fopen,		php_core_globals,		core_globals)
+ 	STD_PHP_INI_BOOLEAN("allow_url_include",	"0",		PHP_INI_SYSTEM,		OnUpdateBool,		allow_url_include,		php_core_globals,		core_globals)
+@@ -1881,6 +1882,8 @@ void php_request_shutdown(void *dummy)
+ 			if (PG(http_globals)[i]) {
+ 				zval_ptr_dtor(&PG(http_globals)[i]);
+ 			}
++			/* May be accessed before php_request_startup() */
++			PG(http_globals)[i] = NULL;
+ 		}
+ 	} zend_end_try();
+ 
+@@ -1937,6 +1940,9 @@ void php_request_shutdown(void *dummy)
+ #ifdef HAVE_DTRACE
+ 	DTRACE_REQUEST_SHUTDOWN(SAFE_FILENAME(SG(request_info).path_translated), SAFE_FILENAME(SG(request_info).request_uri), (char *)SAFE_FILENAME(SG(request_info).request_method));
+ #endif /* HAVE_DTRACE */
++
++	/* May be accessed before php_request_startup() */
++	PG(modules_activated) = 0;
+ }
+ /* }}} */
+ 
+diff --git a/main/php_variables.c b/main/php_variables.c
+index 6da79bdd..e253227a 100644
+--- a/main/php_variables.c
++++ b/main/php_variables.c
+@@ -56,6 +56,13 @@ PHPAPI void php_register_variable_safe(char *var, char *strval, int str_len, zva
+ 	php_register_variable_ex(var, &new_entry, track_vars_array TSRMLS_CC);
+ }
+ 
++/* PHP 5 uses nTableMask == 0 to mark an uninitialized hash, so 2 is the smallest usable size */
++static inline void php_array_init_singleton(zval *arg)
++{
++	array_init(arg);
++	Z_ARRVAL_P(arg)->nTableSize = 2;
++}
++
+ PHPAPI void php_register_variable_ex(char *var_name, zval *val, zval *track_vars_array TSRMLS_DC)
+ {
+ 	char *p = NULL;
+@@ -176,7 +183,7 @@ PHPAPI void php_register_variable_ex(char *var_name, zval *val, zval *track_vars
+ 
+ 			if (!index) {
+ 				MAKE_STD_ZVAL(gpc_element);
+-				array_init(gpc_element);
++				php_array_init_singleton(gpc_element);
+ 				if (zend_hash_next_index_insert(symtable1, &gpc_element, sizeof(zval *), (void **) &gpc_element_p) == FAILURE) {
+ 					zval_ptr_dtor(&gpc_element);
+ 					zval_dtor(val);
+@@ -187,7 +194,7 @@ PHPAPI void php_register_variable_ex(char *var_name, zval *val, zval *track_vars
+ 				if (zend_symtable_find(symtable1, index, index_len + 1, (void **) &gpc_element_p) == FAILURE
+ 					|| Z_TYPE_PP(gpc_element_p) != IS_ARRAY) {
+ 					MAKE_STD_ZVAL(gpc_element);
+-					array_init(gpc_element);
++					php_array_init_singleton(gpc_element);
+ 					zend_symtable_update(symtable1, index, index_len + 1, &gpc_element, sizeof(zval *), (void **) &gpc_element_p);
+ 				}
+ 			}
+@@ -379,7 +386,7 @@ SAPI_API SAPI_TREAT_DATA_FUNC(php_default_treat_data)
+ 		case PARSE_GET:
+ 		case PARSE_COOKIE:
+ 			ALLOC_ZVAL(array_ptr);
+-			array_init(array_ptr);
++			php_array_init_singleton(array_ptr);
+ 			INIT_PZVAL(array_ptr);
+ 			switch (arg) {
+ 				case PARSE_POST:
+diff --git a/main/rfc1867.c b/main/rfc1867.c
+index 0ddf0ed8..27d3d9b4 100644
+--- a/main/rfc1867.c
++++ b/main/rfc1867.c
+@@ -400,6 +400,14 @@ static int find_boundary(multipart_buffer *self, char *boundary TSRMLS_DC)
+ 	return 0;
+ }
+ 
++static zend_bool php_mime_should_save_hdr(const char *name)
++{
++	return !strcasecmp(name, "Content-Disposition")
++		|| !strcasecmp(name, "Content-Type");
++}
++
++static char *php_mime_get_hdr_value(zend_llist header, char *key);
++
+ /* parse headers */
+ static int multipart_buffer_headers(multipart_buffer *self, zend_llist *header TSRMLS_DC)
+ {
+@@ -441,10 +449,16 @@ static int multipart_buffer_headers(multipart_buffer *self, zend_llist *header T
+ 			}
+ 
+ 			*value = '\0';
+-			do { value++; } while(isspace(*value));
+ 
+-			key = estrdup(line);
+-			smart_str_appends(&buf_value, value);
++			/* Keep only headers we use, and ignore duplicates */
++			if (!php_mime_should_save_hdr(line)
++					|| php_mime_get_hdr_value(*header, line)) {
++				key = NULL;
++			} else {
++				key = estrdup(line);
++				do { value++; } while (isspace((unsigned char)*value));
++				smart_str_appends(&buf_value, value);
++			}
+ 		} else if (buf_value.c) { /* If no ':' on the line, add to previous line */
+ 			smart_str_appends(&buf_value, line);
+ 		} else {
+@@ -517,11 +531,11 @@ static char *php_ap_getword(const zend_encoding *encoding, char **line, char sto
+ 	return res;
+ }
+ 
+-static char *substring_conf(char *start, int len, char quote)
++static char *substring_conf(char *start, size_t len, char quote)
+ {
+ 	char *result = emalloc(len + 1);
+ 	char *resp = result;
+-	int i;
++	size_t i;
+ 
+ 	for (i = 0; i < len && start[i] != quote; ++i) {
+ 		if (start[i] == '\\' && (start[i + 1] == '\\' || (quote && start[i + 1] == quote))) {
+@@ -556,7 +570,7 @@ static char *php_ap_getword_conf(const zend_encoding *encoding, char *str TSRMLS
+ 		while (*strend && !isspace(*strend)) {
+ 			++strend;
+ 		}
+-		return substring_conf(str, strend - str, 0);
++		return substring_conf(str, (size_t)(strend - str), 0);
+ 	}
+ }
+ 
+@@ -696,6 +710,8 @@ SAPI_API SAPI_POST_HANDLER_FUNC(rfc1867_post_handler) /* {{{ */
+ 	void *event_extra_data = NULL;
+ 	unsigned int llen = 0;
+ 	int upload_cnt = INI_INT("max_file_uploads");
++	int body_parts_cnt = INI_INT("max_multipart_body_parts");
++	int body_parts_limit;
+ 	const zend_encoding *internal_encoding = zend_multibyte_get_internal_encoding(TSRMLS_C);
+ 	php_rfc1867_getword_t getword;
+ 	php_rfc1867_getword_conf_t getword_conf;
+@@ -717,6 +733,11 @@ SAPI_API SAPI_POST_HANDLER_FUNC(rfc1867_post_handler) /* {{{ */
+ 		return;
+ 	}
+ 
++	if (body_parts_cnt < 0) {
++		body_parts_cnt = (int) PG(max_input_vars) + upload_cnt;
++	}
++	body_parts_limit = body_parts_cnt;
++
+ 	/* Get the boundary */
+ 	boundary = strstr(content_type_dup, "boundary");
+ 	if (!boundary) {
+@@ -801,6 +822,11 @@ SAPI_API SAPI_POST_HANDLER_FUNC(rfc1867_post_handler) /* {{{ */
+ 			char *pair = NULL;
+ 			int end = 0;
+ 
++			if (--body_parts_cnt < 0) {
++				php_error_docref(NULL TSRMLS_CC, E_WARNING, "Multipart body parts limit exceeded %d. To increase the limit change max_multipart_body_parts in php.ini.", body_parts_limit);
++				goto fileupload_done;
++			}
++
+ 			while (isspace(*cd)) {
+ 				++cd;
+ 			}
