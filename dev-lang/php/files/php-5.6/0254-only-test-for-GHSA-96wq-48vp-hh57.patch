@@ -1,0 +1,37 @@
+From: Remi Collet <remi@remirepo.net>
+Date: Fri, 15 May 2026 07:26:59 +0200
+Subject: only test for GHSA-96wq-48vp-hh57
+
+---
+ ext/standard/tests/GHSA-96wq-48vp-hh57.phpt | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+ create mode 100644 ext/standard/tests/GHSA-96wq-48vp-hh57.phpt
+
+diff --git a/ext/standard/tests/GHSA-96wq-48vp-hh57.phpt b/ext/standard/tests/GHSA-96wq-48vp-hh57.phpt
+new file mode 100644
+index 0000000..28f1183
+--- /dev/null
++++ b/ext/standard/tests/GHSA-96wq-48vp-hh57.phpt
+@@ -0,0 +1,22 @@
++--TEST--
++GHSA-96wq-48vp-hh57: signed integer overflow of char array offset
++--CREDITS--
++Aleksey Solovev (Positive Technologies)
++--INI--
++memory_limit=3G
++--SKIPIF--
++<?php
++if (!getenv('RUN_RESOURCE_HEAVY_TESTS')) die('skip resource-heavy test');
++if (getenv('SKIP_SLOW_TESTS')) die('skip slow test');
++if (PHP_INT_SIZE != 8) echo 'skip 64-bit only';
++?>
++--FILE--
++<?php
++
++$str = str_repeat('0', 2 * (1024 ** 3) - 2) . 'AE';
++metaphone($str, 1);
++
++?>
++===DONE===
++--EXPECTF--
++Fatal error: String size overflow in %s

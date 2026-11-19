@@ -1,0 +1,70 @@
+From: =?utf-8?b?T25kxZllaiBTdXLDvQ==?= <ondrej@sury.org>
+Date: Wed, 21 Oct 2026 21:22:02 +0200
+Subject: fix new tests for 7.4 (no PHP 4 style constructor,
+ typed property message)
+
+---
+ Zend/tests/ghsa-rwp7-7vc6-8477_001.phpt | 4 ++--
+ Zend/tests/ghsa-rwp7-7vc6-8477_002.phpt | 6 +++---
+ Zend/tests/ghsa-rwp7-7vc6-8477_003.phpt | 2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Zend/tests/ghsa-rwp7-7vc6-8477_001.phpt b/Zend/tests/ghsa-rwp7-7vc6-8477_001.phpt
+index d0e9ddc..73744b7 100644
+--- a/Zend/tests/ghsa-rwp7-7vc6-8477_001.phpt
++++ b/Zend/tests/ghsa-rwp7-7vc6-8477_001.phpt
+@@ -4,7 +4,7 @@ GHSA-rwp7-7vc6-8477: Use-after-free for ??= due to incorrect live-range calculat
+ <?php
+ 
+ class Foo {
+-    public function foo() {
++    public function getThis() {
+         return $this;
+     }
+ 
+@@ -16,7 +16,7 @@ class Foo {
+ $foo = new Foo();
+ 
+ try {
+-    $foo->foo()->baz ??= 1;
++    $foo->getThis()->baz ??= 1;
+ } catch (Exception $e) {
+     echo $e->getMessage();
+ }
+diff --git a/Zend/tests/ghsa-rwp7-7vc6-8477_002.phpt b/Zend/tests/ghsa-rwp7-7vc6-8477_002.phpt
+index 4115d9e..dd4783f 100644
+--- a/Zend/tests/ghsa-rwp7-7vc6-8477_002.phpt
++++ b/Zend/tests/ghsa-rwp7-7vc6-8477_002.phpt
+@@ -6,7 +6,7 @@ GHSA-rwp7-7vc6-8477: Use-after-free for ??= due to incorrect live-range calculat
+ class Foo {
+     public int $prop;
+ 
+-    public function foo() {
++    public function getThis() {
+         return $this;
+     }
+ }
+@@ -14,11 +14,11 @@ class Foo {
+ $foo = new Foo();
+ 
+ try {
+-    $foo->foo()->prop ??= 'foo';
++    $foo->getThis()->prop ??= 'foo';
+ } catch (Error $e) {
+     echo $e->getMessage();
+ }
+ 
+ ?>
+ --EXPECT--
+-Cannot assign string to property Foo::$prop of type int
++Typed property Foo::$prop must be int, string used
+diff --git a/Zend/tests/ghsa-rwp7-7vc6-8477_003.phpt b/Zend/tests/ghsa-rwp7-7vc6-8477_003.phpt
+index f2808af..80eb73c 100644
+--- a/Zend/tests/ghsa-rwp7-7vc6-8477_003.phpt
++++ b/Zend/tests/ghsa-rwp7-7vc6-8477_003.phpt
+@@ -19,4 +19,4 @@ try {
+ 
+ ?>
+ --EXPECT--
+-Cannot assign string to property Foo::$prop of type int
++Typed property Foo::$prop must be int, string used

@@ -1,0 +1,20 @@
+From: =?utf-8?b?T25kxZllaiBTdXLDvQ==?= <ondrej@sury.org>
+Date: Thu, 18 Dec 2025 23:41:52 +0100
+Subject: Fix the install rules for litespeed SAPI
+
+---
+ sapi/litespeed/Makefile.frag | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/sapi/litespeed/Makefile.frag b/sapi/litespeed/Makefile.frag
+index 125a3b1..e0f01c6 100644
+--- a/sapi/litespeed/Makefile.frag
++++ b/sapi/litespeed/Makefile.frag
+@@ -5,5 +5,6 @@ $(SAPI_LITESPEED_PATH): $(PHP_GLOBAL_OBJS) $(PHP_BINARY_OBJS) $(PHP_LITESPEED_OB
+ 
+ install-litespeed: $(SAPI_LITESPEED_PATH)
+ 	@echo "Installing PHP LiteSpeed binary:  $(INSTALL_ROOT)$(bindir)/"
+-	@$(INSTALL) -m 0755 $(SAPI_LITESPEED_PATH) $(INSTALL_ROOT)$(bindir)/lsphp
++	@$(mkinstalldirs) $(INSTALL_ROOT)$(bindir)
++	@$(INSTALL) -m 0755 $(SAPI_LITESPEED_PATH) $(INSTALL_ROOT)$(bindir)/$(program_prefix)lsphp$(program_suffix)
+ 
