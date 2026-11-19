@@ -1,0 +1,128 @@
+From: Ilija Tovilo <ilija.tovilo@me.com>
+Date: Wed, 13 Nov 2024 01:41:40 +0100
+Subject: Use-after-free for ??= due to incorrect live-range calculation
+
+Fixes GHSA-rwp7-7vc6-8477
+
+(cherry picked from commit ef2c459941b5ffae501e5311f5ac2041aadbe461)
+(cherry picked from commit 0aab3978d56f1e39218e5d52fed271940a57ae19)
+(cherry picked from commit 30b3ce63d7725ab6d2db01aabcf9f0437dd40a1b)
+---
+ Zend/tests/ghsa-rwp7-7vc6-8477_001.phpt | 26 ++++++++++++++++++++++++++
+ Zend/tests/ghsa-rwp7-7vc6-8477_002.phpt | 24 ++++++++++++++++++++++++
+ Zend/tests/ghsa-rwp7-7vc6-8477_003.phpt | 22 ++++++++++++++++++++++
+ Zend/zend_opcode.c                      |  8 ++++++++
+ 4 files changed, 80 insertions(+)
+ create mode 100644 Zend/tests/ghsa-rwp7-7vc6-8477_001.phpt
+ create mode 100644 Zend/tests/ghsa-rwp7-7vc6-8477_002.phpt
+ create mode 100644 Zend/tests/ghsa-rwp7-7vc6-8477_003.phpt
+
+diff --git a/Zend/tests/ghsa-rwp7-7vc6-8477_001.phpt b/Zend/tests/ghsa-rwp7-7vc6-8477_001.phpt
+new file mode 100644
+index 0000000..d0e9ddc
+--- /dev/null
++++ b/Zend/tests/ghsa-rwp7-7vc6-8477_001.phpt
+@@ -0,0 +1,26 @@
++--TEST--
++GHSA-rwp7-7vc6-8477: Use-after-free for ??= due to incorrect live-range calculation
++--FILE--
++<?php
++
++class Foo {
++    public function foo() {
++        return $this;
++    }
++
++    public function __set($name, $value) {
++        throw new Exception('Hello');
++    }
++}
++
++$foo = new Foo();
++
++try {
++    $foo->foo()->baz ??= 1;
++} catch (Exception $e) {
++    echo $e->getMessage();
++}
++
++?>
++--EXPECT--
++Hello
+diff --git a/Zend/tests/ghsa-rwp7-7vc6-8477_002.phpt b/Zend/tests/ghsa-rwp7-7vc6-8477_002.phpt
+new file mode 100644
+index 0000000..4115d9e
+--- /dev/null
++++ b/Zend/tests/ghsa-rwp7-7vc6-8477_002.phpt
+@@ -0,0 +1,24 @@
++--TEST--
++GHSA-rwp7-7vc6-8477: Use-after-free for ??= due to incorrect live-range calculation
++--FILE--
++<?php
++
++class Foo {
++    public int $prop;
++
++    public function foo() {
++        return $this;
++    }
++}
++
++$foo = new Foo();
++
++try {
++    $foo->foo()->prop ??= 'foo';
++} catch (Error $e) {
++    echo $e->getMessage();
++}
++
++?>
++--EXPECT--
++Cannot assign string to property Foo::$prop of type int
+diff --git a/Zend/tests/ghsa-rwp7-7vc6-8477_003.phpt b/Zend/tests/ghsa-rwp7-7vc6-8477_003.phpt
+new file mode 100644
+index 0000000..f2808af
+--- /dev/null
++++ b/Zend/tests/ghsa-rwp7-7vc6-8477_003.phpt
+@@ -0,0 +1,22 @@
++--TEST--
++GHSA-rwp7-7vc6-8477: Use-after-free for ??= due to incorrect live-range calculation
++--FILE--
++<?php
++
++class Foo {
++    public int $prop;
++}
++
++function newFoo() {
++    return new Foo();
++}
++
++try {
++    newFoo()->prop ??= 'foo';
++} catch (Error $e) {
++    echo $e->getMessage();
++}
++
++?>
++--EXPECT--
++Cannot assign string to property Foo::$prop of type int
+diff --git a/Zend/zend_opcode.c b/Zend/zend_opcode.c
+index d0d4993..5827c47 100644
+--- a/Zend/zend_opcode.c
++++ b/Zend/zend_opcode.c
+@@ -780,6 +780,14 @@ static void zend_calc_live_ranges(
+ 		opnum--;
+ 		opline--;
+ 
++		/* SEPARATE always redeclares its op1. For the purposes of live-ranges,
++		 * its declaration is irrelevant. Don't terminate the current live-range
++		 * to avoid breaking special handling of COPY_TMP. */
++		if (opline->opcode == ZEND_SEPARATE) {
++			ZEND_ASSERT(opline->op1.var == opline->result.var);
++			continue;
++		}
++
+ 		if ((opline->result_type & (IS_TMP_VAR|IS_VAR)) && !is_fake_def(opline)) {
+ 			uint32_t var_num = EX_VAR_TO_NUM(opline->result.var) - var_offset;
+ 			/* Defs without uses can occur for two reasons: Either because the result is

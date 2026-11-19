@@ -1,0 +1,348 @@
+diff '--color=auto' -urN o/configure.ac n/configure.ac
+--- o/configure.ac	2026-11-19 16:59:05.254134955 +0100
++++ n/configure.ac	2026-11-19 17:33:53.763343358 +0100
+@@ -1135,7 +1135,7 @@
+ PHP_ARG_WITH([pear],
+   [whether to install PEAR],
+   [AS_HELP_STRING([[--with-pear[=DIR]]],
+-    [Install PEAR in DIR [PREFIX/share/php]])],
++    [Install PEAR in DIR [PREFIX/lib/php]])],
+   [no],
+   [yes])
+ 
+@@ -1166,8 +1166,6 @@
+   PHP_ADD_MAKEFILE_FRAGMENT($abs_srcdir/pear/Makefile.frag,$abs_srcdir/pear,pear)
+ fi
+ 
+-PEAR_INSTALLDIR=/usr/share/php
+-
+ dnl Configuring Zend and TSRM.
+ dnl ----------------------------------------------------------------------------
+ 
+@@ -1241,10 +1239,8 @@
+ 
+ AC_SUBST(ZEND_MODULE_API_NO)
+ 
+-DEBIAN_PHP_API=$ZEND_MODULE_API_NO
+-
+ if test -z "$EXTENSION_DIR"; then
+-  extbasedir=$DEBIAN_PHP_API
++  extbasedir=$ZEND_MODULE_API_NO
+   if test "$oldstyleextdir" = "yes"; then
+     if test "$PHP_DEBUG" = "1"; then
+       part1=debug
+@@ -1380,7 +1376,6 @@
+ PHP_SUBST(CXXFLAGS)
+ PHP_SUBST(CXXFLAGS_CLEAN)
+ PHP_SUBST_OLD(DEBUG_CFLAGS)
+-PHP_SUBST_OLD(DEBIAN_PHP_API)
+ PHP_SUBST_OLD(EXTENSION_DIR)
+ PHP_SUBST_OLD(EXTRA_LDFLAGS)
+ PHP_SUBST_OLD(EXTRA_LDFLAGS_PROGRAM)
+diff '--color=auto' -urN o/ext/standard/credits.c n/ext/standard/credits.c
+--- o/ext/standard/credits.c	2026-11-19 16:59:05.793136542 +0100
++++ n/ext/standard/credits.c	2026-11-19 17:46:42.655623403 +0100
+@@ -17,12 +17,6 @@
+    +----------------------------------------------------------------------+
+ */
+ 
+-#include <ctype.h>
+-#include <string.h>
+-#include <sys/types.h>
+-#include <sys/stat.h>
+-#include <fcntl.h>
+-
+ #include "php.h"
+ #include "info.h"
+ #include "SAPI.h"
+@@ -130,161 +124,8 @@
+ 		php_info_print_table_end();
+ 	}
+ 
+-	php_print_packaging_credits(flag, 0);
+-
+ 	if (!sapi_module.phpinfo_as_text && flag & PHP_CREDITS_FULLPAGE) {
+ 		PUTS("</div></body></html>\n");
+ 	}
+ }
+ /* }}} */
+-
+-PHPAPI void php_print_packaging_credits(int flag, int top TSRMLS_DC) /* {{{ */
+-{
+-	if (flag && PHP_CREDITS_PACKAGING) {
+-		/* Packaging */
+-		int fd = -1;
+-		char buf[4096];
+-		ssize_t bytes = -1;
+-		char *pos = NULL;
+-		enum {
+-			DEBIAN = 0,
+-			DEBSURYORG = 1,
+-			FREEXIAN = 2
+-		} packaging = DEBIAN;
+-
+-		fd = open("/usr/lib/php/packaging", O_RDONLY);
+-		if (fd == -1) {
+-			goto print;
+-		}
+-
+-		bytes = read(fd, buf, sizeof(buf) - 1);
+-		close(fd);
+-
+-		if (bytes <= 0) {
+-			goto print;
+-		}
+-
+-		buf[bytes] = '\0';
+-		pos = strchr(buf, '\n');
+-		if (pos != NULL) {
+-			bytes = pos - buf;
+-			*pos = '\0';
+-		}
+-
+-		if (strncmp(buf, "deb.sury.org", sizeof(buf)) == 0) {
+-			packaging = DEBSURYORG;
+-		} else if (strncmp(buf, "freexian", sizeof(buf)) == 0) {
+-			packaging = FREEXIAN;
+-		}
+-
+-	print:
+-		if ((top && packaging != FREEXIAN) || (!top && packaging == FREEXIAN))
+-		{
+-			return;
+-		}
+-		switch (packaging) {
+-		case DEBSURYORG:
+-			php_info_print_table_start();
+-			php_info_print_table_colspan_header(1, "Debian Packaging");
+-			if (!sapi_module.phpinfo_as_text) {
+-				PUTS("<tr><td class=\"e\">");
+-				PUTS("<a href=\"https://deb.sury.org\">DEB.SURY.ORG</a>, an Ondřej Surý project");
+-				PUTS("</td></tr>\n");
+-			} else {
+-				php_info_print_table_row(1, "DEB.SURY.ORG, an Ondřej Surý project");
+-			}
+-			php_info_print_table_end();
+-			break;
+-		case FREEXIAN:
+-			fd = -1;
+-			bytes = -1;
+-
+-			if (!sapi_module.phpinfo_as_text) {
+-				PUTS("<h1>PHP Vendor</h1>\n");
+-			} else {
+-				PUTS("PHP Vendor\n");
+-			}
+-
+-			php_info_print_table_start();
+-			php_info_print_table_colspan_header(1, "Debian Packaging");
+-
+-			if (!sapi_module.phpinfo_as_text) {
+-				fd = open("/etc/php/freexian-sponsor.html", O_RDONLY);
+-			} else {
+-				fd = open("/etc/php/freexian-sponsor.txt", O_RDONLY);
+-				if (fd == -1) {
+-					fd = open("/etc/php/freexian-sponsor.html", O_RDONLY);
+-				}
+-			}
+-
+-			if (fd > 0) {
+-				bytes = read(fd, buf, sizeof(buf) - 1);
+-			}
+-
+-			if (bytes > 0) {
+-				buf[bytes] = '\0';
+-			}
+-
+-			if (!sapi_module.phpinfo_as_text) {
+-				PUTS("<tr><td class=\"e\">");
+-
+-				PUTS("This PHP version is maintained by "
+-					 "<a href=\"https://www.freexian.com\">Freexian SARL</a> as part of "
+-					 "their <a href=\"https://php.freexian.com\">PHP LTS</a> offer"
+-					);
+-
+-				if (bytes > 0) {
+-					PUTS(" and is made available exclusively for ");
+-					do {
+-						PUTS(buf);
+-
+-						bytes = read(fd, buf, sizeof(buf) - 1);
+-						if (bytes > 0) {
+-							buf[bytes] = '\0';
+-						}
+-					} while (bytes > 0);
+-				} else {
+-					PUTS(". This service is run together with Ondřej Surý, "
+-						 "that's why a small subset of the PHP LTS packages "
+-						 "are made freely available on "
+-						 "<a href=\"https://deb.sury.org/\">DEB.SURY.ORG</a>.");
+-				}
+-				PUTS("</td></tr>\n");
+-			} else {
+-				PUTS("This PHP version is maintained by "
+-					 "Freexian SARL <https://www.freexian.com> as part of "
+-					 "their PHP LTS <https://php.freexian.com> offer"
+-					);
+-				if (bytes > 0) {
+-					PUTS(" and is made available exclusively for ");
+-					do {
+-						PUTS(buf);
+-
+-						bytes = read(fd, buf, sizeof(buf) - 1);
+-						if (bytes > 0) {
+-							buf[bytes] = '\0';
+-						}
+-					} while (bytes > 0);
+-				} else {
+-					PUTS(". This service is run together with Ondřej Surý, "
+-						 "that's why a small subset of the PHP LTS packages "
+-						 "are made freely available on "
+-						 "DEB.SURY.ORG <https://deb.sury.org/>.");
+-				}
+-			}
+-			if (fd > 0) {
+-				close(fd);
+-			}
+-			php_info_print_table_end();
+-			break;
+-		case DEBIAN:
+-		default:
+-			php_info_print_table_start();
+-			php_info_print_table_colspan_header(1, "Debian Packaging");
+-			php_info_print_table_row(1, "Ondřej Surý");
+-			php_info_print_table_end();
+-			break;
+-		}
+-	}
+-}
+-/* }}} */
+diff '--color=auto' -urN o/ext/standard/info.c n/ext/standard/info.c
+--- o/ext/standard/info.c	2026-11-19 16:59:05.369135294 +0100
++++ n/ext/standard/info.c	2026-11-19 17:47:00.767560853 +0100
+@@ -770,8 +770,6 @@
+ 		php_info_print("phpinfo()\n");
+ 	}
+ 
+-	php_print_packaging_credits(flag, 1);
+-
+ 	if (flag & PHP_INFO_GENERAL) {
+ 		char *zend_version = get_zend_version();
+ 		char temp_api[10];
+diff '--color=auto' -urN o/ext/standard/info.h n/ext/standard/info.h
+--- o/ext/standard/info.h	2026-11-19 16:59:05.369135294 +0100
++++ n/ext/standard/info.h	2026-11-19 17:47:14.874513409 +0100
+@@ -45,7 +45,6 @@
+ #define PHP_CREDITS_FULLPAGE		(1<<5)
+ #define PHP_CREDITS_QA				(1<<6)
+ #define PHP_CREDITS_WEB             (1<<7)
+-#define PHP_CREDITS_PACKAGING			(1<<8)
+ #define PHP_CREDITS_ALL				0xFFFFFFFF
+ 
+ #endif /* HAVE_CREDITS_DEFS */
+diff '--color=auto' -urN o/sapi/cli/php.1.in n/sapi/cli/php.1.in
+--- o/sapi/cli/php.1.in	2026-11-19 16:59:04.659133205 +0100
++++ n/sapi/cli/php.1.in	2026-11-19 17:33:53.763343358 +0100
+@@ -365,14 +365,13 @@
+ Show configuration file names
+ .SH FILES
+ .TP 15
+-.B /etc/php/@PHP_MAJOR_VERSION@.@PHP_MINOR_VERSION@/cli/php.ini
++.B php\-cli.ini
+ The configuration file for the CLI version of PHP.
+ .TP
+-+.B /etc/php/@PHP_MAJOR_VERSION@.@PHP_MINOR_VERSION@/cgi/php.ini
+-+The configuration file for the CGI version of PHP.
+-+.TP
+-+.B /etc/php/@PHP_MAJOR_VERSION@.@PHP_MINOR_VERSION@/apache2/php.ini
+-+The configuration file for the version of PHP that apache2 uses.
++.B php.ini
++The standard configuration file will only be used when
++.B php\-cli.ini
++cannot be found.
+ .SH EXAMPLES
+ .TP 5
+ \fI@program_prefix@php \-r 'echo "Hello World\\n";'\fP
+diff '--color=auto' -urN o/scripts/Makefile.frag n/scripts/Makefile.frag
+--- o/scripts/Makefile.frag	2026-11-19 16:59:04.659133205 +0100
++++ n/scripts/Makefile.frag	2026-11-19 17:33:53.764343344 +0100
+@@ -2,8 +2,8 @@
+ # Build environment install
+ #
+ 
+-phpincludedir = $(includedir)/php/$(DEBIAN_PHP_API)
+-phpbuilddir = $(prefix)/lib/php/$(DEBIAN_PHP_API)/build
++phpincludedir = $(includedir)/php
++phpbuilddir = $(libdir)/build
+ 
+ BUILD_FILES = \
+ 	scripts/phpize.m4 \
+diff '--color=auto' -urN o/scripts/man1/php-config.1.in n/scripts/man1/php-config.1.in
+--- o/scripts/man1/php-config.1.in	2026-11-19 16:59:05.040134325 +0100
++++ n/scripts/man1/php-config.1.in	2026-11-19 17:33:53.764343344 +0100
+@@ -44,7 +44,7 @@
+ .TP
+ .PD 0
+ .B \-\-php-sapis
+-Show all SAPI modules installed on the Debian system
++Show all SAPI modules avaiilable
+ .TP
+ .PD 0
+ .B \-\-configure-options
+diff '--color=auto' -urN o/scripts/php-config.in n/scripts/php-config.in
+--- o/scripts/php-config.in	2026-11-19 16:59:05.040134325 +0100
++++ n/scripts/php-config.in	2026-11-19 17:33:53.764343344 +0100
+@@ -6,9 +6,9 @@
+ exec_prefix="@exec_prefix@"
+ version="@PHP_VERSION@"
+ vernum="@PHP_VERSION_ID@"
+-include_dir="@includedir@/php/@DEBIAN_PHP_API@"
+-includes="-I$include_dir -I$include_dir/main -I$include_dir/TSRM -I$include_dir/Zend -I$include_dir/ext -I$include_dir/ext/date/lib $(getconf LFS_CFLAGS)"
+-ldflags="-L$prefix/lib/php/@DEBIAN_PHP_API@ @PHP_LDFLAGS@"
++include_dir="@includedir@/php"
++includes="-I$include_dir -I$include_dir/main -I$include_dir/TSRM -I$include_dir/Zend -I$include_dir/ext -I$include_dir/ext/date/lib"
++ldflags="@PHP_LDFLAGS@"
+ libs="@EXTRA_LIBS@"
+ extension_dir="@EXTENSION_DIR@"
+ man_dir=`eval echo @mandir@`
+@@ -18,8 +18,7 @@
+ php_cli_binary=NONE
+ php_cgi_binary=NONE
+ configure_options="@CONFIGURE_OPTIONS@"
+-#php_sapis="@PHP_INSTALLED_SAPIS@"
+-phpapi="@DEBIAN_PHP_API@"
++php_sapis="@PHP_INSTALLED_SAPIS@"
+ ini_dir="@EXPANDED_PHP_CONFIG_FILE_SCAN_DIR@"
+ ini_path="@EXPANDED_PHP_CONFIG_FILE_PATH@"
+ 
+@@ -63,8 +62,6 @@
+   echo $include_dir;;
+ --php-binary)
+   echo $php_binary;;
+---phpapi)
+-  echo $phpapi;;
+ --php-sapis)
+   echo $php_sapis;;
+ --configure-options)
+@@ -92,7 +89,6 @@
+   --man-dir           [$man_dir]
+   --php-binary        [$php_binary]
+   --php-sapis         [$php_sapis]
+-  --phpapi            [$phpapi]
+   --ini-path          [$ini_path]
+   --ini-dir           [$ini_dir]
+   --configure-options [$configure_options]
+diff '--color=auto' -urN o/scripts/phpize.in n/scripts/phpize.in
+--- o/scripts/phpize.in	2026-11-19 16:59:05.341135211 +0100
++++ n/scripts/phpize.in	2026-11-19 17:33:53.765343330 +0100
+@@ -4,8 +4,8 @@
+ prefix='@prefix@'
+ datarootdir='@datarootdir@'
+ exec_prefix="`eval echo @exec_prefix@`"
+-phpdir="$prefix/lib/php/@DEBIAN_PHP_API@/build"
+-includedir="$prefix/include/php/@DEBIAN_PHP_API@"
++phpdir="`eval echo @libdir@`/build"
++includedir="`eval echo @includedir@`/php"
+ builddir="`pwd`"
+ SED="@SED@"
+ 

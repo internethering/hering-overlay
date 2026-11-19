@@ -1,0 +1,14 @@
+diff '--color=auto' -urN o/configure n/configure
+--- o/configure	2025-05-08 12:22:27.519000025 +0200
++++ n/configure	2025-05-08 12:28:27.581274692 +0200
+@@ -5451,9 +5451,7 @@
+     GCC_MAJOR_VERSION=`$CC --version | $SED -n '1s/[^0-9]*//;1s/\..*//;1p'`
+     ;;
+   esac
+-  if test $GCC_MAJOR_VERSION -ge 4; then
+-    CFLAGS="$CFLAGS -fvisibility=hidden"
+-  fi
++  CFLAGS="$CFLAGS -fvisibility=hidden"
+ fi
+ 
+ case $host_alias in

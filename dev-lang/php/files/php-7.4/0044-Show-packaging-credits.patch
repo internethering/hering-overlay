@@ -1,0 +1,210 @@
+From: =?utf-8?b?T25kxZllaiBTdXLDvQ==?= <ondrej@sury.org>
+Date: Mon, 22 Feb 2021 12:03:44 +0100
+Subject: Show packaging credits
+
+---
+ ext/standard/credits.c | 143 +++++++++++++++++++++++++++++++++++++++++++++++++
+ ext/standard/credits.h |   2 +
+ ext/standard/info.c    |   2 +
+ ext/standard/info.h    |   1 +
+ 4 files changed, 148 insertions(+)
+
+diff --git a/ext/standard/credits.c b/ext/standard/credits.c
+index 556ffd7..d11db5a 100644
+--- a/ext/standard/credits.c
++++ b/ext/standard/credits.c
+@@ -17,6 +17,12 @@
+    +----------------------------------------------------------------------+
+ */
+ 
++#include <ctype.h>
++#include <string.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
++
+ #include "php.h"
+ #include "info.h"
+ #include "SAPI.h"
+@@ -123,8 +129,145 @@ PHPAPI ZEND_COLD void php_print_credits(int flag) /* {{{ */
+ 		php_info_print_table_end();
+ 	}
+ 
++	php_print_packaging_credits(flag, 0);
++
+ 	if (!sapi_module.phpinfo_as_text && flag & PHP_CREDITS_FULLPAGE) {
+ 		PUTS("</div></body></html>\n");
+ 	}
+ }
+ /* }}} */
++
++PHPAPI void php_print_packaging_credits(int flag, int top TSRMLS_DC) /* {{{ */
++{
++	if (flag && PHP_CREDITS_PACKAGING) {
++		/* Packaging */
++		int fd = -1;
++		char buf[4096];
++		ssize_t bytes = -1;
++		char *pos = NULL;
++		enum {
++			DEBIAN = 0,
++			DEBSURYORG = 1,
++			FREEXIAN = 2
++		} packaging = DEBIAN;
++
++		fd = open("/usr/lib/php/packaging", O_RDONLY);
++		if (fd == -1) {
++			goto print;
++		}
++
++		bytes = read(fd, buf, sizeof(buf) - 1);
++		close(fd);
++
++		if (bytes <= 0) {
++			goto print;
++		}
++
++		buf[bytes] = '\0';
++		pos = strchr(buf, '\n');
++		if (pos != NULL) {
++			bytes = pos - buf;
++			*pos = '\0';
++		}
++
++		if (strncmp(buf, "deb.sury.org", sizeof(buf)) == 0) {
++			packaging = DEBSURYORG;
++		} else if (strncmp(buf, "freexian", sizeof(buf)) == 0) {
++			packaging = FREEXIAN;
++		}
++
++	print:
++		if ((top && packaging != FREEXIAN) || (!top && packaging == FREEXIAN))
++		{
++			return;
++		}
++		switch (packaging) {
++		case DEBSURYORG:
++			php_info_print_table_start();
++			php_info_print_table_colspan_header(1, "Debian Packaging");
++			if (!sapi_module.phpinfo_as_text) {
++				PUTS("<tr><td class=\"e\">");
++				PUTS("<a href=\"https://deb.sury.org\">DEB.SURY.ORG</a>, an Ondřej Surý project");
++				PUTS("</td></tr>\n");
++			} else {
++				php_info_print_table_row(1, "DEB.SURY.ORG, an Ondřej Surý project");
++			}
++			php_info_print_table_end();
++			break;
++		case FREEXIAN:
++			fd = -1;
++			bytes = -1;
++
++			if (!sapi_module.phpinfo_as_text) {
++				PUTS("<h1>PHP Vendor</h1>\n");
++			} else {
++				PUTS("PHP Vendor\n");
++			}
++
++			php_info_print_table_start();
++			php_info_print_table_colspan_header(1, "Debian Packaging");
++
++			if (!sapi_module.phpinfo_as_text) {
++				fd = open("/etc/php/freexian-sponsor.html", O_RDONLY);
++			} else {
++				fd = open("/etc/php/freexian-sponsor.txt", O_RDONLY);
++				if (fd == -1) {
++					fd = open("/etc/php/freexian-sponsor.html", O_RDONLY);
++				}
++			}
++
++			if (fd > 0) {
++				bytes = read(fd, buf, sizeof(buf) - 1);
++				close(fd);
++			}
++
++			if (bytes > 0) {
++				buf[bytes] = '\0';
++			}
++
++			if (!sapi_module.phpinfo_as_text) {
++				PUTS("<tr><td class=\"e\">");
++
++				PUTS("This PHP version is maintained by "
++					 "<a href=\"https://www.freexian.com\">Freexian SARL</a> as part of "
++					 "their <a href=\"https://php.freexian.com\">PHP LTS</a> offer"
++					);
++
++				if (bytes > 0) {
++					PUTS(" and is made available exclusively for ");
++					PUTS(buf);
++				} else {
++					PUTS(". This service is run together with Ondřej Surý, "
++						 "that's why a small subset of the PHP LTS packages "
++						 "are made freely available on "
++						 "<a href=\"https://deb.sury.org/\">DEB.SURY.ORG</a>.");
++				}
++				PUTS("</td></tr>\n");
++			} else {
++				PUTS("This PHP version is maintained by "
++					 "Freexian SARL <https://www.freexian.com> as part of "
++					 "their PHP LTS <https://php.freexian.com> offer"
++					);
++				if (bytes > 0) {
++					PUTS(" and is made available exclusively for ");
++					PUTS(buf);
++				} else {
++					PUTS(". This service is run together with Ondřej Surý, "
++						 "that's why a small subset of the PHP LTS packages "
++						 "are made freely available on "
++						 "DEB.SURY.ORG <https://deb.sury.org/>.");
++				}
++			}
++			php_info_print_table_end();
++			break;
++		case DEBIAN:
++		default:
++			php_info_print_table_start();
++			php_info_print_table_colspan_header(1, "Debian Packaging");
++			php_info_print_table_row(1, "Ondřej Surý");
++			php_info_print_table_end();
++			break;
++		}
++	}
++}
++/* }}} */
+diff --git a/ext/standard/credits.h b/ext/standard/credits.h
+index dcf4669..f5e7a63 100644
+--- a/ext/standard/credits.h
++++ b/ext/standard/credits.h
+@@ -37,4 +37,6 @@
+ 
+ PHPAPI void php_print_credits(int flag);
+ 
++PHPAPI void php_print_packaging_credits(int flag, int top TSRMLS_DC);
++
+ #endif
+diff --git a/ext/standard/info.c b/ext/standard/info.c
+index 3c9b7e2..b03dbe8 100644
+--- a/ext/standard/info.c
++++ b/ext/standard/info.c
+@@ -770,6 +770,8 @@ PHPAPI ZEND_COLD void php_print_info(int flag)
+ 		php_info_print("phpinfo()\n");
+ 	}
+ 
++	php_print_packaging_credits(flag, 1);
++
+ 	if (flag & PHP_INFO_GENERAL) {
+ 		char *zend_version = get_zend_version();
+ 		char temp_api[10];
+diff --git a/ext/standard/info.h b/ext/standard/info.h
+index 479e547..b6f17fc 100644
+--- a/ext/standard/info.h
++++ b/ext/standard/info.h
+@@ -45,6 +45,7 @@
+ #define PHP_CREDITS_FULLPAGE		(1<<5)
+ #define PHP_CREDITS_QA				(1<<6)
+ #define PHP_CREDITS_WEB             (1<<7)
++#define PHP_CREDITS_PACKAGING			(1<<8)
+ #define PHP_CREDITS_ALL				0xFFFFFFFF
+ 
+ #endif /* HAVE_CREDITS_DEFS */

@@ -1,0 +1,20 @@
+From: =?utf-8?b?T25kxZllaiBTdXLDvQ==?= <ondrej@sury.org>
+Date: Thu, 18 Dec 2025 22:27:36 +0100
+Subject: Fix missing include in litespeed build
+
+---
+ sapi/litespeed/lsapi_main.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sapi/litespeed/lsapi_main.c b/sapi/litespeed/lsapi_main.c
+index 9413810..d94fdf8 100644
+--- a/sapi/litespeed/lsapi_main.c
++++ b/sapi/litespeed/lsapi_main.c
+@@ -25,6 +25,7 @@
+ #include "zend.h"
+ #include "ext/standard/basic_functions.h"
+ #include "ext/standard/info.h"
++#include "ext/standard/head.h"
+ #include "lsapilib.h"
+ 
+ #include <stdio.h>

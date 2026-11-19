@@ -1,0 +1,21 @@
+From: =?utf-8?b?T25kxZllaiBTdXLDvQ==?= <ondrej@sury.org>
+Date: Tue, 10 Nov 2026 15:21:59 +0100
+Subject: Accept the memory limit error format in the bug45392 test
+
+0164-Avoid-state-corruption-via-bailout.patch prints the memory limit
+error itself, with an empty line in front of it also when
+display_errors=stderr.
+---
+ tests/lang/bug45392.phpt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/lang/bug45392.phpt b/tests/lang/bug45392.phpt
+index a9bdd40..d72b2e2 100644
+--- a/tests/lang/bug45392.phpt
++++ b/tests/lang/bug45392.phpt
+@@ -20,4 +20,5 @@ ob_end_clean();
+ ?>
+ --EXPECTF--
+ 2
++
+ Fatal error: Allowed memory size of %d bytes exhausted%s
