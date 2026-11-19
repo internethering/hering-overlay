@@ -1,7 +1,25 @@
 diff '--color=auto' -urN o/configure.ac n/configure.ac
 --- o/configure.ac	2026-11-19 16:29:00.714001694 +0100
-+++ n/configure.ac	2026-11-19 16:29:36.265393884 +0100
-@@ -1196,10 +1196,8 @@
++++ n/configure.ac	2026-11-19 17:18:58.448348036 +0100
+@@ -1084,7 +1084,7 @@
+ fi
+ 
+ PHP_ARG_WITH(pear, [whether to install PEAR],
+-[  --with-pear=DIR         Install PEAR in DIR @<:@PREFIX/share/php@:>@
++[  --with-pear=DIR         Install PEAR in DIR @<:@PREFIX/lib/php@:>@
+   --without-pear          Do not install PEAR], DEFAULT, yes)
+ 
+ if test "$PHP_PEAR" != "no"; then
+@@ -1121,8 +1121,6 @@
+   PHP_ADD_MAKEFILE_FRAGMENT($abs_srcdir/pear/Makefile.frag,$abs_srcdir/pear,pear)
+ fi
+ 
+-PEAR_INSTALLDIR=/usr/share/php
+-
+ dnl Configuring Zend and TSRM.
+ dnl -------------------------------------------------------------------------
+ 
+@@ -1196,10 +1194,8 @@
  
  AC_SUBST(ZEND_MODULE_API_NO)
  
@@ -13,7 +31,7 @@ diff '--color=auto' -urN o/configure.ac n/configure.ac
    if test "$oldstyleextdir" = "yes"; then
      if test "$PHP_DEBUG" = "1"; then
        part1=debug
-@@ -1342,7 +1340,6 @@
+@@ -1342,7 +1338,6 @@
  PHP_SUBST(CXXFLAGS)
  PHP_SUBST(CXXFLAGS_CLEAN)
  PHP_SUBST_OLD(DEBUG_CFLAGS)
@@ -21,7 +39,7 @@ diff '--color=auto' -urN o/configure.ac n/configure.ac
  PHP_SUBST_OLD(EXTENSION_DIR)
  PHP_SUBST_OLD(EXTRA_LDFLAGS)
  PHP_SUBST_OLD(EXTRA_LDFLAGS_PROGRAM)
-@@ -1528,7 +1525,6 @@
+@@ -1528,7 +1523,6 @@
  ALL_OUTPUT_FILES="php5.spec main/build-defs.h \
  scripts/phpize scripts/man1/phpize.1 \
  scripts/php-config scripts/man1/php-config.1 \
@@ -41,6 +59,29 @@ diff '--color=auto' -urN o/ext/ext_skel n/ext/ext_skel
  fi
  
  ## convert skel_dir to full path
+diff '--color=auto' -urN o/sapi/cli/php.1.in n/sapi/cli/php.1.in
+--- o/sapi/cli/php.1.in	2026-11-19 16:28:57.197061626 +0100
++++ n/sapi/cli/php.1.in	2026-11-19 17:20:43.443879874 +0100
+@@ -365,14 +365,13 @@
+ Show configuration file names
+ .SH FILES
+ .TP 15
+-.B /etc/php/@PHP_MAJOR_VERSION@.@PHP_MINOR_VERSION@/cli/php.ini
++.B php\-cli.ini
+ The configuration file for the CLI version of PHP.
+ .TP
+-.B /etc/php/@PHP_MAJOR_VERSION@.@PHP_MINOR_VERSION@/cgi/php.ini
+-The configuration file for the CGI version of PHP.
+-.TP
+-.B /etc/php/@PHP_MAJOR_VERSION@.@PHP_MINOR_VERSION@/apache2/php.ini
+-The configuration file for the version of PHP that apache2 uses.
++.B php.ini
++The standard configuration file will only be used when 
++.B php\-cli.ini
++cannot be found.
+ .SH EXAMPLES
+ .TP 5
+ \fI@program_prefix@php \-r 'echo "Hello World\\n";'\fP
 diff '--color=auto' -urN o/scripts/Makefile.frag n/scripts/Makefile.frag
 --- o/scripts/Makefile.frag	2026-11-19 16:28:57.197061626 +0100
 +++ n/scripts/Makefile.frag	2026-11-19 16:28:11.896881194 +0100
