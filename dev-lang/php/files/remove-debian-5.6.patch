@@ -1,6 +1,6 @@
-diff '--color=auto' -urN o/configure.ac n/configure.ac
---- o/configure.ac	2026-11-19 16:29:00.714001694 +0100
-+++ n/configure.ac	2026-11-19 17:18:58.448348036 +0100
+diff '--color=auto' -urN o/configure.in n/configure.in
+--- o/configure.in	2026-11-19 16:29:00.714001694 +0100
++++ n/configure.in	2026-11-19 17:18:58.448348036 +0100
 @@ -1084,7 +1084,7 @@
  fi
  

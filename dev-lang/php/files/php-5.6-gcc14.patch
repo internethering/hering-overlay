@@ -1,0 +1,76 @@
+--- a/ext/zlib/zlib.c	2026-11-20 14:53:53.566757515 +0100
++++ b/ext/zlib/zlib.c	2026-11-20 14:53:53.571754364 +0100
+@@ -1032,7 +1032,7 @@
+ 	PHP_MINFO(zlib),
+ 	"2.0",
+ 	PHP_MODULE_GLOBALS(zlib),
+-	ZEND_MODULE_GLOBALS_CTOR_N(zlib),
++	PHP_GINIT(zlib),
+ 	NULL,
+ 	NULL,
+ 	STANDARD_MODULE_PROPERTIES_EX
+--- a/ext/dom/dom_iterators.c	2026-11-20 15:54:19.605118111 +0100
++++ b/ext/dom/dom_iterators.c	2026-11-20 15:54:19.611117975 +0100
+@@ -42,7 +42,7 @@
+ 	xmlNotation *notation;
+ };
+ 
+-static void itemHashScanner (void *payload, void *data, xmlChar *name) /* {{{ */
++static void itemHashScanner (void *payload, void *data, const xmlChar *name) /* {{{ */
+ {
+ 	nodeIterator *priv = (nodeIterator *)data;
+ 
+--- a/ext/fileinfo/libmagic/funcs.c	2026-11-20 16:00:51.090451726 +0100
++++ b/ext/fileinfo/libmagic/funcs.c	2026-11-20 16:00:51.094451705 +0100
+@@ -437,6 +437,7 @@
+ 	return ms->o.buf == NULL ? 0 : strlen(ms->o.buf);
+ }
+ 
++protected int
+ file_replace(struct magic_set *ms, const char *pat, const char *rep)
+ {
+ 	zval *patt;
+--- a/ext/mbstring/libmbfl/filters/mbfilter_iso2022jp_mobile.c	2026-11-20 16:05:47.101958884 +0100
++++ b/ext/mbstring/libmbfl/filters/mbfilter_iso2022jp_mobile.c	2026-11-20 16:05:47.107958892 +0100
+@@ -48,7 +48,7 @@
+ 	mbfl_no_encoding_2022jp_kddi,
+ 	"ISO-2022-JP-MOBILE#KDDI",
+ 	"ISO-2022-JP",
+-	mbfl_encoding_2022jp_kddi_aliases,
++	&mbfl_encoding_2022jp_kddi_aliases,
+ 	NULL,
+ 	MBFL_ENCTYPE_MBCS | MBFL_ENCTYPE_SHFTCODE | MBFL_ENCTYPE_GL_UNSAFE
+ };
+--- a/ext/session/session.c	2026-11-20 16:12:21.567499191 +0100
++++ b/ext/session/session.c	2026-11-20 16:12:21.632499574 +0100
+@@ -864,7 +864,7 @@
+ 
+ 	PHP_VAR_UNSERIALIZE_INIT(var_hash);
+ 	ALLOC_INIT_ZVAL(session_vars);
+-	if (php_var_unserialize(&session_vars, &val, endptr, &var_hash TSRMLS_CC)) {
++	if (php_var_unserialize(&session_vars, (const unsigned char **) &val, (const unsigned char *) endptr, &var_hash TSRMLS_CC)) {
+ 		var_push_dtor(&var_hash, &session_vars);
+ 	}
+ 
+--- a/ext/wddx/wddx.c	2026-11-20 16:19:05.673635045 +0100
++++ b/ext/wddx/wddx.c	2026-11-20 16:19:05.677635237 +0100
+@@ -467,7 +467,7 @@
+ /* OBJECTS_FIXME */
+ 	zval **ent, *fname, **varname;
+ 	zval *retval = NULL;
+-	const char *key;
++	char *key;
+ 	ulong idx;
+ 	char tmp_buf[WDDX_BUF_LEN];
+ 	HashTable *objhash, *sleephash;
+--- a/ext/zip/lib/mkstemp.c	2026-11-20 16:33:54.994390594 +0100
++++ b/ext/zip/lib/mkstemp.c	2026-11-20 16:33:55.022391056 +0100
+@@ -40,6 +40,8 @@
+ #include <fcntl.h>
+ #ifdef _WIN32
+ #include <io.h>
++#else
++#include <unistd.h>
+ #endif
+ #include <stdio.h>
+ #include <stdlib.h>

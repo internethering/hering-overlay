@@ -50,8 +50,6 @@ IUSE="${IUSE} acl bcmath berkdb bzip2 calendar cdb cjk
 # the ./configure script. Other versions *work*, but we need to stick to
 # the ones that can be detected to avoid a repeat of bug #564824.
 COMMON_DEPEND="
-	sys-devel/gcc:13
-    dev-build/autoconf:2.71
 	>=app-eselect/eselect-php-0.9.1[apache2?,fpm?]
 	>=dev-libs/libpcre-8.32[unicode]
 	fpm? ( acl? ( sys-apps/acl ) )
@@ -240,6 +238,9 @@ src_prepare() {
 
 	eapply "${patchdir2}"
 	eapply "${patchdir1}/00020_mbstring-oniguruma-6.8.patch"
+	eapply -p1 "${FILESDIR}/php-5.6-libxml2-2.12.patch"
+	eapply -p1 "${FILESDIR}/php-5.6-gcc14.patch"
+	eapply -p1 "${FILESDIR}/remove-debian-5.6.patch"
 
 	# Copy test binaries from patches
 	local ext_src
@@ -272,21 +273,12 @@ src_prepare() {
 			|| die "Failed to fix heimdal crypt library reference"
 	fi
 
-	#eapply -p1 "${FILESDIR}/php-htmltidy-5.8.0.patch"
-	#eapply -p1 "${FILESDIR}/php-icu-70.patch"
-	#eapply -p1 "${FILESDIR}/php-5.6.40-openssl-3.patch"
-	#eapply -p1 "${FILESDIR}/php-5.6-libxml2-2.12.patch"
-	#eapply -p1 "${FILESDIR}/php-libxml2-2.14.patch"
-	#eapply -p1 "${FILESDIR}/php-5.6-php2shell.patch"
-
 	eapply_user
 
 	# Force rebuilding aclocal.m4
 	rm -f aclocal.m4 || die "failed to remove aclocal.m4 in src_prepare"
 
 	mv configure.in configure.ac || die
-
-	eapply -p1 "${FILESDIR}/remove-debian-5.6.patch"
 
 	eautoreconf
 
@@ -302,6 +294,7 @@ src_configure() {
 
 	PHP_DESTDIR="${EPREFIX}/usr/$(get_libdir)/php${SLOT}"
 
+	append-cflags -std=gnu17
 	# For dev-libs/icu-74.2
 	append-cflags -DU_DEFINE_FALSE_AND_TRUE=1
 	append-cxxflags -DU_DEFINE_FALSE_AND_TRUE=1

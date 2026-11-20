@@ -203,6 +203,10 @@ php_set_ini_dir() {
 src_prepare() {
 	local patchdir="${WORKDIR}/${PATCH_P}-debian-patches-${PR}"
 	eapply "${patchdir}"
+	eapply -p1 "${FILESDIR}"/remove-debian-7.4.patch
+	eapply -p1 "${FILESDIR}"/php-7.4-gcc14-intl.patch
+	eapply -p1 "${FILESDIR}"/php-iodbc-header-location.patch
+	eapply -p1 "${FILESDIR}"/bug81656-gcc-11.patch
 
 	default
 
@@ -220,11 +224,6 @@ src_prepare() {
 	rm -fr aclocal.m4 autom4te.cache config.cache \
 		configure main/php_config.h.in || die
 
-	eapply -p1 "${FILESDIR}"/remove-debian-7.4.patch
-	eapply -p1 "${FILESDIR}"/php-7.4-gcc14-intl.patch
-	eapply -p1 "${FILESDIR}"/php-iodbc-header-location.patch
-	eapply -p1 "${FILESDIR}"/bug81656-gcc-11.patch
-
 	eautoconf --force
 	eautoheader
 }
@@ -236,6 +235,8 @@ src_configure() {
 	addpredict /var/lib/net-snmp/mib_indexes #nowarn
 
 	PHP_DESTDIR="${EPREFIX}/usr/$(get_libdir)/php${SLOT}"
+
+	append-cflags -std=gnu17
 
 	# The php-fpm config file wants localstatedir to be ${EPREFIX}/var
 	# and not the Gentoo default ${EPREFIX}/var/lib. See bug 572002.
